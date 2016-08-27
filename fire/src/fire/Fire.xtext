@@ -1,0 +1,9 @@
+grammar fire.Fire with org.eclipse.xtext.common.Terminals
+
+generate fire "http://www.Fire.fire"
+
+Program:
+	'program'
+		'writeln' '(' value=STRING ')'
+	'end'
+;

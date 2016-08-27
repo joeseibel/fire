@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+	<feature id="fire.feature" version="0.0.0">
+		<category name="main"/>
+	</feature>
+	<feature id="fire.feature.source" version="0.0.0">
+		<category name="main.source"/>
+	</feature>
+	<category-def name="main" label="Fire"/>
+	<category-def name="main.source" label="Fire (Sources)"/>
+</site>
