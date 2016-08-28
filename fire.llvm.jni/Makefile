@@ -12,10 +12,10 @@ bin:
 	mkdir bin
 
 $(OBJS): bin/%.o: src/%.cpp bin
-	clang++ -Ijni_headers -I/System/Library/Frameworks/JavaVM.framework/Headers -c -o $@ $<
+	clang++ $(shell llvm-config --cxxflags) -Ijni_headers -I/System/Library/Frameworks/JavaVM.framework/Headers -c -o $@ $<
 
 $(LIB): $(OBJS)
-	clang++ -dynamiclib -o $@ -framework JavaVM $(OBJS)
+	clang++ $(shell llvm-config --ldflags --libs --system-libs) -dynamiclib -o $@ -framework JavaVM $(OBJS)
 
 all: $(JNI_HEADERS) $(OBJS) $(LIB)
 
