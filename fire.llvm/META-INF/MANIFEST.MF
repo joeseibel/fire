@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Llvm
+Bundle-SymbolicName: fire.llvm
+Bundle-Version: 1.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-NativeCode: libfireLLVM.jnilib
+Export-Package: fire.llvm

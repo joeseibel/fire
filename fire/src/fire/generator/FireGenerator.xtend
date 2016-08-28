@@ -1,10 +1,11 @@
 package fire.generator
 
+import fire.fire.Program
+import fire.llvm.LLVMContext
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
-import fire.fire.Program
 
 class FireGenerator extends AbstractGenerator {
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
@@ -20,5 +21,7 @@ class FireGenerator extends AbstractGenerator {
 				ret void
 			}
 		''')
+		
+		new LLVMContext().delete
 	}
 }
