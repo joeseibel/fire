@@ -15,22 +15,6 @@ JNIEXPORT void JNICALL Java_fire_llvm_IRBuilder_delete(JNIEnv *env, jobject obj)
 	delete builder;
 }
 
-JNIEXPORT void JNICALL Java_fire_llvm_IRBuilder_setInsertPoint(JNIEnv *env, jobject obj, jobject theBB) {
-	llvm::IRBuilder<> *builder = (llvm::IRBuilder<>*)env->GetLongField(obj, env->GetFieldID(env->GetObjectClass(obj), "pointerAddress", "J"));
-	llvm::BasicBlock *basicBlock = (llvm::BasicBlock*)env->GetLongField(theBB, env->GetFieldID(env->GetObjectClass(theBB), "pointerAddress", "J"));
-	builder->SetInsertPoint(basicBlock);
-}
-
-JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilder_getInt8Ty(JNIEnv *env, jobject obj) {
-	jlong pointerAddress = env->GetLongField(obj, env->GetFieldID(env->GetObjectClass(obj), "pointerAddress", "J"));
-	llvm::IRBuilder<> *builder = (llvm::IRBuilder<>*)pointerAddress;
-	llvm::IntegerType *int8Type = builder->getInt8Ty();
-
-	jclass integerTypeClass = env->FindClass("fire/llvm/IntegerType");
-	jmethodID constructorId = env->GetMethodID(integerTypeClass, "<init>", "(J)V");
-	return env->NewObject(integerTypeClass, constructorId, (jlong)int8Type);
-}
-
 JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilder_getInt32Ty(JNIEnv *env, jobject obj) {
 	jlong pointerAddress = env->GetLongField(obj, env->GetFieldID(env->GetObjectClass(obj), "pointerAddress", "J"));
 	llvm::IRBuilder<> *builder = (llvm::IRBuilder<>*)pointerAddress;

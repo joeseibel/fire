@@ -5,7 +5,7 @@ public class LLVMContext extends PointerWrapper {
 		super(newLLVMContext());
 	}
 	
-	public native void delete();
-	
 	private static native long newLLVMContext();
+	
+	public native void delete();
 }
