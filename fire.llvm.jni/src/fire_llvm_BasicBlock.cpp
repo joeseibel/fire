@@ -1,16 +1,13 @@
-#include "fire_llvm_BasicBlock.h"
+#include <fire_llvm_BasicBlock.h>
+#include <llvm/IR/BasicBlock.h>
+#include "FireUtil.h"
 
-#include "llvm/IR/BasicBlock.h"
-
+//Java method: public static native BasicBlock create(LLVMContext context, String name, Function parent);
 JNIEXPORT jobject JNICALL Java_fire_llvm_BasicBlock_create(JNIEnv *env, jclass cls, jobject context, jstring name, jobject parent) {
-	llvm::LLVMContext *llvmContext = (llvm::LLVMContext*)env->GetLongField(context, env->GetFieldID(env->GetObjectClass(context), "pointerAddress", "J"));
-	const char *basicBlockName = env->GetStringUTFChars(name, NULL);
-	llvm::Function *function = (llvm::Function*)env->GetLongField(parent, env->GetFieldID(env->GetObjectClass(parent), "pointerAddress", "J"));
-
-	llvm::BasicBlock *basicBlock = llvm::BasicBlock::Create(*llvmContext, basicBlockName, function);
-
-	env->ReleaseStringUTFChars(name, basicBlockName);
-
-	jmethodID constructorId = env->GetMethodID(cls, "<init>", "(J)V");
-	return env->NewObject(cls, constructorId, (jlong)basicBlock);
+	llvm::LLVMContext *contextNative = toNative<llvm::LLVMContext>(env, context);
+	const char *nameNative = env->GetStringUTFChars(name, NULL);
+	llvm::Function *parentNative = toNative<llvm::Function>(env, parent);
+	llvm::BasicBlock *basicBlock = llvm::BasicBlock::Create(*contextNative, nameNative, parentNative);
+	env->ReleaseStringUTFChars(name, nameNative);
+	return toJava(env, cls, basicBlock);
 }

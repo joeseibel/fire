@@ -1,73 +1,33 @@
-#include "llvm/IR/IRBuilder.h"
+#include <fire_llvm_IRBuilder.h>
+#include <llvm/IR/IRBuilder.h>
+#include "FireUtil.h"
 
-#include "fire_llvm_IRBuilder.h"
-
+//Java method: private static native long newIRBuilder(LLVMContext c);
 JNIEXPORT jlong JNICALL Java_fire_llvm_IRBuilder_newIRBuilder(JNIEnv *env, jclass cls, jobject c) {
-	jlong cPointerAddress = env->GetLongField(c, env->GetFieldID(env->GetObjectClass(c), "pointerAddress", "J"));
-	llvm::LLVMContext *context = (llvm::LLVMContext*)cPointerAddress;
-	llvm::IRBuilder<> *builder = new llvm::IRBuilder<>(*context);
-	return (jlong)builder;
+	return (jlong)new llvm::IRBuilder<>(*toNative<llvm::LLVMContext>(env, c));
 }
 
+//Java method: public native void delete();
 JNIEXPORT void JNICALL Java_fire_llvm_IRBuilder_delete(JNIEnv *env, jobject obj) {
-	jlong pointerAddress = env->GetLongField(obj, env->GetFieldID(env->GetObjectClass(obj), "pointerAddress", "J"));
-	llvm::IRBuilder<> *builder = (llvm::IRBuilder<>*)pointerAddress;
-	delete builder;
+	delete toNative<llvm::IRBuilder<>>(env, obj);
 }
 
-JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilder_getInt32Ty(JNIEnv *env, jobject obj) {
-	jlong pointerAddress = env->GetLongField(obj, env->GetFieldID(env->GetObjectClass(obj), "pointerAddress", "J"));
-	llvm::IRBuilder<> *builder = (llvm::IRBuilder<>*)pointerAddress;
-	llvm::IntegerType *int32Type = builder->getInt32Ty();
-
-	jclass integerTypeClass = env->FindClass("fire/llvm/IntegerType");
-	jmethodID constructorId = env->GetMethodID(integerTypeClass, "<init>", "(J)V");
-	return env->NewObject(integerTypeClass, constructorId, (jlong)int32Type);
-}
-
-JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilder_getVoidTy(JNIEnv *env, jobject obj) {
-	jlong pointerAddress = env->GetLongField(obj, env->GetFieldID(env->GetObjectClass(obj), "pointerAddress", "J"));
-	llvm::IRBuilder<> *builder = (llvm::IRBuilder<>*)pointerAddress;
-	llvm::Type *voidType = builder->getVoidTy();
-
-	jclass typeClass = env->FindClass("fire/llvm/Type");
-	jmethodID constructorId = env->GetMethodID(typeClass, "<init>", "(J)V");
-	return env->NewObject(typeClass, constructorId, (jlong)voidType);
-}
-
+//Java method: public native ReturnInst createRetVoid();
 JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilder_createRetVoid(JNIEnv *env, jobject obj) {
-	llvm::IRBuilder<> *builder = (llvm::IRBuilder<>*)env->GetLongField(obj, env->GetFieldID(env->GetObjectClass(obj), "pointerAddress", "J"));
-	llvm::ReturnInst *returnInst = builder->CreateRetVoid();
-
-	jclass returnClass = env->FindClass("fire/llvm/ReturnInst");
-	jmethodID constructorId = env->GetMethodID(returnClass, "<init>", "(J)V");
-	return env->NewObject(returnClass, constructorId, (jlong)returnInst);
+	return toJava(env, "fire/llvm/ReturnInst", toNative<llvm::IRBuilder<>>(env, obj)->CreateRetVoid());
 }
 
+//Java method: public native Value createGlobalStringPtr(String str);
 JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilder_createGlobalStringPtr(JNIEnv *env, jobject obj, jstring str) {
-	llvm::IRBuilder<> *builder = (llvm::IRBuilder<>*)env->GetLongField(obj, env->GetFieldID(env->GetObjectClass(obj), "pointerAddress", "J"));
-	const char *stringValue = env->GetStringUTFChars(str, NULL);
-	llvm::Value *value = builder->CreateGlobalStringPtr(stringValue);
-	env->ReleaseStringUTFChars(str, stringValue);
-
-	jclass valueClass = env->FindClass("fire/llvm/Value");
-	return env->NewObject(valueClass, env->GetMethodID(valueClass, "<init>", "(J)V"), (jlong)value);
+	const char *strNative = env->GetStringUTFChars(str, NULL);
+	llvm::Value *value = toNative<llvm::IRBuilder<>>(env, obj)->CreateGlobalStringPtr(strNative);
+	env->ReleaseStringUTFChars(str, strNative);
+	return toJava(env, "fire/llvm/Value", value);
 }
 
+//Java method: public native CallInst createCall(Function callee, Value[] args);
 JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilder_createCall(JNIEnv *env, jobject obj, jobject callee, jobjectArray args) {
-	llvm::IRBuilder<> *builder = (llvm::IRBuilder<>*)env->GetLongField(obj, env->GetFieldID(env->GetObjectClass(obj), "pointerAddress", "J"));
-	llvm::Function *function = (llvm::Function*)env->GetLongField(callee, env->GetFieldID(env->GetObjectClass(callee), "pointerAddress", "J"));
-
-	std::vector<llvm::Value*> argsVector;
-	jsize argsSize = env->GetArrayLength(args);
-	for (jsize i = 0; i < argsSize; i++) {
-		jobject argJavaObject = env->GetObjectArrayElement(args, i);
-		llvm::Value *arg = (llvm::Value*)env->GetLongField(argJavaObject, env->GetFieldID(env->GetObjectClass(argJavaObject), "pointerAddress", "J"));
-		argsVector.push_back(arg);
-	}
-
-	llvm::CallInst *call = builder->CreateCall(function, argsVector);
-	jclass callInstClass = env->FindClass("fire/llvm/CallInst");
-	jmethodID constructorId = env->GetMethodID(callInstClass, "<init>", "(J)V");
-	return env->NewObject(callInstClass, constructorId, (jlong)call);
+	llvm::Function *calleeNative = toNative<llvm::Function>(env, callee);
+	std::vector<llvm::Value*> argsNative = toVector<llvm::Value>(env, args);
+	return toJava(env, "fire/llvm/CallInst", toNative<llvm::IRBuilder<>>(env, obj)->CreateCall(calleeNative, argsNative));
 }

@@ -13,7 +13,8 @@ OBJS = bin/fire_llvm_BasicBlock.o\
 	bin/fire_llvm_IRBuilderBase.o\
 	bin/fire_llvm_LLVMContext.o\
 	bin/fire_llvm_Module.o\
-	bin/fire_llvm_Type.o
+	bin/fire_llvm_Type.o\
+	bin/FireUtil.o
 
 JAVA_PROJECT = ../fire.llvm
 JAVA_BIN_DIR = $(JAVA_PROJECT)/bin
