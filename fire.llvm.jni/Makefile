@@ -17,26 +17,9 @@ JAVA_PROJECT = ../fire.llvm
 JAVA_BIN_DIR = $(JAVA_PROJECT)/bin
 LIB = $(JAVA_PROJECT)/libfireLLVM.jnilib
 
-jni_headers/fire_llvm_BasicBlock.h: $(JAVA_BIN_DIR)/fire/llvm/BasicBlock.class
-	javah -classpath $(JAVA_BIN_DIR) -d jni_headers fire.llvm.BasicBlock
-
-jni_headers/fire_llvm_Function.h: $(JAVA_BIN_DIR)/fire/llvm/Function.class
-	javah -classpath $(JAVA_BIN_DIR) -d jni_headers fire.llvm.Function
-
-jni_headers/fire_llvm_FunctionType.h: $(JAVA_BIN_DIR)/fire/llvm/FunctionType.class
-	javah -classpath $(JAVA_BIN_DIR) -d jni_headers fire.llvm.FunctionType
-
-jni_headers/fire_llvm_IRBuilder.h: $(JAVA_BIN_DIR)/fire/llvm/IRBuilder.class
-	javah -classpath $(JAVA_BIN_DIR) -d jni_headers fire.llvm.IRBuilder
-
-jni_headers/fire_llvm_LLVMContext.h: $(JAVA_BIN_DIR)/fire/llvm/LLVMContext.class
-	javah -classpath $(JAVA_BIN_DIR) -d jni_headers fire.llvm.LLVMContext
-
-jni_headers/fire_llvm_Module.h: $(JAVA_BIN_DIR)/fire/llvm/Module.class
-	javah -classpath $(JAVA_BIN_DIR) -d jni_headers fire.llvm.Module
-
-jni_headers/fire_llvm_Type.h: $(JAVA_BIN_DIR)/fire/llvm/Type.class
-	javah -classpath $(JAVA_BIN_DIR) -d jni_headers fire.llvm.Type
+jni_headers/fire_llvm_%.h: $(JAVA_BIN_DIR)/fire/llvm/%.class
+	$(eval CLASS_NAME = $(shell echo $< | sed 's:$(JAVA_BIN_DIR)/::' | sed 's/.class//' | sed 's:/:.:g'))
+	javah -classpath $(JAVA_BIN_DIR) -d jni_headers $(CLASS_NAME)
 
 bin:
 	mkdir bin
