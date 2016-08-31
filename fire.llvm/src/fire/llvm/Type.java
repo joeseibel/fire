@@ -1,14 +1,8 @@
 package fire.llvm;
 
-public class Type {
-	static {
-		System.loadLibrary("fireLLVM");
-	}
-	
-	private final long pointerAddress;
-	
+public class Type extends PointerWrapper {
 	protected Type(long pointerAddress) {
-		this.pointerAddress = pointerAddress;
+		super(pointerAddress);
 	}
 	
 	public native PointerType getPointerTo();

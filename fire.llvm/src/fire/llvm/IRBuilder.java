@@ -1,14 +1,8 @@
 package fire.llvm;
 
-public class IRBuilder {
-	static {
-		System.loadLibrary("fireLLVM");
-	}
-	
-	private final long pointerAddress;
-	
+public class IRBuilder extends PointerWrapper {
 	public IRBuilder(LLVMContext c) {
-		pointerAddress = newIRBuilder(c);
+		super(newIRBuilder(c));
 	}
 	
 	private static native long newIRBuilder(LLVMContext c);

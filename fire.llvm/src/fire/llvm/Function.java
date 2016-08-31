@@ -1,14 +1,8 @@
 package fire.llvm;
 
-public class Function {
-	static {
-		System.loadLibrary("fireLLVM");
-	}
-	
-	private final long pointerAddress;
-	
+public class Function extends Value {
 	private Function(long pointerAddress) {
-		this.pointerAddress = pointerAddress;
+		super(pointerAddress);
 	}
 	
 	public static native Function create(FunctionType ty, LinkageTypes linkage, String n, Module m);

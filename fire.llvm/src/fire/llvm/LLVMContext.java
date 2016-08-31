@@ -1,14 +1,8 @@
 package fire.llvm;
 
-public class LLVMContext {
-	static {
-		System.loadLibrary("fireLLVM");
-	}
-	
-	private final long pointerAddress;
-	
+public class LLVMContext extends PointerWrapper {
 	public LLVMContext() {
-		pointerAddress = newLLVMContext();
+		super(newLLVMContext());
 	}
 	
 	public native void delete();

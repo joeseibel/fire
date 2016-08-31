@@ -1,14 +1,8 @@
 package fire.llvm;
 
-public class Module {
-	static {
-		System.loadLibrary("fireLLVM");
-	}
-	
-	private final long pointerAddress;
-	
+public class Module extends PointerWrapper {
 	public Module(String moduleId, LLVMContext c) {
-		pointerAddress = newModule(moduleId, c);
+		super(newModule(moduleId, c));
 	}
 	
 	private static native long newModule(String moduleId, LLVMContext c);

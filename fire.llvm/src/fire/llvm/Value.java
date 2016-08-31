@@ -1,13 +1,7 @@
 package fire.llvm;
 
-public class Value {
-	static {
-		System.loadLibrary("fireLLVM");
-	}
-	
-	private final long pointerAddress;
-	
+public class Value extends PointerWrapper {
 	protected Value(long pointerAddress) {
-		this.pointerAddress = pointerAddress;
+		super(pointerAddress);
 	}
 }
