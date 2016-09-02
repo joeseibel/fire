@@ -34,8 +34,8 @@ class FireGenerator extends AbstractGenerator {
 			builder.createCall(putsFunction, #[globalString])
 			builder.createRetVoid
 			
-			module.dump
-			fsa.generateFile(resource.URI.trimFileExtension.lastSegment + ".o", new ByteArrayInputStream(module.emitToByteBuffer))
+			val outputFileName = resource.URI.trimFileExtension.segmentsList.drop(2).join("/") + ".o"
+			fsa.generateFile(outputFileName, new ByteArrayInputStream(module.emitToByteBuffer))
 		} finally {
 			builder.delete
 			module.delete
