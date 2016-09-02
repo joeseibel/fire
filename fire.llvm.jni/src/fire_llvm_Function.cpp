@@ -6,7 +6,7 @@
 JNIEXPORT jobject JNICALL Java_fire_llvm_Function_create(JNIEnv *env, jclass cls, jobject ty, jobject linkage, jstring n, jobject m) {
 	llvm::FunctionType *tyNative = toNative<llvm::FunctionType>(env, ty);
 	llvm::GlobalValue::LinkageTypes linkageNative = convertLinkageTypes(env, linkage);
-	const char *nNative = env->GetStringUTFChars(n, NULL);
+	const char *nNative = env->GetStringUTFChars(n, nullptr);
 	llvm::Module *mNative = toNative<llvm::Module>(env, m);
 	llvm::Function *function = llvm::Function::Create(tyNative, linkageNative, nNative, mNative);
 	env->ReleaseStringUTFChars(n, nNative);

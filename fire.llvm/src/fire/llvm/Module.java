@@ -9,4 +9,7 @@ public class Module extends PointerWrapper {
 	
 	public native void delete();
 	public native void dump();
+	
+	//Custom method which does not correspond directly to a method in the LLVM api.
+	public native byte[] emitToByteBuffer();
 }

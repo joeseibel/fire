@@ -19,7 +19,7 @@ JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilder_createRetVoid(JNIEnv *env, jo
 
 //Java method: public native Value createGlobalStringPtr(String str);
 JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilder_createGlobalStringPtr(JNIEnv *env, jobject obj, jstring str) {
-	const char *strNative = env->GetStringUTFChars(str, NULL);
+	const char *strNative = env->GetStringUTFChars(str, nullptr);
 	llvm::Value *value = toNative<llvm::IRBuilder<>>(env, obj)->CreateGlobalStringPtr(strNative);
 	env->ReleaseStringUTFChars(str, strNative);
 	return toJava(env, "fire/llvm/Value", value);

@@ -37,7 +37,7 @@ llvm::GlobalValue::LinkageTypes convertLinkageTypes(JNIEnv *env, jobject javaEnu
 		return llvm::GlobalValue::CommonLinkage;
 	} else {
 		jstring nameString = (jstring)env->CallObjectMethod(javaEnum, env->GetMethodID(javaEnumClass, "name", "()Ljava/lang/String;"));
-		const char *name = env->GetStringUTFChars(nameString, NULL);
+		const char *name = env->GetStringUTFChars(nameString, nullptr);
 		env->ThrowNew(env->FindClass("java/lang/AssertionError"), (std::string("Unrecognized enum literal: ") + name).c_str());
 		env->ReleaseStringUTFChars(nameString, name);
 		return llvm::GlobalValue::ExternalLinkage;
