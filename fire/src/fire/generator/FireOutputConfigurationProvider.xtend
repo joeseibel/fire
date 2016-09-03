@@ -12,6 +12,7 @@ class FireOutputConfigurationProvider implements IOutputConfigurationProvider {
 			overrideExistingResources = true
 			createOutputDirectory = true
 			cleanUpDerivedResources = true
+			canClearOutputDirectory = true
 			setDerivedProperty = true
 			keepLocalHistory = true
 		]}
