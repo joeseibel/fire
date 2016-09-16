@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         id="fire.additional.builder.fireObjectBuilder"
+         name="Fire Object Builder"
+         point="org.eclipse.core.resources.builders">
+      <builder
+            hasNature="true">
+         <run
+               class="fire.additional.builder.FireObjectBuilder">
+         </run>
+      </builder>
+   </extension>
+   <extension
+         id="fire.additional.nature.fireNature"
+         name="Fire Nature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="fire.additional.nature.FireNature">
+         </run>
+      </runtime>
+      <requires-nature
+            id="org.eclipse.xtext.ui.shared.xtextNature">
+      </requires-nature>
+      <builder
+            id="fire.additional.builder.fireObjectBuilder">
+      </builder>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="fire.additional.nature.ToggleFireNatureHandler"
+            id="fire.additional.nature.toggleNatureCommand"
+            name="Toggle Fire Nature">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.ui.projectConfigure?after=additions">
+         <command
+               commandId="fire.additional.nature.toggleNatureCommand"
+               label="Add Fire Nature"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <iterate
+                     ifEmpty="false"
+                     operator="and">
+                  <adapt
+                        type="org.eclipse.core.resources.IProject">
+                     <and>
+                        <test
+                              property="org.eclipse.core.resources.projectNature"
+                              value="org.eclipse.xtext.ui.shared.xtextNature">
+                        </test>
+                        <not>
+                           <test
+                                 property="org.eclipse.core.resources.projectNature"
+                                 value="fire.additional.nature.fireNature">
+                           </test>
+                        </not>
+                     </and>
+                  </adapt>
+               </iterate>
+            </visibleWhen>
+         </command>
+         <command
+               commandId="fire.additional.nature.toggleNatureCommand"
+               label="Remove Fire Nature"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <iterate
+                     ifEmpty="false"
+                     operator="and">
+                  <adapt
+                        type="org.eclipse.core.resources.IProject">
+                     <test
+                           property="org.eclipse.core.resources.projectNature"
+                           value="fire.additional.nature.fireNature">
+                     </test>
+                  </adapt>
+               </iterate>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>
+
+</plugin>
