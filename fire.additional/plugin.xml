@@ -106,5 +106,38 @@
             type="fire.additional.launch.fireLaunchConfigurationType">
       </launchConfigurationTabGroup>
    </extension>
+   <extension
+         point="org.eclipse.debug.ui.launchShortcuts">
+      <shortcut
+            class="fire.additional.launch.FireLaunchShortcut"
+            id="fire.additional.launch.fireLaunchShortcut"
+            label="Fire Application"
+            modes="run">
+         <contextualLaunch>
+            <enablement>
+               <with
+                     variable="selection">
+                  <and>
+                     <count
+                           value="1">
+                     </count>
+                     <iterate>
+                        <adapt
+                              type="org.eclipse.core.resources.IFile">
+                           <test
+                                 property="org.eclipse.core.resources.extension"
+                                 value="fire">
+                           </test>
+                        </adapt>
+                     </iterate>
+                  </and>
+               </with>
+            </enablement>
+         </contextualLaunch>
+         <configurationType
+               id="fire.additional.launch.fireLaunchConfigurationType">
+         </configurationType>
+      </shortcut>
+   </extension>
 
 </plugin>
