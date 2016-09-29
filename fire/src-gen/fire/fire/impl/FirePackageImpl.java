@@ -6,10 +6,12 @@ package fire.fire.impl;
 import fire.fire.FireFactory;
 import fire.fire.FirePackage;
 import fire.fire.Program;
+import fire.fire.WritelnStatement;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
@@ -27,6 +29,13 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
    * @generated
    */
   private EClass programEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass writelnStatementEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -106,9 +115,29 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getProgram_Value()
+  public EReference getProgram_Statements()
   {
-    return (EAttribute)programEClass.getEStructuralFeatures().get(0);
+    return (EReference)programEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getWritelnStatement()
+  {
+    return writelnStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getWritelnStatement_Value()
+  {
+    return (EAttribute)writelnStatementEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -142,7 +171,10 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
 
     // Create classes and their features
     programEClass = createEClass(PROGRAM);
-    createEAttribute(programEClass, PROGRAM__VALUE);
+    createEReference(programEClass, PROGRAM__STATEMENTS);
+
+    writelnStatementEClass = createEClass(WRITELN_STATEMENT);
+    createEAttribute(writelnStatementEClass, WRITELN_STATEMENT__VALUE);
   }
 
   /**
@@ -177,7 +209,10 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
 
     // Initialize classes and features; add operations and parameters
     initEClass(programEClass, Program.class, "Program", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getProgram_Value(), ecorePackage.getEString(), "value", null, 0, 1, Program.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getProgram_Statements(), this.getWritelnStatement(), null, "statements", null, 0, -1, Program.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(writelnStatementEClass, WritelnStatement.class, "WritelnStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getWritelnStatement_Value(), ecorePackage.getEString(), "value", null, 0, 1, WritelnStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

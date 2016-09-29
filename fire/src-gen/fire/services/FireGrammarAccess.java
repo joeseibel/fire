@@ -6,6 +6,7 @@ package fire.services;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import java.util.List;
+import org.eclipse.xtext.Action;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.Grammar;
 import org.eclipse.xtext.GrammarUtil;
@@ -24,47 +25,72 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 	public class ProgramElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fire.Fire.Program");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cProgramKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Keyword cWritelnKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Keyword cLeftParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cValueAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cValueSTRINGTerminalRuleCall_3_0 = (RuleCall)cValueAssignment_3.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Keyword cEndKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Action cProgramAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cProgramKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cStatementsAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cStatementsWritelnStatementParserRuleCall_2_0 = (RuleCall)cStatementsAssignment_2.eContents().get(0);
+		private final Keyword cEndKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//Program:
+		//	{Program}
 		//	'program'
-		//	'writeln' '(' value=STRING ')'
+		//	statements+=WritelnStatement*
 		//	'end';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'program' 'writeln' '(' value=STRING ')' 'end'
+		//{Program} 'program' statements+=WritelnStatement* 'end'
 		public Group getGroup() { return cGroup; }
 		
+		//{Program}
+		public Action getProgramAction_0() { return cProgramAction_0; }
+		
 		//'program'
-		public Keyword getProgramKeyword_0() { return cProgramKeyword_0; }
+		public Keyword getProgramKeyword_1() { return cProgramKeyword_1; }
 		
-		//'writeln'
-		public Keyword getWritelnKeyword_1() { return cWritelnKeyword_1; }
+		//statements+=WritelnStatement*
+		public Assignment getStatementsAssignment_2() { return cStatementsAssignment_2; }
 		
-		//'('
-		public Keyword getLeftParenthesisKeyword_2() { return cLeftParenthesisKeyword_2; }
-		
-		//value=STRING
-		public Assignment getValueAssignment_3() { return cValueAssignment_3; }
-		
-		//STRING
-		public RuleCall getValueSTRINGTerminalRuleCall_3_0() { return cValueSTRINGTerminalRuleCall_3_0; }
-		
-		//')'
-		public Keyword getRightParenthesisKeyword_4() { return cRightParenthesisKeyword_4; }
+		//WritelnStatement
+		public RuleCall getStatementsWritelnStatementParserRuleCall_2_0() { return cStatementsWritelnStatementParserRuleCall_2_0; }
 		
 		//'end'
-		public Keyword getEndKeyword_5() { return cEndKeyword_5; }
+		public Keyword getEndKeyword_3() { return cEndKeyword_3; }
+	}
+	public class WritelnStatementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fire.Fire.WritelnStatement");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cWritelnKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cValueAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cValueSTRINGTerminalRuleCall_2_0 = (RuleCall)cValueAssignment_2.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		
+		//WritelnStatement:
+		//	'writeln' '(' value=STRING ')';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'writeln' '(' value=STRING ')'
+		public Group getGroup() { return cGroup; }
+		
+		//'writeln'
+		public Keyword getWritelnKeyword_0() { return cWritelnKeyword_0; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
+		
+		//value=STRING
+		public Assignment getValueAssignment_2() { return cValueAssignment_2; }
+		
+		//STRING
+		public RuleCall getValueSTRINGTerminalRuleCall_2_0() { return cValueSTRINGTerminalRuleCall_2_0; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
 	}
 	
 	
 	private final ProgramElements pProgram;
+	private final WritelnStatementElements pWritelnStatement;
 	
 	private final Grammar grammar;
 	
@@ -76,6 +102,7 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaTerminals = gaTerminals;
 		this.pProgram = new ProgramElements();
+		this.pWritelnStatement = new WritelnStatementElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -106,8 +133,9 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	//Program:
+	//	{Program}
 	//	'program'
-	//	'writeln' '(' value=STRING ')'
+	//	statements+=WritelnStatement*
 	//	'end';
 	public ProgramElements getProgramAccess() {
 		return pProgram;
@@ -115,6 +143,16 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getProgramRule() {
 		return getProgramAccess().getRule();
+	}
+	
+	//WritelnStatement:
+	//	'writeln' '(' value=STRING ')';
+	public WritelnStatementElements getWritelnStatementAccess() {
+		return pWritelnStatement;
+	}
+	
+	public ParserRule getWritelnStatementRule() {
+		return getWritelnStatementAccess().getRule();
 	}
 	
 	//terminal ID:

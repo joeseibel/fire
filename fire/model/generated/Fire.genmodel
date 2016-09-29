@@ -7,7 +7,10 @@
   <genPackages prefix="Fire" basePackage="fire" disposableProviderFactory="true" fileExtensions="fire"
       ecorePackage="Fire.ecore#/">
     <genClasses ecoreClass="Fire.ecore#//Program">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Fire.ecore#//Program/value"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Fire.ecore#//Program/statements"/>
+    </genClasses>
+    <genClasses ecoreClass="Fire.ecore#//WritelnStatement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Fire.ecore#//WritelnStatement/value"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

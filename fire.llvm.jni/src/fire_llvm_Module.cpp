@@ -19,6 +19,18 @@ JNIEXPORT void JNICALL Java_fire_llvm_Module_delete(JNIEnv *env, jobject obj) {
 	delete toNative<llvm::Module>(env, obj);
 }
 
+//Java method: public native Function getFunction(String name);
+JNIEXPORT jobject JNICALL Java_fire_llvm_Module_getFunction(JNIEnv * env, jobject obj, jstring name) {
+	const char *nameNative = env->GetStringUTFChars(name, nullptr);
+	llvm::Function *function = toNative<llvm::Module>(env, obj)->getFunction(nameNative);
+	env->ReleaseStringUTFChars(name, nameNative);
+	if (function == nullptr) {
+		return nullptr;
+	} else {
+		return toJava(env, "fire/llvm/Function", function);
+	}
+}
+
 //Java method: public native void dump();
 JNIEXPORT void JNICALL Java_fire_llvm_Module_dump(JNIEnv *env, jobject obj) {
 	toNative<llvm::Module>(env, obj)->dump();

@@ -36,7 +36,9 @@ public class FireParser extends AbstractContentAssistParser {
 				private static final long serialVersionUID = 1L;
 				{
 					put(grammarAccess.getProgramAccess().getGroup(), "rule__Program__Group__0");
-					put(grammarAccess.getProgramAccess().getValueAssignment_3(), "rule__Program__ValueAssignment_3");
+					put(grammarAccess.getWritelnStatementAccess().getGroup(), "rule__WritelnStatement__Group__0");
+					put(grammarAccess.getProgramAccess().getStatementsAssignment_2(), "rule__Program__StatementsAssignment_2");
+					put(grammarAccess.getWritelnStatementAccess().getValueAssignment_2(), "rule__WritelnStatement__ValueAssignment_2");
 				}
 			};
 		}

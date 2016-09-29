@@ -6,6 +6,7 @@ package fire.fire;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
 
 /**
  * <!-- begin-user-doc -->
@@ -67,13 +68,13 @@ public interface FirePackage extends EPackage
   int PROGRAM = 0;
 
   /**
-   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * The feature id for the '<em><b>Statements</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PROGRAM__VALUE = 0;
+  int PROGRAM__STATEMENTS = 0;
 
   /**
    * The number of structural features of the '<em>Program</em>' class.
@@ -83,6 +84,34 @@ public interface FirePackage extends EPackage
    * @ordered
    */
   int PROGRAM_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link fire.fire.impl.WritelnStatementImpl <em>Writeln Statement</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see fire.fire.impl.WritelnStatementImpl
+   * @see fire.fire.impl.FirePackageImpl#getWritelnStatement()
+   * @generated
+   */
+  int WRITELN_STATEMENT = 1;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WRITELN_STATEMENT__VALUE = 0;
+
+  /**
+   * The number of structural features of the '<em>Writeln Statement</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WRITELN_STATEMENT_FEATURE_COUNT = 1;
 
 
   /**
@@ -96,15 +125,36 @@ public interface FirePackage extends EPackage
   EClass getProgram();
 
   /**
-   * Returns the meta object for the attribute '{@link fire.fire.Program#getValue <em>Value</em>}'.
+   * Returns the meta object for the containment reference list '{@link fire.fire.Program#getStatements <em>Statements</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Value</em>'.
-   * @see fire.fire.Program#getValue()
+   * @return the meta object for the containment reference list '<em>Statements</em>'.
+   * @see fire.fire.Program#getStatements()
    * @see #getProgram()
    * @generated
    */
-  EAttribute getProgram_Value();
+  EReference getProgram_Statements();
+
+  /**
+   * Returns the meta object for class '{@link fire.fire.WritelnStatement <em>Writeln Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Writeln Statement</em>'.
+   * @see fire.fire.WritelnStatement
+   * @generated
+   */
+  EClass getWritelnStatement();
+
+  /**
+   * Returns the meta object for the attribute '{@link fire.fire.WritelnStatement#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see fire.fire.WritelnStatement#getValue()
+   * @see #getWritelnStatement()
+   * @generated
+   */
+  EAttribute getWritelnStatement_Value();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -140,12 +190,30 @@ public interface FirePackage extends EPackage
     EClass PROGRAM = eINSTANCE.getProgram();
 
     /**
+     * The meta object literal for the '<em><b>Statements</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PROGRAM__STATEMENTS = eINSTANCE.getProgram_Statements();
+
+    /**
+     * The meta object literal for the '{@link fire.fire.impl.WritelnStatementImpl <em>Writeln Statement</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see fire.fire.impl.WritelnStatementImpl
+     * @see fire.fire.impl.FirePackageImpl#getWritelnStatement()
+     * @generated
+     */
+    EClass WRITELN_STATEMENT = eINSTANCE.getWritelnStatement();
+
+    /**
      * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute PROGRAM__VALUE = eINSTANCE.getProgram_Value();
+    EAttribute WRITELN_STATEMENT__VALUE = eINSTANCE.getWritelnStatement_Value();
 
   }
 

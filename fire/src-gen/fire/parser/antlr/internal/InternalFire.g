@@ -76,43 +76,88 @@ ruleProgram returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='program'
+		(
+			{
+				$current = forceCreateModelElement(
+					grammarAccess.getProgramAccess().getProgramAction_0(),
+					$current);
+			}
+		)
+		otherlv_1='program'
 		{
-			newLeafNode(otherlv_0, grammarAccess.getProgramAccess().getProgramKeyword_0());
-		}
-		otherlv_1='writeln'
-		{
-			newLeafNode(otherlv_1, grammarAccess.getProgramAccess().getWritelnKeyword_1());
-		}
-		otherlv_2='('
-		{
-			newLeafNode(otherlv_2, grammarAccess.getProgramAccess().getLeftParenthesisKeyword_2());
+			newLeafNode(otherlv_1, grammarAccess.getProgramAccess().getProgramKeyword_1());
 		}
 		(
 			(
-				lv_value_3_0=RULE_STRING
 				{
-					newLeafNode(lv_value_3_0, grammarAccess.getProgramAccess().getValueSTRINGTerminalRuleCall_3_0());
+					newCompositeNode(grammarAccess.getProgramAccess().getStatementsWritelnStatementParserRuleCall_2_0());
+				}
+				lv_statements_2_0=ruleWritelnStatement
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getProgramRule());
+					}
+					add(
+						$current,
+						"statements",
+						lv_statements_2_0,
+						"fire.Fire.WritelnStatement");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)*
+		otherlv_3='end'
+		{
+			newLeafNode(otherlv_3, grammarAccess.getProgramAccess().getEndKeyword_3());
+		}
+	)
+;
+
+// Entry rule entryRuleWritelnStatement
+entryRuleWritelnStatement returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getWritelnStatementRule()); }
+	iv_ruleWritelnStatement=ruleWritelnStatement
+	{ $current=$iv_ruleWritelnStatement.current; }
+	EOF;
+
+// Rule WritelnStatement
+ruleWritelnStatement returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='writeln'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getWritelnStatementAccess().getWritelnKeyword_0());
+		}
+		otherlv_1='('
+		{
+			newLeafNode(otherlv_1, grammarAccess.getWritelnStatementAccess().getLeftParenthesisKeyword_1());
+		}
+		(
+			(
+				lv_value_2_0=RULE_STRING
+				{
+					newLeafNode(lv_value_2_0, grammarAccess.getWritelnStatementAccess().getValueSTRINGTerminalRuleCall_2_0());
 				}
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getProgramRule());
+						$current = createModelElement(grammarAccess.getWritelnStatementRule());
 					}
 					setWithLastConsumed(
 						$current,
 						"value",
-						lv_value_3_0,
+						lv_value_2_0,
 						"org.eclipse.xtext.common.Terminals.STRING");
 				}
 			)
 		)
-		otherlv_4=')'
+		otherlv_3=')'
 		{
-			newLeafNode(otherlv_4, grammarAccess.getProgramAccess().getRightParenthesisKeyword_4());
-		}
-		otherlv_5='end'
-		{
-			newLeafNode(otherlv_5, grammarAccess.getProgramAccess().getEndKeyword_5());
+			newLeafNode(otherlv_3, grammarAccess.getWritelnStatementAccess().getRightParenthesisKeyword_3());
 		}
 	)
 ;

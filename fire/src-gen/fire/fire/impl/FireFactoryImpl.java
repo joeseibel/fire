@@ -66,6 +66,7 @@ public class FireFactoryImpl extends EFactoryImpl implements FireFactory
     switch (eClass.getClassifierID())
     {
       case FirePackage.PROGRAM: return createProgram();
+      case FirePackage.WRITELN_STATEMENT: return createWritelnStatement();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -80,6 +81,17 @@ public class FireFactoryImpl extends EFactoryImpl implements FireFactory
   {
     ProgramImpl program = new ProgramImpl();
     return program;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public WritelnStatement createWritelnStatement()
+  {
+    WritelnStatementImpl writelnStatement = new WritelnStatementImpl();
+    return writelnStatement;
   }
 
   /**

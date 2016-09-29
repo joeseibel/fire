@@ -1,6 +1,7 @@
 package fire.generator
 
 import fire.fire.Program
+import fire.fire.WritelnStatement
 import fire.llvm.BasicBlock
 import fire.llvm.Function
 import fire.llvm.FunctionType
@@ -15,31 +16,41 @@ import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
 
 class FireGenerator extends AbstractGenerator {
+	LLVMContext llvmContext
+	Module module
+	IRBuilder builder
+	
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-		val outputMessage = (resource.contents.head as Program).value
-		
-		val llvmContext = new LLVMContext
-		val module = new Module(resource.URI.lastSegment, llvmContext)
-		val builder = new IRBuilder(llvmContext)
+		llvmContext = new LLVMContext
+		module = new Module(resource.URI.lastSegment, llvmContext)
+		builder = new IRBuilder(llvmContext)
 		try {
-			val functionType = FunctionType.get(builder.int32Ty, #[builder.int8Ty.pointerTo], false)
-			val putsFunction = Function.create(functionType, LinkageTypes.EXTERNAL_LINKAGE, "puts", module)
-			
-			val mainFunctionType = FunctionType.get(builder.voidTy, false)
-			val mainFunction = Function.create(mainFunctionType, LinkageTypes.EXTERNAL_LINKAGE, "main", module)
-			val entry = BasicBlock.create(llvmContext, "entry", mainFunction)
-			builder.insertPoint = entry
-			
-			val globalString = builder.createGlobalStringPtr(outputMessage)
-			builder.createCall(putsFunction, #[globalString])
-			builder.createRetVoid
-			
+			(resource.contents.head as Program).generate
 			val outputFileName = resource.URI.trimFileExtension.segmentsList.drop(2).join("/") + ".o"
 			fsa.generateFile(outputFileName, new ByteArrayInputStream(module.emitToByteBuffer))
 		} finally {
 			builder.delete
+			builder = null
 			module.delete
+			module = null
 			llvmContext.delete
+			llvmContext = null
 		}
+	}
+	
+	def private void generate(Program program) {
+		val functionType = FunctionType.get(builder.voidTy, false)
+		val mainFunction = Function.create(functionType, LinkageTypes.EXTERNAL_LINKAGE, "main", module)
+		builder.insertPoint = BasicBlock.create(llvmContext, "entry", mainFunction)
+		program.statements.forEach[generate]
+		builder.createRetVoid
+	}
+	
+	def private void generate(WritelnStatement statement) {
+		val putsFunction = module.getFunction("puts") ?: {
+			val functionType = FunctionType.get(builder.int32Ty, #[builder.int8Ty.pointerTo], false)
+			Function.create(functionType, LinkageTypes.EXTERNAL_LINKAGE, "puts", module)
+		}
+		builder.createCall(putsFunction, #[builder.createGlobalStringPtr(statement.value)])
 	}
 }

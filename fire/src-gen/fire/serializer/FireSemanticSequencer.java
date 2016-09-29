@@ -6,6 +6,7 @@ package fire.serializer;
 import com.google.inject.Inject;
 import fire.fire.FirePackage;
 import fire.fire.Program;
+import fire.fire.WritelnStatement;
 import fire.services.FireGrammarAccess;
 import java.util.Set;
 import org.eclipse.emf.ecore.EObject;
@@ -35,6 +36,9 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case FirePackage.PROGRAM:
 				sequence_Program(context, (Program) semanticObject); 
 				return; 
+			case FirePackage.WRITELN_STATEMENT:
+				sequence_WritelnStatement(context, (WritelnStatement) semanticObject); 
+				return; 
 			}
 		if (errorAcceptor != null)
 			errorAcceptor.accept(diagnosticProvider.createInvalidContextOrTypeDiagnostic(semanticObject, context));
@@ -45,15 +49,27 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Program returns Program
 	 *
 	 * Constraint:
-	 *     value=STRING
+	 *     statements+=WritelnStatement*
 	 */
 	protected void sequence_Program(ISerializationContext context, Program semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     WritelnStatement returns WritelnStatement
+	 *
+	 * Constraint:
+	 *     value=STRING
+	 */
+	protected void sequence_WritelnStatement(ISerializationContext context, WritelnStatement semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, FirePackage.Literals.PROGRAM__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FirePackage.Literals.PROGRAM__VALUE));
+			if (transientValues.isValueTransient(semanticObject, FirePackage.Literals.WRITELN_STATEMENT__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FirePackage.Literals.WRITELN_STATEMENT__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getProgramAccess().getValueSTRINGTerminalRuleCall_3_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getWritelnStatementAccess().getValueSTRINGTerminalRuleCall_2_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	

@@ -33,6 +33,15 @@ public interface FireFactory extends EFactory
   Program createProgram();
 
   /**
+   * Returns a new object of class '<em>Writeln Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Writeln Statement</em>'.
+   * @generated
+   */
+  WritelnStatement createWritelnStatement();
+
+  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
