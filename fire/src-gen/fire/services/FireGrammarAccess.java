@@ -7,6 +7,7 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import java.util.List;
 import org.eclipse.xtext.Action;
+import org.eclipse.xtext.Alternatives;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.Grammar;
 import org.eclipse.xtext.GrammarUtil;
@@ -61,15 +62,15 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cWritelnKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cValueAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cValueSTRINGTerminalRuleCall_2_0 = (RuleCall)cValueAssignment_2.eContents().get(0);
+		private final Assignment cArgumentAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cArgumentExpressionParserRuleCall_2_0 = (RuleCall)cArgumentAssignment_2.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//WritelnStatement:
-		//	'writeln' '(' value=STRING ')';
+		//	'writeln' '(' argument=Expression ')';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'writeln' '(' value=STRING ')'
+		//'writeln' '(' argument=Expression ')'
 		public Group getGroup() { return cGroup; }
 		
 		//'writeln'
@@ -78,19 +79,71 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 		//'('
 		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
 		
-		//value=STRING
-		public Assignment getValueAssignment_2() { return cValueAssignment_2; }
+		//argument=Expression
+		public Assignment getArgumentAssignment_2() { return cArgumentAssignment_2; }
 		
-		//STRING
-		public RuleCall getValueSTRINGTerminalRuleCall_2_0() { return cValueSTRINGTerminalRuleCall_2_0; }
+		//Expression
+		public RuleCall getArgumentExpressionParserRuleCall_2_0() { return cArgumentExpressionParserRuleCall_2_0; }
 		
 		//')'
 		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
+	}
+	public class ExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fire.Fire.Expression");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
+		private final Action cStringLiteralAction_0_0 = (Action)cGroup_0.eContents().get(0);
+		private final Assignment cValueAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
+		private final RuleCall cValueSTRINGTerminalRuleCall_0_1_0 = (RuleCall)cValueAssignment_0_1.eContents().get(0);
+		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
+		private final Action cBooleanLiteralAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Alternatives cAlternatives_1_1 = (Alternatives)cGroup_1.eContents().get(1);
+		private final Assignment cValueAssignment_1_1_0 = (Assignment)cAlternatives_1_1.eContents().get(0);
+		private final Keyword cValueTrueKeyword_1_1_0_0 = (Keyword)cValueAssignment_1_1_0.eContents().get(0);
+		private final Keyword cFalseKeyword_1_1_1 = (Keyword)cAlternatives_1_1.eContents().get(1);
+		
+		//Expression:
+		//	{StringLiteral} value=STRING | {BooleanLiteral} (value?='true' | 'false');
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{StringLiteral} value=STRING | {BooleanLiteral} (value?='true' | 'false')
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//{StringLiteral} value=STRING
+		public Group getGroup_0() { return cGroup_0; }
+		
+		//{StringLiteral}
+		public Action getStringLiteralAction_0_0() { return cStringLiteralAction_0_0; }
+		
+		//value=STRING
+		public Assignment getValueAssignment_0_1() { return cValueAssignment_0_1; }
+		
+		//STRING
+		public RuleCall getValueSTRINGTerminalRuleCall_0_1_0() { return cValueSTRINGTerminalRuleCall_0_1_0; }
+		
+		//{BooleanLiteral} (value?='true' | 'false')
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//{BooleanLiteral}
+		public Action getBooleanLiteralAction_1_0() { return cBooleanLiteralAction_1_0; }
+		
+		//(value?='true' | 'false')
+		public Alternatives getAlternatives_1_1() { return cAlternatives_1_1; }
+		
+		//value?='true'
+		public Assignment getValueAssignment_1_1_0() { return cValueAssignment_1_1_0; }
+		
+		//'true'
+		public Keyword getValueTrueKeyword_1_1_0_0() { return cValueTrueKeyword_1_1_0_0; }
+		
+		//'false'
+		public Keyword getFalseKeyword_1_1_1() { return cFalseKeyword_1_1_1; }
 	}
 	
 	
 	private final ProgramElements pProgram;
 	private final WritelnStatementElements pWritelnStatement;
+	private final ExpressionElements pExpression;
 	
 	private final Grammar grammar;
 	
@@ -103,6 +156,7 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 		this.gaTerminals = gaTerminals;
 		this.pProgram = new ProgramElements();
 		this.pWritelnStatement = new WritelnStatementElements();
+		this.pExpression = new ExpressionElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -146,13 +200,23 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//WritelnStatement:
-	//	'writeln' '(' value=STRING ')';
+	//	'writeln' '(' argument=Expression ')';
 	public WritelnStatementElements getWritelnStatementAccess() {
 		return pWritelnStatement;
 	}
 	
 	public ParserRule getWritelnStatementRule() {
 		return getWritelnStatementAccess().getRule();
+	}
+	
+	//Expression:
+	//	{StringLiteral} value=STRING | {BooleanLiteral} (value?='true' | 'false');
+	public ExpressionElements getExpressionAccess() {
+		return pExpression;
+	}
+	
+	public ParserRule getExpressionRule() {
+		return getExpressionAccess().getRule();
 	}
 	
 	//terminal ID:

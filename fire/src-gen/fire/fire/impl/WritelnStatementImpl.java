@@ -3,12 +3,15 @@
  */
 package fire.fire.impl;
 
+import fire.fire.Expression;
 import fire.fire.FirePackage;
 import fire.fire.WritelnStatement;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
@@ -21,7 +24,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link fire.fire.impl.WritelnStatementImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link fire.fire.impl.WritelnStatementImpl#getArgument <em>Argument</em>}</li>
  * </ul>
  *
  * @generated
@@ -29,24 +32,14 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class WritelnStatementImpl extends MinimalEObjectImpl.Container implements WritelnStatement
 {
   /**
-   * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
+   * The cached value of the '{@link #getArgument() <em>Argument</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getValue()
+   * @see #getArgument()
    * @generated
    * @ordered
    */
-  protected static final String VALUE_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getValue()
-   * @generated
-   * @ordered
-   */
-  protected String value = VALUE_EDEFAULT;
+  protected Expression argument;
 
   /**
    * <!-- begin-user-doc -->
@@ -74,9 +67,9 @@ public class WritelnStatementImpl extends MinimalEObjectImpl.Container implement
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getValue()
+  public Expression getArgument()
   {
-    return value;
+    return argument;
   }
 
   /**
@@ -84,12 +77,53 @@ public class WritelnStatementImpl extends MinimalEObjectImpl.Container implement
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setValue(String newValue)
+  public NotificationChain basicSetArgument(Expression newArgument, NotificationChain msgs)
   {
-    String oldValue = value;
-    value = newValue;
+    Expression oldArgument = argument;
+    argument = newArgument;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, FirePackage.WRITELN_STATEMENT__VALUE, oldValue, value));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FirePackage.WRITELN_STATEMENT__ARGUMENT, oldArgument, newArgument);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setArgument(Expression newArgument)
+  {
+    if (newArgument != argument)
+    {
+      NotificationChain msgs = null;
+      if (argument != null)
+        msgs = ((InternalEObject)argument).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FirePackage.WRITELN_STATEMENT__ARGUMENT, null, msgs);
+      if (newArgument != null)
+        msgs = ((InternalEObject)newArgument).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FirePackage.WRITELN_STATEMENT__ARGUMENT, null, msgs);
+      msgs = basicSetArgument(newArgument, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, FirePackage.WRITELN_STATEMENT__ARGUMENT, newArgument, newArgument));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case FirePackage.WRITELN_STATEMENT__ARGUMENT:
+        return basicSetArgument(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -102,8 +136,8 @@ public class WritelnStatementImpl extends MinimalEObjectImpl.Container implement
   {
     switch (featureID)
     {
-      case FirePackage.WRITELN_STATEMENT__VALUE:
-        return getValue();
+      case FirePackage.WRITELN_STATEMENT__ARGUMENT:
+        return getArgument();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -118,8 +152,8 @@ public class WritelnStatementImpl extends MinimalEObjectImpl.Container implement
   {
     switch (featureID)
     {
-      case FirePackage.WRITELN_STATEMENT__VALUE:
-        setValue((String)newValue);
+      case FirePackage.WRITELN_STATEMENT__ARGUMENT:
+        setArgument((Expression)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -135,8 +169,8 @@ public class WritelnStatementImpl extends MinimalEObjectImpl.Container implement
   {
     switch (featureID)
     {
-      case FirePackage.WRITELN_STATEMENT__VALUE:
-        setValue(VALUE_EDEFAULT);
+      case FirePackage.WRITELN_STATEMENT__ARGUMENT:
+        setArgument((Expression)null);
         return;
     }
     super.eUnset(featureID);
@@ -152,27 +186,10 @@ public class WritelnStatementImpl extends MinimalEObjectImpl.Container implement
   {
     switch (featureID)
     {
-      case FirePackage.WRITELN_STATEMENT__VALUE:
-        return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+      case FirePackage.WRITELN_STATEMENT__ARGUMENT:
+        return argument != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (value: ");
-    result.append(value);
-    result.append(')');
-    return result.toString();
   }
 
 } //WritelnStatementImpl

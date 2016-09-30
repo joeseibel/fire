@@ -67,6 +67,9 @@ public class FireFactoryImpl extends EFactoryImpl implements FireFactory
     {
       case FirePackage.PROGRAM: return createProgram();
       case FirePackage.WRITELN_STATEMENT: return createWritelnStatement();
+      case FirePackage.EXPRESSION: return createExpression();
+      case FirePackage.STRING_LITERAL: return createStringLiteral();
+      case FirePackage.BOOLEAN_LITERAL: return createBooleanLiteral();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -92,6 +95,39 @@ public class FireFactoryImpl extends EFactoryImpl implements FireFactory
   {
     WritelnStatementImpl writelnStatement = new WritelnStatementImpl();
     return writelnStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Expression createExpression()
+  {
+    ExpressionImpl expression = new ExpressionImpl();
+    return expression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public StringLiteral createStringLiteral()
+  {
+    StringLiteralImpl stringLiteral = new StringLiteralImpl();
+    return stringLiteral;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public BooleanLiteral createBooleanLiteral()
+  {
+    BooleanLiteralImpl booleanLiteral = new BooleanLiteralImpl();
+    return booleanLiteral;
   }
 
   /**

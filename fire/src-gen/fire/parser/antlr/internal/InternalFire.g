@@ -139,19 +139,20 @@ ruleWritelnStatement returns [EObject current=null]
 		}
 		(
 			(
-				lv_value_2_0=RULE_STRING
 				{
-					newLeafNode(lv_value_2_0, grammarAccess.getWritelnStatementAccess().getValueSTRINGTerminalRuleCall_2_0());
+					newCompositeNode(grammarAccess.getWritelnStatementAccess().getArgumentExpressionParserRuleCall_2_0());
 				}
+				lv_argument_2_0=ruleExpression
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getWritelnStatementRule());
+						$current = createModelElementForParent(grammarAccess.getWritelnStatementRule());
 					}
-					setWithLastConsumed(
+					set(
 						$current,
-						"value",
-						lv_value_2_0,
-						"org.eclipse.xtext.common.Terminals.STRING");
+						"argument",
+						lv_argument_2_0,
+						"fire.Fire.Expression");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
@@ -159,6 +160,83 @@ ruleWritelnStatement returns [EObject current=null]
 		{
 			newLeafNode(otherlv_3, grammarAccess.getWritelnStatementAccess().getRightParenthesisKeyword_3());
 		}
+	)
+;
+
+// Entry rule entryRuleExpression
+entryRuleExpression returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getExpressionRule()); }
+	iv_ruleExpression=ruleExpression
+	{ $current=$iv_ruleExpression.current; }
+	EOF;
+
+// Rule Expression
+ruleExpression returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				{
+					$current = forceCreateModelElement(
+						grammarAccess.getExpressionAccess().getStringLiteralAction_0_0(),
+						$current);
+				}
+			)
+			(
+				(
+					lv_value_1_0=RULE_STRING
+					{
+						newLeafNode(lv_value_1_0, grammarAccess.getExpressionAccess().getValueSTRINGTerminalRuleCall_0_1_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getExpressionRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"value",
+							lv_value_1_0,
+							"org.eclipse.xtext.common.Terminals.STRING");
+					}
+				)
+			)
+		)
+		    |
+		(
+			(
+				{
+					$current = forceCreateModelElement(
+						grammarAccess.getExpressionAccess().getBooleanLiteralAction_1_0(),
+						$current);
+				}
+			)
+			(
+				(
+					(
+						lv_value_3_0='true'
+						{
+							newLeafNode(lv_value_3_0, grammarAccess.getExpressionAccess().getValueTrueKeyword_1_1_0_0());
+						}
+						{
+							if ($current==null) {
+								$current = createModelElement(grammarAccess.getExpressionRule());
+							}
+							setWithLastConsumed($current, "value", true, "true");
+						}
+					)
+				)
+				    |
+				otherlv_4='false'
+				{
+					newLeafNode(otherlv_4, grammarAccess.getExpressionAccess().getFalseKeyword_1_1_1());
+				}
+			)
+		)
 	)
 ;
 

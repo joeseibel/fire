@@ -10,7 +10,14 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Fire.ecore#//Program/statements"/>
     </genClasses>
     <genClasses ecoreClass="Fire.ecore#//WritelnStatement">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Fire.ecore#//WritelnStatement/value"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Fire.ecore#//WritelnStatement/argument"/>
+    </genClasses>
+    <genClasses ecoreClass="Fire.ecore#//Expression"/>
+    <genClasses ecoreClass="Fire.ecore#//StringLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Fire.ecore#//StringLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="Fire.ecore#//BooleanLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Fire.ecore#//BooleanLiteral/value"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

@@ -35,10 +35,16 @@ public class FireParser extends AbstractContentAssistParser {
 			nameMappings = new HashMap<AbstractElement, String>() {
 				private static final long serialVersionUID = 1L;
 				{
+					put(grammarAccess.getExpressionAccess().getAlternatives(), "rule__Expression__Alternatives");
+					put(grammarAccess.getExpressionAccess().getAlternatives_1_1(), "rule__Expression__Alternatives_1_1");
 					put(grammarAccess.getProgramAccess().getGroup(), "rule__Program__Group__0");
 					put(grammarAccess.getWritelnStatementAccess().getGroup(), "rule__WritelnStatement__Group__0");
+					put(grammarAccess.getExpressionAccess().getGroup_0(), "rule__Expression__Group_0__0");
+					put(grammarAccess.getExpressionAccess().getGroup_1(), "rule__Expression__Group_1__0");
 					put(grammarAccess.getProgramAccess().getStatementsAssignment_2(), "rule__Program__StatementsAssignment_2");
-					put(grammarAccess.getWritelnStatementAccess().getValueAssignment_2(), "rule__WritelnStatement__ValueAssignment_2");
+					put(grammarAccess.getWritelnStatementAccess().getArgumentAssignment_2(), "rule__WritelnStatement__ArgumentAssignment_2");
+					put(grammarAccess.getExpressionAccess().getValueAssignment_0_1(), "rule__Expression__ValueAssignment_0_1");
+					put(grammarAccess.getExpressionAccess().getValueAssignment_1_1_0(), "rule__Expression__ValueAssignment_1_1_0");
 				}
 			};
 		}

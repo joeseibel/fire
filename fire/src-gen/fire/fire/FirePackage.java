@@ -96,13 +96,13 @@ public interface FirePackage extends EPackage
   int WRITELN_STATEMENT = 1;
 
   /**
-   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * The feature id for the '<em><b>Argument</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int WRITELN_STATEMENT__VALUE = 0;
+  int WRITELN_STATEMENT__ARGUMENT = 0;
 
   /**
    * The number of structural features of the '<em>Writeln Statement</em>' class.
@@ -112,6 +112,81 @@ public interface FirePackage extends EPackage
    * @ordered
    */
   int WRITELN_STATEMENT_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link fire.fire.impl.ExpressionImpl <em>Expression</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see fire.fire.impl.ExpressionImpl
+   * @see fire.fire.impl.FirePackageImpl#getExpression()
+   * @generated
+   */
+  int EXPRESSION = 2;
+
+  /**
+   * The number of structural features of the '<em>Expression</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPRESSION_FEATURE_COUNT = 0;
+
+  /**
+   * The meta object id for the '{@link fire.fire.impl.StringLiteralImpl <em>String Literal</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see fire.fire.impl.StringLiteralImpl
+   * @see fire.fire.impl.FirePackageImpl#getStringLiteral()
+   * @generated
+   */
+  int STRING_LITERAL = 3;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_LITERAL__VALUE = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>String Literal</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_LITERAL_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link fire.fire.impl.BooleanLiteralImpl <em>Boolean Literal</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see fire.fire.impl.BooleanLiteralImpl
+   * @see fire.fire.impl.FirePackageImpl#getBooleanLiteral()
+   * @generated
+   */
+  int BOOLEAN_LITERAL = 4;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BOOLEAN_LITERAL__VALUE = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Boolean Literal</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BOOLEAN_LITERAL_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
 
   /**
@@ -146,15 +221,67 @@ public interface FirePackage extends EPackage
   EClass getWritelnStatement();
 
   /**
-   * Returns the meta object for the attribute '{@link fire.fire.WritelnStatement#getValue <em>Value</em>}'.
+   * Returns the meta object for the containment reference '{@link fire.fire.WritelnStatement#getArgument <em>Argument</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Value</em>'.
-   * @see fire.fire.WritelnStatement#getValue()
+   * @return the meta object for the containment reference '<em>Argument</em>'.
+   * @see fire.fire.WritelnStatement#getArgument()
    * @see #getWritelnStatement()
    * @generated
    */
-  EAttribute getWritelnStatement_Value();
+  EReference getWritelnStatement_Argument();
+
+  /**
+   * Returns the meta object for class '{@link fire.fire.Expression <em>Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Expression</em>'.
+   * @see fire.fire.Expression
+   * @generated
+   */
+  EClass getExpression();
+
+  /**
+   * Returns the meta object for class '{@link fire.fire.StringLiteral <em>String Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>String Literal</em>'.
+   * @see fire.fire.StringLiteral
+   * @generated
+   */
+  EClass getStringLiteral();
+
+  /**
+   * Returns the meta object for the attribute '{@link fire.fire.StringLiteral#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see fire.fire.StringLiteral#getValue()
+   * @see #getStringLiteral()
+   * @generated
+   */
+  EAttribute getStringLiteral_Value();
+
+  /**
+   * Returns the meta object for class '{@link fire.fire.BooleanLiteral <em>Boolean Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Boolean Literal</em>'.
+   * @see fire.fire.BooleanLiteral
+   * @generated
+   */
+  EClass getBooleanLiteral();
+
+  /**
+   * Returns the meta object for the attribute '{@link fire.fire.BooleanLiteral#isValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see fire.fire.BooleanLiteral#isValue()
+   * @see #getBooleanLiteral()
+   * @generated
+   */
+  EAttribute getBooleanLiteral_Value();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -208,12 +335,58 @@ public interface FirePackage extends EPackage
     EClass WRITELN_STATEMENT = eINSTANCE.getWritelnStatement();
 
     /**
+     * The meta object literal for the '<em><b>Argument</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference WRITELN_STATEMENT__ARGUMENT = eINSTANCE.getWritelnStatement_Argument();
+
+    /**
+     * The meta object literal for the '{@link fire.fire.impl.ExpressionImpl <em>Expression</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see fire.fire.impl.ExpressionImpl
+     * @see fire.fire.impl.FirePackageImpl#getExpression()
+     * @generated
+     */
+    EClass EXPRESSION = eINSTANCE.getExpression();
+
+    /**
+     * The meta object literal for the '{@link fire.fire.impl.StringLiteralImpl <em>String Literal</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see fire.fire.impl.StringLiteralImpl
+     * @see fire.fire.impl.FirePackageImpl#getStringLiteral()
+     * @generated
+     */
+    EClass STRING_LITERAL = eINSTANCE.getStringLiteral();
+
+    /**
      * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute WRITELN_STATEMENT__VALUE = eINSTANCE.getWritelnStatement_Value();
+    EAttribute STRING_LITERAL__VALUE = eINSTANCE.getStringLiteral_Value();
+
+    /**
+     * The meta object literal for the '{@link fire.fire.impl.BooleanLiteralImpl <em>Boolean Literal</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see fire.fire.impl.BooleanLiteralImpl
+     * @see fire.fire.impl.FirePackageImpl#getBooleanLiteral()
+     * @generated
+     */
+    EClass BOOLEAN_LITERAL = eINSTANCE.getBooleanLiteral();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute BOOLEAN_LITERAL__VALUE = eINSTANCE.getBooleanLiteral_Value();
 
   }
 

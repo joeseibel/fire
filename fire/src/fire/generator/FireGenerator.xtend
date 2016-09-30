@@ -1,6 +1,8 @@
 package fire.generator
 
+import fire.fire.BooleanLiteral
 import fire.fire.Program
+import fire.fire.StringLiteral
 import fire.fire.WritelnStatement
 import fire.llvm.BasicBlock
 import fire.llvm.Function
@@ -9,6 +11,7 @@ import fire.llvm.IRBuilder
 import fire.llvm.LLVMContext
 import fire.llvm.LinkageTypes
 import fire.llvm.Module
+import fire.llvm.Value
 import java.io.ByteArrayInputStream
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
@@ -51,6 +54,14 @@ class FireGenerator extends AbstractGenerator {
 			val functionType = FunctionType.get(builder.int32Ty, #[builder.int8Ty.pointerTo], false)
 			Function.create(functionType, LinkageTypes.EXTERNAL_LINKAGE, "puts", module)
 		}
-		builder.createCall(putsFunction, #[builder.createGlobalStringPtr(statement.value)])
+		builder.createCall(putsFunction, #[statement.argument.generateExpression])
+	}
+	
+	def private dispatch Value generateExpression(StringLiteral literal) {
+		builder.createGlobalStringPtr(literal.value)
+	}
+	
+	def private dispatch Value generateExpression(BooleanLiteral literal) {
+		builder.createGlobalStringPtr(literal.value.toString)
 	}
 }

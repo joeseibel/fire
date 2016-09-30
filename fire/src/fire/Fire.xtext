@@ -9,5 +9,10 @@ Program: {Program}
 ;
 
 WritelnStatement:
-	'writeln' '(' value=STRING ')'
+	'writeln' '(' argument=Expression ')'
+;
+
+Expression:
+	{StringLiteral} value=STRING |
+	{BooleanLiteral} (value?='true' | 'false')
 ;

@@ -21,7 +21,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalFireParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_ID", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'program'", "'end'", "'writeln'", "'('", "')'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_ID", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'program'", "'end'", "'writeln'", "'('", "')'", "'true'", "'false'"
     };
     public static final int RULE_ID=5;
     public static final int RULE_WS=9;
@@ -29,6 +29,8 @@ public class InternalFireParser extends AbstractInternalAntlrParser {
     public static final int RULE_ANY_OTHER=10;
     public static final int RULE_SL_COMMENT=8;
     public static final int T__15=15;
+    public static final int T__16=16;
+    public static final int T__17=17;
     public static final int RULE_INT=6;
     public static final int T__11=11;
     public static final int RULE_ML_COMMENT=7;
@@ -259,24 +261,25 @@ public class InternalFireParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleWritelnStatement"
-    // InternalFire.g:124:1: ruleWritelnStatement returns [EObject current=null] : (otherlv_0= 'writeln' otherlv_1= '(' ( (lv_value_2_0= RULE_STRING ) ) otherlv_3= ')' ) ;
+    // InternalFire.g:124:1: ruleWritelnStatement returns [EObject current=null] : (otherlv_0= 'writeln' otherlv_1= '(' ( (lv_argument_2_0= ruleExpression ) ) otherlv_3= ')' ) ;
     public final EObject ruleWritelnStatement() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
         Token otherlv_1=null;
-        Token lv_value_2_0=null;
         Token otherlv_3=null;
+        EObject lv_argument_2_0 = null;
+
 
 
         	enterRule();
 
         try {
-            // InternalFire.g:130:2: ( (otherlv_0= 'writeln' otherlv_1= '(' ( (lv_value_2_0= RULE_STRING ) ) otherlv_3= ')' ) )
-            // InternalFire.g:131:2: (otherlv_0= 'writeln' otherlv_1= '(' ( (lv_value_2_0= RULE_STRING ) ) otherlv_3= ')' )
+            // InternalFire.g:130:2: ( (otherlv_0= 'writeln' otherlv_1= '(' ( (lv_argument_2_0= ruleExpression ) ) otherlv_3= ')' ) )
+            // InternalFire.g:131:2: (otherlv_0= 'writeln' otherlv_1= '(' ( (lv_argument_2_0= ruleExpression ) ) otherlv_3= ')' )
             {
-            // InternalFire.g:131:2: (otherlv_0= 'writeln' otherlv_1= '(' ( (lv_value_2_0= RULE_STRING ) ) otherlv_3= ')' )
-            // InternalFire.g:132:3: otherlv_0= 'writeln' otherlv_1= '(' ( (lv_value_2_0= RULE_STRING ) ) otherlv_3= ')'
+            // InternalFire.g:131:2: (otherlv_0= 'writeln' otherlv_1= '(' ( (lv_argument_2_0= ruleExpression ) ) otherlv_3= ')' )
+            // InternalFire.g:132:3: otherlv_0= 'writeln' otherlv_1= '(' ( (lv_argument_2_0= ruleExpression ) ) otherlv_3= ')'
             {
             otherlv_0=(Token)match(input,13,FOLLOW_4); 
 
@@ -286,25 +289,30 @@ public class InternalFireParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_1, grammarAccess.getWritelnStatementAccess().getLeftParenthesisKeyword_1());
             		
-            // InternalFire.g:140:3: ( (lv_value_2_0= RULE_STRING ) )
-            // InternalFire.g:141:4: (lv_value_2_0= RULE_STRING )
+            // InternalFire.g:140:3: ( (lv_argument_2_0= ruleExpression ) )
+            // InternalFire.g:141:4: (lv_argument_2_0= ruleExpression )
             {
-            // InternalFire.g:141:4: (lv_value_2_0= RULE_STRING )
-            // InternalFire.g:142:5: lv_value_2_0= RULE_STRING
+            // InternalFire.g:141:4: (lv_argument_2_0= ruleExpression )
+            // InternalFire.g:142:5: lv_argument_2_0= ruleExpression
             {
-            lv_value_2_0=(Token)match(input,RULE_STRING,FOLLOW_6); 
 
-            					newLeafNode(lv_value_2_0, grammarAccess.getWritelnStatementAccess().getValueSTRINGTerminalRuleCall_2_0());
+            					newCompositeNode(grammarAccess.getWritelnStatementAccess().getArgumentExpressionParserRuleCall_2_0());
             				
+            pushFollow(FOLLOW_6);
+            lv_argument_2_0=ruleExpression();
+
+            state._fsp--;
+
 
             					if (current==null) {
-            						current = createModelElement(grammarAccess.getWritelnStatementRule());
+            						current = createModelElementForParent(grammarAccess.getWritelnStatementRule());
             					}
-            					setWithLastConsumed(
+            					set(
             						current,
-            						"value",
-            						lv_value_2_0,
-            						"org.eclipse.xtext.common.Terminals.STRING");
+            						"argument",
+            						lv_argument_2_0,
+            						"fire.Fire.Expression");
+            					afterParserOrEnumRuleCall();
             				
 
             }
@@ -337,6 +345,227 @@ public class InternalFireParser extends AbstractInternalAntlrParser {
     }
     // $ANTLR end "ruleWritelnStatement"
 
+
+    // $ANTLR start "entryRuleExpression"
+    // InternalFire.g:167:1: entryRuleExpression returns [EObject current=null] : iv_ruleExpression= ruleExpression EOF ;
+    public final EObject entryRuleExpression() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleExpression = null;
+
+
+        try {
+            // InternalFire.g:167:51: (iv_ruleExpression= ruleExpression EOF )
+            // InternalFire.g:168:2: iv_ruleExpression= ruleExpression EOF
+            {
+             newCompositeNode(grammarAccess.getExpressionRule()); 
+            pushFollow(FOLLOW_1);
+            iv_ruleExpression=ruleExpression();
+
+            state._fsp--;
+
+             current =iv_ruleExpression; 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleExpression"
+
+
+    // $ANTLR start "ruleExpression"
+    // InternalFire.g:174:1: ruleExpression returns [EObject current=null] : ( ( () ( (lv_value_1_0= RULE_STRING ) ) ) | ( () ( ( (lv_value_3_0= 'true' ) ) | otherlv_4= 'false' ) ) ) ;
+    public final EObject ruleExpression() throws RecognitionException {
+        EObject current = null;
+
+        Token lv_value_1_0=null;
+        Token lv_value_3_0=null;
+        Token otherlv_4=null;
+
+
+        	enterRule();
+
+        try {
+            // InternalFire.g:180:2: ( ( ( () ( (lv_value_1_0= RULE_STRING ) ) ) | ( () ( ( (lv_value_3_0= 'true' ) ) | otherlv_4= 'false' ) ) ) )
+            // InternalFire.g:181:2: ( ( () ( (lv_value_1_0= RULE_STRING ) ) ) | ( () ( ( (lv_value_3_0= 'true' ) ) | otherlv_4= 'false' ) ) )
+            {
+            // InternalFire.g:181:2: ( ( () ( (lv_value_1_0= RULE_STRING ) ) ) | ( () ( ( (lv_value_3_0= 'true' ) ) | otherlv_4= 'false' ) ) )
+            int alt3=2;
+            int LA3_0 = input.LA(1);
+
+            if ( (LA3_0==RULE_STRING) ) {
+                alt3=1;
+            }
+            else if ( ((LA3_0>=16 && LA3_0<=17)) ) {
+                alt3=2;
+            }
+            else {
+                NoViableAltException nvae =
+                    new NoViableAltException("", 3, 0, input);
+
+                throw nvae;
+            }
+            switch (alt3) {
+                case 1 :
+                    // InternalFire.g:182:3: ( () ( (lv_value_1_0= RULE_STRING ) ) )
+                    {
+                    // InternalFire.g:182:3: ( () ( (lv_value_1_0= RULE_STRING ) ) )
+                    // InternalFire.g:183:4: () ( (lv_value_1_0= RULE_STRING ) )
+                    {
+                    // InternalFire.g:183:4: ()
+                    // InternalFire.g:184:5: 
+                    {
+
+                    					current = forceCreateModelElement(
+                    						grammarAccess.getExpressionAccess().getStringLiteralAction_0_0(),
+                    						current);
+                    				
+
+                    }
+
+                    // InternalFire.g:190:4: ( (lv_value_1_0= RULE_STRING ) )
+                    // InternalFire.g:191:5: (lv_value_1_0= RULE_STRING )
+                    {
+                    // InternalFire.g:191:5: (lv_value_1_0= RULE_STRING )
+                    // InternalFire.g:192:6: lv_value_1_0= RULE_STRING
+                    {
+                    lv_value_1_0=(Token)match(input,RULE_STRING,FOLLOW_2); 
+
+                    						newLeafNode(lv_value_1_0, grammarAccess.getExpressionAccess().getValueSTRINGTerminalRuleCall_0_1_0());
+                    					
+
+                    						if (current==null) {
+                    							current = createModelElement(grammarAccess.getExpressionRule());
+                    						}
+                    						setWithLastConsumed(
+                    							current,
+                    							"value",
+                    							lv_value_1_0,
+                    							"org.eclipse.xtext.common.Terminals.STRING");
+                    					
+
+                    }
+
+
+                    }
+
+
+                    }
+
+
+                    }
+                    break;
+                case 2 :
+                    // InternalFire.g:210:3: ( () ( ( (lv_value_3_0= 'true' ) ) | otherlv_4= 'false' ) )
+                    {
+                    // InternalFire.g:210:3: ( () ( ( (lv_value_3_0= 'true' ) ) | otherlv_4= 'false' ) )
+                    // InternalFire.g:211:4: () ( ( (lv_value_3_0= 'true' ) ) | otherlv_4= 'false' )
+                    {
+                    // InternalFire.g:211:4: ()
+                    // InternalFire.g:212:5: 
+                    {
+
+                    					current = forceCreateModelElement(
+                    						grammarAccess.getExpressionAccess().getBooleanLiteralAction_1_0(),
+                    						current);
+                    				
+
+                    }
+
+                    // InternalFire.g:218:4: ( ( (lv_value_3_0= 'true' ) ) | otherlv_4= 'false' )
+                    int alt2=2;
+                    int LA2_0 = input.LA(1);
+
+                    if ( (LA2_0==16) ) {
+                        alt2=1;
+                    }
+                    else if ( (LA2_0==17) ) {
+                        alt2=2;
+                    }
+                    else {
+                        NoViableAltException nvae =
+                            new NoViableAltException("", 2, 0, input);
+
+                        throw nvae;
+                    }
+                    switch (alt2) {
+                        case 1 :
+                            // InternalFire.g:219:5: ( (lv_value_3_0= 'true' ) )
+                            {
+                            // InternalFire.g:219:5: ( (lv_value_3_0= 'true' ) )
+                            // InternalFire.g:220:6: (lv_value_3_0= 'true' )
+                            {
+                            // InternalFire.g:220:6: (lv_value_3_0= 'true' )
+                            // InternalFire.g:221:7: lv_value_3_0= 'true'
+                            {
+                            lv_value_3_0=(Token)match(input,16,FOLLOW_2); 
+
+                            							newLeafNode(lv_value_3_0, grammarAccess.getExpressionAccess().getValueTrueKeyword_1_1_0_0());
+                            						
+
+                            							if (current==null) {
+                            								current = createModelElement(grammarAccess.getExpressionRule());
+                            							}
+                            							setWithLastConsumed(current, "value", true, "true");
+                            						
+
+                            }
+
+
+                            }
+
+
+                            }
+                            break;
+                        case 2 :
+                            // InternalFire.g:234:5: otherlv_4= 'false'
+                            {
+                            otherlv_4=(Token)match(input,17,FOLLOW_2); 
+
+                            					newLeafNode(otherlv_4, grammarAccess.getExpressionAccess().getFalseKeyword_1_1_1());
+                            				
+
+                            }
+                            break;
+
+                    }
+
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleExpression"
+
     // Delegated rules
 
 
@@ -346,7 +575,7 @@ public class InternalFireParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_2 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000000003000L});
     public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000030010L});
     public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000000008000L});
 
 }
