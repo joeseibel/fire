@@ -69,6 +69,15 @@ public interface FireFactory extends EFactory
   BooleanLiteral createBooleanLiteral();
 
   /**
+   * Returns a new object of class '<em>Integer Literal</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Integer Literal</em>'.
+   * @generated
+   */
+  IntegerLiteral createIntegerLiteral();
+
+  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

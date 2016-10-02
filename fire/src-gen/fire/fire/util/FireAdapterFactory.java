@@ -101,6 +101,11 @@ public class FireAdapterFactory extends AdapterFactoryImpl
         return createBooleanLiteralAdapter();
       }
       @Override
+      public Adapter caseIntegerLiteral(IntegerLiteral object)
+      {
+        return createIntegerLiteralAdapter();
+      }
+      @Override
       public Adapter defaultCase(EObject object)
       {
         return createEObjectAdapter();
@@ -193,6 +198,21 @@ public class FireAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createBooleanLiteralAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link fire.fire.IntegerLiteral <em>Integer Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see fire.fire.IntegerLiteral
+   * @generated
+   */
+  public Adapter createIntegerLiteralAdapter()
   {
     return null;
   }

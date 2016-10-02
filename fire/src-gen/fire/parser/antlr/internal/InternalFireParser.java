@@ -21,9 +21,9 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalFireParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_ID", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'program'", "'end'", "'writeln'", "'('", "')'", "'true'", "'false'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_INT", "RULE_ID", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'program'", "'end'", "'writeln'", "'('", "')'", "'true'", "'false'"
     };
-    public static final int RULE_ID=5;
+    public static final int RULE_ID=6;
     public static final int RULE_WS=9;
     public static final int RULE_STRING=4;
     public static final int RULE_ANY_OTHER=10;
@@ -31,7 +31,7 @@ public class InternalFireParser extends AbstractInternalAntlrParser {
     public static final int T__15=15;
     public static final int T__16=16;
     public static final int T__17=17;
-    public static final int RULE_INT=6;
+    public static final int RULE_INT=5;
     public static final int T__11=11;
     public static final int RULE_ML_COMMENT=7;
     public static final int T__12=12;
@@ -383,37 +383,49 @@ public class InternalFireParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleExpression"
-    // InternalFire.g:174:1: ruleExpression returns [EObject current=null] : ( ( () ( (lv_value_1_0= RULE_STRING ) ) ) | ( () ( ( (lv_value_3_0= 'true' ) ) | otherlv_4= 'false' ) ) ) ;
+    // InternalFire.g:174:1: ruleExpression returns [EObject current=null] : ( ( () ( (lv_value_1_0= RULE_STRING ) ) ) | ( () ( ( (lv_value_3_0= 'true' ) ) | otherlv_4= 'false' ) ) | ( () ( (lv_value_6_0= ruleLong ) ) ) ) ;
     public final EObject ruleExpression() throws RecognitionException {
         EObject current = null;
 
         Token lv_value_1_0=null;
         Token lv_value_3_0=null;
         Token otherlv_4=null;
+        AntlrDatatypeRuleToken lv_value_6_0 = null;
+
 
 
         	enterRule();
 
         try {
-            // InternalFire.g:180:2: ( ( ( () ( (lv_value_1_0= RULE_STRING ) ) ) | ( () ( ( (lv_value_3_0= 'true' ) ) | otherlv_4= 'false' ) ) ) )
-            // InternalFire.g:181:2: ( ( () ( (lv_value_1_0= RULE_STRING ) ) ) | ( () ( ( (lv_value_3_0= 'true' ) ) | otherlv_4= 'false' ) ) )
+            // InternalFire.g:180:2: ( ( ( () ( (lv_value_1_0= RULE_STRING ) ) ) | ( () ( ( (lv_value_3_0= 'true' ) ) | otherlv_4= 'false' ) ) | ( () ( (lv_value_6_0= ruleLong ) ) ) ) )
+            // InternalFire.g:181:2: ( ( () ( (lv_value_1_0= RULE_STRING ) ) ) | ( () ( ( (lv_value_3_0= 'true' ) ) | otherlv_4= 'false' ) ) | ( () ( (lv_value_6_0= ruleLong ) ) ) )
             {
-            // InternalFire.g:181:2: ( ( () ( (lv_value_1_0= RULE_STRING ) ) ) | ( () ( ( (lv_value_3_0= 'true' ) ) | otherlv_4= 'false' ) ) )
-            int alt3=2;
-            int LA3_0 = input.LA(1);
-
-            if ( (LA3_0==RULE_STRING) ) {
+            // InternalFire.g:181:2: ( ( () ( (lv_value_1_0= RULE_STRING ) ) ) | ( () ( ( (lv_value_3_0= 'true' ) ) | otherlv_4= 'false' ) ) | ( () ( (lv_value_6_0= ruleLong ) ) ) )
+            int alt3=3;
+            switch ( input.LA(1) ) {
+            case RULE_STRING:
+                {
                 alt3=1;
-            }
-            else if ( ((LA3_0>=16 && LA3_0<=17)) ) {
+                }
+                break;
+            case 16:
+            case 17:
+                {
                 alt3=2;
-            }
-            else {
+                }
+                break;
+            case RULE_INT:
+                {
+                alt3=3;
+                }
+                break;
+            default:
                 NoViableAltException nvae =
                     new NoViableAltException("", 3, 0, input);
 
                 throw nvae;
             }
+
             switch (alt3) {
                 case 1 :
                     // InternalFire.g:182:3: ( () ( (lv_value_1_0= RULE_STRING ) ) )
@@ -545,6 +557,60 @@ public class InternalFireParser extends AbstractInternalAntlrParser {
 
                     }
                     break;
+                case 3 :
+                    // InternalFire.g:241:3: ( () ( (lv_value_6_0= ruleLong ) ) )
+                    {
+                    // InternalFire.g:241:3: ( () ( (lv_value_6_0= ruleLong ) ) )
+                    // InternalFire.g:242:4: () ( (lv_value_6_0= ruleLong ) )
+                    {
+                    // InternalFire.g:242:4: ()
+                    // InternalFire.g:243:5: 
+                    {
+
+                    					current = forceCreateModelElement(
+                    						grammarAccess.getExpressionAccess().getIntegerLiteralAction_2_0(),
+                    						current);
+                    				
+
+                    }
+
+                    // InternalFire.g:249:4: ( (lv_value_6_0= ruleLong ) )
+                    // InternalFire.g:250:5: (lv_value_6_0= ruleLong )
+                    {
+                    // InternalFire.g:250:5: (lv_value_6_0= ruleLong )
+                    // InternalFire.g:251:6: lv_value_6_0= ruleLong
+                    {
+
+                    						newCompositeNode(grammarAccess.getExpressionAccess().getValueLongParserRuleCall_2_1_0());
+                    					
+                    pushFollow(FOLLOW_2);
+                    lv_value_6_0=ruleLong();
+
+                    state._fsp--;
+
+
+                    						if (current==null) {
+                    							current = createModelElementForParent(grammarAccess.getExpressionRule());
+                    						}
+                    						set(
+                    							current,
+                    							"value",
+                    							lv_value_6_0,
+                    							"fire.Fire.Long");
+                    						afterParserOrEnumRuleCall();
+                    					
+
+                    }
+
+
+                    }
+
+
+                    }
+
+
+                    }
+                    break;
 
             }
 
@@ -566,6 +632,82 @@ public class InternalFireParser extends AbstractInternalAntlrParser {
     }
     // $ANTLR end "ruleExpression"
 
+
+    // $ANTLR start "entryRuleLong"
+    // InternalFire.g:273:1: entryRuleLong returns [String current=null] : iv_ruleLong= ruleLong EOF ;
+    public final String entryRuleLong() throws RecognitionException {
+        String current = null;
+
+        AntlrDatatypeRuleToken iv_ruleLong = null;
+
+
+        try {
+            // InternalFire.g:273:44: (iv_ruleLong= ruleLong EOF )
+            // InternalFire.g:274:2: iv_ruleLong= ruleLong EOF
+            {
+             newCompositeNode(grammarAccess.getLongRule()); 
+            pushFollow(FOLLOW_1);
+            iv_ruleLong=ruleLong();
+
+            state._fsp--;
+
+             current =iv_ruleLong.getText(); 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleLong"
+
+
+    // $ANTLR start "ruleLong"
+    // InternalFire.g:280:1: ruleLong returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_INT_0= RULE_INT ;
+    public final AntlrDatatypeRuleToken ruleLong() throws RecognitionException {
+        AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
+
+        Token this_INT_0=null;
+
+
+        	enterRule();
+
+        try {
+            // InternalFire.g:286:2: (this_INT_0= RULE_INT )
+            // InternalFire.g:287:2: this_INT_0= RULE_INT
+            {
+            this_INT_0=(Token)match(input,RULE_INT,FOLLOW_2); 
+
+            		current.merge(this_INT_0);
+            	
+
+            		newLeafNode(this_INT_0, grammarAccess.getLongAccess().getINTTerminalRuleCall());
+            	
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleLong"
+
     // Delegated rules
 
 
@@ -575,7 +717,7 @@ public class InternalFireParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_2 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000000003000L});
     public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000030010L});
+    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000030030L});
     public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000000008000L});
 
 }

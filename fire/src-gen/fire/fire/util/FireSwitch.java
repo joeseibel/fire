@@ -110,6 +110,14 @@ public class FireSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case FirePackage.INTEGER_LITERAL:
+      {
+        IntegerLiteral integerLiteral = (IntegerLiteral)theEObject;
+        T result = caseIntegerLiteral(integerLiteral);
+        if (result == null) result = caseExpression(integerLiteral);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       default: return defaultCase(theEObject);
     }
   }
@@ -190,6 +198,22 @@ public class FireSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseBooleanLiteral(BooleanLiteral object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Integer Literal</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Integer Literal</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseIntegerLiteral(IntegerLiteral object)
   {
     return null;
   }

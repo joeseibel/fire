@@ -22,6 +22,11 @@ JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilderBase_getFalse(JNIEnv *env, job
 	return toJava(env, "fire/llvm/ConstantInt", toNative<llvm::IRBuilderBase>(env, obj)->getFalse());
 }
 
+//Java method: public native ConstantInt getInt64(long c);
+JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilderBase_getInt64(JNIEnv *env, jobject obj, jlong c) {
+	return toJava(env, "fire/llvm/ConstantInt", toNative<llvm::IRBuilderBase>(env, obj)->getInt64(c));
+}
+
 //Java method: public native IntegerType getInt8Ty();
 JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilderBase_getInt8Ty(JNIEnv *env, jobject obj) {
 	return toJava(env, "fire/llvm/IntegerType", toNative<llvm::IRBuilderBase>(env, obj)->getInt8Ty());

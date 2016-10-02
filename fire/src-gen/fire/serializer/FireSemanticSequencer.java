@@ -6,6 +6,7 @@ package fire.serializer;
 import com.google.inject.Inject;
 import fire.fire.BooleanLiteral;
 import fire.fire.FirePackage;
+import fire.fire.IntegerLiteral;
 import fire.fire.Program;
 import fire.fire.StringLiteral;
 import fire.fire.WritelnStatement;
@@ -38,6 +39,9 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case FirePackage.BOOLEAN_LITERAL:
 				sequence_Expression(context, (BooleanLiteral) semanticObject); 
 				return; 
+			case FirePackage.INTEGER_LITERAL:
+				sequence_Expression(context, (IntegerLiteral) semanticObject); 
+				return; 
 			case FirePackage.PROGRAM:
 				sequence_Program(context, (Program) semanticObject); 
 				return; 
@@ -61,6 +65,24 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 */
 	protected void sequence_Expression(ISerializationContext context, BooleanLiteral semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Expression returns IntegerLiteral
+	 *
+	 * Constraint:
+	 *     value=Long
+	 */
+	protected void sequence_Expression(ISerializationContext context, IntegerLiteral semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, FirePackage.Literals.INTEGER_LITERAL__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FirePackage.Literals.INTEGER_LITERAL__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getExpressionAccess().getValueLongParserRuleCall_2_1_0(), semanticObject.getValue());
+		feeder.finish();
 	}
 	
 	

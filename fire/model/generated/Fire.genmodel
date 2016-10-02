@@ -19,5 +19,8 @@
     <genClasses ecoreClass="Fire.ecore#//BooleanLiteral">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Fire.ecore#//BooleanLiteral/value"/>
     </genClasses>
+    <genClasses ecoreClass="Fire.ecore#//IntegerLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Fire.ecore#//IntegerLiteral/value"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

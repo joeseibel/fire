@@ -188,6 +188,34 @@ public interface FirePackage extends EPackage
    */
   int BOOLEAN_LITERAL_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
+  /**
+   * The meta object id for the '{@link fire.fire.impl.IntegerLiteralImpl <em>Integer Literal</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see fire.fire.impl.IntegerLiteralImpl
+   * @see fire.fire.impl.FirePackageImpl#getIntegerLiteral()
+   * @generated
+   */
+  int INTEGER_LITERAL = 5;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INTEGER_LITERAL__VALUE = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Integer Literal</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INTEGER_LITERAL_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
+
 
   /**
    * Returns the meta object for class '{@link fire.fire.Program <em>Program</em>}'.
@@ -282,6 +310,27 @@ public interface FirePackage extends EPackage
    * @generated
    */
   EAttribute getBooleanLiteral_Value();
+
+  /**
+   * Returns the meta object for class '{@link fire.fire.IntegerLiteral <em>Integer Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Integer Literal</em>'.
+   * @see fire.fire.IntegerLiteral
+   * @generated
+   */
+  EClass getIntegerLiteral();
+
+  /**
+   * Returns the meta object for the attribute '{@link fire.fire.IntegerLiteral#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see fire.fire.IntegerLiteral#getValue()
+   * @see #getIntegerLiteral()
+   * @generated
+   */
+  EAttribute getIntegerLiteral_Value();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -387,6 +436,24 @@ public interface FirePackage extends EPackage
      * @generated
      */
     EAttribute BOOLEAN_LITERAL__VALUE = eINSTANCE.getBooleanLiteral_Value();
+
+    /**
+     * The meta object literal for the '{@link fire.fire.impl.IntegerLiteralImpl <em>Integer Literal</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see fire.fire.impl.IntegerLiteralImpl
+     * @see fire.fire.impl.FirePackageImpl#getIntegerLiteral()
+     * @generated
+     */
+    EClass INTEGER_LITERAL = eINSTANCE.getIntegerLiteral();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute INTEGER_LITERAL__VALUE = eINSTANCE.getIntegerLiteral_Value();
 
   }
 

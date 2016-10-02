@@ -237,7 +237,60 @@ ruleExpression returns [EObject current=null]
 				}
 			)
 		)
+		    |
+		(
+			(
+				{
+					$current = forceCreateModelElement(
+						grammarAccess.getExpressionAccess().getIntegerLiteralAction_2_0(),
+						$current);
+				}
+			)
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getExpressionAccess().getValueLongParserRuleCall_2_1_0());
+					}
+					lv_value_6_0=ruleLong
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getExpressionRule());
+						}
+						set(
+							$current,
+							"value",
+							lv_value_6_0,
+							"fire.Fire.Long");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)
 	)
+;
+
+// Entry rule entryRuleLong
+entryRuleLong returns [String current=null]:
+	{ newCompositeNode(grammarAccess.getLongRule()); }
+	iv_ruleLong=ruleLong
+	{ $current=$iv_ruleLong.current.getText(); }
+	EOF;
+
+// Rule Long
+ruleLong returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	this_INT_0=RULE_INT
+	{
+		$current.merge(this_INT_0);
+	}
+	{
+		newLeafNode(this_INT_0, grammarAccess.getLongAccess().getINTTerminalRuleCall());
+	}
 ;
 
 RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;

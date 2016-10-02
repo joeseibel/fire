@@ -7,6 +7,7 @@ import fire.fire.BooleanLiteral;
 import fire.fire.Expression;
 import fire.fire.FireFactory;
 import fire.fire.FirePackage;
+import fire.fire.IntegerLiteral;
 import fire.fire.Program;
 import fire.fire.StringLiteral;
 import fire.fire.WritelnStatement;
@@ -60,6 +61,13 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
    * @generated
    */
   private EClass booleanLiteralEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass integerLiteralEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -219,6 +227,26 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getIntegerLiteral()
+  {
+    return integerLiteralEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getIntegerLiteral_Value()
+  {
+    return (EAttribute)integerLiteralEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public FireFactory getFireFactory()
   {
     return (FireFactory)getEFactoryInstance();
@@ -257,6 +285,9 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
 
     booleanLiteralEClass = createEClass(BOOLEAN_LITERAL);
     createEAttribute(booleanLiteralEClass, BOOLEAN_LITERAL__VALUE);
+
+    integerLiteralEClass = createEClass(INTEGER_LITERAL);
+    createEAttribute(integerLiteralEClass, INTEGER_LITERAL__VALUE);
   }
 
   /**
@@ -290,6 +321,7 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
     // Add supertypes to classes
     stringLiteralEClass.getESuperTypes().add(this.getExpression());
     booleanLiteralEClass.getESuperTypes().add(this.getExpression());
+    integerLiteralEClass.getESuperTypes().add(this.getExpression());
 
     // Initialize classes and features; add operations and parameters
     initEClass(programEClass, Program.class, "Program", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -305,6 +337,9 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
 
     initEClass(booleanLiteralEClass, BooleanLiteral.class, "BooleanLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getBooleanLiteral_Value(), ecorePackage.getEBoolean(), "value", null, 0, 1, BooleanLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(integerLiteralEClass, IntegerLiteral.class, "IntegerLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getIntegerLiteral_Value(), ecorePackage.getELong(), "value", null, 0, 1, IntegerLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);
