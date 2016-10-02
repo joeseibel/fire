@@ -266,6 +266,35 @@ ruleExpression returns [EObject current=null]
 				)
 			)
 		)
+		    |
+		(
+			(
+				{
+					$current = forceCreateModelElement(
+						grammarAccess.getExpressionAccess().getRealLiteralAction_3_0(),
+						$current);
+				}
+			)
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getExpressionAccess().getValueDoubleParserRuleCall_3_1_0());
+					}
+					lv_value_8_0=ruleDouble
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getExpressionRule());
+						}
+						set(
+							$current,
+							"value",
+							lv_value_8_0,
+							"fire.Fire.Double");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)
 	)
 ;
 
@@ -291,6 +320,44 @@ ruleLong returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
 	{
 		newLeafNode(this_INT_0, grammarAccess.getLongAccess().getINTTerminalRuleCall());
 	}
+;
+
+// Entry rule entryRuleDouble
+entryRuleDouble returns [String current=null]:
+	{ newCompositeNode(grammarAccess.getDoubleRule()); }
+	iv_ruleDouble=ruleDouble
+	{ $current=$iv_ruleDouble.current.getText(); }
+	EOF;
+
+// Rule Double
+ruleDouble returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		this_INT_0=RULE_INT
+		{
+			$current.merge(this_INT_0);
+		}
+		{
+			newLeafNode(this_INT_0, grammarAccess.getDoubleAccess().getINTTerminalRuleCall_0());
+		}
+		kw='.'
+		{
+			$current.merge(kw);
+			newLeafNode(kw, grammarAccess.getDoubleAccess().getFullStopKeyword_1());
+		}
+		this_INT_2=RULE_INT
+		{
+			$current.merge(this_INT_2);
+		}
+		{
+			newLeafNode(this_INT_2, grammarAccess.getDoubleAccess().getINTTerminalRuleCall_2());
+		}
+	)
 ;
 
 RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;

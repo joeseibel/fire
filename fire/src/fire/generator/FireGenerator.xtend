@@ -3,9 +3,11 @@ package fire.generator
 import fire.fire.BooleanLiteral
 import fire.fire.IntegerLiteral
 import fire.fire.Program
+import fire.fire.RealLiteral
 import fire.fire.StringLiteral
 import fire.fire.WritelnStatement
 import fire.llvm.BasicBlock
+import fire.llvm.ConstantFP
 import fire.llvm.Function
 import fire.llvm.FunctionType
 import fire.llvm.IRBuilder
@@ -30,7 +32,6 @@ class FireGenerator extends AbstractGenerator {
 		builder = new IRBuilder(llvmContext)
 		try {
 			(resource.contents.head as Program).generate
-			module.dump
 			val outputFileName = resource.URI.trimFileExtension.segmentsList.drop(2).join("/") + ".o"
 			fsa.generateFile(outputFileName, new ByteArrayInputStream(module.emitToByteBuffer))
 		} finally {
@@ -76,6 +77,7 @@ class FireGenerator extends AbstractGenerator {
 				builder.insertPoint = afterIfBlock
 			}
 			IntegerLiteral: builder.createCall(printfFunction, #[builder.createGlobalStringPtr("%ld\n"), argumentValue])
+			RealLiteral: builder.createCall(printfFunction, #[builder.createGlobalStringPtr("%f\n"), argumentValue])
 		}
 	}
 	
@@ -93,5 +95,9 @@ class FireGenerator extends AbstractGenerator {
 	
 	def private dispatch Value generateExpression(IntegerLiteral literal) {
 		builder.getInt64(literal.value)
+	}
+	
+	def private dispatch Value generateExpression(RealLiteral literal) {
+		ConstantFP.get(llvmContext, literal.value)
 	}
 }

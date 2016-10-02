@@ -105,12 +105,18 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 		private final Action cIntegerLiteralAction_2_0 = (Action)cGroup_2.eContents().get(0);
 		private final Assignment cValueAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
 		private final RuleCall cValueLongParserRuleCall_2_1_0 = (RuleCall)cValueAssignment_2_1.eContents().get(0);
+		private final Group cGroup_3 = (Group)cAlternatives.eContents().get(3);
+		private final Action cRealLiteralAction_3_0 = (Action)cGroup_3.eContents().get(0);
+		private final Assignment cValueAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final RuleCall cValueDoubleParserRuleCall_3_1_0 = (RuleCall)cValueAssignment_3_1.eContents().get(0);
 		
 		//Expression:
-		//	{StringLiteral} value=STRING | {BooleanLiteral} (value?='true' | 'false') | {IntegerLiteral} value=Long;
+		//	{StringLiteral} value=STRING | {BooleanLiteral} (value?='true' | 'false') | {IntegerLiteral} value=Long |
+		//	{RealLiteral} value=Double;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{StringLiteral} value=STRING | {BooleanLiteral} (value?='true' | 'false') | {IntegerLiteral} value=Long
+		//{StringLiteral} value=STRING | {BooleanLiteral} (value?='true' | 'false') | {IntegerLiteral} value=Long | {RealLiteral}
+		//value=Double
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//{StringLiteral} value=STRING
@@ -154,6 +160,18 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//Long
 		public RuleCall getValueLongParserRuleCall_2_1_0() { return cValueLongParserRuleCall_2_1_0; }
+		
+		//{RealLiteral} value=Double
+		public Group getGroup_3() { return cGroup_3; }
+		
+		//{RealLiteral}
+		public Action getRealLiteralAction_3_0() { return cRealLiteralAction_3_0; }
+		
+		//value=Double
+		public Assignment getValueAssignment_3_1() { return cValueAssignment_3_1; }
+		
+		//Double
+		public RuleCall getValueDoubleParserRuleCall_3_1_0() { return cValueDoubleParserRuleCall_3_1_0; }
 	}
 	public class LongElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fire.Fire.Long");
@@ -166,12 +184,36 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 		//INT
 		public RuleCall getINTTerminalRuleCall() { return cINTTerminalRuleCall; }
 	}
+	public class DoubleElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fire.Fire.Double");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cINTTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Keyword cFullStopKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final RuleCall cINTTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
+		
+		//Double ecore::EDouble:
+		//	INT '.' INT
+		@Override public ParserRule getRule() { return rule; }
+		
+		//INT '.' INT
+		public Group getGroup() { return cGroup; }
+		
+		//INT
+		public RuleCall getINTTerminalRuleCall_0() { return cINTTerminalRuleCall_0; }
+		
+		//'.'
+		public Keyword getFullStopKeyword_1() { return cFullStopKeyword_1; }
+		
+		//INT
+		public RuleCall getINTTerminalRuleCall_2() { return cINTTerminalRuleCall_2; }
+	}
 	
 	
 	private final ProgramElements pProgram;
 	private final WritelnStatementElements pWritelnStatement;
 	private final ExpressionElements pExpression;
 	private final LongElements pLong;
+	private final DoubleElements pDouble;
 	
 	private final Grammar grammar;
 	
@@ -186,6 +228,7 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 		this.pWritelnStatement = new WritelnStatementElements();
 		this.pExpression = new ExpressionElements();
 		this.pLong = new LongElements();
+		this.pDouble = new DoubleElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -239,7 +282,8 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Expression:
-	//	{StringLiteral} value=STRING | {BooleanLiteral} (value?='true' | 'false') | {IntegerLiteral} value=Long;
+	//	{StringLiteral} value=STRING | {BooleanLiteral} (value?='true' | 'false') | {IntegerLiteral} value=Long |
+	//	{RealLiteral} value=Double;
 	public ExpressionElements getExpressionAccess() {
 		return pExpression;
 	}
@@ -256,6 +300,16 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getLongRule() {
 		return getLongAccess().getRule();
+	}
+	
+	//Double ecore::EDouble:
+	//	INT '.' INT
+	public DoubleElements getDoubleAccess() {
+		return pDouble;
+	}
+	
+	public ParserRule getDoubleRule() {
+		return getDoubleAccess().getRule();
 	}
 	
 	//terminal ID:

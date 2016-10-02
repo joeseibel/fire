@@ -78,6 +78,15 @@ public interface FireFactory extends EFactory
   IntegerLiteral createIntegerLiteral();
 
   /**
+   * Returns a new object of class '<em>Real Literal</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Real Literal</em>'.
+   * @generated
+   */
+  RealLiteral createRealLiteral();
+
+  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

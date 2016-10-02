@@ -17,9 +17,14 @@ WritelnStatement:
 Expression:
 	{StringLiteral} value=STRING |
 	{BooleanLiteral} (value?='true' | 'false') |
-	{IntegerLiteral} value=Long
+	{IntegerLiteral} value=Long |
+	{RealLiteral} value=Double
 ;
 
 Long returns ecore::ELong:
 	INT
+;
+
+Double returns ecore::EDouble:
+	INT '.' INT
 ;

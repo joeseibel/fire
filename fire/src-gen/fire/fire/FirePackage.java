@@ -216,6 +216,34 @@ public interface FirePackage extends EPackage
    */
   int INTEGER_LITERAL_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
+  /**
+   * The meta object id for the '{@link fire.fire.impl.RealLiteralImpl <em>Real Literal</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see fire.fire.impl.RealLiteralImpl
+   * @see fire.fire.impl.FirePackageImpl#getRealLiteral()
+   * @generated
+   */
+  int REAL_LITERAL = 6;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REAL_LITERAL__VALUE = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Real Literal</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REAL_LITERAL_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
+
 
   /**
    * Returns the meta object for class '{@link fire.fire.Program <em>Program</em>}'.
@@ -331,6 +359,27 @@ public interface FirePackage extends EPackage
    * @generated
    */
   EAttribute getIntegerLiteral_Value();
+
+  /**
+   * Returns the meta object for class '{@link fire.fire.RealLiteral <em>Real Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Real Literal</em>'.
+   * @see fire.fire.RealLiteral
+   * @generated
+   */
+  EClass getRealLiteral();
+
+  /**
+   * Returns the meta object for the attribute '{@link fire.fire.RealLiteral#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see fire.fire.RealLiteral#getValue()
+   * @see #getRealLiteral()
+   * @generated
+   */
+  EAttribute getRealLiteral_Value();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -454,6 +503,24 @@ public interface FirePackage extends EPackage
      * @generated
      */
     EAttribute INTEGER_LITERAL__VALUE = eINSTANCE.getIntegerLiteral_Value();
+
+    /**
+     * The meta object literal for the '{@link fire.fire.impl.RealLiteralImpl <em>Real Literal</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see fire.fire.impl.RealLiteralImpl
+     * @see fire.fire.impl.FirePackageImpl#getRealLiteral()
+     * @generated
+     */
+    EClass REAL_LITERAL = eINSTANCE.getRealLiteral();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute REAL_LITERAL__VALUE = eINSTANCE.getRealLiteral_Value();
 
   }
 

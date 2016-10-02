@@ -22,5 +22,8 @@
     <genClasses ecoreClass="Fire.ecore#//IntegerLiteral">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Fire.ecore#//IntegerLiteral/value"/>
     </genClasses>
+    <genClasses ecoreClass="Fire.ecore#//RealLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Fire.ecore#//RealLiteral/value"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>
