@@ -15,6 +15,17 @@ WritelnStatement:
 ;
 
 Expression:
+	TerminalExpression (=>({MultiplicativeExpression.left=current} operator=MultiplicativeOperator) right=TerminalExpression)*
+;
+
+enum MultiplicativeOperator:
+	MULTIPLY='*' |
+	REAL_DIVIDE='/' |
+	INTEGER_DIVIDE='div' |
+	MODULUS='mod'
+;
+
+TerminalExpression returns Expression:
 	{StringLiteral} value=STRING |
 	{BooleanLiteral} (value?='true' | 'false') |
 	{IntegerLiteral} value=Long |

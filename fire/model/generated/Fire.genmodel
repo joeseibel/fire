@@ -6,6 +6,12 @@
     copyrightFields="false" runtimeVersion="2.12">
   <genPackages prefix="Fire" basePackage="fire" disposableProviderFactory="true" fileExtensions="fire"
       ecorePackage="Fire.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Fire.ecore#//MultiplicativeOperator">
+      <genEnumLiterals ecoreEnumLiteral="Fire.ecore#//MultiplicativeOperator/MULTIPLY"/>
+      <genEnumLiterals ecoreEnumLiteral="Fire.ecore#//MultiplicativeOperator/REAL_DIVIDE"/>
+      <genEnumLiterals ecoreEnumLiteral="Fire.ecore#//MultiplicativeOperator/INTEGER_DIVIDE"/>
+      <genEnumLiterals ecoreEnumLiteral="Fire.ecore#//MultiplicativeOperator/MODULUS"/>
+    </genEnums>
     <genClasses ecoreClass="Fire.ecore#//Program">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Fire.ecore#//Program/statements"/>
     </genClasses>
@@ -13,6 +19,11 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Fire.ecore#//WritelnStatement/argument"/>
     </genClasses>
     <genClasses ecoreClass="Fire.ecore#//Expression"/>
+    <genClasses ecoreClass="Fire.ecore#//MultiplicativeExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Fire.ecore#//MultiplicativeExpression/left"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Fire.ecore#//MultiplicativeExpression/operator"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Fire.ecore#//MultiplicativeExpression/right"/>
+    </genClasses>
     <genClasses ecoreClass="Fire.ecore#//StringLiteral">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Fire.ecore#//StringLiteral/value"/>
     </genClasses>

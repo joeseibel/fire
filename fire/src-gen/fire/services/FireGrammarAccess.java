@@ -9,6 +9,8 @@ import java.util.List;
 import org.eclipse.xtext.Action;
 import org.eclipse.xtext.Alternatives;
 import org.eclipse.xtext.Assignment;
+import org.eclipse.xtext.EnumLiteralDeclaration;
+import org.eclipse.xtext.EnumRule;
 import org.eclipse.xtext.Grammar;
 import org.eclipse.xtext.GrammarUtil;
 import org.eclipse.xtext.Group;
@@ -17,6 +19,7 @@ import org.eclipse.xtext.ParserRule;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.TerminalRule;
 import org.eclipse.xtext.common.services.TerminalsGrammarAccess;
+import org.eclipse.xtext.service.AbstractElementFinder.AbstractEnumRuleElementFinder;
 import org.eclipse.xtext.service.AbstractElementFinder.AbstractGrammarElementFinder;
 import org.eclipse.xtext.service.GrammarProvider;
 
@@ -90,6 +93,55 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	public class ExpressionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fire.Fire.Expression");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cTerminalExpressionParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Group cGroup_1_0 = (Group)cGroup_1.eContents().get(0);
+		private final Group cGroup_1_0_0 = (Group)cGroup_1_0.eContents().get(0);
+		private final Action cMultiplicativeExpressionLeftAction_1_0_0_0 = (Action)cGroup_1_0_0.eContents().get(0);
+		private final Assignment cOperatorAssignment_1_0_0_1 = (Assignment)cGroup_1_0_0.eContents().get(1);
+		private final RuleCall cOperatorMultiplicativeOperatorEnumRuleCall_1_0_0_1_0 = (RuleCall)cOperatorAssignment_1_0_0_1.eContents().get(0);
+		private final Assignment cRightAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cRightTerminalExpressionParserRuleCall_1_1_0 = (RuleCall)cRightAssignment_1_1.eContents().get(0);
+		
+		//Expression:
+		//	TerminalExpression (=> ({MultiplicativeExpression.left=current} operator=MultiplicativeOperator)
+		//	right=TerminalExpression)*;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//TerminalExpression (=> ({MultiplicativeExpression.left=current} operator=MultiplicativeOperator)
+		//right=TerminalExpression)*
+		public Group getGroup() { return cGroup; }
+		
+		//TerminalExpression
+		public RuleCall getTerminalExpressionParserRuleCall_0() { return cTerminalExpressionParserRuleCall_0; }
+		
+		//(=> ({MultiplicativeExpression.left=current} operator=MultiplicativeOperator) right=TerminalExpression)*
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//=> ({MultiplicativeExpression.left=current} operator=MultiplicativeOperator)
+		public Group getGroup_1_0() { return cGroup_1_0; }
+		
+		//({MultiplicativeExpression.left=current} operator=MultiplicativeOperator)
+		public Group getGroup_1_0_0() { return cGroup_1_0_0; }
+		
+		//{MultiplicativeExpression.left=current}
+		public Action getMultiplicativeExpressionLeftAction_1_0_0_0() { return cMultiplicativeExpressionLeftAction_1_0_0_0; }
+		
+		//operator=MultiplicativeOperator
+		public Assignment getOperatorAssignment_1_0_0_1() { return cOperatorAssignment_1_0_0_1; }
+		
+		//MultiplicativeOperator
+		public RuleCall getOperatorMultiplicativeOperatorEnumRuleCall_1_0_0_1_0() { return cOperatorMultiplicativeOperatorEnumRuleCall_1_0_0_1_0; }
+		
+		//right=TerminalExpression
+		public Assignment getRightAssignment_1_1() { return cRightAssignment_1_1; }
+		
+		//TerminalExpression
+		public RuleCall getRightTerminalExpressionParserRuleCall_1_1_0() { return cRightTerminalExpressionParserRuleCall_1_1_0; }
+	}
+	public class TerminalExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fire.Fire.TerminalExpression");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
 		private final Action cStringLiteralAction_0_0 = (Action)cGroup_0.eContents().get(0);
@@ -124,10 +176,10 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cExpressionParserRuleCall_6_1 = (RuleCall)cGroup_6.eContents().get(1);
 		private final Keyword cRightParenthesisKeyword_6_2 = (Keyword)cGroup_6.eContents().get(2);
 		
-		//Expression:
+		//TerminalExpression Expression:
 		//	{StringLiteral} value=STRING | {BooleanLiteral} (value?='true' | 'false') | {IntegerLiteral} value=Long |
 		//	{RealLiteral} value=Double | {NotExpression} 'not' operand=Expression | {NegationExpression} '-' operand=Expression |
-		//	'(' Expression ')';
+		//	'(' Expression ')'
 		@Override public ParserRule getRule() { return rule; }
 		
 		//{StringLiteral} value=STRING | {BooleanLiteral} (value?='true' | 'false') | {IntegerLiteral} value=Long | {RealLiteral}
@@ -266,10 +318,58 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getINTTerminalRuleCall_2() { return cINTTerminalRuleCall_2; }
 	}
 	
+	public class MultiplicativeOperatorElements extends AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "fire.Fire.MultiplicativeOperator");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cMULTIPLYEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cMULTIPLYAsteriskKeyword_0_0 = (Keyword)cMULTIPLYEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cREAL_DIVIDEEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cREAL_DIVIDESolidusKeyword_1_0 = (Keyword)cREAL_DIVIDEEnumLiteralDeclaration_1.eContents().get(0);
+		private final EnumLiteralDeclaration cINTEGER_DIVIDEEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
+		private final Keyword cINTEGER_DIVIDEDivKeyword_2_0 = (Keyword)cINTEGER_DIVIDEEnumLiteralDeclaration_2.eContents().get(0);
+		private final EnumLiteralDeclaration cMODULUSEnumLiteralDeclaration_3 = (EnumLiteralDeclaration)cAlternatives.eContents().get(3);
+		private final Keyword cMODULUSModKeyword_3_0 = (Keyword)cMODULUSEnumLiteralDeclaration_3.eContents().get(0);
+		
+		//enum MultiplicativeOperator:
+		//	MULTIPLY='*' |
+		//	REAL_DIVIDE='/' |
+		//	INTEGER_DIVIDE='div' |
+		//	MODULUS='mod';
+		public EnumRule getRule() { return rule; }
+		
+		//MULTIPLY='*' | REAL_DIVIDE='/' | INTEGER_DIVIDE='div' | MODULUS='mod'
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//MULTIPLY='*'
+		public EnumLiteralDeclaration getMULTIPLYEnumLiteralDeclaration_0() { return cMULTIPLYEnumLiteralDeclaration_0; }
+		
+		//'*'
+		public Keyword getMULTIPLYAsteriskKeyword_0_0() { return cMULTIPLYAsteriskKeyword_0_0; }
+		
+		//REAL_DIVIDE='/'
+		public EnumLiteralDeclaration getREAL_DIVIDEEnumLiteralDeclaration_1() { return cREAL_DIVIDEEnumLiteralDeclaration_1; }
+		
+		//'/'
+		public Keyword getREAL_DIVIDESolidusKeyword_1_0() { return cREAL_DIVIDESolidusKeyword_1_0; }
+		
+		//INTEGER_DIVIDE='div'
+		public EnumLiteralDeclaration getINTEGER_DIVIDEEnumLiteralDeclaration_2() { return cINTEGER_DIVIDEEnumLiteralDeclaration_2; }
+		
+		//'div'
+		public Keyword getINTEGER_DIVIDEDivKeyword_2_0() { return cINTEGER_DIVIDEDivKeyword_2_0; }
+		
+		//MODULUS='mod'
+		public EnumLiteralDeclaration getMODULUSEnumLiteralDeclaration_3() { return cMODULUSEnumLiteralDeclaration_3; }
+		
+		//'mod'
+		public Keyword getMODULUSModKeyword_3_0() { return cMODULUSModKeyword_3_0; }
+	}
 	
 	private final ProgramElements pProgram;
 	private final WritelnStatementElements pWritelnStatement;
 	private final ExpressionElements pExpression;
+	private final MultiplicativeOperatorElements eMultiplicativeOperator;
+	private final TerminalExpressionElements pTerminalExpression;
 	private final LongElements pLong;
 	private final DoubleElements pDouble;
 	
@@ -285,6 +385,8 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 		this.pProgram = new ProgramElements();
 		this.pWritelnStatement = new WritelnStatementElements();
 		this.pExpression = new ExpressionElements();
+		this.eMultiplicativeOperator = new MultiplicativeOperatorElements();
+		this.pTerminalExpression = new TerminalExpressionElements();
 		this.pLong = new LongElements();
 		this.pDouble = new DoubleElements();
 	}
@@ -340,15 +442,39 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Expression:
-	//	{StringLiteral} value=STRING | {BooleanLiteral} (value?='true' | 'false') | {IntegerLiteral} value=Long |
-	//	{RealLiteral} value=Double | {NotExpression} 'not' operand=Expression | {NegationExpression} '-' operand=Expression |
-	//	'(' Expression ')';
+	//	TerminalExpression (=> ({MultiplicativeExpression.left=current} operator=MultiplicativeOperator)
+	//	right=TerminalExpression)*;
 	public ExpressionElements getExpressionAccess() {
 		return pExpression;
 	}
 	
 	public ParserRule getExpressionRule() {
 		return getExpressionAccess().getRule();
+	}
+	
+	//enum MultiplicativeOperator:
+	//	MULTIPLY='*' |
+	//	REAL_DIVIDE='/' |
+	//	INTEGER_DIVIDE='div' |
+	//	MODULUS='mod';
+	public MultiplicativeOperatorElements getMultiplicativeOperatorAccess() {
+		return eMultiplicativeOperator;
+	}
+	
+	public EnumRule getMultiplicativeOperatorRule() {
+		return getMultiplicativeOperatorAccess().getRule();
+	}
+	
+	//TerminalExpression Expression:
+	//	{StringLiteral} value=STRING | {BooleanLiteral} (value?='true' | 'false') | {IntegerLiteral} value=Long |
+	//	{RealLiteral} value=Double | {NotExpression} 'not' operand=Expression | {NegationExpression} '-' operand=Expression |
+	//	'(' Expression ')'
+	public TerminalExpressionElements getTerminalExpressionAccess() {
+		return pTerminalExpression;
+	}
+	
+	public ParserRule getTerminalExpressionRule() {
+		return getTerminalExpressionAccess().getRule();
 	}
 	
 	//Long ecore::ELong:

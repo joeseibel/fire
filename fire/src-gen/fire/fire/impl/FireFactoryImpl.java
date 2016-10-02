@@ -6,6 +6,7 @@ package fire.fire.impl;
 import fire.fire.*;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -68,6 +69,7 @@ public class FireFactoryImpl extends EFactoryImpl implements FireFactory
       case FirePackage.PROGRAM: return createProgram();
       case FirePackage.WRITELN_STATEMENT: return createWritelnStatement();
       case FirePackage.EXPRESSION: return createExpression();
+      case FirePackage.MULTIPLICATIVE_EXPRESSION: return createMultiplicativeExpression();
       case FirePackage.STRING_LITERAL: return createStringLiteral();
       case FirePackage.BOOLEAN_LITERAL: return createBooleanLiteral();
       case FirePackage.INTEGER_LITERAL: return createIntegerLiteral();
@@ -76,6 +78,40 @@ public class FireFactoryImpl extends EFactoryImpl implements FireFactory
       case FirePackage.NEGATION_EXPRESSION: return createNegationExpression();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+    }
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Object createFromString(EDataType eDataType, String initialValue)
+  {
+    switch (eDataType.getClassifierID())
+    {
+      case FirePackage.MULTIPLICATIVE_OPERATOR:
+        return createMultiplicativeOperatorFromString(eDataType, initialValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+    }
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String convertToString(EDataType eDataType, Object instanceValue)
+  {
+    switch (eDataType.getClassifierID())
+    {
+      case FirePackage.MULTIPLICATIVE_OPERATOR:
+        return convertMultiplicativeOperatorToString(eDataType, instanceValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
   }
 
@@ -110,6 +146,17 @@ public class FireFactoryImpl extends EFactoryImpl implements FireFactory
   {
     ExpressionImpl expression = new ExpressionImpl();
     return expression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public MultiplicativeExpression createMultiplicativeExpression()
+  {
+    MultiplicativeExpressionImpl multiplicativeExpression = new MultiplicativeExpressionImpl();
+    return multiplicativeExpression;
   }
 
   /**
@@ -176,6 +223,28 @@ public class FireFactoryImpl extends EFactoryImpl implements FireFactory
   {
     NegationExpressionImpl negationExpression = new NegationExpressionImpl();
     return negationExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public MultiplicativeOperator createMultiplicativeOperatorFromString(EDataType eDataType, String initialValue)
+  {
+    MultiplicativeOperator result = MultiplicativeOperator.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertMultiplicativeOperatorToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
   }
 
   /**

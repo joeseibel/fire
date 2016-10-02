@@ -2,6 +2,7 @@ package fire.generator
 
 import fire.fire.BooleanLiteral
 import fire.fire.IntegerLiteral
+import fire.fire.MultiplicativeExpression
 import fire.fire.NegationExpression
 import fire.fire.NotExpression
 import fire.fire.Program
@@ -82,6 +83,19 @@ class FireGenerator extends AbstractGenerator {
 			}
 			case INTEGER: builder.createCall(printfFunction, #[builder.createGlobalStringPtr("%ld\n"), argumentValue])
 			case REAL: builder.createCall(printfFunction, #[builder.createGlobalStringPtr("%f\n"), argumentValue])
+		}
+	}
+	
+	def private dispatch Value generateExpression(MultiplicativeExpression expression) {
+		switch expression.operator {
+			case MULTIPLY: switch expression.left.type {
+				case INTEGER: builder.createMul(expression.left.generateExpression, expression.right.generateExpression)
+				case REAL: builder.createFMul(expression.left.generateExpression, expression.right.generateExpression)
+				default: null
+			}
+			case REAL_DIVIDE: builder.createFDiv(expression.left.generateExpression, expression.right.generateExpression)
+			case INTEGER_DIVIDE: builder.createSDiv(expression.left.generateExpression, expression.right.generateExpression)
+			case MODULUS: builder.createSRem(expression.left.generateExpression, expression.right.generateExpression)
 		}
 	}
 	

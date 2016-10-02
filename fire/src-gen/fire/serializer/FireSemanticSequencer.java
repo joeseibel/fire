@@ -7,6 +7,7 @@ import com.google.inject.Inject;
 import fire.fire.BooleanLiteral;
 import fire.fire.FirePackage;
 import fire.fire.IntegerLiteral;
+import fire.fire.MultiplicativeExpression;
 import fire.fire.NegationExpression;
 import fire.fire.NotExpression;
 import fire.fire.Program;
@@ -40,25 +41,28 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		if (epackage == FirePackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
 			case FirePackage.BOOLEAN_LITERAL:
-				sequence_Expression(context, (BooleanLiteral) semanticObject); 
+				sequence_TerminalExpression(context, (BooleanLiteral) semanticObject); 
 				return; 
 			case FirePackage.INTEGER_LITERAL:
-				sequence_Expression(context, (IntegerLiteral) semanticObject); 
+				sequence_TerminalExpression(context, (IntegerLiteral) semanticObject); 
+				return; 
+			case FirePackage.MULTIPLICATIVE_EXPRESSION:
+				sequence_Expression(context, (MultiplicativeExpression) semanticObject); 
 				return; 
 			case FirePackage.NEGATION_EXPRESSION:
-				sequence_Expression(context, (NegationExpression) semanticObject); 
+				sequence_TerminalExpression(context, (NegationExpression) semanticObject); 
 				return; 
 			case FirePackage.NOT_EXPRESSION:
-				sequence_Expression(context, (NotExpression) semanticObject); 
+				sequence_TerminalExpression(context, (NotExpression) semanticObject); 
 				return; 
 			case FirePackage.PROGRAM:
 				sequence_Program(context, (Program) semanticObject); 
 				return; 
 			case FirePackage.REAL_LITERAL:
-				sequence_Expression(context, (RealLiteral) semanticObject); 
+				sequence_TerminalExpression(context, (RealLiteral) semanticObject); 
 				return; 
 			case FirePackage.STRING_LITERAL:
-				sequence_Expression(context, (StringLiteral) semanticObject); 
+				sequence_TerminalExpression(context, (StringLiteral) semanticObject); 
 				return; 
 			case FirePackage.WRITELN_STATEMENT:
 				sequence_WritelnStatement(context, (WritelnStatement) semanticObject); 
@@ -70,102 +74,26 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
-	 *     Expression returns BooleanLiteral
+	 *     Expression returns MultiplicativeExpression
+	 *     Expression.MultiplicativeExpression_1_0_0_0 returns MultiplicativeExpression
+	 *     TerminalExpression returns MultiplicativeExpression
 	 *
 	 * Constraint:
-	 *     value?='true'?
+	 *     (left=Expression_MultiplicativeExpression_1_0_0_0 operator=MultiplicativeOperator right=TerminalExpression)
 	 */
-	protected void sequence_Expression(ISerializationContext context, BooleanLiteral semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     Expression returns IntegerLiteral
-	 *
-	 * Constraint:
-	 *     value=Long
-	 */
-	protected void sequence_Expression(ISerializationContext context, IntegerLiteral semanticObject) {
+	protected void sequence_Expression(ISerializationContext context, MultiplicativeExpression semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, FirePackage.Literals.INTEGER_LITERAL__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FirePackage.Literals.INTEGER_LITERAL__VALUE));
+			if (transientValues.isValueTransient(semanticObject, FirePackage.Literals.MULTIPLICATIVE_EXPRESSION__LEFT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FirePackage.Literals.MULTIPLICATIVE_EXPRESSION__LEFT));
+			if (transientValues.isValueTransient(semanticObject, FirePackage.Literals.MULTIPLICATIVE_EXPRESSION__OPERATOR) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FirePackage.Literals.MULTIPLICATIVE_EXPRESSION__OPERATOR));
+			if (transientValues.isValueTransient(semanticObject, FirePackage.Literals.MULTIPLICATIVE_EXPRESSION__RIGHT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FirePackage.Literals.MULTIPLICATIVE_EXPRESSION__RIGHT));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getExpressionAccess().getValueLongParserRuleCall_2_1_0(), semanticObject.getValue());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     Expression returns NegationExpression
-	 *
-	 * Constraint:
-	 *     operand=Expression
-	 */
-	protected void sequence_Expression(ISerializationContext context, NegationExpression semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, FirePackage.Literals.NEGATION_EXPRESSION__OPERAND) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FirePackage.Literals.NEGATION_EXPRESSION__OPERAND));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getExpressionAccess().getOperandExpressionParserRuleCall_5_2_0(), semanticObject.getOperand());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     Expression returns NotExpression
-	 *
-	 * Constraint:
-	 *     operand=Expression
-	 */
-	protected void sequence_Expression(ISerializationContext context, NotExpression semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, FirePackage.Literals.NOT_EXPRESSION__OPERAND) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FirePackage.Literals.NOT_EXPRESSION__OPERAND));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getExpressionAccess().getOperandExpressionParserRuleCall_4_2_0(), semanticObject.getOperand());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     Expression returns RealLiteral
-	 *
-	 * Constraint:
-	 *     value=Double
-	 */
-	protected void sequence_Expression(ISerializationContext context, RealLiteral semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, FirePackage.Literals.REAL_LITERAL__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FirePackage.Literals.REAL_LITERAL__VALUE));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getExpressionAccess().getValueDoubleParserRuleCall_3_1_0(), semanticObject.getValue());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     Expression returns StringLiteral
-	 *
-	 * Constraint:
-	 *     value=STRING
-	 */
-	protected void sequence_Expression(ISerializationContext context, StringLiteral semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, FirePackage.Literals.STRING_LITERAL__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FirePackage.Literals.STRING_LITERAL__VALUE));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getExpressionAccess().getValueSTRINGTerminalRuleCall_0_1_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getExpressionAccess().getMultiplicativeExpressionLeftAction_1_0_0_0(), semanticObject.getLeft());
+		feeder.accept(grammarAccess.getExpressionAccess().getOperatorMultiplicativeOperatorEnumRuleCall_1_0_0_1_0(), semanticObject.getOperator());
+		feeder.accept(grammarAccess.getExpressionAccess().getRightTerminalExpressionParserRuleCall_1_1_0(), semanticObject.getRight());
 		feeder.finish();
 	}
 	
@@ -179,6 +107,120 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 */
 	protected void sequence_Program(ISerializationContext context, Program semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Expression returns BooleanLiteral
+	 *     Expression.MultiplicativeExpression_1_0_0_0 returns BooleanLiteral
+	 *     TerminalExpression returns BooleanLiteral
+	 *
+	 * Constraint:
+	 *     value?='true'?
+	 */
+	protected void sequence_TerminalExpression(ISerializationContext context, BooleanLiteral semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Expression returns IntegerLiteral
+	 *     Expression.MultiplicativeExpression_1_0_0_0 returns IntegerLiteral
+	 *     TerminalExpression returns IntegerLiteral
+	 *
+	 * Constraint:
+	 *     value=Long
+	 */
+	protected void sequence_TerminalExpression(ISerializationContext context, IntegerLiteral semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, FirePackage.Literals.INTEGER_LITERAL__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FirePackage.Literals.INTEGER_LITERAL__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getTerminalExpressionAccess().getValueLongParserRuleCall_2_1_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Expression returns NegationExpression
+	 *     Expression.MultiplicativeExpression_1_0_0_0 returns NegationExpression
+	 *     TerminalExpression returns NegationExpression
+	 *
+	 * Constraint:
+	 *     operand=Expression
+	 */
+	protected void sequence_TerminalExpression(ISerializationContext context, NegationExpression semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, FirePackage.Literals.NEGATION_EXPRESSION__OPERAND) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FirePackage.Literals.NEGATION_EXPRESSION__OPERAND));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getTerminalExpressionAccess().getOperandExpressionParserRuleCall_5_2_0(), semanticObject.getOperand());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Expression returns NotExpression
+	 *     Expression.MultiplicativeExpression_1_0_0_0 returns NotExpression
+	 *     TerminalExpression returns NotExpression
+	 *
+	 * Constraint:
+	 *     operand=Expression
+	 */
+	protected void sequence_TerminalExpression(ISerializationContext context, NotExpression semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, FirePackage.Literals.NOT_EXPRESSION__OPERAND) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FirePackage.Literals.NOT_EXPRESSION__OPERAND));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getTerminalExpressionAccess().getOperandExpressionParserRuleCall_4_2_0(), semanticObject.getOperand());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Expression returns RealLiteral
+	 *     Expression.MultiplicativeExpression_1_0_0_0 returns RealLiteral
+	 *     TerminalExpression returns RealLiteral
+	 *
+	 * Constraint:
+	 *     value=Double
+	 */
+	protected void sequence_TerminalExpression(ISerializationContext context, RealLiteral semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, FirePackage.Literals.REAL_LITERAL__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FirePackage.Literals.REAL_LITERAL__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getTerminalExpressionAccess().getValueDoubleParserRuleCall_3_1_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Expression returns StringLiteral
+	 *     Expression.MultiplicativeExpression_1_0_0_0 returns StringLiteral
+	 *     TerminalExpression returns StringLiteral
+	 *
+	 * Constraint:
+	 *     value=STRING
+	 */
+	protected void sequence_TerminalExpression(ISerializationContext context, StringLiteral semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, FirePackage.Literals.STRING_LITERAL__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FirePackage.Literals.STRING_LITERAL__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getTerminalExpressionAccess().getValueSTRINGTerminalRuleCall_0_1_0(), semanticObject.getValue());
+		feeder.finish();
 	}
 	
 	
