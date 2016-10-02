@@ -5,7 +5,10 @@ public class IRBuilderBase extends PointerWrapper {
 		super(pointerAddress);
 	}
 	
+	public native BasicBlock getInsertBlock();
 	public native void setInsertPoint(BasicBlock theBB);
+	public native ConstantInt getTrue();
+	public native ConstantInt getFalse();
 	public native IntegerType getInt8Ty();
 	public native IntegerType getInt32Ty();
 	public native Type getVoidTy();

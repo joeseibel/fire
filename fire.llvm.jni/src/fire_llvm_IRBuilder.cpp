@@ -17,6 +17,20 @@ JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilder_createRetVoid(JNIEnv *env, jo
 	return toJava(env, "fire/llvm/ReturnInst", toNative<llvm::IRBuilder<>>(env, obj)->CreateRetVoid());
 }
 
+//Java method: public native BranchInst createBr(BasicBlock dest);
+JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilder_createBr(JNIEnv *env, jobject obj, jobject dest) {
+	llvm::BasicBlock *destNative = toNative<llvm::BasicBlock>(env, dest);
+	return toJava(env, "fire/llvm/BranchInst", toNative<llvm::IRBuilder<>>(env, obj)->CreateBr(destNative));
+}
+
+//Java method: public native BranchInst createCondBr(Value cond, BasicBlock trueBlock, BasicBlock falseBlock);
+JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilder_createCondBr(JNIEnv *env, jobject obj, jobject cond, jobject trueBlock, jobject falseBlock) {
+	llvm::Value *condNative = toNative<llvm::Value>(env, cond);
+	llvm::BasicBlock *trueBlockNative = toNative<llvm::BasicBlock>(env, trueBlock);
+	llvm::BasicBlock *falseBlockNative = toNative<llvm::BasicBlock>(env, falseBlock);
+	return toJava(env, "fire/llvm/BranchInst", toNative<llvm::IRBuilder<>>(env, obj)->CreateCondBr(condNative, trueBlockNative, falseBlockNative));
+}
+
 //Java method: public native Value createGlobalStringPtr(String str);
 JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilder_createGlobalStringPtr(JNIEnv *env, jobject obj, jstring str) {
 	const char *strNative = env->GetStringUTFChars(str, nullptr);

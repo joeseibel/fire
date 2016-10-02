@@ -12,3 +12,9 @@ JNIEXPORT jobject JNICALL Java_fire_llvm_Function_create(JNIEnv *env, jclass cls
 	env->ReleaseStringUTFChars(n, nNative);
 	return toJava(env, cls, function);
 }
+
+//Java method: public native void addBasicBlock(BasicBlock block);
+JNIEXPORT void JNICALL Java_fire_llvm_Function_addBasicBlock(JNIEnv *env, jobject obj, jobject block) {
+	llvm::BasicBlock *blockNative = toNative<llvm::BasicBlock>(env, block);
+	toNative<llvm::Function>(env, obj)->getBasicBlockList().push_back(blockNative);
+}

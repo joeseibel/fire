@@ -1,7 +1,11 @@
 #include "FireUtil.h"
 
 jobject toJava(JNIEnv *env, jclass cls, void *obj) {
-	return env->NewObject(cls, env->GetMethodID(cls, "<init>", "(J)V"), (jlong)obj);
+	if (obj == nullptr) {
+		return nullptr;
+	} else {
+		return env->NewObject(cls, env->GetMethodID(cls, "<init>", "(J)V"), (jlong)obj);
+	}
 }
 
 jobject toJava(JNIEnv *env, const char * className, void * obj) {

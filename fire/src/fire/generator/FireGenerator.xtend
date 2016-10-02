@@ -50,11 +50,30 @@ class FireGenerator extends AbstractGenerator {
 	}
 	
 	def private void generate(WritelnStatement statement) {
-		val putsFunction = module.getFunction("puts") ?: {
-			val functionType = FunctionType.get(builder.int32Ty, #[builder.int8Ty.pointerTo], false)
-			Function.create(functionType, LinkageTypes.EXTERNAL_LINKAGE, "puts", module)
+		val printfFunction = module.getFunction("printf") ?: {
+			val functionType = FunctionType.get(builder.int32Ty, #[builder.int8Ty.pointerTo], true)
+			Function.create(functionType, LinkageTypes.EXTERNAL_LINKAGE, "printf", module)
 		}
-		builder.createCall(putsFunction, #[statement.argument.generateExpression])
+		val argumentValue = statement.argument.generateExpression
+		switch statement.argument {
+			StringLiteral: builder.createCall(printfFunction, #[builder.createGlobalStringPtr("%s\n"), argumentValue])
+			BooleanLiteral: {
+				val function = builder.insertBlock.parent
+				val thenBlock = BasicBlock.create(llvmContext, "then", function)
+				val elseBlock = BasicBlock.create(llvmContext, "else")
+				val afterIfBlock = BasicBlock.create(llvmContext, "afterIf")
+				builder.createCondBr(argumentValue, thenBlock, elseBlock)
+				builder.insertPoint = thenBlock
+				builder.createCall(printfFunction, #[builder.createGlobalStringPtr("true\n")])
+				builder.createBr(afterIfBlock)
+				function.addBasicBlock(elseBlock)
+				builder.insertPoint = elseBlock
+				builder.createCall(printfFunction, #[builder.createGlobalStringPtr("false\n")])
+				builder.createBr(afterIfBlock)
+				function.addBasicBlock(afterIfBlock)
+				builder.insertPoint = afterIfBlock
+			}
+		}
 	}
 	
 	def private dispatch Value generateExpression(StringLiteral literal) {
@@ -62,6 +81,10 @@ class FireGenerator extends AbstractGenerator {
 	}
 	
 	def private dispatch Value generateExpression(BooleanLiteral literal) {
-		builder.createGlobalStringPtr(literal.value.toString)
+		if (literal.value) {
+			builder.^true
+		} else {
+			builder.^false
+		}
 	}
 }

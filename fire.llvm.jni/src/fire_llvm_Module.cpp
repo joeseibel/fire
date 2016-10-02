@@ -24,11 +24,7 @@ JNIEXPORT jobject JNICALL Java_fire_llvm_Module_getFunction(JNIEnv * env, jobjec
 	const char *nameNative = env->GetStringUTFChars(name, nullptr);
 	llvm::Function *function = toNative<llvm::Module>(env, obj)->getFunction(nameNative);
 	env->ReleaseStringUTFChars(name, nameNative);
-	if (function == nullptr) {
-		return nullptr;
-	} else {
-		return toJava(env, "fire/llvm/Function", function);
-	}
+	return toJava(env, "fire/llvm/Function", function);
 }
 
 //Java method: public native void dump();
