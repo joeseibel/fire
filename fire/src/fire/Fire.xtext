@@ -18,7 +18,9 @@ Expression:
 	{StringLiteral} value=STRING |
 	{BooleanLiteral} (value?='true' | 'false') |
 	{IntegerLiteral} value=Long |
-	{RealLiteral} value=Double
+	{RealLiteral} value=Double |
+	{NotExpression} 'not' operand=Expression |
+	'(' Expression ')'
 ;
 
 Long returns ecore::ELong:

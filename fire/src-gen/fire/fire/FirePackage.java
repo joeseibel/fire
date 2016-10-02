@@ -244,6 +244,34 @@ public interface FirePackage extends EPackage
    */
   int REAL_LITERAL_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
+  /**
+   * The meta object id for the '{@link fire.fire.impl.NotExpressionImpl <em>Not Expression</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see fire.fire.impl.NotExpressionImpl
+   * @see fire.fire.impl.FirePackageImpl#getNotExpression()
+   * @generated
+   */
+  int NOT_EXPRESSION = 7;
+
+  /**
+   * The feature id for the '<em><b>Operand</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NOT_EXPRESSION__OPERAND = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Not Expression</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NOT_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
+
 
   /**
    * Returns the meta object for class '{@link fire.fire.Program <em>Program</em>}'.
@@ -380,6 +408,27 @@ public interface FirePackage extends EPackage
    * @generated
    */
   EAttribute getRealLiteral_Value();
+
+  /**
+   * Returns the meta object for class '{@link fire.fire.NotExpression <em>Not Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Not Expression</em>'.
+   * @see fire.fire.NotExpression
+   * @generated
+   */
+  EClass getNotExpression();
+
+  /**
+   * Returns the meta object for the containment reference '{@link fire.fire.NotExpression#getOperand <em>Operand</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Operand</em>'.
+   * @see fire.fire.NotExpression#getOperand()
+   * @see #getNotExpression()
+   * @generated
+   */
+  EReference getNotExpression_Operand();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -521,6 +570,24 @@ public interface FirePackage extends EPackage
      * @generated
      */
     EAttribute REAL_LITERAL__VALUE = eINSTANCE.getRealLiteral_Value();
+
+    /**
+     * The meta object literal for the '{@link fire.fire.impl.NotExpressionImpl <em>Not Expression</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see fire.fire.impl.NotExpressionImpl
+     * @see fire.fire.impl.FirePackageImpl#getNotExpression()
+     * @generated
+     */
+    EClass NOT_EXPRESSION = eINSTANCE.getNotExpression();
+
+    /**
+     * The meta object literal for the '<em><b>Operand</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference NOT_EXPRESSION__OPERAND = eINSTANCE.getNotExpression_Operand();
 
   }
 

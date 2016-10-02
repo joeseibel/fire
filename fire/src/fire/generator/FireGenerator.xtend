@@ -2,6 +2,7 @@ package fire.generator
 
 import fire.fire.BooleanLiteral
 import fire.fire.IntegerLiteral
+import fire.fire.NotExpression
 import fire.fire.Program
 import fire.fire.RealLiteral
 import fire.fire.StringLiteral
@@ -20,6 +21,8 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
+
+import static extension fire.FireUtil.getType
 
 class FireGenerator extends AbstractGenerator {
 	LLVMContext llvmContext
@@ -58,9 +61,9 @@ class FireGenerator extends AbstractGenerator {
 			Function.create(functionType, LinkageTypes.EXTERNAL_LINKAGE, "printf", module)
 		}
 		val argumentValue = statement.argument.generateExpression
-		switch statement.argument {
-			StringLiteral: builder.createCall(printfFunction, #[builder.createGlobalStringPtr("%s\n"), argumentValue])
-			BooleanLiteral: {
+		switch statement.argument.type {
+			case STRING: builder.createCall(printfFunction, #[builder.createGlobalStringPtr("%s\n"), argumentValue])
+			case BOOLEAN: {
 				val function = builder.insertBlock.parent
 				val thenBlock = BasicBlock.create(llvmContext, "then", function)
 				val elseBlock = BasicBlock.create(llvmContext, "else")
@@ -76,8 +79,8 @@ class FireGenerator extends AbstractGenerator {
 				function.addBasicBlock(afterIfBlock)
 				builder.insertPoint = afterIfBlock
 			}
-			IntegerLiteral: builder.createCall(printfFunction, #[builder.createGlobalStringPtr("%ld\n"), argumentValue])
-			RealLiteral: builder.createCall(printfFunction, #[builder.createGlobalStringPtr("%f\n"), argumentValue])
+			case INTEGER: builder.createCall(printfFunction, #[builder.createGlobalStringPtr("%ld\n"), argumentValue])
+			case REAL: builder.createCall(printfFunction, #[builder.createGlobalStringPtr("%f\n"), argumentValue])
 		}
 	}
 	
@@ -99,5 +102,9 @@ class FireGenerator extends AbstractGenerator {
 	
 	def private dispatch Value generateExpression(RealLiteral literal) {
 		ConstantFP.get(llvmContext, literal.value)
+	}
+	
+	def private dispatch Value generateExpression(NotExpression expression) {
+		builder.createNot(expression.operand.generateExpression)
 	}
 }

@@ -72,6 +72,7 @@ public class FireFactoryImpl extends EFactoryImpl implements FireFactory
       case FirePackage.BOOLEAN_LITERAL: return createBooleanLiteral();
       case FirePackage.INTEGER_LITERAL: return createIntegerLiteral();
       case FirePackage.REAL_LITERAL: return createRealLiteral();
+      case FirePackage.NOT_EXPRESSION: return createNotExpression();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -152,6 +153,17 @@ public class FireFactoryImpl extends EFactoryImpl implements FireFactory
   {
     RealLiteralImpl realLiteral = new RealLiteralImpl();
     return realLiteral;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotExpression createNotExpression()
+  {
+    NotExpressionImpl notExpression = new NotExpressionImpl();
+    return notExpression;
   }
 
   /**

@@ -32,6 +32,9 @@ public abstract class AbstractFireProposalProvider extends TerminalsProposalProv
 			// subclasses may override
 		}
 	}
+	public void completeExpression_Operand(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
+	}
 
 	public void complete_Program(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		// subclasses may override

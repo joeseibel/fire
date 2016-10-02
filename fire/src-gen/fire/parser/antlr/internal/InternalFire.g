@@ -295,6 +295,58 @@ ruleExpression returns [EObject current=null]
 				)
 			)
 		)
+		    |
+		(
+			(
+				{
+					$current = forceCreateModelElement(
+						grammarAccess.getExpressionAccess().getNotExpressionAction_4_0(),
+						$current);
+				}
+			)
+			otherlv_10='not'
+			{
+				newLeafNode(otherlv_10, grammarAccess.getExpressionAccess().getNotKeyword_4_1());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getExpressionAccess().getOperandExpressionParserRuleCall_4_2_0());
+					}
+					lv_operand_11_0=ruleExpression
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getExpressionRule());
+						}
+						set(
+							$current,
+							"operand",
+							lv_operand_11_0,
+							"fire.Fire.Expression");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)
+		    |
+		(
+			otherlv_12='('
+			{
+				newLeafNode(otherlv_12, grammarAccess.getExpressionAccess().getLeftParenthesisKeyword_5_0());
+			}
+			{
+				newCompositeNode(grammarAccess.getExpressionAccess().getExpressionParserRuleCall_5_1());
+			}
+			this_Expression_13=ruleExpression
+			{
+				$current = $this_Expression_13.current;
+				afterParserOrEnumRuleCall();
+			}
+			otherlv_14=')'
+			{
+				newLeafNode(otherlv_14, grammarAccess.getExpressionAccess().getRightParenthesisKeyword_5_2());
+			}
+		)
 	)
 ;
 

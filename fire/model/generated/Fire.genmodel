@@ -25,5 +25,8 @@
     <genClasses ecoreClass="Fire.ecore#//RealLiteral">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Fire.ecore#//RealLiteral/value"/>
     </genClasses>
+    <genClasses ecoreClass="Fire.ecore#//NotExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Fire.ecore#//NotExpression/operand"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

@@ -109,14 +109,24 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 		private final Action cRealLiteralAction_3_0 = (Action)cGroup_3.eContents().get(0);
 		private final Assignment cValueAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
 		private final RuleCall cValueDoubleParserRuleCall_3_1_0 = (RuleCall)cValueAssignment_3_1.eContents().get(0);
+		private final Group cGroup_4 = (Group)cAlternatives.eContents().get(4);
+		private final Action cNotExpressionAction_4_0 = (Action)cGroup_4.eContents().get(0);
+		private final Keyword cNotKeyword_4_1 = (Keyword)cGroup_4.eContents().get(1);
+		private final Assignment cOperandAssignment_4_2 = (Assignment)cGroup_4.eContents().get(2);
+		private final RuleCall cOperandExpressionParserRuleCall_4_2_0 = (RuleCall)cOperandAssignment_4_2.eContents().get(0);
+		private final Group cGroup_5 = (Group)cAlternatives.eContents().get(5);
+		private final Keyword cLeftParenthesisKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
+		private final RuleCall cExpressionParserRuleCall_5_1 = (RuleCall)cGroup_5.eContents().get(1);
+		private final Keyword cRightParenthesisKeyword_5_2 = (Keyword)cGroup_5.eContents().get(2);
 		
 		//Expression:
 		//	{StringLiteral} value=STRING | {BooleanLiteral} (value?='true' | 'false') | {IntegerLiteral} value=Long |
-		//	{RealLiteral} value=Double;
+		//	{RealLiteral} value=Double | {NotExpression} 'not' operand=Expression |
+		//	'(' Expression ')';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//{StringLiteral} value=STRING | {BooleanLiteral} (value?='true' | 'false') | {IntegerLiteral} value=Long | {RealLiteral}
-		//value=Double
+		//value=Double | {NotExpression} 'not' operand=Expression | '(' Expression ')'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//{StringLiteral} value=STRING
@@ -172,6 +182,33 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//Double
 		public RuleCall getValueDoubleParserRuleCall_3_1_0() { return cValueDoubleParserRuleCall_3_1_0; }
+		
+		//{NotExpression} 'not' operand=Expression
+		public Group getGroup_4() { return cGroup_4; }
+		
+		//{NotExpression}
+		public Action getNotExpressionAction_4_0() { return cNotExpressionAction_4_0; }
+		
+		//'not'
+		public Keyword getNotKeyword_4_1() { return cNotKeyword_4_1; }
+		
+		//operand=Expression
+		public Assignment getOperandAssignment_4_2() { return cOperandAssignment_4_2; }
+		
+		//Expression
+		public RuleCall getOperandExpressionParserRuleCall_4_2_0() { return cOperandExpressionParserRuleCall_4_2_0; }
+		
+		//'(' Expression ')'
+		public Group getGroup_5() { return cGroup_5; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_5_0() { return cLeftParenthesisKeyword_5_0; }
+		
+		//Expression
+		public RuleCall getExpressionParserRuleCall_5_1() { return cExpressionParserRuleCall_5_1; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_5_2() { return cRightParenthesisKeyword_5_2; }
 	}
 	public class LongElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fire.Fire.Long");
@@ -283,7 +320,8 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 	
 	//Expression:
 	//	{StringLiteral} value=STRING | {BooleanLiteral} (value?='true' | 'false') | {IntegerLiteral} value=Long |
-	//	{RealLiteral} value=Double;
+	//	{RealLiteral} value=Double | {NotExpression} 'not' operand=Expression |
+	//	'(' Expression ')';
 	public ExpressionElements getExpressionAccess() {
 		return pExpression;
 	}
