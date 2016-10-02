@@ -2,6 +2,7 @@ package fire.generator
 
 import fire.fire.BooleanLiteral
 import fire.fire.IntegerLiteral
+import fire.fire.NegationExpression
 import fire.fire.NotExpression
 import fire.fire.Program
 import fire.fire.RealLiteral
@@ -106,5 +107,13 @@ class FireGenerator extends AbstractGenerator {
 	
 	def private dispatch Value generateExpression(NotExpression expression) {
 		builder.createNot(expression.operand.generateExpression)
+	}
+	
+	def private dispatch Value generateExpression(NegationExpression expression) {
+		switch expression.operand.type {
+			case INTEGER: builder.createNeg(expression.operand.generateExpression)
+			case REAL: builder.createFNeg(expression.operand.generateExpression)
+			default: null
+		}
 	}
 }

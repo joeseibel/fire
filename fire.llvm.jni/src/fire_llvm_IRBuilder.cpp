@@ -31,6 +31,18 @@ JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilder_createCondBr(JNIEnv *env, job
 	return toJava(env, "fire/llvm/BranchInst", toNative<llvm::IRBuilder<>>(env, obj)->CreateCondBr(condNative, trueBlockNative, falseBlockNative));
 }
 
+//Java method: public native Value createNeg(Value v);
+JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilder_createNeg(JNIEnv *env, jobject obj, jobject v) {
+	llvm::Value *vNative = toNative<llvm::Value>(env, v);
+	return toJava(env, "fire/llvm/Value", toNative<llvm::IRBuilder<>>(env, obj)->CreateNeg(vNative));
+}
+
+//Java method: public native Value createFNeg(Value v);
+JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilder_createFNeg(JNIEnv *env, jobject obj, jobject v) {
+	llvm::Value *vNative = toNative<llvm::Value>(env, v);
+	return toJava(env, "fire/llvm/Value", toNative<llvm::IRBuilder<>>(env, obj)->CreateFNeg(vNative));
+}
+
 //Java method: public native Value createNot(Value v);
 JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilder_createNot(JNIEnv *env, jobject obj, jobject v) {
 	llvm::Value *vNative = toNative<llvm::Value>(env, v);

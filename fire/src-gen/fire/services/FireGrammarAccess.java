@@ -115,18 +115,24 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cOperandAssignment_4_2 = (Assignment)cGroup_4.eContents().get(2);
 		private final RuleCall cOperandExpressionParserRuleCall_4_2_0 = (RuleCall)cOperandAssignment_4_2.eContents().get(0);
 		private final Group cGroup_5 = (Group)cAlternatives.eContents().get(5);
-		private final Keyword cLeftParenthesisKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
-		private final RuleCall cExpressionParserRuleCall_5_1 = (RuleCall)cGroup_5.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_5_2 = (Keyword)cGroup_5.eContents().get(2);
+		private final Action cNegationExpressionAction_5_0 = (Action)cGroup_5.eContents().get(0);
+		private final Keyword cHyphenMinusKeyword_5_1 = (Keyword)cGroup_5.eContents().get(1);
+		private final Assignment cOperandAssignment_5_2 = (Assignment)cGroup_5.eContents().get(2);
+		private final RuleCall cOperandExpressionParserRuleCall_5_2_0 = (RuleCall)cOperandAssignment_5_2.eContents().get(0);
+		private final Group cGroup_6 = (Group)cAlternatives.eContents().get(6);
+		private final Keyword cLeftParenthesisKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
+		private final RuleCall cExpressionParserRuleCall_6_1 = (RuleCall)cGroup_6.eContents().get(1);
+		private final Keyword cRightParenthesisKeyword_6_2 = (Keyword)cGroup_6.eContents().get(2);
 		
 		//Expression:
 		//	{StringLiteral} value=STRING | {BooleanLiteral} (value?='true' | 'false') | {IntegerLiteral} value=Long |
-		//	{RealLiteral} value=Double | {NotExpression} 'not' operand=Expression |
+		//	{RealLiteral} value=Double | {NotExpression} 'not' operand=Expression | {NegationExpression} '-' operand=Expression |
 		//	'(' Expression ')';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//{StringLiteral} value=STRING | {BooleanLiteral} (value?='true' | 'false') | {IntegerLiteral} value=Long | {RealLiteral}
-		//value=Double | {NotExpression} 'not' operand=Expression | '(' Expression ')'
+		//value=Double | {NotExpression} 'not' operand=Expression | {NegationExpression} '-' operand=Expression | '(' Expression
+		//')'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//{StringLiteral} value=STRING
@@ -198,17 +204,32 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 		//Expression
 		public RuleCall getOperandExpressionParserRuleCall_4_2_0() { return cOperandExpressionParserRuleCall_4_2_0; }
 		
-		//'(' Expression ')'
+		//{NegationExpression} '-' operand=Expression
 		public Group getGroup_5() { return cGroup_5; }
 		
-		//'('
-		public Keyword getLeftParenthesisKeyword_5_0() { return cLeftParenthesisKeyword_5_0; }
+		//{NegationExpression}
+		public Action getNegationExpressionAction_5_0() { return cNegationExpressionAction_5_0; }
+		
+		//'-'
+		public Keyword getHyphenMinusKeyword_5_1() { return cHyphenMinusKeyword_5_1; }
+		
+		//operand=Expression
+		public Assignment getOperandAssignment_5_2() { return cOperandAssignment_5_2; }
 		
 		//Expression
-		public RuleCall getExpressionParserRuleCall_5_1() { return cExpressionParserRuleCall_5_1; }
+		public RuleCall getOperandExpressionParserRuleCall_5_2_0() { return cOperandExpressionParserRuleCall_5_2_0; }
+		
+		//'(' Expression ')'
+		public Group getGroup_6() { return cGroup_6; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_6_0() { return cLeftParenthesisKeyword_6_0; }
+		
+		//Expression
+		public RuleCall getExpressionParserRuleCall_6_1() { return cExpressionParserRuleCall_6_1; }
 		
 		//')'
-		public Keyword getRightParenthesisKeyword_5_2() { return cRightParenthesisKeyword_5_2; }
+		public Keyword getRightParenthesisKeyword_6_2() { return cRightParenthesisKeyword_6_2; }
 	}
 	public class LongElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fire.Fire.Long");
@@ -320,7 +341,7 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 	
 	//Expression:
 	//	{StringLiteral} value=STRING | {BooleanLiteral} (value?='true' | 'false') | {IntegerLiteral} value=Long |
-	//	{RealLiteral} value=Double | {NotExpression} 'not' operand=Expression |
+	//	{RealLiteral} value=Double | {NotExpression} 'not' operand=Expression | {NegationExpression} '-' operand=Expression |
 	//	'(' Expression ')';
 	public ExpressionElements getExpressionAccess() {
 		return pExpression;

@@ -7,6 +7,7 @@ import com.google.inject.Inject;
 import fire.fire.BooleanLiteral;
 import fire.fire.FirePackage;
 import fire.fire.IntegerLiteral;
+import fire.fire.NegationExpression;
 import fire.fire.NotExpression;
 import fire.fire.Program;
 import fire.fire.RealLiteral;
@@ -43,6 +44,9 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				return; 
 			case FirePackage.INTEGER_LITERAL:
 				sequence_Expression(context, (IntegerLiteral) semanticObject); 
+				return; 
+			case FirePackage.NEGATION_EXPRESSION:
+				sequence_Expression(context, (NegationExpression) semanticObject); 
 				return; 
 			case FirePackage.NOT_EXPRESSION:
 				sequence_Expression(context, (NotExpression) semanticObject); 
@@ -90,6 +94,24 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getExpressionAccess().getValueLongParserRuleCall_2_1_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Expression returns NegationExpression
+	 *
+	 * Constraint:
+	 *     operand=Expression
+	 */
+	protected void sequence_Expression(ISerializationContext context, NegationExpression semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, FirePackage.Literals.NEGATION_EXPRESSION__OPERAND) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FirePackage.Literals.NEGATION_EXPRESSION__OPERAND));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getExpressionAccess().getOperandExpressionParserRuleCall_5_2_0(), semanticObject.getOperand());
 		feeder.finish();
 	}
 	

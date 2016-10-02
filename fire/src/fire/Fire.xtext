@@ -20,6 +20,7 @@ Expression:
 	{IntegerLiteral} value=Long |
 	{RealLiteral} value=Double |
 	{NotExpression} 'not' operand=Expression |
+	{NegationExpression} '-' operand=Expression |
 	'(' Expression ')'
 ;
 

@@ -20,12 +20,12 @@ import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 public class FireSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected FireGrammarAccess grammarAccess;
-	protected AbstractElementAlias match_Expression_LeftParenthesisKeyword_5_0_a;
+	protected AbstractElementAlias match_Expression_LeftParenthesisKeyword_6_0_a;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (FireGrammarAccess) access;
-		match_Expression_LeftParenthesisKeyword_5_0_a = new TokenAlias(true, true, grammarAccess.getExpressionAccess().getLeftParenthesisKeyword_5_0());
+		match_Expression_LeftParenthesisKeyword_6_0_a = new TokenAlias(true, true, grammarAccess.getExpressionAccess().getLeftParenthesisKeyword_6_0());
 	}
 	
 	@Override
@@ -40,8 +40,8 @@ public class FireSyntacticSequencer extends AbstractSyntacticSequencer {
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if (match_Expression_LeftParenthesisKeyword_5_0_a.equals(syntax))
-				emit_Expression_LeftParenthesisKeyword_5_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
+			if (match_Expression_LeftParenthesisKeyword_6_0_a.equals(syntax))
+				emit_Expression_LeftParenthesisKeyword_6_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
@@ -51,6 +51,7 @@ public class FireSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     '('*
 	 *
 	 * This ambiguous syntax occurs at:
+	 *     (rule start) (ambiguity) '-' operand=Expression
 	 *     (rule start) (ambiguity) 'false' (rule start)
 	 *     (rule start) (ambiguity) 'not' operand=Expression
 	 *     (rule start) (ambiguity) value=Double
@@ -58,7 +59,7 @@ public class FireSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     (rule start) (ambiguity) value=STRING
 	 *     (rule start) (ambiguity) value?='true'
 	 */
-	protected void emit_Expression_LeftParenthesisKeyword_5_0_a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_Expression_LeftParenthesisKeyword_6_0_a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

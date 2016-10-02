@@ -96,6 +96,15 @@ public interface FireFactory extends EFactory
   NotExpression createNotExpression();
 
   /**
+   * Returns a new object of class '<em>Negation Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Negation Expression</em>'.
+   * @generated
+   */
+  NegationExpression createNegationExpression();
+
+  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

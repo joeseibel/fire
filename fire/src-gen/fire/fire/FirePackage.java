@@ -272,6 +272,34 @@ public interface FirePackage extends EPackage
    */
   int NOT_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
+  /**
+   * The meta object id for the '{@link fire.fire.impl.NegationExpressionImpl <em>Negation Expression</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see fire.fire.impl.NegationExpressionImpl
+   * @see fire.fire.impl.FirePackageImpl#getNegationExpression()
+   * @generated
+   */
+  int NEGATION_EXPRESSION = 8;
+
+  /**
+   * The feature id for the '<em><b>Operand</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NEGATION_EXPRESSION__OPERAND = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Negation Expression</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NEGATION_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
+
 
   /**
    * Returns the meta object for class '{@link fire.fire.Program <em>Program</em>}'.
@@ -431,6 +459,27 @@ public interface FirePackage extends EPackage
   EReference getNotExpression_Operand();
 
   /**
+   * Returns the meta object for class '{@link fire.fire.NegationExpression <em>Negation Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Negation Expression</em>'.
+   * @see fire.fire.NegationExpression
+   * @generated
+   */
+  EClass getNegationExpression();
+
+  /**
+   * Returns the meta object for the containment reference '{@link fire.fire.NegationExpression#getOperand <em>Operand</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Operand</em>'.
+   * @see fire.fire.NegationExpression#getOperand()
+   * @see #getNegationExpression()
+   * @generated
+   */
+  EReference getNegationExpression_Operand();
+
+  /**
    * Returns the factory that creates the instances of the model.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -588,6 +637,24 @@ public interface FirePackage extends EPackage
      * @generated
      */
     EReference NOT_EXPRESSION__OPERAND = eINSTANCE.getNotExpression_Operand();
+
+    /**
+     * The meta object literal for the '{@link fire.fire.impl.NegationExpressionImpl <em>Negation Expression</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see fire.fire.impl.NegationExpressionImpl
+     * @see fire.fire.impl.FirePackageImpl#getNegationExpression()
+     * @generated
+     */
+    EClass NEGATION_EXPRESSION = eINSTANCE.getNegationExpression();
+
+    /**
+     * The meta object literal for the '<em><b>Operand</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference NEGATION_EXPRESSION__OPERAND = eINSTANCE.getNegationExpression_Operand();
 
   }
 

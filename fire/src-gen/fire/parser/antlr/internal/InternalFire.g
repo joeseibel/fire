@@ -330,21 +330,54 @@ ruleExpression returns [EObject current=null]
 		)
 		    |
 		(
-			otherlv_12='('
+			(
+				{
+					$current = forceCreateModelElement(
+						grammarAccess.getExpressionAccess().getNegationExpressionAction_5_0(),
+						$current);
+				}
+			)
+			otherlv_13='-'
 			{
-				newLeafNode(otherlv_12, grammarAccess.getExpressionAccess().getLeftParenthesisKeyword_5_0());
+				newLeafNode(otherlv_13, grammarAccess.getExpressionAccess().getHyphenMinusKeyword_5_1());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getExpressionAccess().getOperandExpressionParserRuleCall_5_2_0());
+					}
+					lv_operand_14_0=ruleExpression
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getExpressionRule());
+						}
+						set(
+							$current,
+							"operand",
+							lv_operand_14_0,
+							"fire.Fire.Expression");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)
+		    |
+		(
+			otherlv_15='('
+			{
+				newLeafNode(otherlv_15, grammarAccess.getExpressionAccess().getLeftParenthesisKeyword_6_0());
 			}
 			{
-				newCompositeNode(grammarAccess.getExpressionAccess().getExpressionParserRuleCall_5_1());
+				newCompositeNode(grammarAccess.getExpressionAccess().getExpressionParserRuleCall_6_1());
 			}
-			this_Expression_13=ruleExpression
+			this_Expression_16=ruleExpression
 			{
-				$current = $this_Expression_13.current;
+				$current = $this_Expression_16.current;
 				afterParserOrEnumRuleCall();
 			}
-			otherlv_14=')'
+			otherlv_17=')'
 			{
-				newLeafNode(otherlv_14, grammarAccess.getExpressionAccess().getRightParenthesisKeyword_5_2());
+				newLeafNode(otherlv_17, grammarAccess.getExpressionAccess().getRightParenthesisKeyword_6_2());
 			}
 		)
 	)

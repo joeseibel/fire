@@ -8,6 +8,7 @@ import fire.fire.Expression;
 import fire.fire.FireFactory;
 import fire.fire.FirePackage;
 import fire.fire.IntegerLiteral;
+import fire.fire.NegationExpression;
 import fire.fire.NotExpression;
 import fire.fire.Program;
 import fire.fire.RealLiteral;
@@ -84,6 +85,13 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
    * @generated
    */
   private EClass notExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass negationExpressionEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -303,6 +311,26 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getNegationExpression()
+  {
+    return negationExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getNegationExpression_Operand()
+  {
+    return (EReference)negationExpressionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public FireFactory getFireFactory()
   {
     return (FireFactory)getEFactoryInstance();
@@ -350,6 +378,9 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
 
     notExpressionEClass = createEClass(NOT_EXPRESSION);
     createEReference(notExpressionEClass, NOT_EXPRESSION__OPERAND);
+
+    negationExpressionEClass = createEClass(NEGATION_EXPRESSION);
+    createEReference(negationExpressionEClass, NEGATION_EXPRESSION__OPERAND);
   }
 
   /**
@@ -386,6 +417,7 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
     integerLiteralEClass.getESuperTypes().add(this.getExpression());
     realLiteralEClass.getESuperTypes().add(this.getExpression());
     notExpressionEClass.getESuperTypes().add(this.getExpression());
+    negationExpressionEClass.getESuperTypes().add(this.getExpression());
 
     // Initialize classes and features; add operations and parameters
     initEClass(programEClass, Program.class, "Program", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -410,6 +442,9 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
 
     initEClass(notExpressionEClass, NotExpression.class, "NotExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getNotExpression_Operand(), this.getExpression(), null, "operand", null, 0, 1, NotExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(negationExpressionEClass, NegationExpression.class, "NegationExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getNegationExpression_Operand(), this.getExpression(), null, "operand", null, 0, 1, NegationExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

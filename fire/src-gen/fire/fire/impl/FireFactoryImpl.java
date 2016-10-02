@@ -73,6 +73,7 @@ public class FireFactoryImpl extends EFactoryImpl implements FireFactory
       case FirePackage.INTEGER_LITERAL: return createIntegerLiteral();
       case FirePackage.REAL_LITERAL: return createRealLiteral();
       case FirePackage.NOT_EXPRESSION: return createNotExpression();
+      case FirePackage.NEGATION_EXPRESSION: return createNegationExpression();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -164,6 +165,17 @@ public class FireFactoryImpl extends EFactoryImpl implements FireFactory
   {
     NotExpressionImpl notExpression = new NotExpressionImpl();
     return notExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NegationExpression createNegationExpression()
+  {
+    NegationExpressionImpl negationExpression = new NegationExpressionImpl();
+    return negationExpression;
   }
 
   /**

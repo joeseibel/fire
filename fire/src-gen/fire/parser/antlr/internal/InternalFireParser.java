@@ -21,7 +21,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalFireParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_INT", "RULE_ID", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'program'", "'end'", "'writeln'", "'('", "')'", "'true'", "'false'", "'not'", "'.'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_INT", "RULE_ID", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'program'", "'end'", "'writeln'", "'('", "')'", "'true'", "'false'", "'not'", "'-'", "'.'"
     };
     public static final int RULE_STRING=4;
     public static final int RULE_SL_COMMENT=8;
@@ -40,6 +40,7 @@ public class InternalFireParser extends AbstractInternalAntlrParser {
     public static final int RULE_ANY_OTHER=10;
     public static final int RULE_INT=5;
     public static final int RULE_ML_COMMENT=7;
+    public static final int T__20=20;
 
     // delegates
     // delegators
@@ -385,7 +386,7 @@ public class InternalFireParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleExpression"
-    // InternalFire.g:174:1: ruleExpression returns [EObject current=null] : ( ( () ( (lv_value_1_0= RULE_STRING ) ) ) | ( () ( ( (lv_value_3_0= 'true' ) ) | otherlv_4= 'false' ) ) | ( () ( (lv_value_6_0= ruleLong ) ) ) | ( () ( (lv_value_8_0= ruleDouble ) ) ) | ( () otherlv_10= 'not' ( (lv_operand_11_0= ruleExpression ) ) ) | (otherlv_12= '(' this_Expression_13= ruleExpression otherlv_14= ')' ) ) ;
+    // InternalFire.g:174:1: ruleExpression returns [EObject current=null] : ( ( () ( (lv_value_1_0= RULE_STRING ) ) ) | ( () ( ( (lv_value_3_0= 'true' ) ) | otherlv_4= 'false' ) ) | ( () ( (lv_value_6_0= ruleLong ) ) ) | ( () ( (lv_value_8_0= ruleDouble ) ) ) | ( () otherlv_10= 'not' ( (lv_operand_11_0= ruleExpression ) ) ) | ( () otherlv_13= '-' ( (lv_operand_14_0= ruleExpression ) ) ) | (otherlv_15= '(' this_Expression_16= ruleExpression otherlv_17= ')' ) ) ;
     public final EObject ruleExpression() throws RecognitionException {
         EObject current = null;
 
@@ -393,26 +394,29 @@ public class InternalFireParser extends AbstractInternalAntlrParser {
         Token lv_value_3_0=null;
         Token otherlv_4=null;
         Token otherlv_10=null;
-        Token otherlv_12=null;
-        Token otherlv_14=null;
+        Token otherlv_13=null;
+        Token otherlv_15=null;
+        Token otherlv_17=null;
         AntlrDatatypeRuleToken lv_value_6_0 = null;
 
         AntlrDatatypeRuleToken lv_value_8_0 = null;
 
         EObject lv_operand_11_0 = null;
 
-        EObject this_Expression_13 = null;
+        EObject lv_operand_14_0 = null;
+
+        EObject this_Expression_16 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalFire.g:180:2: ( ( ( () ( (lv_value_1_0= RULE_STRING ) ) ) | ( () ( ( (lv_value_3_0= 'true' ) ) | otherlv_4= 'false' ) ) | ( () ( (lv_value_6_0= ruleLong ) ) ) | ( () ( (lv_value_8_0= ruleDouble ) ) ) | ( () otherlv_10= 'not' ( (lv_operand_11_0= ruleExpression ) ) ) | (otherlv_12= '(' this_Expression_13= ruleExpression otherlv_14= ')' ) ) )
-            // InternalFire.g:181:2: ( ( () ( (lv_value_1_0= RULE_STRING ) ) ) | ( () ( ( (lv_value_3_0= 'true' ) ) | otherlv_4= 'false' ) ) | ( () ( (lv_value_6_0= ruleLong ) ) ) | ( () ( (lv_value_8_0= ruleDouble ) ) ) | ( () otherlv_10= 'not' ( (lv_operand_11_0= ruleExpression ) ) ) | (otherlv_12= '(' this_Expression_13= ruleExpression otherlv_14= ')' ) )
+            // InternalFire.g:180:2: ( ( ( () ( (lv_value_1_0= RULE_STRING ) ) ) | ( () ( ( (lv_value_3_0= 'true' ) ) | otherlv_4= 'false' ) ) | ( () ( (lv_value_6_0= ruleLong ) ) ) | ( () ( (lv_value_8_0= ruleDouble ) ) ) | ( () otherlv_10= 'not' ( (lv_operand_11_0= ruleExpression ) ) ) | ( () otherlv_13= '-' ( (lv_operand_14_0= ruleExpression ) ) ) | (otherlv_15= '(' this_Expression_16= ruleExpression otherlv_17= ')' ) ) )
+            // InternalFire.g:181:2: ( ( () ( (lv_value_1_0= RULE_STRING ) ) ) | ( () ( ( (lv_value_3_0= 'true' ) ) | otherlv_4= 'false' ) ) | ( () ( (lv_value_6_0= ruleLong ) ) ) | ( () ( (lv_value_8_0= ruleDouble ) ) ) | ( () otherlv_10= 'not' ( (lv_operand_11_0= ruleExpression ) ) ) | ( () otherlv_13= '-' ( (lv_operand_14_0= ruleExpression ) ) ) | (otherlv_15= '(' this_Expression_16= ruleExpression otherlv_17= ')' ) )
             {
-            // InternalFire.g:181:2: ( ( () ( (lv_value_1_0= RULE_STRING ) ) ) | ( () ( ( (lv_value_3_0= 'true' ) ) | otherlv_4= 'false' ) ) | ( () ( (lv_value_6_0= ruleLong ) ) ) | ( () ( (lv_value_8_0= ruleDouble ) ) ) | ( () otherlv_10= 'not' ( (lv_operand_11_0= ruleExpression ) ) ) | (otherlv_12= '(' this_Expression_13= ruleExpression otherlv_14= ')' ) )
-            int alt3=6;
+            // InternalFire.g:181:2: ( ( () ( (lv_value_1_0= RULE_STRING ) ) ) | ( () ( ( (lv_value_3_0= 'true' ) ) | otherlv_4= 'false' ) ) | ( () ( (lv_value_6_0= ruleLong ) ) ) | ( () ( (lv_value_8_0= ruleDouble ) ) ) | ( () otherlv_10= 'not' ( (lv_operand_11_0= ruleExpression ) ) ) | ( () otherlv_13= '-' ( (lv_operand_14_0= ruleExpression ) ) ) | (otherlv_15= '(' this_Expression_16= ruleExpression otherlv_17= ')' ) )
+            int alt3=7;
             switch ( input.LA(1) ) {
             case RULE_STRING:
                 {
@@ -429,11 +433,11 @@ public class InternalFireParser extends AbstractInternalAntlrParser {
                 {
                 int LA3_3 = input.LA(2);
 
-                if ( (LA3_3==19) ) {
-                    alt3=4;
-                }
-                else if ( (LA3_3==EOF||LA3_3==15) ) {
+                if ( (LA3_3==EOF||LA3_3==15) ) {
                     alt3=3;
+                }
+                else if ( (LA3_3==20) ) {
+                    alt3=4;
                 }
                 else {
                     NoViableAltException nvae =
@@ -448,9 +452,14 @@ public class InternalFireParser extends AbstractInternalAntlrParser {
                 alt3=5;
                 }
                 break;
-            case 14:
+            case 19:
                 {
                 alt3=6;
+                }
+                break;
+            case 14:
+                {
+                alt3=7;
                 }
                 break;
             default:
@@ -758,30 +767,88 @@ public class InternalFireParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 6 :
-                    // InternalFire.g:332:3: (otherlv_12= '(' this_Expression_13= ruleExpression otherlv_14= ')' )
+                    // InternalFire.g:332:3: ( () otherlv_13= '-' ( (lv_operand_14_0= ruleExpression ) ) )
                     {
-                    // InternalFire.g:332:3: (otherlv_12= '(' this_Expression_13= ruleExpression otherlv_14= ')' )
-                    // InternalFire.g:333:4: otherlv_12= '(' this_Expression_13= ruleExpression otherlv_14= ')'
+                    // InternalFire.g:332:3: ( () otherlv_13= '-' ( (lv_operand_14_0= ruleExpression ) ) )
+                    // InternalFire.g:333:4: () otherlv_13= '-' ( (lv_operand_14_0= ruleExpression ) )
                     {
-                    otherlv_12=(Token)match(input,14,FOLLOW_5); 
+                    // InternalFire.g:333:4: ()
+                    // InternalFire.g:334:5: 
+                    {
 
-                    				newLeafNode(otherlv_12, grammarAccess.getExpressionAccess().getLeftParenthesisKeyword_5_0());
-                    			
+                    					current = forceCreateModelElement(
+                    						grammarAccess.getExpressionAccess().getNegationExpressionAction_5_0(),
+                    						current);
+                    				
 
-                    				newCompositeNode(grammarAccess.getExpressionAccess().getExpressionParserRuleCall_5_1());
+                    }
+
+                    otherlv_13=(Token)match(input,19,FOLLOW_5); 
+
+                    				newLeafNode(otherlv_13, grammarAccess.getExpressionAccess().getHyphenMinusKeyword_5_1());
                     			
-                    pushFollow(FOLLOW_6);
-                    this_Expression_13=ruleExpression();
+                    // InternalFire.g:344:4: ( (lv_operand_14_0= ruleExpression ) )
+                    // InternalFire.g:345:5: (lv_operand_14_0= ruleExpression )
+                    {
+                    // InternalFire.g:345:5: (lv_operand_14_0= ruleExpression )
+                    // InternalFire.g:346:6: lv_operand_14_0= ruleExpression
+                    {
+
+                    						newCompositeNode(grammarAccess.getExpressionAccess().getOperandExpressionParserRuleCall_5_2_0());
+                    					
+                    pushFollow(FOLLOW_2);
+                    lv_operand_14_0=ruleExpression();
 
                     state._fsp--;
 
 
-                    				current = this_Expression_13;
+                    						if (current==null) {
+                    							current = createModelElementForParent(grammarAccess.getExpressionRule());
+                    						}
+                    						set(
+                    							current,
+                    							"operand",
+                    							lv_operand_14_0,
+                    							"fire.Fire.Expression");
+                    						afterParserOrEnumRuleCall();
+                    					
+
+                    }
+
+
+                    }
+
+
+                    }
+
+
+                    }
+                    break;
+                case 7 :
+                    // InternalFire.g:365:3: (otherlv_15= '(' this_Expression_16= ruleExpression otherlv_17= ')' )
+                    {
+                    // InternalFire.g:365:3: (otherlv_15= '(' this_Expression_16= ruleExpression otherlv_17= ')' )
+                    // InternalFire.g:366:4: otherlv_15= '(' this_Expression_16= ruleExpression otherlv_17= ')'
+                    {
+                    otherlv_15=(Token)match(input,14,FOLLOW_5); 
+
+                    				newLeafNode(otherlv_15, grammarAccess.getExpressionAccess().getLeftParenthesisKeyword_6_0());
+                    			
+
+                    				newCompositeNode(grammarAccess.getExpressionAccess().getExpressionParserRuleCall_6_1());
+                    			
+                    pushFollow(FOLLOW_6);
+                    this_Expression_16=ruleExpression();
+
+                    state._fsp--;
+
+
+                    				current = this_Expression_16;
                     				afterParserOrEnumRuleCall();
                     			
-                    otherlv_14=(Token)match(input,15,FOLLOW_2); 
+                    otherlv_17=(Token)match(input,15,FOLLOW_2); 
 
-                    				newLeafNode(otherlv_14, grammarAccess.getExpressionAccess().getRightParenthesisKeyword_5_2());
+                    				newLeafNode(otherlv_17, grammarAccess.getExpressionAccess().getRightParenthesisKeyword_6_2());
                     			
 
                     }
@@ -812,7 +879,7 @@ public class InternalFireParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleLong"
-    // InternalFire.g:354:1: entryRuleLong returns [String current=null] : iv_ruleLong= ruleLong EOF ;
+    // InternalFire.g:387:1: entryRuleLong returns [String current=null] : iv_ruleLong= ruleLong EOF ;
     public final String entryRuleLong() throws RecognitionException {
         String current = null;
 
@@ -820,8 +887,8 @@ public class InternalFireParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalFire.g:354:44: (iv_ruleLong= ruleLong EOF )
-            // InternalFire.g:355:2: iv_ruleLong= ruleLong EOF
+            // InternalFire.g:387:44: (iv_ruleLong= ruleLong EOF )
+            // InternalFire.g:388:2: iv_ruleLong= ruleLong EOF
             {
              newCompositeNode(grammarAccess.getLongRule()); 
             pushFollow(FOLLOW_1);
@@ -848,7 +915,7 @@ public class InternalFireParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleLong"
-    // InternalFire.g:361:1: ruleLong returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_INT_0= RULE_INT ;
+    // InternalFire.g:394:1: ruleLong returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_INT_0= RULE_INT ;
     public final AntlrDatatypeRuleToken ruleLong() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -858,8 +925,8 @@ public class InternalFireParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalFire.g:367:2: (this_INT_0= RULE_INT )
-            // InternalFire.g:368:2: this_INT_0= RULE_INT
+            // InternalFire.g:400:2: (this_INT_0= RULE_INT )
+            // InternalFire.g:401:2: this_INT_0= RULE_INT
             {
             this_INT_0=(Token)match(input,RULE_INT,FOLLOW_2); 
 
@@ -888,7 +955,7 @@ public class InternalFireParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleDouble"
-    // InternalFire.g:378:1: entryRuleDouble returns [String current=null] : iv_ruleDouble= ruleDouble EOF ;
+    // InternalFire.g:411:1: entryRuleDouble returns [String current=null] : iv_ruleDouble= ruleDouble EOF ;
     public final String entryRuleDouble() throws RecognitionException {
         String current = null;
 
@@ -896,8 +963,8 @@ public class InternalFireParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalFire.g:378:46: (iv_ruleDouble= ruleDouble EOF )
-            // InternalFire.g:379:2: iv_ruleDouble= ruleDouble EOF
+            // InternalFire.g:411:46: (iv_ruleDouble= ruleDouble EOF )
+            // InternalFire.g:412:2: iv_ruleDouble= ruleDouble EOF
             {
              newCompositeNode(grammarAccess.getDoubleRule()); 
             pushFollow(FOLLOW_1);
@@ -924,7 +991,7 @@ public class InternalFireParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleDouble"
-    // InternalFire.g:385:1: ruleDouble returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_INT_0= RULE_INT kw= '.' this_INT_2= RULE_INT ) ;
+    // InternalFire.g:418:1: ruleDouble returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_INT_0= RULE_INT kw= '.' this_INT_2= RULE_INT ) ;
     public final AntlrDatatypeRuleToken ruleDouble() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -936,11 +1003,11 @@ public class InternalFireParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalFire.g:391:2: ( (this_INT_0= RULE_INT kw= '.' this_INT_2= RULE_INT ) )
-            // InternalFire.g:392:2: (this_INT_0= RULE_INT kw= '.' this_INT_2= RULE_INT )
+            // InternalFire.g:424:2: ( (this_INT_0= RULE_INT kw= '.' this_INT_2= RULE_INT ) )
+            // InternalFire.g:425:2: (this_INT_0= RULE_INT kw= '.' this_INT_2= RULE_INT )
             {
-            // InternalFire.g:392:2: (this_INT_0= RULE_INT kw= '.' this_INT_2= RULE_INT )
-            // InternalFire.g:393:3: this_INT_0= RULE_INT kw= '.' this_INT_2= RULE_INT
+            // InternalFire.g:425:2: (this_INT_0= RULE_INT kw= '.' this_INT_2= RULE_INT )
+            // InternalFire.g:426:3: this_INT_0= RULE_INT kw= '.' this_INT_2= RULE_INT
             {
             this_INT_0=(Token)match(input,RULE_INT,FOLLOW_7); 
 
@@ -949,7 +1016,7 @@ public class InternalFireParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(this_INT_0, grammarAccess.getDoubleAccess().getINTTerminalRuleCall_0());
             		
-            kw=(Token)match(input,19,FOLLOW_8); 
+            kw=(Token)match(input,20,FOLLOW_8); 
 
             			current.merge(kw);
             			newLeafNode(kw, grammarAccess.getDoubleAccess().getFullStopKeyword_1());
@@ -991,9 +1058,9 @@ public class InternalFireParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_2 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000000003000L});
     public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000074030L});
+    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x00000000000F4030L});
     public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000000008000L});
-    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000000080000L});
+    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000000100000L});
     public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000000000020L});
 
 }
