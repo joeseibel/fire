@@ -3,6 +3,8 @@
  */
 package fire.fire.impl;
 
+import fire.fire.AdditiveExpression;
+import fire.fire.AdditiveOperator;
 import fire.fire.BooleanLiteral;
 import fire.fire.Expression;
 import fire.fire.FireFactory;
@@ -59,6 +61,13 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass additiveExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass multiplicativeExpressionEClass = null;
 
   /**
@@ -102,6 +111,13 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
    * @generated
    */
   private EClass negationExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum additiveOperatorEEnum = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -221,6 +237,46 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
   public EClass getExpression()
   {
     return expressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getAdditiveExpression()
+  {
+    return additiveExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getAdditiveExpression_Left()
+  {
+    return (EReference)additiveExpressionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getAdditiveExpression_Operator()
+  {
+    return (EAttribute)additiveExpressionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getAdditiveExpression_Right()
+  {
+    return (EReference)additiveExpressionEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -388,6 +444,16 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EEnum getAdditiveOperator()
+  {
+    return additiveOperatorEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EEnum getMultiplicativeOperator()
   {
     return multiplicativeOperatorEEnum;
@@ -431,6 +497,11 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
 
     expressionEClass = createEClass(EXPRESSION);
 
+    additiveExpressionEClass = createEClass(ADDITIVE_EXPRESSION);
+    createEReference(additiveExpressionEClass, ADDITIVE_EXPRESSION__LEFT);
+    createEAttribute(additiveExpressionEClass, ADDITIVE_EXPRESSION__OPERATOR);
+    createEReference(additiveExpressionEClass, ADDITIVE_EXPRESSION__RIGHT);
+
     multiplicativeExpressionEClass = createEClass(MULTIPLICATIVE_EXPRESSION);
     createEReference(multiplicativeExpressionEClass, MULTIPLICATIVE_EXPRESSION__LEFT);
     createEAttribute(multiplicativeExpressionEClass, MULTIPLICATIVE_EXPRESSION__OPERATOR);
@@ -455,6 +526,7 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
     createEReference(negationExpressionEClass, NEGATION_EXPRESSION__OPERAND);
 
     // Create enums
+    additiveOperatorEEnum = createEEnum(ADDITIVE_OPERATOR);
     multiplicativeOperatorEEnum = createEEnum(MULTIPLICATIVE_OPERATOR);
   }
 
@@ -487,6 +559,7 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
+    additiveExpressionEClass.getESuperTypes().add(this.getExpression());
     multiplicativeExpressionEClass.getESuperTypes().add(this.getExpression());
     stringLiteralEClass.getESuperTypes().add(this.getExpression());
     booleanLiteralEClass.getESuperTypes().add(this.getExpression());
@@ -503,6 +576,11 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
     initEReference(getWritelnStatement_Argument(), this.getExpression(), null, "argument", null, 0, 1, WritelnStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(expressionEClass, Expression.class, "Expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(additiveExpressionEClass, AdditiveExpression.class, "AdditiveExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getAdditiveExpression_Left(), this.getExpression(), null, "left", null, 0, 1, AdditiveExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAdditiveExpression_Operator(), this.getAdditiveOperator(), "operator", null, 0, 1, AdditiveExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAdditiveExpression_Right(), this.getExpression(), null, "right", null, 0, 1, AdditiveExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(multiplicativeExpressionEClass, MultiplicativeExpression.class, "MultiplicativeExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getMultiplicativeExpression_Left(), this.getExpression(), null, "left", null, 0, 1, MultiplicativeExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -528,6 +606,10 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
     initEReference(getNegationExpression_Operand(), this.getExpression(), null, "operand", null, 0, 1, NegationExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Initialize enums and add enum literals
+    initEEnum(additiveOperatorEEnum, AdditiveOperator.class, "AdditiveOperator");
+    addEEnumLiteral(additiveOperatorEEnum, AdditiveOperator.ADD);
+    addEEnumLiteral(additiveOperatorEEnum, AdditiveOperator.SUBTRACT);
+
     initEEnum(multiplicativeOperatorEEnum, MultiplicativeOperator.class, "MultiplicativeOperator");
     addEEnumLiteral(multiplicativeOperatorEEnum, MultiplicativeOperator.MULTIPLY);
     addEEnumLiteral(multiplicativeOperatorEEnum, MultiplicativeOperator.REAL_DIVIDE);

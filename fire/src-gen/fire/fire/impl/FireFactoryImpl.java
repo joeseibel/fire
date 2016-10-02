@@ -69,6 +69,7 @@ public class FireFactoryImpl extends EFactoryImpl implements FireFactory
       case FirePackage.PROGRAM: return createProgram();
       case FirePackage.WRITELN_STATEMENT: return createWritelnStatement();
       case FirePackage.EXPRESSION: return createExpression();
+      case FirePackage.ADDITIVE_EXPRESSION: return createAdditiveExpression();
       case FirePackage.MULTIPLICATIVE_EXPRESSION: return createMultiplicativeExpression();
       case FirePackage.STRING_LITERAL: return createStringLiteral();
       case FirePackage.BOOLEAN_LITERAL: return createBooleanLiteral();
@@ -91,6 +92,8 @@ public class FireFactoryImpl extends EFactoryImpl implements FireFactory
   {
     switch (eDataType.getClassifierID())
     {
+      case FirePackage.ADDITIVE_OPERATOR:
+        return createAdditiveOperatorFromString(eDataType, initialValue);
       case FirePackage.MULTIPLICATIVE_OPERATOR:
         return createMultiplicativeOperatorFromString(eDataType, initialValue);
       default:
@@ -108,6 +111,8 @@ public class FireFactoryImpl extends EFactoryImpl implements FireFactory
   {
     switch (eDataType.getClassifierID())
     {
+      case FirePackage.ADDITIVE_OPERATOR:
+        return convertAdditiveOperatorToString(eDataType, instanceValue);
       case FirePackage.MULTIPLICATIVE_OPERATOR:
         return convertMultiplicativeOperatorToString(eDataType, instanceValue);
       default:
@@ -146,6 +151,17 @@ public class FireFactoryImpl extends EFactoryImpl implements FireFactory
   {
     ExpressionImpl expression = new ExpressionImpl();
     return expression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AdditiveExpression createAdditiveExpression()
+  {
+    AdditiveExpressionImpl additiveExpression = new AdditiveExpressionImpl();
+    return additiveExpression;
   }
 
   /**
@@ -223,6 +239,28 @@ public class FireFactoryImpl extends EFactoryImpl implements FireFactory
   {
     NegationExpressionImpl negationExpression = new NegationExpressionImpl();
     return negationExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AdditiveOperator createAdditiveOperatorFromString(EDataType eDataType, String initialValue)
+  {
+    AdditiveOperator result = AdditiveOperator.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertAdditiveOperatorToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
   }
 
   /**

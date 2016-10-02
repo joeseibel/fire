@@ -1,5 +1,6 @@
 package fire
 
+import fire.fire.AdditiveExpression
 import fire.fire.BooleanLiteral
 import fire.fire.IntegerLiteral
 import fire.fire.MultiplicativeExpression
@@ -9,14 +10,26 @@ import fire.fire.RealLiteral
 import fire.fire.StringLiteral
 
 class FireUtil {
+	def static dispatch FireType getType(AdditiveExpression expression) {
+		val leftType = expression.left?.type
+		val rightType = expression.right?.type
+		if (leftType == FireType.INTEGER && rightType == FireType.INTEGER) {
+			FireType.INTEGER
+		} else if (leftType == FireType.REAL && rightType == FireType.REAL) {
+			FireType.REAL
+		}
+	}
+	
 	def static dispatch FireType getType(MultiplicativeExpression expression) {
-		val leftType = expression.left.type
-		val rightType = expression.right.type
 		switch expression.operator {
-			case MULTIPLY: if (leftType == FireType.INTEGER && rightType == FireType.INTEGER) {
-				FireType.INTEGER
-			} else if (leftType == FireType.REAL && rightType == FireType.REAL) {
-				FireType.REAL
+			case MULTIPLY: {
+				val leftType = expression.left?.type
+				val rightType = expression.right?.type
+				if (leftType == FireType.INTEGER && rightType == FireType.INTEGER) {
+					FireType.INTEGER
+				} else if (leftType == FireType.REAL && rightType == FireType.REAL) {
+					FireType.REAL
+				}
 			}
 			case REAL_DIVIDE: FireType.REAL
 			case INTEGER_DIVIDE: FireType.INTEGER
@@ -45,7 +58,7 @@ class FireUtil {
 	}
 	
 	def static dispatch FireType getType(NegationExpression expression) {
-		val operandType = expression.operand.type
+		val operandType = expression.operand?.type
 		if (operandType == FireType.INTEGER || operandType == FireType.REAL) {
 			operandType
 		}

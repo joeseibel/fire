@@ -1,5 +1,6 @@
 package fire.generator
 
+import fire.fire.AdditiveExpression
 import fire.fire.BooleanLiteral
 import fire.fire.IntegerLiteral
 import fire.fire.MultiplicativeExpression
@@ -83,6 +84,21 @@ class FireGenerator extends AbstractGenerator {
 			}
 			case INTEGER: builder.createCall(printfFunction, #[builder.createGlobalStringPtr("%ld\n"), argumentValue])
 			case REAL: builder.createCall(printfFunction, #[builder.createGlobalStringPtr("%f\n"), argumentValue])
+		}
+	}
+	
+	def private dispatch Value generateExpression(AdditiveExpression expression) {
+		switch expression.operator {
+			case ADD: switch expression.left.type {
+				case INTEGER: builder.createAdd(expression.left.generateExpression, expression.right.generateExpression)
+				case REAL: builder.createFAdd(expression.left.generateExpression, expression.right.generateExpression)
+				default: null
+			}
+			case SUBTRACT: switch expression.left.type {
+				case INTEGER: builder.createSub(expression.left.generateExpression, expression.right.generateExpression)
+				case REAL: builder.createFSub(expression.left.generateExpression, expression.right.generateExpression)
+				default: null
+			}
 		}
 	}
 	

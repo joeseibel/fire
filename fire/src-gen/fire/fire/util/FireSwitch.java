@@ -94,6 +94,14 @@ public class FireSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case FirePackage.ADDITIVE_EXPRESSION:
+      {
+        AdditiveExpression additiveExpression = (AdditiveExpression)theEObject;
+        T result = caseAdditiveExpression(additiveExpression);
+        if (result == null) result = caseExpression(additiveExpression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case FirePackage.MULTIPLICATIVE_EXPRESSION:
       {
         MultiplicativeExpression multiplicativeExpression = (MultiplicativeExpression)theEObject;
@@ -198,6 +206,22 @@ public class FireSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseExpression(Expression object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Additive Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Additive Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAdditiveExpression(AdditiveExpression object)
   {
     return null;
   }

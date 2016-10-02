@@ -15,6 +15,15 @@ WritelnStatement:
 ;
 
 Expression:
+	MultiplicativeExpression (=>({AdditiveExpression.left=current} operator=AdditiveOperator) right=MultiplicativeExpression)*
+;
+
+enum AdditiveOperator:
+	ADD='+' |
+	SUBTRACT='-'
+;
+
+MultiplicativeExpression returns Expression:
 	TerminalExpression (=>({MultiplicativeExpression.left=current} operator=MultiplicativeOperator) right=TerminalExpression)*
 ;
 
@@ -30,8 +39,8 @@ TerminalExpression returns Expression:
 	{BooleanLiteral} (value?='true' | 'false') |
 	{IntegerLiteral} value=Long |
 	{RealLiteral} value=Double |
-	{NotExpression} 'not' operand=Expression |
-	{NegationExpression} '-' operand=Expression |
+	{NotExpression} 'not' operand=TerminalExpression |
+	{NegationExpression} '-' operand=TerminalExpression |
 	'(' Expression ')'
 ;
 

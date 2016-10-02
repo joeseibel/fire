@@ -134,6 +134,52 @@ public interface FirePackage extends EPackage
   int EXPRESSION_FEATURE_COUNT = 0;
 
   /**
+   * The meta object id for the '{@link fire.fire.impl.AdditiveExpressionImpl <em>Additive Expression</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see fire.fire.impl.AdditiveExpressionImpl
+   * @see fire.fire.impl.FirePackageImpl#getAdditiveExpression()
+   * @generated
+   */
+  int ADDITIVE_EXPRESSION = 3;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ADDITIVE_EXPRESSION__LEFT = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Operator</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ADDITIVE_EXPRESSION__OPERATOR = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ADDITIVE_EXPRESSION__RIGHT = EXPRESSION_FEATURE_COUNT + 2;
+
+  /**
+   * The number of structural features of the '<em>Additive Expression</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ADDITIVE_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 3;
+
+  /**
    * The meta object id for the '{@link fire.fire.impl.MultiplicativeExpressionImpl <em>Multiplicative Expression</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -141,7 +187,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getMultiplicativeExpression()
    * @generated
    */
-  int MULTIPLICATIVE_EXPRESSION = 3;
+  int MULTIPLICATIVE_EXPRESSION = 4;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -187,7 +233,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getStringLiteral()
    * @generated
    */
-  int STRING_LITERAL = 4;
+  int STRING_LITERAL = 5;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -215,7 +261,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getBooleanLiteral()
    * @generated
    */
-  int BOOLEAN_LITERAL = 5;
+  int BOOLEAN_LITERAL = 6;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -243,7 +289,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getIntegerLiteral()
    * @generated
    */
-  int INTEGER_LITERAL = 6;
+  int INTEGER_LITERAL = 7;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -271,7 +317,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getRealLiteral()
    * @generated
    */
-  int REAL_LITERAL = 7;
+  int REAL_LITERAL = 8;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -299,7 +345,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getNotExpression()
    * @generated
    */
-  int NOT_EXPRESSION = 8;
+  int NOT_EXPRESSION = 9;
 
   /**
    * The feature id for the '<em><b>Operand</b></em>' containment reference.
@@ -327,7 +373,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getNegationExpression()
    * @generated
    */
-  int NEGATION_EXPRESSION = 9;
+  int NEGATION_EXPRESSION = 10;
 
   /**
    * The feature id for the '<em><b>Operand</b></em>' containment reference.
@@ -348,6 +394,16 @@ public interface FirePackage extends EPackage
   int NEGATION_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
+   * The meta object id for the '{@link fire.fire.AdditiveOperator <em>Additive Operator</em>}' enum.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see fire.fire.AdditiveOperator
+   * @see fire.fire.impl.FirePackageImpl#getAdditiveOperator()
+   * @generated
+   */
+  int ADDITIVE_OPERATOR = 11;
+
+  /**
    * The meta object id for the '{@link fire.fire.MultiplicativeOperator <em>Multiplicative Operator</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -355,7 +411,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getMultiplicativeOperator()
    * @generated
    */
-  int MULTIPLICATIVE_OPERATOR = 10;
+  int MULTIPLICATIVE_OPERATOR = 12;
 
 
   /**
@@ -409,6 +465,49 @@ public interface FirePackage extends EPackage
    * @generated
    */
   EClass getExpression();
+
+  /**
+   * Returns the meta object for class '{@link fire.fire.AdditiveExpression <em>Additive Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Additive Expression</em>'.
+   * @see fire.fire.AdditiveExpression
+   * @generated
+   */
+  EClass getAdditiveExpression();
+
+  /**
+   * Returns the meta object for the containment reference '{@link fire.fire.AdditiveExpression#getLeft <em>Left</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Left</em>'.
+   * @see fire.fire.AdditiveExpression#getLeft()
+   * @see #getAdditiveExpression()
+   * @generated
+   */
+  EReference getAdditiveExpression_Left();
+
+  /**
+   * Returns the meta object for the attribute '{@link fire.fire.AdditiveExpression#getOperator <em>Operator</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Operator</em>'.
+   * @see fire.fire.AdditiveExpression#getOperator()
+   * @see #getAdditiveExpression()
+   * @generated
+   */
+  EAttribute getAdditiveExpression_Operator();
+
+  /**
+   * Returns the meta object for the containment reference '{@link fire.fire.AdditiveExpression#getRight <em>Right</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Right</em>'.
+   * @see fire.fire.AdditiveExpression#getRight()
+   * @see #getAdditiveExpression()
+   * @generated
+   */
+  EReference getAdditiveExpression_Right();
 
   /**
    * Returns the meta object for class '{@link fire.fire.MultiplicativeExpression <em>Multiplicative Expression</em>}'.
@@ -580,6 +679,16 @@ public interface FirePackage extends EPackage
   EReference getNegationExpression_Operand();
 
   /**
+   * Returns the meta object for enum '{@link fire.fire.AdditiveOperator <em>Additive Operator</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for enum '<em>Additive Operator</em>'.
+   * @see fire.fire.AdditiveOperator
+   * @generated
+   */
+  EEnum getAdditiveOperator();
+
+  /**
    * Returns the meta object for enum '{@link fire.fire.MultiplicativeOperator <em>Multiplicative Operator</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -657,6 +766,40 @@ public interface FirePackage extends EPackage
      * @generated
      */
     EClass EXPRESSION = eINSTANCE.getExpression();
+
+    /**
+     * The meta object literal for the '{@link fire.fire.impl.AdditiveExpressionImpl <em>Additive Expression</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see fire.fire.impl.AdditiveExpressionImpl
+     * @see fire.fire.impl.FirePackageImpl#getAdditiveExpression()
+     * @generated
+     */
+    EClass ADDITIVE_EXPRESSION = eINSTANCE.getAdditiveExpression();
+
+    /**
+     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ADDITIVE_EXPRESSION__LEFT = eINSTANCE.getAdditiveExpression_Left();
+
+    /**
+     * The meta object literal for the '<em><b>Operator</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ADDITIVE_EXPRESSION__OPERATOR = eINSTANCE.getAdditiveExpression_Operator();
+
+    /**
+     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ADDITIVE_EXPRESSION__RIGHT = eINSTANCE.getAdditiveExpression_Right();
 
     /**
      * The meta object literal for the '{@link fire.fire.impl.MultiplicativeExpressionImpl <em>Multiplicative Expression</em>}' class.
@@ -799,6 +942,16 @@ public interface FirePackage extends EPackage
      * @generated
      */
     EReference NEGATION_EXPRESSION__OPERAND = eINSTANCE.getNegationExpression_Operand();
+
+    /**
+     * The meta object literal for the '{@link fire.fire.AdditiveOperator <em>Additive Operator</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see fire.fire.AdditiveOperator
+     * @see fire.fire.impl.FirePackageImpl#getAdditiveOperator()
+     * @generated
+     */
+    EEnum ADDITIVE_OPERATOR = eINSTANCE.getAdditiveOperator();
 
     /**
      * The meta object literal for the '{@link fire.fire.MultiplicativeOperator <em>Multiplicative Operator</em>}' enum.

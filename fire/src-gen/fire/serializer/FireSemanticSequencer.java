@@ -4,6 +4,7 @@
 package fire.serializer;
 
 import com.google.inject.Inject;
+import fire.fire.AdditiveExpression;
 import fire.fire.BooleanLiteral;
 import fire.fire.FirePackage;
 import fire.fire.IntegerLiteral;
@@ -40,6 +41,9 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == FirePackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
+			case FirePackage.ADDITIVE_EXPRESSION:
+				sequence_Expression(context, (AdditiveExpression) semanticObject); 
+				return; 
 			case FirePackage.BOOLEAN_LITERAL:
 				sequence_TerminalExpression(context, (BooleanLiteral) semanticObject); 
 				return; 
@@ -47,7 +51,7 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				sequence_TerminalExpression(context, (IntegerLiteral) semanticObject); 
 				return; 
 			case FirePackage.MULTIPLICATIVE_EXPRESSION:
-				sequence_Expression(context, (MultiplicativeExpression) semanticObject); 
+				sequence_MultiplicativeExpression(context, (MultiplicativeExpression) semanticObject); 
 				return; 
 			case FirePackage.NEGATION_EXPRESSION:
 				sequence_TerminalExpression(context, (NegationExpression) semanticObject); 
@@ -74,14 +78,44 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
+	 *     Expression returns AdditiveExpression
+	 *     Expression.AdditiveExpression_1_0_0_0 returns AdditiveExpression
+	 *     MultiplicativeExpression returns AdditiveExpression
+	 *     MultiplicativeExpression.MultiplicativeExpression_1_0_0_0 returns AdditiveExpression
+	 *     TerminalExpression returns AdditiveExpression
+	 *
+	 * Constraint:
+	 *     (left=Expression_AdditiveExpression_1_0_0_0 operator=AdditiveOperator right=MultiplicativeExpression)
+	 */
+	protected void sequence_Expression(ISerializationContext context, AdditiveExpression semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, FirePackage.Literals.ADDITIVE_EXPRESSION__LEFT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FirePackage.Literals.ADDITIVE_EXPRESSION__LEFT));
+			if (transientValues.isValueTransient(semanticObject, FirePackage.Literals.ADDITIVE_EXPRESSION__OPERATOR) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FirePackage.Literals.ADDITIVE_EXPRESSION__OPERATOR));
+			if (transientValues.isValueTransient(semanticObject, FirePackage.Literals.ADDITIVE_EXPRESSION__RIGHT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FirePackage.Literals.ADDITIVE_EXPRESSION__RIGHT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getExpressionAccess().getAdditiveExpressionLeftAction_1_0_0_0(), semanticObject.getLeft());
+		feeder.accept(grammarAccess.getExpressionAccess().getOperatorAdditiveOperatorEnumRuleCall_1_0_0_1_0(), semanticObject.getOperator());
+		feeder.accept(grammarAccess.getExpressionAccess().getRightMultiplicativeExpressionParserRuleCall_1_1_0(), semanticObject.getRight());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     Expression returns MultiplicativeExpression
-	 *     Expression.MultiplicativeExpression_1_0_0_0 returns MultiplicativeExpression
+	 *     Expression.AdditiveExpression_1_0_0_0 returns MultiplicativeExpression
+	 *     MultiplicativeExpression returns MultiplicativeExpression
+	 *     MultiplicativeExpression.MultiplicativeExpression_1_0_0_0 returns MultiplicativeExpression
 	 *     TerminalExpression returns MultiplicativeExpression
 	 *
 	 * Constraint:
-	 *     (left=Expression_MultiplicativeExpression_1_0_0_0 operator=MultiplicativeOperator right=TerminalExpression)
+	 *     (left=MultiplicativeExpression_MultiplicativeExpression_1_0_0_0 operator=MultiplicativeOperator right=TerminalExpression)
 	 */
-	protected void sequence_Expression(ISerializationContext context, MultiplicativeExpression semanticObject) {
+	protected void sequence_MultiplicativeExpression(ISerializationContext context, MultiplicativeExpression semanticObject) {
 		if (errorAcceptor != null) {
 			if (transientValues.isValueTransient(semanticObject, FirePackage.Literals.MULTIPLICATIVE_EXPRESSION__LEFT) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FirePackage.Literals.MULTIPLICATIVE_EXPRESSION__LEFT));
@@ -91,9 +125,9 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FirePackage.Literals.MULTIPLICATIVE_EXPRESSION__RIGHT));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getExpressionAccess().getMultiplicativeExpressionLeftAction_1_0_0_0(), semanticObject.getLeft());
-		feeder.accept(grammarAccess.getExpressionAccess().getOperatorMultiplicativeOperatorEnumRuleCall_1_0_0_1_0(), semanticObject.getOperator());
-		feeder.accept(grammarAccess.getExpressionAccess().getRightTerminalExpressionParserRuleCall_1_1_0(), semanticObject.getRight());
+		feeder.accept(grammarAccess.getMultiplicativeExpressionAccess().getMultiplicativeExpressionLeftAction_1_0_0_0(), semanticObject.getLeft());
+		feeder.accept(grammarAccess.getMultiplicativeExpressionAccess().getOperatorMultiplicativeOperatorEnumRuleCall_1_0_0_1_0(), semanticObject.getOperator());
+		feeder.accept(grammarAccess.getMultiplicativeExpressionAccess().getRightTerminalExpressionParserRuleCall_1_1_0(), semanticObject.getRight());
 		feeder.finish();
 	}
 	
@@ -113,7 +147,9 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * Contexts:
 	 *     Expression returns BooleanLiteral
-	 *     Expression.MultiplicativeExpression_1_0_0_0 returns BooleanLiteral
+	 *     Expression.AdditiveExpression_1_0_0_0 returns BooleanLiteral
+	 *     MultiplicativeExpression returns BooleanLiteral
+	 *     MultiplicativeExpression.MultiplicativeExpression_1_0_0_0 returns BooleanLiteral
 	 *     TerminalExpression returns BooleanLiteral
 	 *
 	 * Constraint:
@@ -127,7 +163,9 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * Contexts:
 	 *     Expression returns IntegerLiteral
-	 *     Expression.MultiplicativeExpression_1_0_0_0 returns IntegerLiteral
+	 *     Expression.AdditiveExpression_1_0_0_0 returns IntegerLiteral
+	 *     MultiplicativeExpression returns IntegerLiteral
+	 *     MultiplicativeExpression.MultiplicativeExpression_1_0_0_0 returns IntegerLiteral
 	 *     TerminalExpression returns IntegerLiteral
 	 *
 	 * Constraint:
@@ -147,11 +185,13 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * Contexts:
 	 *     Expression returns NegationExpression
-	 *     Expression.MultiplicativeExpression_1_0_0_0 returns NegationExpression
+	 *     Expression.AdditiveExpression_1_0_0_0 returns NegationExpression
+	 *     MultiplicativeExpression returns NegationExpression
+	 *     MultiplicativeExpression.MultiplicativeExpression_1_0_0_0 returns NegationExpression
 	 *     TerminalExpression returns NegationExpression
 	 *
 	 * Constraint:
-	 *     operand=Expression
+	 *     operand=TerminalExpression
 	 */
 	protected void sequence_TerminalExpression(ISerializationContext context, NegationExpression semanticObject) {
 		if (errorAcceptor != null) {
@@ -159,7 +199,7 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FirePackage.Literals.NEGATION_EXPRESSION__OPERAND));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getTerminalExpressionAccess().getOperandExpressionParserRuleCall_5_2_0(), semanticObject.getOperand());
+		feeder.accept(grammarAccess.getTerminalExpressionAccess().getOperandTerminalExpressionParserRuleCall_5_2_0(), semanticObject.getOperand());
 		feeder.finish();
 	}
 	
@@ -167,11 +207,13 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * Contexts:
 	 *     Expression returns NotExpression
-	 *     Expression.MultiplicativeExpression_1_0_0_0 returns NotExpression
+	 *     Expression.AdditiveExpression_1_0_0_0 returns NotExpression
+	 *     MultiplicativeExpression returns NotExpression
+	 *     MultiplicativeExpression.MultiplicativeExpression_1_0_0_0 returns NotExpression
 	 *     TerminalExpression returns NotExpression
 	 *
 	 * Constraint:
-	 *     operand=Expression
+	 *     operand=TerminalExpression
 	 */
 	protected void sequence_TerminalExpression(ISerializationContext context, NotExpression semanticObject) {
 		if (errorAcceptor != null) {
@@ -179,7 +221,7 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FirePackage.Literals.NOT_EXPRESSION__OPERAND));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getTerminalExpressionAccess().getOperandExpressionParserRuleCall_4_2_0(), semanticObject.getOperand());
+		feeder.accept(grammarAccess.getTerminalExpressionAccess().getOperandTerminalExpressionParserRuleCall_4_2_0(), semanticObject.getOperand());
 		feeder.finish();
 	}
 	
@@ -187,7 +229,9 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * Contexts:
 	 *     Expression returns RealLiteral
-	 *     Expression.MultiplicativeExpression_1_0_0_0 returns RealLiteral
+	 *     Expression.AdditiveExpression_1_0_0_0 returns RealLiteral
+	 *     MultiplicativeExpression returns RealLiteral
+	 *     MultiplicativeExpression.MultiplicativeExpression_1_0_0_0 returns RealLiteral
 	 *     TerminalExpression returns RealLiteral
 	 *
 	 * Constraint:
@@ -207,7 +251,9 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * Contexts:
 	 *     Expression returns StringLiteral
-	 *     Expression.MultiplicativeExpression_1_0_0_0 returns StringLiteral
+	 *     Expression.AdditiveExpression_1_0_0_0 returns StringLiteral
+	 *     MultiplicativeExpression returns StringLiteral
+	 *     MultiplicativeExpression.MultiplicativeExpression_1_0_0_0 returns StringLiteral
 	 *     TerminalExpression returns StringLiteral
 	 *
 	 * Constraint:

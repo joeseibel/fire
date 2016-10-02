@@ -31,6 +31,34 @@ JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilder_createCondBr(JNIEnv *env, job
 	return toJava(env, "fire/llvm/BranchInst", toNative<llvm::IRBuilder<>>(env, obj)->CreateCondBr(condNative, trueBlockNative, falseBlockNative));
 }
 
+//Java method: public native Value createAdd(Value lhs, Value rhs);
+JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilder_createAdd(JNIEnv *env, jobject obj, jobject lhs, jobject rhs) {
+	llvm::Value *lhsNative = toNative<llvm::Value>(env, lhs);
+	llvm::Value *rhsNative = toNative<llvm::Value>(env, rhs);
+	return toJava(env, "fire/llvm/Value", toNative<llvm::IRBuilder<>>(env, obj)->CreateAdd(lhsNative, rhsNative));
+}
+
+//Java method: public native Value createFAdd(Value lhs, Value rhs);
+JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilder_createFAdd(JNIEnv *env, jobject obj, jobject lhs, jobject rhs) {
+	llvm::Value *lhsNative = toNative<llvm::Value>(env, lhs);
+	llvm::Value *rhsNative = toNative<llvm::Value>(env, rhs);
+	return toJava(env, "fire/llvm/Value", toNative<llvm::IRBuilder<>>(env, obj)->CreateFAdd(lhsNative, rhsNative));
+}
+
+//Java method: public native Value createSub(Value lhs, Value rhs);
+JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilder_createSub(JNIEnv *env, jobject obj, jobject lhs, jobject rhs) {
+	llvm::Value *lhsNative = toNative<llvm::Value>(env, lhs);
+	llvm::Value *rhsNative = toNative<llvm::Value>(env, rhs);
+	return toJava(env, "fire/llvm/Value", toNative<llvm::IRBuilder<>>(env, obj)->CreateSub(lhsNative, rhsNative));
+}
+
+//Java method: public native Value createFSub(Value lhs, Value rhs);
+JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilder_createFSub(JNIEnv *env, jobject obj, jobject lhs, jobject rhs) {
+	llvm::Value *lhsNative = toNative<llvm::Value>(env, lhs);
+	llvm::Value *rhsNative = toNative<llvm::Value>(env, rhs);
+	return toJava(env, "fire/llvm/Value", toNative<llvm::IRBuilder<>>(env, obj)->CreateFSub(lhsNative, rhsNative));
+}
+
 //Java method: public native Value createMul(Value lhs, Value rhs);
 JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilder_createMul(JNIEnv *env, jobject obj, jobject lhs, jobject rhs) {
 	llvm::Value *lhsNative = toNative<llvm::Value>(env, lhs);
