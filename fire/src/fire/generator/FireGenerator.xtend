@@ -3,6 +3,7 @@ package fire.generator
 import fire.fire.AdditiveExpression
 import fire.fire.BooleanLiteral
 import fire.fire.ComparisonExpression
+import fire.fire.EqualityExpression
 import fire.fire.IntegerLiteral
 import fire.fire.MultiplicativeExpression
 import fire.fire.NegationExpression
@@ -85,6 +86,23 @@ class FireGenerator extends AbstractGenerator {
 			}
 			case INTEGER: builder.createCall(printfFunction, #[builder.createGlobalStringPtr("%ld\n"), argumentValue])
 			case REAL: builder.createCall(printfFunction, #[builder.createGlobalStringPtr("%f\n"), argumentValue])
+		}
+	}
+	
+	def private dispatch Value generateExpression(EqualityExpression expression) {
+		switch expression.operator {
+			case EQUALS: switch expression.left.type {
+				case BOOLEAN,
+				case INTEGER: builder.createICmpEQ(expression.left.generateExpression, expression.right.generateExpression)
+				case REAL: builder.createFCmpUEQ(expression.left.generateExpression, expression.right.generateExpression)
+				default: null
+			}
+			case NOT_EQUALS: switch expression.left.type {
+				case BOOLEAN,
+				case INTEGER: builder.createICmpNE(expression.left.generateExpression, expression.right.generateExpression)
+				case REAL: builder.createFCmpUNE(expression.left.generateExpression, expression.right.generateExpression)
+				default: null
+			}
 		}
 	}
 	

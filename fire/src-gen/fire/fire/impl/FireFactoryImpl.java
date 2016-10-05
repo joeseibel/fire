@@ -69,6 +69,7 @@ public class FireFactoryImpl extends EFactoryImpl implements FireFactory
       case FirePackage.PROGRAM: return createProgram();
       case FirePackage.WRITELN_STATEMENT: return createWritelnStatement();
       case FirePackage.EXPRESSION: return createExpression();
+      case FirePackage.EQUALITY_EXPRESSION: return createEqualityExpression();
       case FirePackage.COMPARISON_EXPRESSION: return createComparisonExpression();
       case FirePackage.ADDITIVE_EXPRESSION: return createAdditiveExpression();
       case FirePackage.MULTIPLICATIVE_EXPRESSION: return createMultiplicativeExpression();
@@ -93,6 +94,8 @@ public class FireFactoryImpl extends EFactoryImpl implements FireFactory
   {
     switch (eDataType.getClassifierID())
     {
+      case FirePackage.EQUALITY_OPERATOR:
+        return createEqualityOperatorFromString(eDataType, initialValue);
       case FirePackage.COMPARISON_OPERATOR:
         return createComparisonOperatorFromString(eDataType, initialValue);
       case FirePackage.ADDITIVE_OPERATOR:
@@ -114,6 +117,8 @@ public class FireFactoryImpl extends EFactoryImpl implements FireFactory
   {
     switch (eDataType.getClassifierID())
     {
+      case FirePackage.EQUALITY_OPERATOR:
+        return convertEqualityOperatorToString(eDataType, instanceValue);
       case FirePackage.COMPARISON_OPERATOR:
         return convertComparisonOperatorToString(eDataType, instanceValue);
       case FirePackage.ADDITIVE_OPERATOR:
@@ -156,6 +161,17 @@ public class FireFactoryImpl extends EFactoryImpl implements FireFactory
   {
     ExpressionImpl expression = new ExpressionImpl();
     return expression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EqualityExpression createEqualityExpression()
+  {
+    EqualityExpressionImpl equalityExpression = new EqualityExpressionImpl();
+    return equalityExpression;
   }
 
   /**
@@ -255,6 +271,28 @@ public class FireFactoryImpl extends EFactoryImpl implements FireFactory
   {
     NegationExpressionImpl negationExpression = new NegationExpressionImpl();
     return negationExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EqualityOperator createEqualityOperatorFromString(EDataType eDataType, String initialValue)
+  {
+    EqualityOperator result = EqualityOperator.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertEqualityOperatorToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
   }
 
   /**

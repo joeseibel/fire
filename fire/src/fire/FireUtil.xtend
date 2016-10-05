@@ -3,6 +3,7 @@ package fire
 import fire.fire.AdditiveExpression
 import fire.fire.BooleanLiteral
 import fire.fire.ComparisonExpression
+import fire.fire.EqualityExpression
 import fire.fire.IntegerLiteral
 import fire.fire.MultiplicativeExpression
 import fire.fire.NegationExpression
@@ -11,6 +12,10 @@ import fire.fire.RealLiteral
 import fire.fire.StringLiteral
 
 class FireUtil {
+	def static dispatch FireType getType(EqualityExpression expression) {
+		FireType.BOOLEAN
+	}
+	
 	def static dispatch FireType getType(ComparisonExpression expression) {
 		FireType.BOOLEAN
 	}

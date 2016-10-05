@@ -15,6 +15,15 @@ WritelnStatement:
 ;
 
 Expression:
+	ComparisonExpression ({EqualityExpression.left=current} operator=EqualityOperator right=ComparisonExpression)*
+;
+
+enum EqualityOperator:
+	EQUALS='=' |
+	NOT_EQUALS='<>'
+;
+
+ComparisonExpression returns Expression:
 	AdditiveExpression ({ComparisonExpression.left=current} operator=ComparisonOperator right=AdditiveExpression)*
 ;
 

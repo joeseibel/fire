@@ -37,6 +37,7 @@ public class FireParser extends AbstractContentAssistParser {
 				{
 					put(grammarAccess.getTerminalExpressionAccess().getAlternatives(), "rule__TerminalExpression__Alternatives");
 					put(grammarAccess.getTerminalExpressionAccess().getAlternatives_1_1(), "rule__TerminalExpression__Alternatives_1_1");
+					put(grammarAccess.getEqualityOperatorAccess().getAlternatives(), "rule__EqualityOperator__Alternatives");
 					put(grammarAccess.getComparisonOperatorAccess().getAlternatives(), "rule__ComparisonOperator__Alternatives");
 					put(grammarAccess.getAdditiveOperatorAccess().getAlternatives(), "rule__AdditiveOperator__Alternatives");
 					put(grammarAccess.getMultiplicativeOperatorAccess().getAlternatives(), "rule__MultiplicativeOperator__Alternatives");
@@ -44,6 +45,8 @@ public class FireParser extends AbstractContentAssistParser {
 					put(grammarAccess.getWritelnStatementAccess().getGroup(), "rule__WritelnStatement__Group__0");
 					put(grammarAccess.getExpressionAccess().getGroup(), "rule__Expression__Group__0");
 					put(grammarAccess.getExpressionAccess().getGroup_1(), "rule__Expression__Group_1__0");
+					put(grammarAccess.getComparisonExpressionAccess().getGroup(), "rule__ComparisonExpression__Group__0");
+					put(grammarAccess.getComparisonExpressionAccess().getGroup_1(), "rule__ComparisonExpression__Group_1__0");
 					put(grammarAccess.getAdditiveExpressionAccess().getGroup(), "rule__AdditiveExpression__Group__0");
 					put(grammarAccess.getAdditiveExpressionAccess().getGroup_1(), "rule__AdditiveExpression__Group_1__0");
 					put(grammarAccess.getMultiplicativeExpressionAccess().getGroup(), "rule__MultiplicativeExpression__Group__0");
@@ -60,6 +63,8 @@ public class FireParser extends AbstractContentAssistParser {
 					put(grammarAccess.getWritelnStatementAccess().getArgumentAssignment_2(), "rule__WritelnStatement__ArgumentAssignment_2");
 					put(grammarAccess.getExpressionAccess().getOperatorAssignment_1_1(), "rule__Expression__OperatorAssignment_1_1");
 					put(grammarAccess.getExpressionAccess().getRightAssignment_1_2(), "rule__Expression__RightAssignment_1_2");
+					put(grammarAccess.getComparisonExpressionAccess().getOperatorAssignment_1_1(), "rule__ComparisonExpression__OperatorAssignment_1_1");
+					put(grammarAccess.getComparisonExpressionAccess().getRightAssignment_1_2(), "rule__ComparisonExpression__RightAssignment_1_2");
 					put(grammarAccess.getAdditiveExpressionAccess().getOperatorAssignment_1_1(), "rule__AdditiveExpression__OperatorAssignment_1_1");
 					put(grammarAccess.getAdditiveExpressionAccess().getRightAssignment_1_2(), "rule__AdditiveExpression__RightAssignment_1_2");
 					put(grammarAccess.getMultiplicativeExpressionAccess().getOperatorAssignment_1_1(), "rule__MultiplicativeExpression__OperatorAssignment_1_1");

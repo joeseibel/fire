@@ -3,6 +3,7 @@ package fire.validation
 import fire.FireType
 import fire.fire.AdditiveExpression
 import fire.fire.ComparisonExpression
+import fire.fire.EqualityExpression
 import fire.fire.FirePackage
 import fire.fire.MultiplicativeExpression
 import fire.fire.NegationExpression
@@ -14,6 +15,18 @@ import static extension fire.FireUtil.getType
 import static extension org.eclipse.xtext.nodemodel.util.NodeModelUtils.getNode
 
 class FireValidator extends AbstractFireValidator {
+	@Check
+	def void typeCheckEqualityExpression(EqualityExpression expression) {
+		val leftType = expression.left?.type
+		val rightType = expression.right?.type
+		if (leftType != null && rightType != null && (leftType != rightType ||
+			(leftType != FireType.BOOLEAN && leftType != FireType.INTEGER && leftType != FireType.REAL)
+		)) {
+			val message = '''«expression.operator.literal» operator cannot be applied to types «leftType» and «rightType»'''
+			error(message, FirePackage.Literals.EQUALITY_EXPRESSION__OPERATOR)
+		}
+	}
+	
 	@Check
 	def void typeCheckComparisonExpression(ComparisonExpression expression) {
 		val leftType = expression.left?.type

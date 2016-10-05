@@ -134,6 +134,52 @@ public interface FirePackage extends EPackage
   int EXPRESSION_FEATURE_COUNT = 0;
 
   /**
+   * The meta object id for the '{@link fire.fire.impl.EqualityExpressionImpl <em>Equality Expression</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see fire.fire.impl.EqualityExpressionImpl
+   * @see fire.fire.impl.FirePackageImpl#getEqualityExpression()
+   * @generated
+   */
+  int EQUALITY_EXPRESSION = 3;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EQUALITY_EXPRESSION__LEFT = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Operator</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EQUALITY_EXPRESSION__OPERATOR = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EQUALITY_EXPRESSION__RIGHT = EXPRESSION_FEATURE_COUNT + 2;
+
+  /**
+   * The number of structural features of the '<em>Equality Expression</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EQUALITY_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 3;
+
+  /**
    * The meta object id for the '{@link fire.fire.impl.ComparisonExpressionImpl <em>Comparison Expression</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -141,7 +187,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getComparisonExpression()
    * @generated
    */
-  int COMPARISON_EXPRESSION = 3;
+  int COMPARISON_EXPRESSION = 4;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -187,7 +233,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getAdditiveExpression()
    * @generated
    */
-  int ADDITIVE_EXPRESSION = 4;
+  int ADDITIVE_EXPRESSION = 5;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -233,7 +279,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getMultiplicativeExpression()
    * @generated
    */
-  int MULTIPLICATIVE_EXPRESSION = 5;
+  int MULTIPLICATIVE_EXPRESSION = 6;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -279,7 +325,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getStringLiteral()
    * @generated
    */
-  int STRING_LITERAL = 6;
+  int STRING_LITERAL = 7;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -307,7 +353,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getBooleanLiteral()
    * @generated
    */
-  int BOOLEAN_LITERAL = 7;
+  int BOOLEAN_LITERAL = 8;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -335,7 +381,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getIntegerLiteral()
    * @generated
    */
-  int INTEGER_LITERAL = 8;
+  int INTEGER_LITERAL = 9;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -363,7 +409,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getRealLiteral()
    * @generated
    */
-  int REAL_LITERAL = 9;
+  int REAL_LITERAL = 10;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -391,7 +437,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getNotExpression()
    * @generated
    */
-  int NOT_EXPRESSION = 10;
+  int NOT_EXPRESSION = 11;
 
   /**
    * The feature id for the '<em><b>Operand</b></em>' containment reference.
@@ -419,7 +465,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getNegationExpression()
    * @generated
    */
-  int NEGATION_EXPRESSION = 11;
+  int NEGATION_EXPRESSION = 12;
 
   /**
    * The feature id for the '<em><b>Operand</b></em>' containment reference.
@@ -440,6 +486,16 @@ public interface FirePackage extends EPackage
   int NEGATION_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
+   * The meta object id for the '{@link fire.fire.EqualityOperator <em>Equality Operator</em>}' enum.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see fire.fire.EqualityOperator
+   * @see fire.fire.impl.FirePackageImpl#getEqualityOperator()
+   * @generated
+   */
+  int EQUALITY_OPERATOR = 13;
+
+  /**
    * The meta object id for the '{@link fire.fire.ComparisonOperator <em>Comparison Operator</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -447,7 +503,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getComparisonOperator()
    * @generated
    */
-  int COMPARISON_OPERATOR = 12;
+  int COMPARISON_OPERATOR = 14;
 
   /**
    * The meta object id for the '{@link fire.fire.AdditiveOperator <em>Additive Operator</em>}' enum.
@@ -457,7 +513,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getAdditiveOperator()
    * @generated
    */
-  int ADDITIVE_OPERATOR = 13;
+  int ADDITIVE_OPERATOR = 15;
 
   /**
    * The meta object id for the '{@link fire.fire.MultiplicativeOperator <em>Multiplicative Operator</em>}' enum.
@@ -467,7 +523,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getMultiplicativeOperator()
    * @generated
    */
-  int MULTIPLICATIVE_OPERATOR = 14;
+  int MULTIPLICATIVE_OPERATOR = 16;
 
 
   /**
@@ -521,6 +577,49 @@ public interface FirePackage extends EPackage
    * @generated
    */
   EClass getExpression();
+
+  /**
+   * Returns the meta object for class '{@link fire.fire.EqualityExpression <em>Equality Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Equality Expression</em>'.
+   * @see fire.fire.EqualityExpression
+   * @generated
+   */
+  EClass getEqualityExpression();
+
+  /**
+   * Returns the meta object for the containment reference '{@link fire.fire.EqualityExpression#getLeft <em>Left</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Left</em>'.
+   * @see fire.fire.EqualityExpression#getLeft()
+   * @see #getEqualityExpression()
+   * @generated
+   */
+  EReference getEqualityExpression_Left();
+
+  /**
+   * Returns the meta object for the attribute '{@link fire.fire.EqualityExpression#getOperator <em>Operator</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Operator</em>'.
+   * @see fire.fire.EqualityExpression#getOperator()
+   * @see #getEqualityExpression()
+   * @generated
+   */
+  EAttribute getEqualityExpression_Operator();
+
+  /**
+   * Returns the meta object for the containment reference '{@link fire.fire.EqualityExpression#getRight <em>Right</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Right</em>'.
+   * @see fire.fire.EqualityExpression#getRight()
+   * @see #getEqualityExpression()
+   * @generated
+   */
+  EReference getEqualityExpression_Right();
 
   /**
    * Returns the meta object for class '{@link fire.fire.ComparisonExpression <em>Comparison Expression</em>}'.
@@ -778,6 +877,16 @@ public interface FirePackage extends EPackage
   EReference getNegationExpression_Operand();
 
   /**
+   * Returns the meta object for enum '{@link fire.fire.EqualityOperator <em>Equality Operator</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for enum '<em>Equality Operator</em>'.
+   * @see fire.fire.EqualityOperator
+   * @generated
+   */
+  EEnum getEqualityOperator();
+
+  /**
    * Returns the meta object for enum '{@link fire.fire.ComparisonOperator <em>Comparison Operator</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -875,6 +984,40 @@ public interface FirePackage extends EPackage
      * @generated
      */
     EClass EXPRESSION = eINSTANCE.getExpression();
+
+    /**
+     * The meta object literal for the '{@link fire.fire.impl.EqualityExpressionImpl <em>Equality Expression</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see fire.fire.impl.EqualityExpressionImpl
+     * @see fire.fire.impl.FirePackageImpl#getEqualityExpression()
+     * @generated
+     */
+    EClass EQUALITY_EXPRESSION = eINSTANCE.getEqualityExpression();
+
+    /**
+     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EQUALITY_EXPRESSION__LEFT = eINSTANCE.getEqualityExpression_Left();
+
+    /**
+     * The meta object literal for the '<em><b>Operator</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute EQUALITY_EXPRESSION__OPERATOR = eINSTANCE.getEqualityExpression_Operator();
+
+    /**
+     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EQUALITY_EXPRESSION__RIGHT = eINSTANCE.getEqualityExpression_Right();
 
     /**
      * The meta object literal for the '{@link fire.fire.impl.ComparisonExpressionImpl <em>Comparison Expression</em>}' class.
@@ -1085,6 +1228,16 @@ public interface FirePackage extends EPackage
      * @generated
      */
     EReference NEGATION_EXPRESSION__OPERAND = eINSTANCE.getNegationExpression_Operand();
+
+    /**
+     * The meta object literal for the '{@link fire.fire.EqualityOperator <em>Equality Operator</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see fire.fire.EqualityOperator
+     * @see fire.fire.impl.FirePackageImpl#getEqualityOperator()
+     * @generated
+     */
+    EEnum EQUALITY_OPERATOR = eINSTANCE.getEqualityOperator();
 
     /**
      * The meta object literal for the '{@link fire.fire.ComparisonOperator <em>Comparison Operator</em>}' enum.

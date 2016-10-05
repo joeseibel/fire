@@ -24,13 +24,17 @@ public class IRBuilder extends IRBuilderBase {
 	public native Value createFNeg(Value v);
 	public native Value createNot(Value v);
 	public native Value createGlobalStringPtr(String str);
+	public native Value createICmpEQ(Value lhs, Value rhs);
+	public native Value createICmpNE(Value lhs, Value rhs);
 	public native Value createICmpSGT(Value lhs, Value rhs);
 	public native Value createICmpSGE(Value lhs, Value rhs);
 	public native Value createICmpSLT(Value lhs, Value rhs);
 	public native Value createICmpSLE(Value lhs, Value rhs);
+	public native Value createFCmpUEQ(Value lhs, Value rhs);
 	public native Value createFCmpUGT(Value lhs, Value rhs);
 	public native Value createFCmpUGE(Value lhs, Value rhs);
 	public native Value createFCmpULT(Value lhs, Value rhs);
 	public native Value createFCmpULE(Value lhs, Value rhs);
+	public native Value createFCmpUNE(Value lhs, Value rhs);
 	public native CallInst createCall(Function callee, Value[] args);
 }

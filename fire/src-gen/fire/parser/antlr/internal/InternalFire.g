@@ -181,7 +181,81 @@ ruleExpression returns [EObject current=null]
 }:
 	(
 		{
-			newCompositeNode(grammarAccess.getExpressionAccess().getAdditiveExpressionParserRuleCall_0());
+			newCompositeNode(grammarAccess.getExpressionAccess().getComparisonExpressionParserRuleCall_0());
+		}
+		this_ComparisonExpression_0=ruleComparisonExpression
+		{
+			$current = $this_ComparisonExpression_0.current;
+			afterParserOrEnumRuleCall();
+		}
+		(
+			(
+				{
+					$current = forceCreateModelElementAndSet(
+						grammarAccess.getExpressionAccess().getEqualityExpressionLeftAction_1_0(),
+						$current);
+				}
+			)
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getExpressionAccess().getOperatorEqualityOperatorEnumRuleCall_1_1_0());
+					}
+					lv_operator_2_0=ruleEqualityOperator
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getExpressionRule());
+						}
+						set(
+							$current,
+							"operator",
+							lv_operator_2_0,
+							"fire.Fire.EqualityOperator");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getExpressionAccess().getRightComparisonExpressionParserRuleCall_1_2_0());
+					}
+					lv_right_3_0=ruleComparisonExpression
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getExpressionRule());
+						}
+						set(
+							$current,
+							"right",
+							lv_right_3_0,
+							"fire.Fire.ComparisonExpression");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)*
+	)
+;
+
+// Entry rule entryRuleComparisonExpression
+entryRuleComparisonExpression returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getComparisonExpressionRule()); }
+	iv_ruleComparisonExpression=ruleComparisonExpression
+	{ $current=$iv_ruleComparisonExpression.current; }
+	EOF;
+
+// Rule ComparisonExpression
+ruleComparisonExpression returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		{
+			newCompositeNode(grammarAccess.getComparisonExpressionAccess().getAdditiveExpressionParserRuleCall_0());
 		}
 		this_AdditiveExpression_0=ruleAdditiveExpression
 		{
@@ -192,19 +266,19 @@ ruleExpression returns [EObject current=null]
 			(
 				{
 					$current = forceCreateModelElementAndSet(
-						grammarAccess.getExpressionAccess().getComparisonExpressionLeftAction_1_0(),
+						grammarAccess.getComparisonExpressionAccess().getComparisonExpressionLeftAction_1_0(),
 						$current);
 				}
 			)
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getExpressionAccess().getOperatorComparisonOperatorEnumRuleCall_1_1_0());
+						newCompositeNode(grammarAccess.getComparisonExpressionAccess().getOperatorComparisonOperatorEnumRuleCall_1_1_0());
 					}
 					lv_operator_2_0=ruleComparisonOperator
 					{
 						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getExpressionRule());
+							$current = createModelElementForParent(grammarAccess.getComparisonExpressionRule());
 						}
 						set(
 							$current,
@@ -218,12 +292,12 @@ ruleExpression returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getExpressionAccess().getRightAdditiveExpressionParserRuleCall_1_2_0());
+						newCompositeNode(grammarAccess.getComparisonExpressionAccess().getRightAdditiveExpressionParserRuleCall_1_2_0());
 					}
 					lv_right_3_0=ruleAdditiveExpression
 					{
 						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getExpressionRule());
+							$current = createModelElementForParent(grammarAccess.getComparisonExpressionRule());
 						}
 						set(
 							$current,
@@ -665,6 +739,33 @@ ruleDouble returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
 		{
 			newLeafNode(this_INT_2, grammarAccess.getDoubleAccess().getINTTerminalRuleCall_2());
 		}
+	)
+;
+
+// Rule EqualityOperator
+ruleEqualityOperator returns [Enumerator current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			enumLiteral_0='='
+			{
+				$current = grammarAccess.getEqualityOperatorAccess().getEQUALSEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_0, grammarAccess.getEqualityOperatorAccess().getEQUALSEnumLiteralDeclaration_0());
+			}
+		)
+		    |
+		(
+			enumLiteral_1='<>'
+			{
+				$current = grammarAccess.getEqualityOperatorAccess().getNOT_EQUALSEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_1, grammarAccess.getEqualityOperatorAccess().getNOT_EQUALSEnumLiteralDeclaration_1());
+			}
+		)
 	)
 ;
 

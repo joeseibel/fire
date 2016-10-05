@@ -94,6 +94,45 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 	public class ExpressionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fire.Fire.Expression");
 		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cComparisonExpressionParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Action cEqualityExpressionLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Assignment cOperatorAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cOperatorEqualityOperatorEnumRuleCall_1_1_0 = (RuleCall)cOperatorAssignment_1_1.eContents().get(0);
+		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cRightComparisonExpressionParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
+		
+		//Expression:
+		//	ComparisonExpression ({EqualityExpression.left=current} operator=EqualityOperator right=ComparisonExpression)*;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//ComparisonExpression ({EqualityExpression.left=current} operator=EqualityOperator right=ComparisonExpression)*
+		public Group getGroup() { return cGroup; }
+		
+		//ComparisonExpression
+		public RuleCall getComparisonExpressionParserRuleCall_0() { return cComparisonExpressionParserRuleCall_0; }
+		
+		//({EqualityExpression.left=current} operator=EqualityOperator right=ComparisonExpression)*
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//{EqualityExpression.left=current}
+		public Action getEqualityExpressionLeftAction_1_0() { return cEqualityExpressionLeftAction_1_0; }
+		
+		//operator=EqualityOperator
+		public Assignment getOperatorAssignment_1_1() { return cOperatorAssignment_1_1; }
+		
+		//EqualityOperator
+		public RuleCall getOperatorEqualityOperatorEnumRuleCall_1_1_0() { return cOperatorEqualityOperatorEnumRuleCall_1_1_0; }
+		
+		//right=ComparisonExpression
+		public Assignment getRightAssignment_1_2() { return cRightAssignment_1_2; }
+		
+		//ComparisonExpression
+		public RuleCall getRightComparisonExpressionParserRuleCall_1_2_0() { return cRightComparisonExpressionParserRuleCall_1_2_0; }
+	}
+	public class ComparisonExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fire.Fire.ComparisonExpression");
+		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final RuleCall cAdditiveExpressionParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
 		private final Action cComparisonExpressionLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
@@ -102,8 +141,8 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
 		private final RuleCall cRightAdditiveExpressionParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
 		
-		//Expression:
-		//	AdditiveExpression ({ComparisonExpression.left=current} operator=ComparisonOperator right=AdditiveExpression)*;
+		//ComparisonExpression Expression:
+		//	AdditiveExpression ({ComparisonExpression.left=current} operator=ComparisonOperator right=AdditiveExpression)*
 		@Override public ParserRule getRule() { return rule; }
 		
 		//AdditiveExpression ({ComparisonExpression.left=current} operator=ComparisonOperator right=AdditiveExpression)*
@@ -387,6 +426,34 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getINTTerminalRuleCall_2() { return cINTTerminalRuleCall_2; }
 	}
 	
+	public class EqualityOperatorElements extends AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "fire.Fire.EqualityOperator");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cEQUALSEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cEQUALSEqualsSignKeyword_0_0 = (Keyword)cEQUALSEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cNOT_EQUALSEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cNOT_EQUALSLessThanSignGreaterThanSignKeyword_1_0 = (Keyword)cNOT_EQUALSEnumLiteralDeclaration_1.eContents().get(0);
+		
+		//enum EqualityOperator:
+		//	EQUALS='=' |
+		//	NOT_EQUALS='<>';
+		public EnumRule getRule() { return rule; }
+		
+		//EQUALS='=' | NOT_EQUALS='<>'
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//EQUALS='='
+		public EnumLiteralDeclaration getEQUALSEnumLiteralDeclaration_0() { return cEQUALSEnumLiteralDeclaration_0; }
+		
+		//'='
+		public Keyword getEQUALSEqualsSignKeyword_0_0() { return cEQUALSEqualsSignKeyword_0_0; }
+		
+		//NOT_EQUALS='<>'
+		public EnumLiteralDeclaration getNOT_EQUALSEnumLiteralDeclaration_1() { return cNOT_EQUALSEnumLiteralDeclaration_1; }
+		
+		//'<>'
+		public Keyword getNOT_EQUALSLessThanSignGreaterThanSignKeyword_1_0() { return cNOT_EQUALSLessThanSignGreaterThanSignKeyword_1_0; }
+	}
 	public class ComparisonOperatorElements extends AbstractEnumRuleElementFinder {
 		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "fire.Fire.ComparisonOperator");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
@@ -511,6 +578,8 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 	private final ProgramElements pProgram;
 	private final WritelnStatementElements pWritelnStatement;
 	private final ExpressionElements pExpression;
+	private final EqualityOperatorElements eEqualityOperator;
+	private final ComparisonExpressionElements pComparisonExpression;
 	private final ComparisonOperatorElements eComparisonOperator;
 	private final AdditiveExpressionElements pAdditiveExpression;
 	private final AdditiveOperatorElements eAdditiveOperator;
@@ -532,6 +601,8 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 		this.pProgram = new ProgramElements();
 		this.pWritelnStatement = new WritelnStatementElements();
 		this.pExpression = new ExpressionElements();
+		this.eEqualityOperator = new EqualityOperatorElements();
+		this.pComparisonExpression = new ComparisonExpressionElements();
 		this.eComparisonOperator = new ComparisonOperatorElements();
 		this.pAdditiveExpression = new AdditiveExpressionElements();
 		this.eAdditiveOperator = new AdditiveOperatorElements();
@@ -593,13 +664,34 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Expression:
-	//	AdditiveExpression ({ComparisonExpression.left=current} operator=ComparisonOperator right=AdditiveExpression)*;
+	//	ComparisonExpression ({EqualityExpression.left=current} operator=EqualityOperator right=ComparisonExpression)*;
 	public ExpressionElements getExpressionAccess() {
 		return pExpression;
 	}
 	
 	public ParserRule getExpressionRule() {
 		return getExpressionAccess().getRule();
+	}
+	
+	//enum EqualityOperator:
+	//	EQUALS='=' |
+	//	NOT_EQUALS='<>';
+	public EqualityOperatorElements getEqualityOperatorAccess() {
+		return eEqualityOperator;
+	}
+	
+	public EnumRule getEqualityOperatorRule() {
+		return getEqualityOperatorAccess().getRule();
+	}
+	
+	//ComparisonExpression Expression:
+	//	AdditiveExpression ({ComparisonExpression.left=current} operator=ComparisonOperator right=AdditiveExpression)*
+	public ComparisonExpressionElements getComparisonExpressionAccess() {
+		return pComparisonExpression;
+	}
+	
+	public ParserRule getComparisonExpressionRule() {
+		return getComparisonExpressionAccess().getRule();
 	}
 	
 	//enum ComparisonOperator:

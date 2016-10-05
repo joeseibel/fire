@@ -51,6 +51,15 @@ public interface FireFactory extends EFactory
   Expression createExpression();
 
   /**
+   * Returns a new object of class '<em>Equality Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Equality Expression</em>'.
+   * @generated
+   */
+  EqualityExpression createEqualityExpression();
+
+  /**
    * Returns a new object of class '<em>Comparison Expression</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
