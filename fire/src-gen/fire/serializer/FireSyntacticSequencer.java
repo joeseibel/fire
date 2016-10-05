@@ -63,6 +63,7 @@ public class FireSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     (rule start) (ambiguity) value=STRING
 	 *     (rule start) (ambiguity) value?='true'
 	 *     (rule start) (ambiguity) {AdditiveExpression.left=}
+	 *     (rule start) (ambiguity) {ComparisonExpression.left=}
 	 *     (rule start) (ambiguity) {MultiplicativeExpression.left=}
 	 */
 	protected void emit_TerminalExpression_LeftParenthesisKeyword_6_0_a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
@@ -75,6 +76,7 @@ public class FireSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *
 	 * This ambiguous syntax occurs at:
 	 *     (rule start) (ambiguity) {AdditiveExpression.left=}
+	 *     (rule start) (ambiguity) {ComparisonExpression.left=}
 	 *     (rule start) (ambiguity) {MultiplicativeExpression.left=}
 	 */
 	protected void emit_TerminalExpression_LeftParenthesisKeyword_6_0_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {

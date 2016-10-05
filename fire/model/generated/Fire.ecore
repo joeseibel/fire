@@ -10,6 +10,12 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Expression"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="ComparisonOperator">
+    <eLiterals name="LESS" literal="&lt;"/>
+    <eLiterals name="LESS_EQUAL" value="1" literal="&lt;="/>
+    <eLiterals name="GREATER" value="2" literal=">"/>
+    <eLiterals name="GREATER_EQUAL" value="3" literal=">="/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="AdditiveOperator">
     <eLiterals name="ADD" literal="+"/>
     <eLiterals name="SUBTRACT" value="1" literal="-"/>
@@ -19,6 +25,13 @@
     <eLiterals name="REAL_DIVIDE" value="1" literal="/"/>
     <eLiterals name="INTEGER_DIVIDE" value="2" literal="div"/>
     <eLiterals name="MODULUS" value="3" literal="mod"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ComparisonExpression" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//Expression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operator" eType="#//ComparisonOperator"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//Expression"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AdditiveExpression" eSuperTypes="#//Expression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//Expression"

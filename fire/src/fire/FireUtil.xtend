@@ -2,6 +2,7 @@ package fire
 
 import fire.fire.AdditiveExpression
 import fire.fire.BooleanLiteral
+import fire.fire.ComparisonExpression
 import fire.fire.IntegerLiteral
 import fire.fire.MultiplicativeExpression
 import fire.fire.NegationExpression
@@ -10,6 +11,10 @@ import fire.fire.RealLiteral
 import fire.fire.StringLiteral
 
 class FireUtil {
+	def static dispatch FireType getType(ComparisonExpression expression) {
+		FireType.BOOLEAN
+	}
+	
 	def static dispatch FireType getType(AdditiveExpression expression) {
 		val leftType = expression.left?.type
 		val rightType = expression.right?.type

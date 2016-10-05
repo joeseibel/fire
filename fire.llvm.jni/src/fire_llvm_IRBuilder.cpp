@@ -120,6 +120,62 @@ JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilder_createGlobalStringPtr(JNIEnv 
 	return toJava(env, "fire/llvm/Value", value);
 }
 
+//Java method: public native Value createICmpSGT(Value lhs, Value rhs);
+JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilder_createICmpSGT(JNIEnv *env, jobject obj, jobject lhs, jobject rhs) {
+	llvm::Value *lhsNative = toNative<llvm::Value>(env, lhs);
+	llvm::Value *rhsNative = toNative<llvm::Value>(env, rhs);
+	return toJava(env, "fire/llvm/Value", toNative<llvm::IRBuilder<>>(env, obj)->CreateICmpSGT(lhsNative, rhsNative));
+}
+
+//Java method: public native Value createICmpSGE(Value lhs, Value rhs);
+JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilder_createICmpSGE(JNIEnv *env, jobject obj, jobject lhs, jobject rhs) {
+	llvm::Value *lhsNative = toNative<llvm::Value>(env, lhs);
+	llvm::Value *rhsNative = toNative<llvm::Value>(env, rhs);
+	return toJava(env, "fire/llvm/Value", toNative<llvm::IRBuilder<>>(env, obj)->CreateICmpSGE(lhsNative, rhsNative));
+}
+
+//Java method: public native Value createICmpSLT(Value lhs, Value rhs);
+JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilder_createICmpSLT(JNIEnv *env, jobject obj, jobject lhs, jobject rhs) {
+	llvm::Value *lhsNative = toNative<llvm::Value>(env, lhs);
+	llvm::Value *rhsNative = toNative<llvm::Value>(env, rhs);
+	return toJava(env, "fire/llvm/Value", toNative<llvm::IRBuilder<>>(env, obj)->CreateICmpSLT(lhsNative, rhsNative));
+}
+
+//Java method: public native Value createICmpSLE(Value lhs, Value rhs);
+JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilder_createICmpSLE(JNIEnv *env, jobject obj, jobject lhs, jobject rhs) {
+	llvm::Value *lhsNative = toNative<llvm::Value>(env, lhs);
+	llvm::Value *rhsNative = toNative<llvm::Value>(env, rhs);
+	return toJava(env, "fire/llvm/Value", toNative<llvm::IRBuilder<>>(env, obj)->CreateICmpSLE(lhsNative, rhsNative));
+}
+
+//Java method: public native Value createFCmpUGT(Value lhs, Value rhs);
+JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilder_createFCmpUGT(JNIEnv *env, jobject obj, jobject lhs, jobject rhs) {
+	llvm::Value *lhsNative = toNative<llvm::Value>(env, lhs);
+	llvm::Value *rhsNative = toNative<llvm::Value>(env, rhs);
+	return toJava(env, "fire/llvm/Value", toNative<llvm::IRBuilder<>>(env, obj)->CreateFCmpUGT(lhsNative, rhsNative));
+}
+
+//Java method: public native Value createFCmpUGE(Value lhs, Value rhs);
+JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilder_createFCmpUGE(JNIEnv *env, jobject obj, jobject lhs, jobject rhs) {
+	llvm::Value *lhsNative = toNative<llvm::Value>(env, lhs);
+	llvm::Value *rhsNative = toNative<llvm::Value>(env, rhs);
+	return toJava(env, "fire/llvm/Value", toNative<llvm::IRBuilder<>>(env, obj)->CreateFCmpUGE(lhsNative, rhsNative));
+}
+
+//Java method: public native Value createFCmpULT(Value lhs, Value rhs);
+JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilder_createFCmpULT(JNIEnv *env, jobject obj, jobject lhs, jobject rhs) {
+	llvm::Value *lhsNative = toNative<llvm::Value>(env, lhs);
+	llvm::Value *rhsNative = toNative<llvm::Value>(env, rhs);
+	return toJava(env, "fire/llvm/Value", toNative<llvm::IRBuilder<>>(env, obj)->CreateFCmpULT(lhsNative, rhsNative));
+}
+
+//Java method: public native Value createFCmpULE(Value lhs, Value rhs);
+JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilder_createFCmpULE(JNIEnv *env, jobject obj, jobject lhs, jobject rhs) {
+	llvm::Value *lhsNative = toNative<llvm::Value>(env, lhs);
+	llvm::Value *rhsNative = toNative<llvm::Value>(env, rhs);
+	return toJava(env, "fire/llvm/Value", toNative<llvm::IRBuilder<>>(env, obj)->CreateFCmpULE(lhsNative, rhsNative));
+}
+
 //Java method: public native CallInst createCall(Function callee, Value[] args);
 JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilder_createCall(JNIEnv *env, jobject obj, jobject callee, jobjectArray args) {
 	llvm::Function *calleeNative = toNative<llvm::Function>(env, callee);

@@ -15,7 +15,18 @@ WritelnStatement:
 ;
 
 Expression:
-	MultiplicativeExpression (=>({AdditiveExpression.left=current} operator=AdditiveOperator) right=MultiplicativeExpression)*
+	AdditiveExpression ({ComparisonExpression.left=current} operator=ComparisonOperator right=AdditiveExpression)*
+;
+
+enum ComparisonOperator:
+	LESS='<' |
+	LESS_EQUAL='<=' |
+	GREATER='>' |
+	GREATER_EQUAL='>='
+;
+
+AdditiveExpression returns Expression:
+	MultiplicativeExpression ({AdditiveExpression.left=current} operator=AdditiveOperator right=MultiplicativeExpression)*
 ;
 
 enum AdditiveOperator:
@@ -24,7 +35,7 @@ enum AdditiveOperator:
 ;
 
 MultiplicativeExpression returns Expression:
-	TerminalExpression (=>({MultiplicativeExpression.left=current} operator=MultiplicativeOperator) right=TerminalExpression)*
+	TerminalExpression ({MultiplicativeExpression.left=current} operator=MultiplicativeOperator right=TerminalExpression)*
 ;
 
 enum MultiplicativeOperator:

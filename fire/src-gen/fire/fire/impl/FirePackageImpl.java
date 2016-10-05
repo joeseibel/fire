@@ -6,6 +6,8 @@ package fire.fire.impl;
 import fire.fire.AdditiveExpression;
 import fire.fire.AdditiveOperator;
 import fire.fire.BooleanLiteral;
+import fire.fire.ComparisonExpression;
+import fire.fire.ComparisonOperator;
 import fire.fire.Expression;
 import fire.fire.FireFactory;
 import fire.fire.FirePackage;
@@ -55,6 +57,13 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
    * @generated
    */
   private EClass expressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass comparisonExpressionEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -111,6 +120,13 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
    * @generated
    */
   private EClass negationExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum comparisonOperatorEEnum = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -237,6 +253,46 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
   public EClass getExpression()
   {
     return expressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getComparisonExpression()
+  {
+    return comparisonExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getComparisonExpression_Left()
+  {
+    return (EReference)comparisonExpressionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getComparisonExpression_Operator()
+  {
+    return (EAttribute)comparisonExpressionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getComparisonExpression_Right()
+  {
+    return (EReference)comparisonExpressionEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -444,6 +500,16 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EEnum getComparisonOperator()
+  {
+    return comparisonOperatorEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EEnum getAdditiveOperator()
   {
     return additiveOperatorEEnum;
@@ -497,6 +563,11 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
 
     expressionEClass = createEClass(EXPRESSION);
 
+    comparisonExpressionEClass = createEClass(COMPARISON_EXPRESSION);
+    createEReference(comparisonExpressionEClass, COMPARISON_EXPRESSION__LEFT);
+    createEAttribute(comparisonExpressionEClass, COMPARISON_EXPRESSION__OPERATOR);
+    createEReference(comparisonExpressionEClass, COMPARISON_EXPRESSION__RIGHT);
+
     additiveExpressionEClass = createEClass(ADDITIVE_EXPRESSION);
     createEReference(additiveExpressionEClass, ADDITIVE_EXPRESSION__LEFT);
     createEAttribute(additiveExpressionEClass, ADDITIVE_EXPRESSION__OPERATOR);
@@ -526,6 +597,7 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
     createEReference(negationExpressionEClass, NEGATION_EXPRESSION__OPERAND);
 
     // Create enums
+    comparisonOperatorEEnum = createEEnum(COMPARISON_OPERATOR);
     additiveOperatorEEnum = createEEnum(ADDITIVE_OPERATOR);
     multiplicativeOperatorEEnum = createEEnum(MULTIPLICATIVE_OPERATOR);
   }
@@ -559,6 +631,7 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
+    comparisonExpressionEClass.getESuperTypes().add(this.getExpression());
     additiveExpressionEClass.getESuperTypes().add(this.getExpression());
     multiplicativeExpressionEClass.getESuperTypes().add(this.getExpression());
     stringLiteralEClass.getESuperTypes().add(this.getExpression());
@@ -576,6 +649,11 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
     initEReference(getWritelnStatement_Argument(), this.getExpression(), null, "argument", null, 0, 1, WritelnStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(expressionEClass, Expression.class, "Expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(comparisonExpressionEClass, ComparisonExpression.class, "ComparisonExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getComparisonExpression_Left(), this.getExpression(), null, "left", null, 0, 1, ComparisonExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getComparisonExpression_Operator(), this.getComparisonOperator(), "operator", null, 0, 1, ComparisonExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getComparisonExpression_Right(), this.getExpression(), null, "right", null, 0, 1, ComparisonExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(additiveExpressionEClass, AdditiveExpression.class, "AdditiveExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getAdditiveExpression_Left(), this.getExpression(), null, "left", null, 0, 1, AdditiveExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -606,6 +684,12 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
     initEReference(getNegationExpression_Operand(), this.getExpression(), null, "operand", null, 0, 1, NegationExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Initialize enums and add enum literals
+    initEEnum(comparisonOperatorEEnum, ComparisonOperator.class, "ComparisonOperator");
+    addEEnumLiteral(comparisonOperatorEEnum, ComparisonOperator.LESS);
+    addEEnumLiteral(comparisonOperatorEEnum, ComparisonOperator.LESS_EQUAL);
+    addEEnumLiteral(comparisonOperatorEEnum, ComparisonOperator.GREATER);
+    addEEnumLiteral(comparisonOperatorEEnum, ComparisonOperator.GREATER_EQUAL);
+
     initEEnum(additiveOperatorEEnum, AdditiveOperator.class, "AdditiveOperator");
     addEEnumLiteral(additiveOperatorEEnum, AdditiveOperator.ADD);
     addEEnumLiteral(additiveOperatorEEnum, AdditiveOperator.SUBTRACT);

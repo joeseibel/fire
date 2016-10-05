@@ -2,6 +2,7 @@ package fire.generator
 
 import fire.fire.AdditiveExpression
 import fire.fire.BooleanLiteral
+import fire.fire.ComparisonExpression
 import fire.fire.IntegerLiteral
 import fire.fire.MultiplicativeExpression
 import fire.fire.NegationExpression
@@ -84,6 +85,31 @@ class FireGenerator extends AbstractGenerator {
 			}
 			case INTEGER: builder.createCall(printfFunction, #[builder.createGlobalStringPtr("%ld\n"), argumentValue])
 			case REAL: builder.createCall(printfFunction, #[builder.createGlobalStringPtr("%f\n"), argumentValue])
+		}
+	}
+	
+	def private dispatch Value generateExpression(ComparisonExpression expression) {
+		switch expression.operator {
+			case LESS: switch expression.left.type {
+				case INTEGER: builder.createICmpSLT(expression.left.generateExpression, expression.right.generateExpression)
+				case REAL: builder.createFCmpULT(expression.left.generateExpression, expression.right.generateExpression)
+				default: null
+			}
+			case LESS_EQUAL: switch expression.left.type {
+				case INTEGER: builder.createICmpSLE(expression.left.generateExpression, expression.right.generateExpression)
+				case REAL: builder.createFCmpULE(expression.left.generateExpression, expression.right.generateExpression)
+				default: null
+			}
+			case GREATER: switch expression.left.type {
+				case INTEGER: builder.createICmpSGT(expression.left.generateExpression, expression.right.generateExpression)
+				case REAL: builder.createFCmpUGT(expression.left.generateExpression, expression.right.generateExpression)
+				default: null
+			} 
+			case GREATER_EQUAL: switch expression.left.type {
+				case INTEGER: builder.createICmpSGE(expression.left.generateExpression, expression.right.generateExpression)
+				case REAL: builder.createFCmpUGE(expression.left.generateExpression, expression.right.generateExpression)
+				default: null
+			}
 		}
 	}
 	

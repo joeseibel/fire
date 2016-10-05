@@ -6,6 +6,12 @@
     copyrightFields="false" runtimeVersion="2.12">
   <genPackages prefix="Fire" basePackage="fire" disposableProviderFactory="true" fileExtensions="fire"
       ecorePackage="Fire.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Fire.ecore#//ComparisonOperator">
+      <genEnumLiterals ecoreEnumLiteral="Fire.ecore#//ComparisonOperator/LESS"/>
+      <genEnumLiterals ecoreEnumLiteral="Fire.ecore#//ComparisonOperator/LESS_EQUAL"/>
+      <genEnumLiterals ecoreEnumLiteral="Fire.ecore#//ComparisonOperator/GREATER"/>
+      <genEnumLiterals ecoreEnumLiteral="Fire.ecore#//ComparisonOperator/GREATER_EQUAL"/>
+    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="Fire.ecore#//AdditiveOperator">
       <genEnumLiterals ecoreEnumLiteral="Fire.ecore#//AdditiveOperator/ADD"/>
       <genEnumLiterals ecoreEnumLiteral="Fire.ecore#//AdditiveOperator/SUBTRACT"/>
@@ -23,6 +29,11 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Fire.ecore#//WritelnStatement/argument"/>
     </genClasses>
     <genClasses ecoreClass="Fire.ecore#//Expression"/>
+    <genClasses ecoreClass="Fire.ecore#//ComparisonExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Fire.ecore#//ComparisonExpression/left"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Fire.ecore#//ComparisonExpression/operator"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Fire.ecore#//ComparisonExpression/right"/>
+    </genClasses>
     <genClasses ecoreClass="Fire.ecore#//AdditiveExpression">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Fire.ecore#//AdditiveExpression/left"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Fire.ecore#//AdditiveExpression/operator"/>

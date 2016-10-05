@@ -91,6 +91,11 @@ public class FireAdapterFactory extends AdapterFactoryImpl
         return createExpressionAdapter();
       }
       @Override
+      public Adapter caseComparisonExpression(ComparisonExpression object)
+      {
+        return createComparisonExpressionAdapter();
+      }
+      @Override
       public Adapter caseAdditiveExpression(AdditiveExpression object)
       {
         return createAdditiveExpressionAdapter();
@@ -193,6 +198,21 @@ public class FireAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link fire.fire.ComparisonExpression <em>Comparison Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see fire.fire.ComparisonExpression
+   * @generated
+   */
+  public Adapter createComparisonExpressionAdapter()
   {
     return null;
   }

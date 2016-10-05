@@ -69,6 +69,7 @@ public class FireFactoryImpl extends EFactoryImpl implements FireFactory
       case FirePackage.PROGRAM: return createProgram();
       case FirePackage.WRITELN_STATEMENT: return createWritelnStatement();
       case FirePackage.EXPRESSION: return createExpression();
+      case FirePackage.COMPARISON_EXPRESSION: return createComparisonExpression();
       case FirePackage.ADDITIVE_EXPRESSION: return createAdditiveExpression();
       case FirePackage.MULTIPLICATIVE_EXPRESSION: return createMultiplicativeExpression();
       case FirePackage.STRING_LITERAL: return createStringLiteral();
@@ -92,6 +93,8 @@ public class FireFactoryImpl extends EFactoryImpl implements FireFactory
   {
     switch (eDataType.getClassifierID())
     {
+      case FirePackage.COMPARISON_OPERATOR:
+        return createComparisonOperatorFromString(eDataType, initialValue);
       case FirePackage.ADDITIVE_OPERATOR:
         return createAdditiveOperatorFromString(eDataType, initialValue);
       case FirePackage.MULTIPLICATIVE_OPERATOR:
@@ -111,6 +114,8 @@ public class FireFactoryImpl extends EFactoryImpl implements FireFactory
   {
     switch (eDataType.getClassifierID())
     {
+      case FirePackage.COMPARISON_OPERATOR:
+        return convertComparisonOperatorToString(eDataType, instanceValue);
       case FirePackage.ADDITIVE_OPERATOR:
         return convertAdditiveOperatorToString(eDataType, instanceValue);
       case FirePackage.MULTIPLICATIVE_OPERATOR:
@@ -151,6 +156,17 @@ public class FireFactoryImpl extends EFactoryImpl implements FireFactory
   {
     ExpressionImpl expression = new ExpressionImpl();
     return expression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ComparisonExpression createComparisonExpression()
+  {
+    ComparisonExpressionImpl comparisonExpression = new ComparisonExpressionImpl();
+    return comparisonExpression;
   }
 
   /**
@@ -239,6 +255,28 @@ public class FireFactoryImpl extends EFactoryImpl implements FireFactory
   {
     NegationExpressionImpl negationExpression = new NegationExpressionImpl();
     return negationExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ComparisonOperator createComparisonOperatorFromString(EDataType eDataType, String initialValue)
+  {
+    ComparisonOperator result = ComparisonOperator.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertComparisonOperatorToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
   }
 
   /**
