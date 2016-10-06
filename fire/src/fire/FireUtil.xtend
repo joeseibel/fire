@@ -10,8 +10,13 @@ import fire.fire.NegationExpression
 import fire.fire.NotExpression
 import fire.fire.RealLiteral
 import fire.fire.StringLiteral
+import fire.fire.XorExpression
 
 class FireUtil {
+	def static dispatch FireType getType(XorExpression expression) {
+		FireType.BOOLEAN
+	}
+	
 	def static dispatch FireType getType(EqualityExpression expression) {
 		FireType.BOOLEAN
 	}

@@ -51,6 +51,15 @@ public interface FireFactory extends EFactory
   Expression createExpression();
 
   /**
+   * Returns a new object of class '<em>Xor Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Xor Expression</em>'.
+   * @generated
+   */
+  XorExpression createXorExpression();
+
+  /**
    * Returns a new object of class '<em>Equality Expression</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

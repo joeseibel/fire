@@ -91,6 +91,11 @@ public class FireAdapterFactory extends AdapterFactoryImpl
         return createExpressionAdapter();
       }
       @Override
+      public Adapter caseXorExpression(XorExpression object)
+      {
+        return createXorExpressionAdapter();
+      }
+      @Override
       public Adapter caseEqualityExpression(EqualityExpression object)
       {
         return createEqualityExpressionAdapter();
@@ -203,6 +208,21 @@ public class FireAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link fire.fire.XorExpression <em>Xor Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see fire.fire.XorExpression
+   * @generated
+   */
+  public Adapter createXorExpressionAdapter()
   {
     return null;
   }

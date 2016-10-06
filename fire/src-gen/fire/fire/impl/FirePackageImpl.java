@@ -22,6 +22,7 @@ import fire.fire.Program;
 import fire.fire.RealLiteral;
 import fire.fire.StringLiteral;
 import fire.fire.WritelnStatement;
+import fire.fire.XorExpression;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -59,6 +60,13 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
    * @generated
    */
   private EClass expressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass xorExpressionEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -269,6 +277,36 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
   public EClass getExpression()
   {
     return expressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getXorExpression()
+  {
+    return xorExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getXorExpression_Left()
+  {
+    return (EReference)xorExpressionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getXorExpression_Right()
+  {
+    return (EReference)xorExpressionEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -629,6 +667,10 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
 
     expressionEClass = createEClass(EXPRESSION);
 
+    xorExpressionEClass = createEClass(XOR_EXPRESSION);
+    createEReference(xorExpressionEClass, XOR_EXPRESSION__LEFT);
+    createEReference(xorExpressionEClass, XOR_EXPRESSION__RIGHT);
+
     equalityExpressionEClass = createEClass(EQUALITY_EXPRESSION);
     createEReference(equalityExpressionEClass, EQUALITY_EXPRESSION__LEFT);
     createEAttribute(equalityExpressionEClass, EQUALITY_EXPRESSION__OPERATOR);
@@ -703,6 +745,7 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
+    xorExpressionEClass.getESuperTypes().add(this.getExpression());
     equalityExpressionEClass.getESuperTypes().add(this.getExpression());
     comparisonExpressionEClass.getESuperTypes().add(this.getExpression());
     additiveExpressionEClass.getESuperTypes().add(this.getExpression());
@@ -722,6 +765,10 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
     initEReference(getWritelnStatement_Argument(), this.getExpression(), null, "argument", null, 0, 1, WritelnStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(expressionEClass, Expression.class, "Expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(xorExpressionEClass, XorExpression.class, "XorExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getXorExpression_Left(), this.getExpression(), null, "left", null, 0, 1, XorExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getXorExpression_Right(), this.getExpression(), null, "right", null, 0, 1, XorExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(equalityExpressionEClass, EqualityExpression.class, "EqualityExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getEqualityExpression_Left(), this.getExpression(), null, "left", null, 0, 1, EqualityExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

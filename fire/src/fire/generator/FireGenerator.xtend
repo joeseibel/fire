@@ -12,6 +12,7 @@ import fire.fire.Program
 import fire.fire.RealLiteral
 import fire.fire.StringLiteral
 import fire.fire.WritelnStatement
+import fire.fire.XorExpression
 import fire.llvm.BasicBlock
 import fire.llvm.ConstantFP
 import fire.llvm.Function
@@ -87,6 +88,10 @@ class FireGenerator extends AbstractGenerator {
 			case INTEGER: builder.createCall(printfFunction, #[builder.createGlobalStringPtr("%ld\n"), argumentValue])
 			case REAL: builder.createCall(printfFunction, #[builder.createGlobalStringPtr("%f\n"), argumentValue])
 		}
+	}
+	
+	def private dispatch Value generateExpression(XorExpression expression) {
+		builder.createXor(expression.left.generateExpression, expression.right.generateExpression)
 	}
 	
 	def private dispatch Value generateExpression(EqualityExpression expression) {

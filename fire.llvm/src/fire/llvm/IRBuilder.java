@@ -20,6 +20,7 @@ public class IRBuilder extends IRBuilderBase {
 	public native Value createSDiv(Value lhs, Value rhs);
 	public native Value createFDiv(Value lhs, Value rhs);
 	public native Value createSRem(Value lhs, Value rhs);
+	public native Value createXor(Value lhs, Value rhs);
 	public native Value createNeg(Value v);
 	public native Value createFNeg(Value v);
 	public native Value createNot(Value v);

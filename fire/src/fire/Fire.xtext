@@ -15,6 +15,10 @@ WritelnStatement:
 ;
 
 Expression:
+	EqualityExpression ({XorExpression.left=current} 'xor' right=EqualityExpression)*
+;
+
+EqualityExpression returns Expression:
 	ComparisonExpression ({EqualityExpression.left=current} operator=EqualityOperator right=ComparisonExpression)*
 ;
 

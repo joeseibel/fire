@@ -1,5 +1,6 @@
 package fire.validation
 
+import com.google.inject.Inject
 import fire.FireType
 import fire.fire.AdditiveExpression
 import fire.fire.ComparisonExpression
@@ -8,13 +9,29 @@ import fire.fire.FirePackage
 import fire.fire.MultiplicativeExpression
 import fire.fire.NegationExpression
 import fire.fire.NotExpression
-import org.eclipse.xtext.Keyword
+import fire.fire.XorExpression
+import fire.services.FireGrammarAccess
 import org.eclipse.xtext.validation.Check
 
 import static extension fire.FireUtil.getType
 import static extension org.eclipse.xtext.nodemodel.util.NodeModelUtils.getNode
 
 class FireValidator extends AbstractFireValidator {
+	@Inject
+	FireGrammarAccess grammarAccess
+	
+	@Check
+	def void typeCheckXorExpression(XorExpression expression) {
+		val leftType = expression.left?.type
+		val rightType = expression.right?.type
+		if (leftType != null && rightType != null && (leftType != FireType.BOOLEAN || rightType != FireType.BOOLEAN)) {
+			val xorKeyword = grammarAccess.expressionAccess.xorKeyword_1_1
+			val message = '''«xorKeyword.value» operator cannot be applied to types «leftType» and «rightType»'''
+			val xorKeywordNode = expression.node.children.findFirst[grammarElement == xorKeyword]
+			messageAcceptor.acceptError(message, expression, xorKeywordNode.offset, xorKeywordNode.length, null)
+		}
+	}
+	
 	@Check
 	def void typeCheckEqualityExpression(EqualityExpression expression) {
 		val leftType = expression.left?.type
@@ -73,9 +90,10 @@ class FireValidator extends AbstractFireValidator {
 	def void typeCheckNotExpression(NotExpression expression) {
 		val operandType = expression.operand?.type
 		if (operandType != null && operandType != FireType.BOOLEAN) {
-			val message = "not operator cannot be applied to type " + operandType
-			val notKeyword = expression.node.leafNodes.findFirst[grammarElement instanceof Keyword]
-			messageAcceptor.acceptError(message, expression, notKeyword.offset, notKeyword.length, null)
+			val notKeyword = grammarAccess.terminalExpressionAccess.notKeyword_4_1
+			val message = notKeyword.value + " operator cannot be applied to type " + operandType
+			val notKeywordNode = expression.node.children.findFirst[grammarElement == notKeyword]
+			messageAcceptor.acceptError(message, expression, notKeywordNode.offset, notKeywordNode.length, null)
 		}
 	}
 	
@@ -83,9 +101,10 @@ class FireValidator extends AbstractFireValidator {
 	def void typeCheckNegationExpression(NegationExpression expression) {
 		val operandType = expression.operand?.type
 		if (operandType != null && operandType != FireType.INTEGER && operandType != FireType.REAL) {
-			val message = "- operator cannot be applied to type " + operandType
-			val negationKeyword = expression.node.leafNodes.findFirst[grammarElement instanceof Keyword]
-			messageAcceptor.acceptError(message, expression, negationKeyword.offset, negationKeyword.length, null)
+			val negationKeyword = grammarAccess.terminalExpressionAccess.hyphenMinusKeyword_5_1
+			val message = negationKeyword.value + " operator cannot be applied to type " + operandType
+			val negationKeywordNode = expression.node.children.findFirst[grammarElement == negationKeyword]
+			messageAcceptor.acceptError(message, expression, negationKeywordNode.offset, negationKeywordNode.length, null)
 		}
 	}
 }

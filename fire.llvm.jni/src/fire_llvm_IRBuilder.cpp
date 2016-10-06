@@ -94,6 +94,13 @@ JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilder_createSRem(JNIEnv *env, jobje
 	return toJava(env, "fire/llvm/Value", toNative<llvm::IRBuilder<>>(env, obj)->CreateSRem(lhsNative, rhsNative));
 }
 
+//Java method: public native Value createXor(Value lhs, Value rhs);
+JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilder_createXor(JNIEnv *env, jobject obj, jobject lhs, jobject rhs) {
+	llvm::Value *lhsNative = toNative<llvm::Value>(env, lhs);
+	llvm::Value *rhsNative = toNative<llvm::Value>(env, rhs);
+	return toJava(env, "fire/llvm/Value", toNative<llvm::IRBuilder<>>(env, obj)->CreateXor(lhsNative, rhsNative));
+}
+
 //Java method: public native Value createNeg(Value v);
 JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilder_createNeg(JNIEnv *env, jobject obj, jobject v) {
 	llvm::Value *vNative = toNative<llvm::Value>(env, v);

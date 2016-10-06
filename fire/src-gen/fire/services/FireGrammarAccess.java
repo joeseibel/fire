@@ -94,6 +94,41 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 	public class ExpressionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fire.Fire.Expression");
 		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cEqualityExpressionParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Action cXorExpressionLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Keyword cXorKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
+		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cRightEqualityExpressionParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
+		
+		//Expression:
+		//	EqualityExpression ({XorExpression.left=current} 'xor' right=EqualityExpression)*;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//EqualityExpression ({XorExpression.left=current} 'xor' right=EqualityExpression)*
+		public Group getGroup() { return cGroup; }
+		
+		//EqualityExpression
+		public RuleCall getEqualityExpressionParserRuleCall_0() { return cEqualityExpressionParserRuleCall_0; }
+		
+		//({XorExpression.left=current} 'xor' right=EqualityExpression)*
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//{XorExpression.left=current}
+		public Action getXorExpressionLeftAction_1_0() { return cXorExpressionLeftAction_1_0; }
+		
+		//'xor'
+		public Keyword getXorKeyword_1_1() { return cXorKeyword_1_1; }
+		
+		//right=EqualityExpression
+		public Assignment getRightAssignment_1_2() { return cRightAssignment_1_2; }
+		
+		//EqualityExpression
+		public RuleCall getRightEqualityExpressionParserRuleCall_1_2_0() { return cRightEqualityExpressionParserRuleCall_1_2_0; }
+	}
+	public class EqualityExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fire.Fire.EqualityExpression");
+		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final RuleCall cComparisonExpressionParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
 		private final Action cEqualityExpressionLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
@@ -102,8 +137,8 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
 		private final RuleCall cRightComparisonExpressionParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
 		
-		//Expression:
-		//	ComparisonExpression ({EqualityExpression.left=current} operator=EqualityOperator right=ComparisonExpression)*;
+		//EqualityExpression Expression:
+		//	ComparisonExpression ({EqualityExpression.left=current} operator=EqualityOperator right=ComparisonExpression)*
 		@Override public ParserRule getRule() { return rule; }
 		
 		//ComparisonExpression ({EqualityExpression.left=current} operator=EqualityOperator right=ComparisonExpression)*
@@ -578,6 +613,7 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 	private final ProgramElements pProgram;
 	private final WritelnStatementElements pWritelnStatement;
 	private final ExpressionElements pExpression;
+	private final EqualityExpressionElements pEqualityExpression;
 	private final EqualityOperatorElements eEqualityOperator;
 	private final ComparisonExpressionElements pComparisonExpression;
 	private final ComparisonOperatorElements eComparisonOperator;
@@ -601,6 +637,7 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 		this.pProgram = new ProgramElements();
 		this.pWritelnStatement = new WritelnStatementElements();
 		this.pExpression = new ExpressionElements();
+		this.pEqualityExpression = new EqualityExpressionElements();
 		this.eEqualityOperator = new EqualityOperatorElements();
 		this.pComparisonExpression = new ComparisonExpressionElements();
 		this.eComparisonOperator = new ComparisonOperatorElements();
@@ -664,13 +701,23 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Expression:
-	//	ComparisonExpression ({EqualityExpression.left=current} operator=EqualityOperator right=ComparisonExpression)*;
+	//	EqualityExpression ({XorExpression.left=current} 'xor' right=EqualityExpression)*;
 	public ExpressionElements getExpressionAccess() {
 		return pExpression;
 	}
 	
 	public ParserRule getExpressionRule() {
 		return getExpressionAccess().getRule();
+	}
+	
+	//EqualityExpression Expression:
+	//	ComparisonExpression ({EqualityExpression.left=current} operator=EqualityOperator right=ComparisonExpression)*
+	public EqualityExpressionElements getEqualityExpressionAccess() {
+		return pEqualityExpression;
+	}
+	
+	public ParserRule getEqualityExpressionRule() {
+		return getEqualityExpressionAccess().getRule();
 	}
 	
 	//enum EqualityOperator:

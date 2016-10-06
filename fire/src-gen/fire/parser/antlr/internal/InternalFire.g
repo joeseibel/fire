@@ -181,7 +181,66 @@ ruleExpression returns [EObject current=null]
 }:
 	(
 		{
-			newCompositeNode(grammarAccess.getExpressionAccess().getComparisonExpressionParserRuleCall_0());
+			newCompositeNode(grammarAccess.getExpressionAccess().getEqualityExpressionParserRuleCall_0());
+		}
+		this_EqualityExpression_0=ruleEqualityExpression
+		{
+			$current = $this_EqualityExpression_0.current;
+			afterParserOrEnumRuleCall();
+		}
+		(
+			(
+				{
+					$current = forceCreateModelElementAndSet(
+						grammarAccess.getExpressionAccess().getXorExpressionLeftAction_1_0(),
+						$current);
+				}
+			)
+			otherlv_2='xor'
+			{
+				newLeafNode(otherlv_2, grammarAccess.getExpressionAccess().getXorKeyword_1_1());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getExpressionAccess().getRightEqualityExpressionParserRuleCall_1_2_0());
+					}
+					lv_right_3_0=ruleEqualityExpression
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getExpressionRule());
+						}
+						set(
+							$current,
+							"right",
+							lv_right_3_0,
+							"fire.Fire.EqualityExpression");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)*
+	)
+;
+
+// Entry rule entryRuleEqualityExpression
+entryRuleEqualityExpression returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getEqualityExpressionRule()); }
+	iv_ruleEqualityExpression=ruleEqualityExpression
+	{ $current=$iv_ruleEqualityExpression.current; }
+	EOF;
+
+// Rule EqualityExpression
+ruleEqualityExpression returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		{
+			newCompositeNode(grammarAccess.getEqualityExpressionAccess().getComparisonExpressionParserRuleCall_0());
 		}
 		this_ComparisonExpression_0=ruleComparisonExpression
 		{
@@ -192,19 +251,19 @@ ruleExpression returns [EObject current=null]
 			(
 				{
 					$current = forceCreateModelElementAndSet(
-						grammarAccess.getExpressionAccess().getEqualityExpressionLeftAction_1_0(),
+						grammarAccess.getEqualityExpressionAccess().getEqualityExpressionLeftAction_1_0(),
 						$current);
 				}
 			)
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getExpressionAccess().getOperatorEqualityOperatorEnumRuleCall_1_1_0());
+						newCompositeNode(grammarAccess.getEqualityExpressionAccess().getOperatorEqualityOperatorEnumRuleCall_1_1_0());
 					}
 					lv_operator_2_0=ruleEqualityOperator
 					{
 						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getExpressionRule());
+							$current = createModelElementForParent(grammarAccess.getEqualityExpressionRule());
 						}
 						set(
 							$current,
@@ -218,12 +277,12 @@ ruleExpression returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getExpressionAccess().getRightComparisonExpressionParserRuleCall_1_2_0());
+						newCompositeNode(grammarAccess.getEqualityExpressionAccess().getRightComparisonExpressionParserRuleCall_1_2_0());
 					}
 					lv_right_3_0=ruleComparisonExpression
 					{
 						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getExpressionRule());
+							$current = createModelElementForParent(grammarAccess.getEqualityExpressionRule());
 						}
 						set(
 							$current,

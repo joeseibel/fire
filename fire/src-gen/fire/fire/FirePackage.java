@@ -134,6 +134,43 @@ public interface FirePackage extends EPackage
   int EXPRESSION_FEATURE_COUNT = 0;
 
   /**
+   * The meta object id for the '{@link fire.fire.impl.XorExpressionImpl <em>Xor Expression</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see fire.fire.impl.XorExpressionImpl
+   * @see fire.fire.impl.FirePackageImpl#getXorExpression()
+   * @generated
+   */
+  int XOR_EXPRESSION = 3;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int XOR_EXPRESSION__LEFT = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int XOR_EXPRESSION__RIGHT = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Xor Expression</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int XOR_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
+
+  /**
    * The meta object id for the '{@link fire.fire.impl.EqualityExpressionImpl <em>Equality Expression</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -141,7 +178,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getEqualityExpression()
    * @generated
    */
-  int EQUALITY_EXPRESSION = 3;
+  int EQUALITY_EXPRESSION = 4;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -187,7 +224,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getComparisonExpression()
    * @generated
    */
-  int COMPARISON_EXPRESSION = 4;
+  int COMPARISON_EXPRESSION = 5;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -233,7 +270,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getAdditiveExpression()
    * @generated
    */
-  int ADDITIVE_EXPRESSION = 5;
+  int ADDITIVE_EXPRESSION = 6;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -279,7 +316,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getMultiplicativeExpression()
    * @generated
    */
-  int MULTIPLICATIVE_EXPRESSION = 6;
+  int MULTIPLICATIVE_EXPRESSION = 7;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -325,7 +362,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getStringLiteral()
    * @generated
    */
-  int STRING_LITERAL = 7;
+  int STRING_LITERAL = 8;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -353,7 +390,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getBooleanLiteral()
    * @generated
    */
-  int BOOLEAN_LITERAL = 8;
+  int BOOLEAN_LITERAL = 9;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -381,7 +418,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getIntegerLiteral()
    * @generated
    */
-  int INTEGER_LITERAL = 9;
+  int INTEGER_LITERAL = 10;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -409,7 +446,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getRealLiteral()
    * @generated
    */
-  int REAL_LITERAL = 10;
+  int REAL_LITERAL = 11;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -437,7 +474,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getNotExpression()
    * @generated
    */
-  int NOT_EXPRESSION = 11;
+  int NOT_EXPRESSION = 12;
 
   /**
    * The feature id for the '<em><b>Operand</b></em>' containment reference.
@@ -465,7 +502,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getNegationExpression()
    * @generated
    */
-  int NEGATION_EXPRESSION = 12;
+  int NEGATION_EXPRESSION = 13;
 
   /**
    * The feature id for the '<em><b>Operand</b></em>' containment reference.
@@ -493,7 +530,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getEqualityOperator()
    * @generated
    */
-  int EQUALITY_OPERATOR = 13;
+  int EQUALITY_OPERATOR = 14;
 
   /**
    * The meta object id for the '{@link fire.fire.ComparisonOperator <em>Comparison Operator</em>}' enum.
@@ -503,7 +540,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getComparisonOperator()
    * @generated
    */
-  int COMPARISON_OPERATOR = 14;
+  int COMPARISON_OPERATOR = 15;
 
   /**
    * The meta object id for the '{@link fire.fire.AdditiveOperator <em>Additive Operator</em>}' enum.
@@ -513,7 +550,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getAdditiveOperator()
    * @generated
    */
-  int ADDITIVE_OPERATOR = 15;
+  int ADDITIVE_OPERATOR = 16;
 
   /**
    * The meta object id for the '{@link fire.fire.MultiplicativeOperator <em>Multiplicative Operator</em>}' enum.
@@ -523,7 +560,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getMultiplicativeOperator()
    * @generated
    */
-  int MULTIPLICATIVE_OPERATOR = 16;
+  int MULTIPLICATIVE_OPERATOR = 17;
 
 
   /**
@@ -577,6 +614,38 @@ public interface FirePackage extends EPackage
    * @generated
    */
   EClass getExpression();
+
+  /**
+   * Returns the meta object for class '{@link fire.fire.XorExpression <em>Xor Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Xor Expression</em>'.
+   * @see fire.fire.XorExpression
+   * @generated
+   */
+  EClass getXorExpression();
+
+  /**
+   * Returns the meta object for the containment reference '{@link fire.fire.XorExpression#getLeft <em>Left</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Left</em>'.
+   * @see fire.fire.XorExpression#getLeft()
+   * @see #getXorExpression()
+   * @generated
+   */
+  EReference getXorExpression_Left();
+
+  /**
+   * Returns the meta object for the containment reference '{@link fire.fire.XorExpression#getRight <em>Right</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Right</em>'.
+   * @see fire.fire.XorExpression#getRight()
+   * @see #getXorExpression()
+   * @generated
+   */
+  EReference getXorExpression_Right();
 
   /**
    * Returns the meta object for class '{@link fire.fire.EqualityExpression <em>Equality Expression</em>}'.
@@ -984,6 +1053,32 @@ public interface FirePackage extends EPackage
      * @generated
      */
     EClass EXPRESSION = eINSTANCE.getExpression();
+
+    /**
+     * The meta object literal for the '{@link fire.fire.impl.XorExpressionImpl <em>Xor Expression</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see fire.fire.impl.XorExpressionImpl
+     * @see fire.fire.impl.FirePackageImpl#getXorExpression()
+     * @generated
+     */
+    EClass XOR_EXPRESSION = eINSTANCE.getXorExpression();
+
+    /**
+     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference XOR_EXPRESSION__LEFT = eINSTANCE.getXorExpression_Left();
+
+    /**
+     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference XOR_EXPRESSION__RIGHT = eINSTANCE.getXorExpression_Right();
 
     /**
      * The meta object literal for the '{@link fire.fire.impl.EqualityExpressionImpl <em>Equality Expression</em>}' class.

@@ -69,6 +69,7 @@ public class FireFactoryImpl extends EFactoryImpl implements FireFactory
       case FirePackage.PROGRAM: return createProgram();
       case FirePackage.WRITELN_STATEMENT: return createWritelnStatement();
       case FirePackage.EXPRESSION: return createExpression();
+      case FirePackage.XOR_EXPRESSION: return createXorExpression();
       case FirePackage.EQUALITY_EXPRESSION: return createEqualityExpression();
       case FirePackage.COMPARISON_EXPRESSION: return createComparisonExpression();
       case FirePackage.ADDITIVE_EXPRESSION: return createAdditiveExpression();
@@ -161,6 +162,17 @@ public class FireFactoryImpl extends EFactoryImpl implements FireFactory
   {
     ExpressionImpl expression = new ExpressionImpl();
     return expression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public XorExpression createXorExpression()
+  {
+    XorExpressionImpl xorExpression = new XorExpressionImpl();
+    return xorExpression;
   }
 
   /**

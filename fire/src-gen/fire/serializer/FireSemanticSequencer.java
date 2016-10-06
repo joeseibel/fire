@@ -17,6 +17,7 @@ import fire.fire.Program;
 import fire.fire.RealLiteral;
 import fire.fire.StringLiteral;
 import fire.fire.WritelnStatement;
+import fire.fire.XorExpression;
 import fire.services.FireGrammarAccess;
 import java.util.Set;
 import org.eclipse.emf.ecore.EObject;
@@ -53,7 +54,7 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				sequence_ComparisonExpression(context, (ComparisonExpression) semanticObject); 
 				return; 
 			case FirePackage.EQUALITY_EXPRESSION:
-				sequence_Expression(context, (EqualityExpression) semanticObject); 
+				sequence_EqualityExpression(context, (EqualityExpression) semanticObject); 
 				return; 
 			case FirePackage.INTEGER_LITERAL:
 				sequence_TerminalExpression(context, (IntegerLiteral) semanticObject); 
@@ -79,6 +80,9 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case FirePackage.WRITELN_STATEMENT:
 				sequence_WritelnStatement(context, (WritelnStatement) semanticObject); 
 				return; 
+			case FirePackage.XOR_EXPRESSION:
+				sequence_Expression(context, (XorExpression) semanticObject); 
+				return; 
 			}
 		if (errorAcceptor != null)
 			errorAcceptor.accept(diagnosticProvider.createInvalidContextOrTypeDiagnostic(semanticObject, context));
@@ -87,7 +91,9 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * Contexts:
 	 *     Expression returns AdditiveExpression
-	 *     Expression.EqualityExpression_1_0 returns AdditiveExpression
+	 *     Expression.XorExpression_1_0 returns AdditiveExpression
+	 *     EqualityExpression returns AdditiveExpression
+	 *     EqualityExpression.EqualityExpression_1_0 returns AdditiveExpression
 	 *     ComparisonExpression returns AdditiveExpression
 	 *     ComparisonExpression.ComparisonExpression_1_0 returns AdditiveExpression
 	 *     AdditiveExpression returns AdditiveExpression
@@ -119,7 +125,9 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * Contexts:
 	 *     Expression returns ComparisonExpression
-	 *     Expression.EqualityExpression_1_0 returns ComparisonExpression
+	 *     Expression.XorExpression_1_0 returns ComparisonExpression
+	 *     EqualityExpression returns ComparisonExpression
+	 *     EqualityExpression.EqualityExpression_1_0 returns ComparisonExpression
 	 *     ComparisonExpression returns ComparisonExpression
 	 *     ComparisonExpression.ComparisonExpression_1_0 returns ComparisonExpression
 	 *     AdditiveExpression returns ComparisonExpression
@@ -151,7 +159,9 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * Contexts:
 	 *     Expression returns EqualityExpression
-	 *     Expression.EqualityExpression_1_0 returns EqualityExpression
+	 *     Expression.XorExpression_1_0 returns EqualityExpression
+	 *     EqualityExpression returns EqualityExpression
+	 *     EqualityExpression.EqualityExpression_1_0 returns EqualityExpression
 	 *     ComparisonExpression returns EqualityExpression
 	 *     ComparisonExpression.ComparisonExpression_1_0 returns EqualityExpression
 	 *     AdditiveExpression returns EqualityExpression
@@ -161,9 +171,9 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     TerminalExpression returns EqualityExpression
 	 *
 	 * Constraint:
-	 *     (left=Expression_EqualityExpression_1_0 operator=EqualityOperator right=ComparisonExpression)
+	 *     (left=EqualityExpression_EqualityExpression_1_0 operator=EqualityOperator right=ComparisonExpression)
 	 */
-	protected void sequence_Expression(ISerializationContext context, EqualityExpression semanticObject) {
+	protected void sequence_EqualityExpression(ISerializationContext context, EqualityExpression semanticObject) {
 		if (errorAcceptor != null) {
 			if (transientValues.isValueTransient(semanticObject, FirePackage.Literals.EQUALITY_EXPRESSION__LEFT) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FirePackage.Literals.EQUALITY_EXPRESSION__LEFT));
@@ -173,9 +183,40 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FirePackage.Literals.EQUALITY_EXPRESSION__RIGHT));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getExpressionAccess().getEqualityExpressionLeftAction_1_0(), semanticObject.getLeft());
-		feeder.accept(grammarAccess.getExpressionAccess().getOperatorEqualityOperatorEnumRuleCall_1_1_0(), semanticObject.getOperator());
-		feeder.accept(grammarAccess.getExpressionAccess().getRightComparisonExpressionParserRuleCall_1_2_0(), semanticObject.getRight());
+		feeder.accept(grammarAccess.getEqualityExpressionAccess().getEqualityExpressionLeftAction_1_0(), semanticObject.getLeft());
+		feeder.accept(grammarAccess.getEqualityExpressionAccess().getOperatorEqualityOperatorEnumRuleCall_1_1_0(), semanticObject.getOperator());
+		feeder.accept(grammarAccess.getEqualityExpressionAccess().getRightComparisonExpressionParserRuleCall_1_2_0(), semanticObject.getRight());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Expression returns XorExpression
+	 *     Expression.XorExpression_1_0 returns XorExpression
+	 *     EqualityExpression returns XorExpression
+	 *     EqualityExpression.EqualityExpression_1_0 returns XorExpression
+	 *     ComparisonExpression returns XorExpression
+	 *     ComparisonExpression.ComparisonExpression_1_0 returns XorExpression
+	 *     AdditiveExpression returns XorExpression
+	 *     AdditiveExpression.AdditiveExpression_1_0 returns XorExpression
+	 *     MultiplicativeExpression returns XorExpression
+	 *     MultiplicativeExpression.MultiplicativeExpression_1_0 returns XorExpression
+	 *     TerminalExpression returns XorExpression
+	 *
+	 * Constraint:
+	 *     (left=Expression_XorExpression_1_0 right=EqualityExpression)
+	 */
+	protected void sequence_Expression(ISerializationContext context, XorExpression semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, FirePackage.Literals.XOR_EXPRESSION__LEFT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FirePackage.Literals.XOR_EXPRESSION__LEFT));
+			if (transientValues.isValueTransient(semanticObject, FirePackage.Literals.XOR_EXPRESSION__RIGHT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FirePackage.Literals.XOR_EXPRESSION__RIGHT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getExpressionAccess().getXorExpressionLeftAction_1_0(), semanticObject.getLeft());
+		feeder.accept(grammarAccess.getExpressionAccess().getRightEqualityExpressionParserRuleCall_1_2_0(), semanticObject.getRight());
 		feeder.finish();
 	}
 	
@@ -183,7 +224,9 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * Contexts:
 	 *     Expression returns MultiplicativeExpression
-	 *     Expression.EqualityExpression_1_0 returns MultiplicativeExpression
+	 *     Expression.XorExpression_1_0 returns MultiplicativeExpression
+	 *     EqualityExpression returns MultiplicativeExpression
+	 *     EqualityExpression.EqualityExpression_1_0 returns MultiplicativeExpression
 	 *     ComparisonExpression returns MultiplicativeExpression
 	 *     ComparisonExpression.ComparisonExpression_1_0 returns MultiplicativeExpression
 	 *     AdditiveExpression returns MultiplicativeExpression
@@ -227,7 +270,9 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * Contexts:
 	 *     Expression returns BooleanLiteral
-	 *     Expression.EqualityExpression_1_0 returns BooleanLiteral
+	 *     Expression.XorExpression_1_0 returns BooleanLiteral
+	 *     EqualityExpression returns BooleanLiteral
+	 *     EqualityExpression.EqualityExpression_1_0 returns BooleanLiteral
 	 *     ComparisonExpression returns BooleanLiteral
 	 *     ComparisonExpression.ComparisonExpression_1_0 returns BooleanLiteral
 	 *     AdditiveExpression returns BooleanLiteral
@@ -247,7 +292,9 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * Contexts:
 	 *     Expression returns IntegerLiteral
-	 *     Expression.EqualityExpression_1_0 returns IntegerLiteral
+	 *     Expression.XorExpression_1_0 returns IntegerLiteral
+	 *     EqualityExpression returns IntegerLiteral
+	 *     EqualityExpression.EqualityExpression_1_0 returns IntegerLiteral
 	 *     ComparisonExpression returns IntegerLiteral
 	 *     ComparisonExpression.ComparisonExpression_1_0 returns IntegerLiteral
 	 *     AdditiveExpression returns IntegerLiteral
@@ -273,7 +320,9 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * Contexts:
 	 *     Expression returns NegationExpression
-	 *     Expression.EqualityExpression_1_0 returns NegationExpression
+	 *     Expression.XorExpression_1_0 returns NegationExpression
+	 *     EqualityExpression returns NegationExpression
+	 *     EqualityExpression.EqualityExpression_1_0 returns NegationExpression
 	 *     ComparisonExpression returns NegationExpression
 	 *     ComparisonExpression.ComparisonExpression_1_0 returns NegationExpression
 	 *     AdditiveExpression returns NegationExpression
@@ -299,7 +348,9 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * Contexts:
 	 *     Expression returns NotExpression
-	 *     Expression.EqualityExpression_1_0 returns NotExpression
+	 *     Expression.XorExpression_1_0 returns NotExpression
+	 *     EqualityExpression returns NotExpression
+	 *     EqualityExpression.EqualityExpression_1_0 returns NotExpression
 	 *     ComparisonExpression returns NotExpression
 	 *     ComparisonExpression.ComparisonExpression_1_0 returns NotExpression
 	 *     AdditiveExpression returns NotExpression
@@ -325,7 +376,9 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * Contexts:
 	 *     Expression returns RealLiteral
-	 *     Expression.EqualityExpression_1_0 returns RealLiteral
+	 *     Expression.XorExpression_1_0 returns RealLiteral
+	 *     EqualityExpression returns RealLiteral
+	 *     EqualityExpression.EqualityExpression_1_0 returns RealLiteral
 	 *     ComparisonExpression returns RealLiteral
 	 *     ComparisonExpression.ComparisonExpression_1_0 returns RealLiteral
 	 *     AdditiveExpression returns RealLiteral
@@ -351,7 +404,9 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * Contexts:
 	 *     Expression returns StringLiteral
-	 *     Expression.EqualityExpression_1_0 returns StringLiteral
+	 *     Expression.XorExpression_1_0 returns StringLiteral
+	 *     EqualityExpression returns StringLiteral
+	 *     EqualityExpression.EqualityExpression_1_0 returns StringLiteral
 	 *     ComparisonExpression returns StringLiteral
 	 *     ComparisonExpression.ComparisonExpression_1_0 returns StringLiteral
 	 *     AdditiveExpression returns StringLiteral
