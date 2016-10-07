@@ -1,6 +1,7 @@
 package fire.generator
 
 import fire.fire.AdditiveExpression
+import fire.fire.AndExpression
 import fire.fire.BooleanLiteral
 import fire.fire.ComparisonExpression
 import fire.fire.EqualityExpression
@@ -88,6 +89,24 @@ class FireGenerator extends AbstractGenerator {
 			case INTEGER: builder.createCall(printfFunction, #[builder.createGlobalStringPtr("%ld\n"), argumentValue])
 			case REAL: builder.createCall(printfFunction, #[builder.createGlobalStringPtr("%f\n"), argumentValue])
 		}
+	}
+	
+	def private dispatch Value generateExpression(AndExpression expression) {
+		val leftValue = expression.left.generateExpression
+		val startingBlock = builder.insertBlock
+		val function = startingBlock.parent
+		val thenBlock = BasicBlock.create(llvmContext, "then", function)
+		val afterIfBlock = BasicBlock.create(llvmContext, "afterIf")
+		builder.createCondBr(leftValue, thenBlock, afterIfBlock)
+		builder.insertPoint = thenBlock
+		val rightValue = expression.right.generateExpression
+		builder.createBr(afterIfBlock)
+		function.addBasicBlock(afterIfBlock)
+		builder.insertPoint = afterIfBlock
+		builder.createPHI(builder.int1Ty, 2) => [
+			addIncoming(rightValue, thenBlock)
+			addIncoming(builder.^false, startingBlock)
+		]
 	}
 	
 	def private dispatch Value generateExpression(XorExpression expression) {

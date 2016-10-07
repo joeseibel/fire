@@ -210,6 +210,11 @@ JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilder_createFCmpUNE(JNIEnv *env, jo
 	llvm::Value *rhsNative = toNative<llvm::Value>(env, rhs);
 	return toJava(env, "fire/llvm/Value", toNative<llvm::IRBuilder<>>(env, obj)->CreateFCmpUNE(lhsNative, rhsNative));
 }
+//Java method: public native PHINode createPHINative(Type ty, int numReservedValues);
+JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilder_createPHINative(JNIEnv *env, jobject obj, jobject ty, jint numReservedValues) {
+	llvm::Type *tyNative = toNative<llvm::Type>(env, ty);
+	return toJava(env, "fire/llvm/PHINode", toNative<llvm::IRBuilder<>>(env, obj)->CreatePHI(tyNative, numReservedValues));
+}
 
 //Java method: public native CallInst createCall(Function callee, Value[] args);
 JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilder_createCall(JNIEnv *env, jobject obj, jobject callee, jobjectArray args) {

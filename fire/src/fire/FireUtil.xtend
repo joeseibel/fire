@@ -1,6 +1,7 @@
 package fire
 
 import fire.fire.AdditiveExpression
+import fire.fire.AndExpression
 import fire.fire.BooleanLiteral
 import fire.fire.ComparisonExpression
 import fire.fire.EqualityExpression
@@ -13,6 +14,10 @@ import fire.fire.StringLiteral
 import fire.fire.XorExpression
 
 class FireUtil {
+	def static dispatch FireType getType(AndExpression expression) {
+		FireType.BOOLEAN
+	}
+	
 	def static dispatch FireType getType(XorExpression expression) {
 		FireType.BOOLEAN
 	}

@@ -181,7 +181,66 @@ ruleExpression returns [EObject current=null]
 }:
 	(
 		{
-			newCompositeNode(grammarAccess.getExpressionAccess().getEqualityExpressionParserRuleCall_0());
+			newCompositeNode(grammarAccess.getExpressionAccess().getXorExpressionParserRuleCall_0());
+		}
+		this_XorExpression_0=ruleXorExpression
+		{
+			$current = $this_XorExpression_0.current;
+			afterParserOrEnumRuleCall();
+		}
+		(
+			(
+				{
+					$current = forceCreateModelElementAndSet(
+						grammarAccess.getExpressionAccess().getAndExpressionLeftAction_1_0(),
+						$current);
+				}
+			)
+			otherlv_2='and'
+			{
+				newLeafNode(otherlv_2, grammarAccess.getExpressionAccess().getAndKeyword_1_1());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getExpressionAccess().getRightXorExpressionParserRuleCall_1_2_0());
+					}
+					lv_right_3_0=ruleXorExpression
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getExpressionRule());
+						}
+						set(
+							$current,
+							"right",
+							lv_right_3_0,
+							"fire.Fire.XorExpression");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)*
+	)
+;
+
+// Entry rule entryRuleXorExpression
+entryRuleXorExpression returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getXorExpressionRule()); }
+	iv_ruleXorExpression=ruleXorExpression
+	{ $current=$iv_ruleXorExpression.current; }
+	EOF;
+
+// Rule XorExpression
+ruleXorExpression returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		{
+			newCompositeNode(grammarAccess.getXorExpressionAccess().getEqualityExpressionParserRuleCall_0());
 		}
 		this_EqualityExpression_0=ruleEqualityExpression
 		{
@@ -192,23 +251,23 @@ ruleExpression returns [EObject current=null]
 			(
 				{
 					$current = forceCreateModelElementAndSet(
-						grammarAccess.getExpressionAccess().getXorExpressionLeftAction_1_0(),
+						grammarAccess.getXorExpressionAccess().getXorExpressionLeftAction_1_0(),
 						$current);
 				}
 			)
 			otherlv_2='xor'
 			{
-				newLeafNode(otherlv_2, grammarAccess.getExpressionAccess().getXorKeyword_1_1());
+				newLeafNode(otherlv_2, grammarAccess.getXorExpressionAccess().getXorKeyword_1_1());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getExpressionAccess().getRightEqualityExpressionParserRuleCall_1_2_0());
+						newCompositeNode(grammarAccess.getXorExpressionAccess().getRightEqualityExpressionParserRuleCall_1_2_0());
 					}
 					lv_right_3_0=ruleEqualityExpression
 					{
 						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getExpressionRule());
+							$current = createModelElementForParent(grammarAccess.getXorExpressionRule());
 						}
 						set(
 							$current,

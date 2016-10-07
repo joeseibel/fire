@@ -3,6 +3,7 @@ package fire.validation
 import com.google.inject.Inject
 import fire.FireType
 import fire.fire.AdditiveExpression
+import fire.fire.AndExpression
 import fire.fire.ComparisonExpression
 import fire.fire.EqualityExpression
 import fire.fire.FirePackage
@@ -21,11 +22,23 @@ class FireValidator extends AbstractFireValidator {
 	FireGrammarAccess grammarAccess
 	
 	@Check
+	def void typeCheckAndExpression(AndExpression expression) {
+		val leftType = expression.left?.type
+		val rightType = expression.right?.type
+		if (leftType != null && rightType != null && (leftType != FireType.BOOLEAN || rightType != FireType.BOOLEAN)) {
+			val andKeyword = grammarAccess.expressionAccess.andKeyword_1_1
+			val message = '''«andKeyword.value» operator cannot be applied to types «leftType» and «rightType»'''
+			val andKeywordNode = expression.node.children.findFirst[grammarElement == andKeyword]
+			messageAcceptor.acceptError(message, expression, andKeywordNode.offset, andKeywordNode.length, null)
+		}
+	}
+	
+	@Check
 	def void typeCheckXorExpression(XorExpression expression) {
 		val leftType = expression.left?.type
 		val rightType = expression.right?.type
 		if (leftType != null && rightType != null && (leftType != FireType.BOOLEAN || rightType != FireType.BOOLEAN)) {
-			val xorKeyword = grammarAccess.expressionAccess.xorKeyword_1_1
+			val xorKeyword = grammarAccess.xorExpressionAccess.xorKeyword_1_1
 			val message = '''«xorKeyword.value» operator cannot be applied to types «leftType» and «rightType»'''
 			val xorKeywordNode = expression.node.children.findFirst[grammarElement == xorKeyword]
 			messageAcceptor.acceptError(message, expression, xorKeywordNode.offset, xorKeywordNode.length, null)

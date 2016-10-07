@@ -6,6 +6,7 @@ JNI_HEADERS = jni_headers/fire_llvm_BasicBlock.h\
 	jni_headers/fire_llvm_IRBuilderBase.h\
 	jni_headers/fire_llvm_LLVMContext.h\
 	jni_headers/fire_llvm_Module.h\
+	jni_headers/fire_llvm_PHINode.h\
 	jni_headers/fire_llvm_Type.h
 OBJS = bin/fire_llvm_BasicBlock.o\
 	bin/fire_llvm_ConstantFP.o\
@@ -15,6 +16,7 @@ OBJS = bin/fire_llvm_BasicBlock.o\
 	bin/fire_llvm_IRBuilderBase.o\
 	bin/fire_llvm_LLVMContext.o\
 	bin/fire_llvm_Module.o\
+	bin/fire_llvm_PHINode.o\
 	bin/fire_llvm_Type.o\
 	bin/FireUtil.o
 

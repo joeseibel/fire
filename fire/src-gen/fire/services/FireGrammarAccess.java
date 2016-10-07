@@ -94,6 +94,41 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 	public class ExpressionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fire.Fire.Expression");
 		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cXorExpressionParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Action cAndExpressionLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Keyword cAndKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
+		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cRightXorExpressionParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
+		
+		//Expression:
+		//	XorExpression ({AndExpression.left=current} 'and' right=XorExpression)*;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//XorExpression ({AndExpression.left=current} 'and' right=XorExpression)*
+		public Group getGroup() { return cGroup; }
+		
+		//XorExpression
+		public RuleCall getXorExpressionParserRuleCall_0() { return cXorExpressionParserRuleCall_0; }
+		
+		//({AndExpression.left=current} 'and' right=XorExpression)*
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//{AndExpression.left=current}
+		public Action getAndExpressionLeftAction_1_0() { return cAndExpressionLeftAction_1_0; }
+		
+		//'and'
+		public Keyword getAndKeyword_1_1() { return cAndKeyword_1_1; }
+		
+		//right=XorExpression
+		public Assignment getRightAssignment_1_2() { return cRightAssignment_1_2; }
+		
+		//XorExpression
+		public RuleCall getRightXorExpressionParserRuleCall_1_2_0() { return cRightXorExpressionParserRuleCall_1_2_0; }
+	}
+	public class XorExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fire.Fire.XorExpression");
+		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final RuleCall cEqualityExpressionParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
 		private final Action cXorExpressionLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
@@ -101,8 +136,8 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
 		private final RuleCall cRightEqualityExpressionParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
 		
-		//Expression:
-		//	EqualityExpression ({XorExpression.left=current} 'xor' right=EqualityExpression)*;
+		//XorExpression Expression:
+		//	EqualityExpression ({XorExpression.left=current} 'xor' right=EqualityExpression)*
 		@Override public ParserRule getRule() { return rule; }
 		
 		//EqualityExpression ({XorExpression.left=current} 'xor' right=EqualityExpression)*
@@ -613,6 +648,7 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 	private final ProgramElements pProgram;
 	private final WritelnStatementElements pWritelnStatement;
 	private final ExpressionElements pExpression;
+	private final XorExpressionElements pXorExpression;
 	private final EqualityExpressionElements pEqualityExpression;
 	private final EqualityOperatorElements eEqualityOperator;
 	private final ComparisonExpressionElements pComparisonExpression;
@@ -637,6 +673,7 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 		this.pProgram = new ProgramElements();
 		this.pWritelnStatement = new WritelnStatementElements();
 		this.pExpression = new ExpressionElements();
+		this.pXorExpression = new XorExpressionElements();
 		this.pEqualityExpression = new EqualityExpressionElements();
 		this.eEqualityOperator = new EqualityOperatorElements();
 		this.pComparisonExpression = new ComparisonExpressionElements();
@@ -701,13 +738,23 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Expression:
-	//	EqualityExpression ({XorExpression.left=current} 'xor' right=EqualityExpression)*;
+	//	XorExpression ({AndExpression.left=current} 'and' right=XorExpression)*;
 	public ExpressionElements getExpressionAccess() {
 		return pExpression;
 	}
 	
 	public ParserRule getExpressionRule() {
 		return getExpressionAccess().getRule();
+	}
+	
+	//XorExpression Expression:
+	//	EqualityExpression ({XorExpression.left=current} 'xor' right=EqualityExpression)*
+	public XorExpressionElements getXorExpressionAccess() {
+		return pXorExpression;
+	}
+	
+	public ParserRule getXorExpressionRule() {
+		return getXorExpressionAccess().getRule();
 	}
 	
 	//EqualityExpression Expression:

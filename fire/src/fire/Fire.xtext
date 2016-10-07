@@ -15,6 +15,10 @@ WritelnStatement:
 ;
 
 Expression:
+	XorExpression ({AndExpression.left=current} 'and' right=XorExpression)*
+;
+
+XorExpression returns Expression:
 	EqualityExpression ({XorExpression.left=current} 'xor' right=EqualityExpression)*
 ;
 

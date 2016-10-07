@@ -37,5 +37,14 @@ public class IRBuilder extends IRBuilderBase {
 	public native Value createFCmpULT(Value lhs, Value rhs);
 	public native Value createFCmpULE(Value lhs, Value rhs);
 	public native Value createFCmpUNE(Value lhs, Value rhs);
+	
+	public PHINode createPHI(Type ty, int numReservedValues) {
+		if (numReservedValues < 0) {
+			throw new IllegalArgumentException("numReservedValues cannot be negative");
+		}
+		return createPHINative(ty, numReservedValues);
+	}
+	
+	public native PHINode createPHINative(Type ty, int numReservedValues);
 	public native CallInst createCall(Function callee, Value[] args);
 }
