@@ -47,4 +47,5 @@ public class IRBuilder extends IRBuilderBase {
 	
 	public native PHINode createPHINative(Type ty, int numReservedValues);
 	public native CallInst createCall(Function callee, Value[] args);
+	public native Value createSelect(Value c, Value trueValue, Value falseValue);
 }

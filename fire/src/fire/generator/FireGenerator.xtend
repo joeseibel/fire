@@ -72,20 +72,10 @@ class FireGenerator extends AbstractGenerator {
 		switch statement.argument.type {
 			case STRING: builder.createCall(printfFunction, #[builder.createGlobalStringPtr("%s\n"), argumentValue])
 			case BOOLEAN: {
-				val function = builder.insertBlock.parent
-				val thenBlock = BasicBlock.create(llvmContext, "then", function)
-				val elseBlock = BasicBlock.create(llvmContext, "else")
-				val afterIfBlock = BasicBlock.create(llvmContext, "afterIf")
-				builder.createCondBr(argumentValue, thenBlock, elseBlock)
-				builder.insertPoint = thenBlock
-				builder.createCall(printfFunction, #[builder.createGlobalStringPtr("true\n")])
-				builder.createBr(afterIfBlock)
-				function.addBasicBlock(elseBlock)
-				builder.insertPoint = elseBlock
-				builder.createCall(printfFunction, #[builder.createGlobalStringPtr("false\n")])
-				builder.createBr(afterIfBlock)
-				function.addBasicBlock(afterIfBlock)
-				builder.insertPoint = afterIfBlock
+				val trueString = builder.createGlobalStringPtr("true\n")
+				val falseString = builder.createGlobalStringPtr("false\n")
+				val selectResult = builder.createSelect(argumentValue, trueString, falseString)
+				builder.createCall(printfFunction, #[selectResult])
 			}
 			case INTEGER: builder.createCall(printfFunction, #[builder.createGlobalStringPtr("%ld\n"), argumentValue])
 			case REAL: builder.createCall(printfFunction, #[builder.createGlobalStringPtr("%f\n"), argumentValue])

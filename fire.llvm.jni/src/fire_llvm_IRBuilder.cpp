@@ -222,3 +222,11 @@ JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilder_createCall(JNIEnv *env, jobje
 	std::vector<llvm::Value*> argsNative = toVector<llvm::Value>(env, args);
 	return toJava(env, "fire/llvm/CallInst", toNative<llvm::IRBuilder<>>(env, obj)->CreateCall(calleeNative, argsNative));
 }
+
+//Java method: public native Value createSelect(Value c, Value trueValue, Value falseValue);
+JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilder_createSelect(JNIEnv *env, jobject obj, jobject c, jobject trueValue, jobject falseValue) {
+	llvm::Value *cNative = toNative<llvm::Value>(env, c);
+	llvm::Value *trueValueNative = toNative<llvm::Value>(env, trueValue);
+	llvm::Value *falseValueNative = toNative<llvm::Value>(env, falseValue);
+	return toJava(env, "fire/llvm/Value", toNative<llvm::IRBuilder<>>(env, obj)->CreateSelect(cNative, trueValueNative, falseValueNative));
+}
