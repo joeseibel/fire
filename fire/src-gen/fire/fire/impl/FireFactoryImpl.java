@@ -69,6 +69,7 @@ public class FireFactoryImpl extends EFactoryImpl implements FireFactory
       case FirePackage.PROGRAM: return createProgram();
       case FirePackage.WRITELN_STATEMENT: return createWritelnStatement();
       case FirePackage.EXPRESSION: return createExpression();
+      case FirePackage.OR_EXPRESSION: return createOrExpression();
       case FirePackage.AND_EXPRESSION: return createAndExpression();
       case FirePackage.XOR_EXPRESSION: return createXorExpression();
       case FirePackage.EQUALITY_EXPRESSION: return createEqualityExpression();
@@ -163,6 +164,17 @@ public class FireFactoryImpl extends EFactoryImpl implements FireFactory
   {
     ExpressionImpl expression = new ExpressionImpl();
     return expression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public OrExpression createOrExpression()
+  {
+    OrExpressionImpl orExpression = new OrExpressionImpl();
+    return orExpression;
   }
 
   /**

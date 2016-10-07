@@ -9,6 +9,7 @@ import fire.fire.IntegerLiteral
 import fire.fire.MultiplicativeExpression
 import fire.fire.NegationExpression
 import fire.fire.NotExpression
+import fire.fire.OrExpression
 import fire.fire.Program
 import fire.fire.RealLiteral
 import fire.fire.StringLiteral
@@ -89,6 +90,24 @@ class FireGenerator extends AbstractGenerator {
 			case INTEGER: builder.createCall(printfFunction, #[builder.createGlobalStringPtr("%ld\n"), argumentValue])
 			case REAL: builder.createCall(printfFunction, #[builder.createGlobalStringPtr("%f\n"), argumentValue])
 		}
+	}
+	
+	def private dispatch Value generateExpression(OrExpression expression) {
+		val leftValue = expression.left.generateExpression
+		val startingBlock = builder.insertBlock
+		val function = startingBlock.parent
+		val elseBlock = BasicBlock.create(llvmContext, "else", function)
+		val afterIfBlock = BasicBlock.create(llvmContext, "afterIf")
+		builder.createCondBr(leftValue, afterIfBlock, elseBlock)
+		builder.insertPoint = elseBlock
+		val rightValue = expression.right.generateExpression
+		builder.createBr(afterIfBlock)
+		function.addBasicBlock(afterIfBlock)
+		builder.insertPoint = afterIfBlock
+		builder.createPHI(builder.int1Ty, 2) => [
+			addIncoming(builder.^true, startingBlock)
+			addIncoming(rightValue, elseBlock)
+		]
 	}
 	
 	def private dispatch Value generateExpression(AndExpression expression) {

@@ -67,6 +67,7 @@ public class FireSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     (rule start) (ambiguity) {ComparisonExpression.left=}
 	 *     (rule start) (ambiguity) {EqualityExpression.left=}
 	 *     (rule start) (ambiguity) {MultiplicativeExpression.left=}
+	 *     (rule start) (ambiguity) {OrExpression.left=}
 	 *     (rule start) (ambiguity) {XorExpression.left=}
 	 */
 	protected void emit_TerminalExpression_LeftParenthesisKeyword_6_0_a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
@@ -83,6 +84,7 @@ public class FireSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     (rule start) (ambiguity) {ComparisonExpression.left=}
 	 *     (rule start) (ambiguity) {EqualityExpression.left=}
 	 *     (rule start) (ambiguity) {MultiplicativeExpression.left=}
+	 *     (rule start) (ambiguity) {OrExpression.left=}
 	 *     (rule start) (ambiguity) {XorExpression.left=}
 	 */
 	protected void emit_TerminalExpression_LeftParenthesisKeyword_6_0_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {

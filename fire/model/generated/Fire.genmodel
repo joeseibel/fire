@@ -33,6 +33,10 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Fire.ecore#//WritelnStatement/argument"/>
     </genClasses>
     <genClasses ecoreClass="Fire.ecore#//Expression"/>
+    <genClasses ecoreClass="Fire.ecore#//OrExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Fire.ecore#//OrExpression/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Fire.ecore#//OrExpression/right"/>
+    </genClasses>
     <genClasses ecoreClass="Fire.ecore#//AndExpression">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Fire.ecore#//AndExpression/left"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Fire.ecore#//AndExpression/right"/>

@@ -14,6 +14,7 @@ import fire.fire.IntegerLiteral;
 import fire.fire.MultiplicativeExpression;
 import fire.fire.NegationExpression;
 import fire.fire.NotExpression;
+import fire.fire.OrExpression;
 import fire.fire.Program;
 import fire.fire.RealLiteral;
 import fire.fire.StringLiteral;
@@ -49,7 +50,7 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				sequence_AdditiveExpression(context, (AdditiveExpression) semanticObject); 
 				return; 
 			case FirePackage.AND_EXPRESSION:
-				sequence_Expression(context, (AndExpression) semanticObject); 
+				sequence_AndExpression(context, (AndExpression) semanticObject); 
 				return; 
 			case FirePackage.BOOLEAN_LITERAL:
 				sequence_TerminalExpression(context, (BooleanLiteral) semanticObject); 
@@ -71,6 +72,9 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				return; 
 			case FirePackage.NOT_EXPRESSION:
 				sequence_TerminalExpression(context, (NotExpression) semanticObject); 
+				return; 
+			case FirePackage.OR_EXPRESSION:
+				sequence_Expression(context, (OrExpression) semanticObject); 
 				return; 
 			case FirePackage.PROGRAM:
 				sequence_Program(context, (Program) semanticObject); 
@@ -95,7 +99,9 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * Contexts:
 	 *     Expression returns AdditiveExpression
-	 *     Expression.AndExpression_1_0 returns AdditiveExpression
+	 *     Expression.OrExpression_1_0 returns AdditiveExpression
+	 *     AndExpression returns AdditiveExpression
+	 *     AndExpression.AndExpression_1_0 returns AdditiveExpression
 	 *     XorExpression returns AdditiveExpression
 	 *     XorExpression.XorExpression_1_0 returns AdditiveExpression
 	 *     EqualityExpression returns AdditiveExpression
@@ -130,8 +136,45 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
+	 *     Expression returns AndExpression
+	 *     Expression.OrExpression_1_0 returns AndExpression
+	 *     AndExpression returns AndExpression
+	 *     AndExpression.AndExpression_1_0 returns AndExpression
+	 *     XorExpression returns AndExpression
+	 *     XorExpression.XorExpression_1_0 returns AndExpression
+	 *     EqualityExpression returns AndExpression
+	 *     EqualityExpression.EqualityExpression_1_0 returns AndExpression
+	 *     ComparisonExpression returns AndExpression
+	 *     ComparisonExpression.ComparisonExpression_1_0 returns AndExpression
+	 *     AdditiveExpression returns AndExpression
+	 *     AdditiveExpression.AdditiveExpression_1_0 returns AndExpression
+	 *     MultiplicativeExpression returns AndExpression
+	 *     MultiplicativeExpression.MultiplicativeExpression_1_0 returns AndExpression
+	 *     TerminalExpression returns AndExpression
+	 *
+	 * Constraint:
+	 *     (left=AndExpression_AndExpression_1_0 right=XorExpression)
+	 */
+	protected void sequence_AndExpression(ISerializationContext context, AndExpression semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, FirePackage.Literals.AND_EXPRESSION__LEFT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FirePackage.Literals.AND_EXPRESSION__LEFT));
+			if (transientValues.isValueTransient(semanticObject, FirePackage.Literals.AND_EXPRESSION__RIGHT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FirePackage.Literals.AND_EXPRESSION__RIGHT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getAndExpressionAccess().getAndExpressionLeftAction_1_0(), semanticObject.getLeft());
+		feeder.accept(grammarAccess.getAndExpressionAccess().getRightXorExpressionParserRuleCall_1_2_0(), semanticObject.getRight());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     Expression returns ComparisonExpression
-	 *     Expression.AndExpression_1_0 returns ComparisonExpression
+	 *     Expression.OrExpression_1_0 returns ComparisonExpression
+	 *     AndExpression returns ComparisonExpression
+	 *     AndExpression.AndExpression_1_0 returns ComparisonExpression
 	 *     XorExpression returns ComparisonExpression
 	 *     XorExpression.XorExpression_1_0 returns ComparisonExpression
 	 *     EqualityExpression returns ComparisonExpression
@@ -167,7 +210,9 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * Contexts:
 	 *     Expression returns EqualityExpression
-	 *     Expression.AndExpression_1_0 returns EqualityExpression
+	 *     Expression.OrExpression_1_0 returns EqualityExpression
+	 *     AndExpression returns EqualityExpression
+	 *     AndExpression.AndExpression_1_0 returns EqualityExpression
 	 *     XorExpression returns EqualityExpression
 	 *     XorExpression.XorExpression_1_0 returns EqualityExpression
 	 *     EqualityExpression returns EqualityExpression
@@ -202,33 +247,35 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
-	 *     Expression returns AndExpression
-	 *     Expression.AndExpression_1_0 returns AndExpression
-	 *     XorExpression returns AndExpression
-	 *     XorExpression.XorExpression_1_0 returns AndExpression
-	 *     EqualityExpression returns AndExpression
-	 *     EqualityExpression.EqualityExpression_1_0 returns AndExpression
-	 *     ComparisonExpression returns AndExpression
-	 *     ComparisonExpression.ComparisonExpression_1_0 returns AndExpression
-	 *     AdditiveExpression returns AndExpression
-	 *     AdditiveExpression.AdditiveExpression_1_0 returns AndExpression
-	 *     MultiplicativeExpression returns AndExpression
-	 *     MultiplicativeExpression.MultiplicativeExpression_1_0 returns AndExpression
-	 *     TerminalExpression returns AndExpression
+	 *     Expression returns OrExpression
+	 *     Expression.OrExpression_1_0 returns OrExpression
+	 *     AndExpression returns OrExpression
+	 *     AndExpression.AndExpression_1_0 returns OrExpression
+	 *     XorExpression returns OrExpression
+	 *     XorExpression.XorExpression_1_0 returns OrExpression
+	 *     EqualityExpression returns OrExpression
+	 *     EqualityExpression.EqualityExpression_1_0 returns OrExpression
+	 *     ComparisonExpression returns OrExpression
+	 *     ComparisonExpression.ComparisonExpression_1_0 returns OrExpression
+	 *     AdditiveExpression returns OrExpression
+	 *     AdditiveExpression.AdditiveExpression_1_0 returns OrExpression
+	 *     MultiplicativeExpression returns OrExpression
+	 *     MultiplicativeExpression.MultiplicativeExpression_1_0 returns OrExpression
+	 *     TerminalExpression returns OrExpression
 	 *
 	 * Constraint:
-	 *     (left=Expression_AndExpression_1_0 right=XorExpression)
+	 *     (left=Expression_OrExpression_1_0 right=AndExpression)
 	 */
-	protected void sequence_Expression(ISerializationContext context, AndExpression semanticObject) {
+	protected void sequence_Expression(ISerializationContext context, OrExpression semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, FirePackage.Literals.AND_EXPRESSION__LEFT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FirePackage.Literals.AND_EXPRESSION__LEFT));
-			if (transientValues.isValueTransient(semanticObject, FirePackage.Literals.AND_EXPRESSION__RIGHT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FirePackage.Literals.AND_EXPRESSION__RIGHT));
+			if (transientValues.isValueTransient(semanticObject, FirePackage.Literals.OR_EXPRESSION__LEFT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FirePackage.Literals.OR_EXPRESSION__LEFT));
+			if (transientValues.isValueTransient(semanticObject, FirePackage.Literals.OR_EXPRESSION__RIGHT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FirePackage.Literals.OR_EXPRESSION__RIGHT));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getExpressionAccess().getAndExpressionLeftAction_1_0(), semanticObject.getLeft());
-		feeder.accept(grammarAccess.getExpressionAccess().getRightXorExpressionParserRuleCall_1_2_0(), semanticObject.getRight());
+		feeder.accept(grammarAccess.getExpressionAccess().getOrExpressionLeftAction_1_0(), semanticObject.getLeft());
+		feeder.accept(grammarAccess.getExpressionAccess().getRightAndExpressionParserRuleCall_1_2_0(), semanticObject.getRight());
 		feeder.finish();
 	}
 	
@@ -236,7 +283,9 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * Contexts:
 	 *     Expression returns MultiplicativeExpression
-	 *     Expression.AndExpression_1_0 returns MultiplicativeExpression
+	 *     Expression.OrExpression_1_0 returns MultiplicativeExpression
+	 *     AndExpression returns MultiplicativeExpression
+	 *     AndExpression.AndExpression_1_0 returns MultiplicativeExpression
 	 *     XorExpression returns MultiplicativeExpression
 	 *     XorExpression.XorExpression_1_0 returns MultiplicativeExpression
 	 *     EqualityExpression returns MultiplicativeExpression
@@ -284,7 +333,9 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * Contexts:
 	 *     Expression returns BooleanLiteral
-	 *     Expression.AndExpression_1_0 returns BooleanLiteral
+	 *     Expression.OrExpression_1_0 returns BooleanLiteral
+	 *     AndExpression returns BooleanLiteral
+	 *     AndExpression.AndExpression_1_0 returns BooleanLiteral
 	 *     XorExpression returns BooleanLiteral
 	 *     XorExpression.XorExpression_1_0 returns BooleanLiteral
 	 *     EqualityExpression returns BooleanLiteral
@@ -308,7 +359,9 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * Contexts:
 	 *     Expression returns IntegerLiteral
-	 *     Expression.AndExpression_1_0 returns IntegerLiteral
+	 *     Expression.OrExpression_1_0 returns IntegerLiteral
+	 *     AndExpression returns IntegerLiteral
+	 *     AndExpression.AndExpression_1_0 returns IntegerLiteral
 	 *     XorExpression returns IntegerLiteral
 	 *     XorExpression.XorExpression_1_0 returns IntegerLiteral
 	 *     EqualityExpression returns IntegerLiteral
@@ -338,7 +391,9 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * Contexts:
 	 *     Expression returns NegationExpression
-	 *     Expression.AndExpression_1_0 returns NegationExpression
+	 *     Expression.OrExpression_1_0 returns NegationExpression
+	 *     AndExpression returns NegationExpression
+	 *     AndExpression.AndExpression_1_0 returns NegationExpression
 	 *     XorExpression returns NegationExpression
 	 *     XorExpression.XorExpression_1_0 returns NegationExpression
 	 *     EqualityExpression returns NegationExpression
@@ -368,7 +423,9 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * Contexts:
 	 *     Expression returns NotExpression
-	 *     Expression.AndExpression_1_0 returns NotExpression
+	 *     Expression.OrExpression_1_0 returns NotExpression
+	 *     AndExpression returns NotExpression
+	 *     AndExpression.AndExpression_1_0 returns NotExpression
 	 *     XorExpression returns NotExpression
 	 *     XorExpression.XorExpression_1_0 returns NotExpression
 	 *     EqualityExpression returns NotExpression
@@ -398,7 +455,9 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * Contexts:
 	 *     Expression returns RealLiteral
-	 *     Expression.AndExpression_1_0 returns RealLiteral
+	 *     Expression.OrExpression_1_0 returns RealLiteral
+	 *     AndExpression returns RealLiteral
+	 *     AndExpression.AndExpression_1_0 returns RealLiteral
 	 *     XorExpression returns RealLiteral
 	 *     XorExpression.XorExpression_1_0 returns RealLiteral
 	 *     EqualityExpression returns RealLiteral
@@ -428,7 +487,9 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * Contexts:
 	 *     Expression returns StringLiteral
-	 *     Expression.AndExpression_1_0 returns StringLiteral
+	 *     Expression.OrExpression_1_0 returns StringLiteral
+	 *     AndExpression returns StringLiteral
+	 *     AndExpression.AndExpression_1_0 returns StringLiteral
 	 *     XorExpression returns StringLiteral
 	 *     XorExpression.XorExpression_1_0 returns StringLiteral
 	 *     EqualityExpression returns StringLiteral
@@ -476,7 +537,9 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * Contexts:
 	 *     Expression returns XorExpression
-	 *     Expression.AndExpression_1_0 returns XorExpression
+	 *     Expression.OrExpression_1_0 returns XorExpression
+	 *     AndExpression returns XorExpression
+	 *     AndExpression.AndExpression_1_0 returns XorExpression
 	 *     XorExpression returns XorExpression
 	 *     XorExpression.XorExpression_1_0 returns XorExpression
 	 *     EqualityExpression returns XorExpression

@@ -10,6 +10,7 @@ import fire.fire.FirePackage
 import fire.fire.MultiplicativeExpression
 import fire.fire.NegationExpression
 import fire.fire.NotExpression
+import fire.fire.OrExpression
 import fire.fire.XorExpression
 import fire.services.FireGrammarAccess
 import org.eclipse.xtext.validation.Check
@@ -22,11 +23,23 @@ class FireValidator extends AbstractFireValidator {
 	FireGrammarAccess grammarAccess
 	
 	@Check
+	def void typeCheckOrExpression(OrExpression expression) {
+		val leftType = expression.left?.type
+		val rightType = expression.right?.type
+		if (leftType != null && rightType != null && (leftType != FireType.BOOLEAN || rightType != FireType.BOOLEAN)) {
+			val orKeyword = grammarAccess.expressionAccess.orKeyword_1_1
+			val message = '''«orKeyword.value» operator cannot be applied to types «leftType» and «rightType»'''
+			val orKeywordNode = expression.node.children.findFirst[grammarElement == orKeyword]
+			messageAcceptor.acceptError(message, expression, orKeywordNode.offset, orKeywordNode.length, null)
+		}
+	}
+	
+	@Check
 	def void typeCheckAndExpression(AndExpression expression) {
 		val leftType = expression.left?.type
 		val rightType = expression.right?.type
 		if (leftType != null && rightType != null && (leftType != FireType.BOOLEAN || rightType != FireType.BOOLEAN)) {
-			val andKeyword = grammarAccess.expressionAccess.andKeyword_1_1
+			val andKeyword = grammarAccess.andExpressionAccess.andKeyword_1_1
 			val message = '''«andKeyword.value» operator cannot be applied to types «leftType» and «rightType»'''
 			val andKeywordNode = expression.node.children.findFirst[grammarElement == andKeyword]
 			messageAcceptor.acceptError(message, expression, andKeywordNode.offset, andKeywordNode.length, null)
