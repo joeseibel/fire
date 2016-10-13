@@ -235,3 +235,9 @@ JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilder_createSelect(JNIEnv *env, job
 	llvm::Value *falseValueNative = toNative<llvm::Value>(env, falseValue);
 	return toJava(env, "fire/llvm/Value", toNative<llvm::IRBuilder<>>(env, obj)->CreateSelect(cNative, trueValueNative, falseValueNative));
 }
+
+//Java method: public native Value createExtractValue(Value agg, int idx);
+JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilder_createExtractValue(JNIEnv *env, jobject obj, jobject agg, jint idx) {
+	llvm::Value *aggNative = toNative<llvm::Value>(env, agg);
+	return toJava(env, "fire/llvm/Value", toNative<llvm::IRBuilder<>>(env, obj)->CreateExtractValue(aggNative, idx));
+}

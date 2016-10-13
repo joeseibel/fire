@@ -6,6 +6,7 @@ import fire.fire.AndExpression
 import fire.fire.BooleanLiteral
 import fire.fire.ComparisonExpression
 import fire.fire.EqualityExpression
+import fire.fire.Expression
 import fire.fire.IntegerLiteral
 import fire.fire.MultiplicativeExpression
 import fire.fire.NegationExpression
@@ -24,6 +25,7 @@ import fire.llvm.IRBuilder
 import fire.llvm.LLVMContext
 import fire.llvm.LinkageTypes
 import fire.llvm.Module
+import fire.llvm.StructType
 import fire.llvm.Type
 import fire.llvm.Value
 import fire.services.FireGrammarAccess
@@ -171,22 +173,49 @@ class FireGenerator extends AbstractGenerator {
 	def private dispatch Value generateExpression(AdditiveExpression expression) {
 		switch expression.operator {
 			case ADD: switch expression.left.type {
-				case INTEGER: builder.createAdd(expression.left.generateExpression, expression.right.generateExpression)
+				case INTEGER: {
+					val operator = grammarAccess.additiveOperatorAccess.ADDEnumLiteralDeclaration_0
+					overflowCheck(expression, expression.left, expression.right, operator, saddWithOverflowFunction)
+				}
 				case REAL: builder.createFAdd(expression.left.generateExpression, expression.right.generateExpression)
 				default: null
 			}
 			case SUBTRACT: switch expression.left.type {
-				case INTEGER: builder.createSub(expression.left.generateExpression, expression.right.generateExpression)
+				case INTEGER: {
+					val operator = grammarAccess.additiveOperatorAccess.SUBTRACTEnumLiteralDeclaration_1
+					overflowCheck(expression, expression.left, expression.right, operator, ssubWithOverflowFunction)
+				}
 				case REAL: builder.createFSub(expression.left.generateExpression, expression.right.generateExpression)
 				default: null
 			}
 		}
 	}
 	
+	def private Value overflowCheck(Expression expression, Expression left, Expression right, EnumLiteralDeclaration operator, Function operation) {
+		val result = builder.createCall(operation, #[left.generateExpression, right.generateExpression])
+		val isOverflow = builder.createExtractValue(result, 1)
+		val function = builder.insertBlock.parent
+		val thenBlock = BasicBlock.create(llvmContext, "then", function)
+		val afterIfBlock = BasicBlock.create(llvmContext, "afterIf")
+		builder.createCondBr(isOverflow, thenBlock, afterIfBlock)
+		builder.insertPoint = thenBlock
+		val line = expression.node.leafNodes.findFirst[grammarElement == operator].startLine
+		val message = '''Integer overflow at "«expression.eResource.URI.lastSegment»:«line»"'''
+		builder.createCall(printfFunction, #[builder.createGlobalStringPtr(message)])
+		builder.createCall(exitFunction, #[builder.getInt32(1)])
+		builder.createUnreachable
+		function.addBasicBlock(afterIfBlock)
+		builder.insertPoint = afterIfBlock
+		builder.createExtractValue(result, 0)
+	}
+	
 	def private dispatch Value generateExpression(MultiplicativeExpression expression) {
 		switch expression.operator {
 			case MULTIPLY: switch expression.left.type {
-				case INTEGER: builder.createMul(expression.left.generateExpression, expression.right.generateExpression)
+				case INTEGER: {
+					val operator = grammarAccess.multiplicativeOperatorAccess.MULTIPLYEnumLiteralDeclaration_0
+					overflowCheck(expression, expression.left, expression.right, operator, smulWithOverflowFunction)
+				}
 				case REAL: builder.createFMul(expression.left.generateExpression, expression.right.generateExpression)
 				default: null
 			}
@@ -253,14 +282,26 @@ class FireGenerator extends AbstractGenerator {
 	}
 	
 	def private Function getPrintfFunction() {
-		getCFunction("printf", builder.int32Ty, #[builder.int8Ty.pointerTo], true)
+		getFunction("printf", builder.int32Ty, #[builder.int8Ty.pointerTo], true)
 	}
 	
 	def private Function getExitFunction() {
-		getCFunction("exit", builder.voidTy, #[builder.int32Ty], false)
+		getFunction("exit", builder.voidTy, #[builder.int32Ty], false)
 	}
 	
-	def private Function getCFunction(String name, Type result, Type[] params, boolean isVarArg) {
+	def private Function getSaddWithOverflowFunction() {
+		getFunction("llvm.sadd.with.overflow.i64", StructType.get(llvmContext, #[builder.int64Ty, builder.int1Ty]), #[builder.int64Ty, builder.int64Ty], false)
+	}
+	
+	def private Function getSsubWithOverflowFunction() {
+		getFunction("llvm.ssub.with.overflow.i64", StructType.get(llvmContext, #[builder.int64Ty, builder.int1Ty]), #[builder.int64Ty, builder.int64Ty], false)
+	}
+	
+	def private Function getSmulWithOverflowFunction() {
+		getFunction("llvm.smul.with.overflow.i64", StructType.get(llvmContext, #[builder.int64Ty, builder.int1Ty]), #[builder.int64Ty, builder.int64Ty], false)
+	}
+	
+	def private Function getFunction(String name, Type result, Type[] params, boolean isVarArg) {
 		module.getFunction(name) ?: {
 			val functionType = FunctionType.get(result, params, isVarArg)
 			Function.create(functionType, LinkageTypes.EXTERNAL_LINKAGE, name, module)

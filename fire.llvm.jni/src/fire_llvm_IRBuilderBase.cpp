@@ -47,6 +47,11 @@ JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilderBase_getInt32Ty(JNIEnv *env, j
 	return toJava(env, "fire/llvm/IntegerType", toNative<llvm::IRBuilderBase>(env, obj)->getInt32Ty());
 }
 
+//Java method: public native IntegerType getInt64Ty();
+JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilderBase_getInt64Ty(JNIEnv *env, jobject obj) {
+	return toJava(env, "fire/llvm/IntegerType", toNative<llvm::IRBuilderBase>(env, obj)->getInt64Ty());
+}
+
 //Java method: public native Type getVoidTy();
 JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilderBase_getVoidTy(JNIEnv *env, jobject obj) {
 	return toJava(env, "fire/llvm/Type", toNative<llvm::IRBuilderBase>(env, obj)->getVoidTy());
