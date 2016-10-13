@@ -22,6 +22,11 @@ JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilderBase_getFalse(JNIEnv *env, job
 	return toJava(env, "fire/llvm/ConstantInt", toNative<llvm::IRBuilderBase>(env, obj)->getFalse());
 }
 
+//Java method: public native ConstantInt getInt32(int c);
+JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilderBase_getInt32(JNIEnv *env, jobject obj, jint c) {
+	return toJava(env, "fire/llvm/ConstantInt", toNative<llvm::IRBuilderBase>(env, obj)->getInt32(c));
+}
+
 //Java method: public native ConstantInt getInt64(long c);
 JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilderBase_getInt64(JNIEnv *env, jobject obj, jlong c) {
 	return toJava(env, "fire/llvm/ConstantInt", toNative<llvm::IRBuilderBase>(env, obj)->getInt64(c));

@@ -1,5 +1,6 @@
 package fire.generator
 
+import com.google.inject.Inject
 import fire.fire.AdditiveExpression
 import fire.fire.AndExpression
 import fire.fire.BooleanLiteral
@@ -23,16 +24,23 @@ import fire.llvm.IRBuilder
 import fire.llvm.LLVMContext
 import fire.llvm.LinkageTypes
 import fire.llvm.Module
+import fire.llvm.Type
 import fire.llvm.Value
+import fire.services.FireGrammarAccess
 import java.io.ByteArrayInputStream
 import org.eclipse.emf.ecore.resource.Resource
+import org.eclipse.xtext.EnumLiteralDeclaration
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
 
 import static extension fire.FireUtil.getType
+import static extension org.eclipse.xtext.nodemodel.util.NodeModelUtils.getNode
 
 class FireGenerator extends AbstractGenerator {
+	@Inject
+	FireGrammarAccess grammarAccess
+	
 	LLVMContext llvmContext
 	Module module
 	IRBuilder builder
@@ -64,10 +72,6 @@ class FireGenerator extends AbstractGenerator {
 	}
 	
 	def private void generate(WritelnStatement statement) {
-		val printfFunction = module.getFunction("printf") ?: {
-			val functionType = FunctionType.get(builder.int32Ty, #[builder.int8Ty.pointerTo], true)
-			Function.create(functionType, LinkageTypes.EXTERNAL_LINKAGE, "printf", module)
-		}
 		val argumentValue = statement.argument.generateExpression
 		switch statement.argument.type {
 			case STRING: builder.createCall(printfFunction, #[builder.createGlobalStringPtr("%s\n"), argumentValue])
@@ -187,9 +191,33 @@ class FireGenerator extends AbstractGenerator {
 				default: null
 			}
 			case REAL_DIVIDE: builder.createFDiv(expression.left.generateExpression, expression.right.generateExpression)
-			case INTEGER_DIVIDE: builder.createSDiv(expression.left.generateExpression, expression.right.generateExpression)
-			case MODULUS: builder.createSRem(expression.left.generateExpression, expression.right.generateExpression)
+			case INTEGER_DIVIDE: {
+				val divOperator = grammarAccess.multiplicativeOperatorAccess.INTEGER_DIVIDEEnumLiteralDeclaration_2
+				checkZeroAndDivide(expression, divOperator, "Integer divide", [left, right | builder.createSDiv(left, right)])
+			}
+			case MODULUS: {
+				val modOperator = grammarAccess.multiplicativeOperatorAccess.MODULUSEnumLiteralDeclaration_3
+				checkZeroAndDivide(expression, modOperator, "Modulus", [left, right | builder.createSRem(left, right)])
+			}
 		}
+	}
+	
+	def private Value checkZeroAndDivide(MultiplicativeExpression expression, EnumLiteralDeclaration operator, String operationName, (Value, Value)=>Value operation) {
+		val rightValue = expression.right.generateExpression
+		val function = builder.insertBlock.parent
+		val thenBlock = BasicBlock.create(llvmContext, "then", function)
+		val afterIfBlock = BasicBlock.create(llvmContext, "afterIf")
+		val isZero = builder.createICmpEQ(rightValue, builder.getInt64(0))
+		builder.createCondBr(isZero, thenBlock, afterIfBlock)
+		builder.insertPoint = thenBlock
+		val line = expression.node.leafNodes.findFirst[grammarElement == operator].startLine
+		val message = '''«operationName» by zero at "«expression.eResource.URI.lastSegment»:«line»"'''
+		builder.createCall(printfFunction, #[builder.createGlobalStringPtr(message)])
+		builder.createCall(exitFunction, #[builder.getInt32(1)])
+		builder.createUnreachable
+		function.addBasicBlock(afterIfBlock)
+		builder.insertPoint = afterIfBlock
+		operation.apply(expression.left.generateExpression, rightValue)
 	}
 	
 	def private dispatch Value generateExpression(StringLiteral literal) {
@@ -221,6 +249,21 @@ class FireGenerator extends AbstractGenerator {
 			case INTEGER: builder.createNeg(expression.operand.generateExpression)
 			case REAL: builder.createFNeg(expression.operand.generateExpression)
 			default: null
+		}
+	}
+	
+	def private Function getPrintfFunction() {
+		getCFunction("printf", builder.int32Ty, #[builder.int8Ty.pointerTo], true)
+	}
+	
+	def private Function getExitFunction() {
+		getCFunction("exit", builder.voidTy, #[builder.int32Ty], false)
+	}
+	
+	def private Function getCFunction(String name, Type result, Type[] params, boolean isVarArg) {
+		module.getFunction(name) ?: {
+			val functionType = FunctionType.get(result, params, isVarArg)
+			Function.create(functionType, LinkageTypes.EXTERNAL_LINKAGE, name, module)
 		}
 	}
 }

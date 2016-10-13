@@ -31,6 +31,11 @@ JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilder_createCondBr(JNIEnv *env, job
 	return toJava(env, "fire/llvm/BranchInst", toNative<llvm::IRBuilder<>>(env, obj)->CreateCondBr(condNative, trueBlockNative, falseBlockNative));
 }
 
+//Java method: public native UnreachableInst createUnreachable();
+JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilder_createUnreachable(JNIEnv *env, jobject obj) {
+	return toJava(env, "fire/llvm/UnreachableInst", toNative<llvm::IRBuilder<>>(env, obj)->CreateUnreachable());
+}
+
 //Java method: public native Value createAdd(Value lhs, Value rhs);
 JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilder_createAdd(JNIEnv *env, jobject obj, jobject lhs, jobject rhs) {
 	llvm::Value *lhsNative = toNative<llvm::Value>(env, lhs);

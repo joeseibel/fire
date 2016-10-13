@@ -11,6 +11,7 @@ public class IRBuilder extends IRBuilderBase {
 	public native ReturnInst createRetVoid();
 	public native BranchInst createBr(BasicBlock dest);
 	public native BranchInst createCondBr(Value cond, BasicBlock trueBlock, BasicBlock falseBlock);
+	public native UnreachableInst createUnreachable();
 	public native Value createAdd(Value lhs, Value rhs);
 	public native Value createFAdd(Value lhs, Value rhs);
 	public native Value createSub(Value lhs, Value rhs);
