@@ -4,27 +4,255 @@
 package fire.tests
 
 import com.google.inject.Inject
+import fire.fire.AdditiveExpression
+import fire.fire.AdditiveOperator
+import fire.fire.AndExpression
+import fire.fire.BooleanLiteral
+import fire.fire.ComparisonExpression
+import fire.fire.ComparisonOperator
+import fire.fire.EqualityExpression
+import fire.fire.EqualityOperator
+import fire.fire.IntegerLiteral
+import fire.fire.MultiplicativeExpression
+import fire.fire.MultiplicativeOperator
+import fire.fire.NegationExpression
+import fire.fire.NotExpression
+import fire.fire.OrExpression
 import fire.fire.Program
+import fire.fire.RealLiteral
+import fire.fire.StringLiteral
+import fire.fire.XorExpression
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
 import org.eclipse.xtext.junit4.util.ParseHelper
-import org.junit.Assert
+import org.eclipse.xtext.junit4.validation.ValidationTestHelper
 import org.junit.Test
 import org.junit.runner.RunWith
+
+import static extension org.junit.Assert.assertEquals
+import static extension org.junit.Assert.assertFalse
+import static extension org.junit.Assert.assertTrue
 
 @RunWith(XtextRunner)
 @InjectWith(FireInjectorProvider)
 class FireParsingTest{
-
 	@Inject
-	ParseHelper<Program> parseHelper
-
-	@Test 
-	def void loadModel() {
-		val result = parseHelper.parse('''
-			Hello Xtext!
-		''')
-		Assert.assertNotNull(result)
+	extension ParseHelper<Program>
+	@Inject
+	extension ValidationTestHelper
+	
+	@Test
+	def void testEmptyProgram() {
+		'''
+			program
+			end
+		'''.parse => [
+			assertNoIssues
+		]
 	}
-
+	
+	@Test
+	def void testWritelnStatement() {
+		'''
+			program
+				writeln("string1")
+			end
+		'''.parse => [
+			assertNoIssues
+			1.assertEquals(statements.size)
+			"string1".assertEquals((statements.head.argument as StringLiteral).value)
+		]
+	}
+	
+	@Test
+	def void testOrExpression() {
+		'''
+			program
+				writeln(true or false or true)
+			end
+		'''.parse => [
+			assertNoIssues
+			1.assertEquals(statements.size)
+			statements.head.argument as OrExpression => [
+				left as OrExpression => [
+					(left as BooleanLiteral).value.assertTrue;
+					(right as BooleanLiteral).value.assertFalse
+				]
+				(right as BooleanLiteral).value.assertTrue
+			]
+		]
+	}
+	
+	@Test
+	def void testAndExpression() {
+		'''
+			program
+				writeln(true and false and true)
+			end
+		'''.parse => [
+			assertNoIssues
+			1.assertEquals(statements.size)
+			statements.head.argument as AndExpression => [
+				left as AndExpression => [
+					(left as BooleanLiteral).value.assertTrue;
+					(right as BooleanLiteral).value.assertFalse
+				]
+				(right as BooleanLiteral).value.assertTrue
+			]
+		]
+	}
+	
+	@Test
+	def void testXorExpression() {
+		'''
+			program
+				writeln(true xor false xor true)
+			end
+		'''.parse => [
+			assertNoIssues
+			1.assertEquals(statements.size)
+			statements.head.argument as XorExpression => [
+				left as XorExpression => [
+					(left as BooleanLiteral).value.assertTrue;
+					(right as BooleanLiteral).value.assertFalse
+				]
+				(right as BooleanLiteral).value.assertTrue
+			]
+		]
+	}
+	
+	@Test
+	def void testEqualityExpression() {
+		'''
+			program
+				writeln(1 = 2 <> true)
+			end
+		'''.parse => [
+			assertNoIssues
+			1.assertEquals(statements.size)
+			statements.head.argument as EqualityExpression => [
+				left as EqualityExpression => [
+					1.assertEquals((left as IntegerLiteral).value)
+					EqualityOperator.EQUALS.assertEquals(operator)
+					2.assertEquals((right as IntegerLiteral).value)
+				]
+				EqualityOperator.NOT_EQUALS.assertEquals(operator)
+				(right as BooleanLiteral).value.assertTrue
+			]
+		]
+	}
+	
+	@Test
+	def void testComparisonExpression() {
+		'''
+			program
+				writeln(1 < 2)
+				writeln(3 <= 4)
+				writeln(5 > 6)
+				writeln(7 >= 8)
+			end
+		'''.parse => [
+			assertNoIssues
+			4.assertEquals(statements.size)
+			statements.get(0).argument as ComparisonExpression => [
+				1.assertEquals((left as IntegerLiteral).value)
+				ComparisonOperator.LESS.assertEquals(operator)
+				2.assertEquals((right as IntegerLiteral).value)
+			]
+			statements.get(1).argument as ComparisonExpression => [
+				3.assertEquals((left as IntegerLiteral).value)
+				ComparisonOperator.LESS_EQUAL.assertEquals(operator)
+				4.assertEquals((right as IntegerLiteral).value)
+			]
+			statements.get(2).argument as ComparisonExpression => [
+				5.assertEquals((left as IntegerLiteral).value)
+				ComparisonOperator.GREATER.assertEquals(operator)
+				6.assertEquals((right as IntegerLiteral).value)
+			]
+			statements.get(3).argument as ComparisonExpression => [
+				7.assertEquals((left as IntegerLiteral).value)
+				ComparisonOperator.GREATER_EQUAL.assertEquals(operator)
+				8.assertEquals((right as IntegerLiteral).value)
+			]
+		]
+	}
+	
+	@Test
+	def void testAdditiveExpression() {
+		'''
+			program
+				writeln(1 + 2 - 3)
+			end
+		'''.parse => [
+			assertNoIssues
+			1.assertEquals(statements.size)
+			statements.head.argument as AdditiveExpression => [
+				left as AdditiveExpression => [
+					1.assertEquals((left as IntegerLiteral).value)
+					AdditiveOperator.ADD.assertEquals(operator)
+					2.assertEquals((right as IntegerLiteral).value)
+				]
+				AdditiveOperator.SUBTRACT.assertEquals(operator)
+				3.assertEquals((right as IntegerLiteral).value)
+			]
+		]
+	}
+	
+	@Test
+	def void testMultiplicativeExpression() {
+		'''
+			program
+				writeln(1 * 2 div 3 mod 4)
+				writeln(5.5 / 6.6)
+			end
+		'''.parse => [
+			assertNoIssues
+			2.assertEquals(statements.size)
+			statements.get(0).argument as MultiplicativeExpression => [
+				left as MultiplicativeExpression => [
+					left as MultiplicativeExpression => [
+						1.assertEquals((left as IntegerLiteral).value)
+						MultiplicativeOperator.MULTIPLY.assertEquals(operator)
+						2.assertEquals((right as IntegerLiteral).value)
+					]
+					MultiplicativeOperator.INTEGER_DIVIDE.assertEquals(operator)
+					3.assertEquals((right as IntegerLiteral).value)
+				]
+				MultiplicativeOperator.MODULUS.assertEquals(operator)
+				4.assertEquals((right as IntegerLiteral).value)
+			]
+			statements.get(1).argument as MultiplicativeExpression => [
+				5.5.assertEquals((left as RealLiteral).value, 0)
+				MultiplicativeOperator.REAL_DIVIDE.assertEquals(operator)
+				6.6.assertEquals((right as RealLiteral).value, 0)
+			]
+		]
+	}
+	
+	@Test
+	def void testTerminalExpression() {
+		'''
+			program
+				writeln("string1")
+				writeln(true)
+				writeln(false)
+				writeln(1)
+				writeln(2.2)
+				writeln(not true)
+				writeln(-3)
+				writeln((4))
+			end
+		'''.parse => [
+			assertNoIssues
+			8.assertEquals(statements.size)
+			"string1".assertEquals((statements.get(0).argument as StringLiteral).value)
+			(statements.get(1).argument as BooleanLiteral).value.assertTrue;
+			(statements.get(2).argument as BooleanLiteral).value.assertFalse
+			1.assertEquals((statements.get(3).argument as IntegerLiteral).value)
+			2.2.assertEquals((statements.get(4).argument as RealLiteral).value, 0)
+			((statements.get(5).argument as NotExpression).operand as BooleanLiteral).value.assertTrue
+			3.assertEquals(((statements.get(6).argument as NegationExpression).operand as IntegerLiteral).value)
+			4.assertEquals((statements.get(7).argument as IntegerLiteral).value)
+		]
+	}
 }
