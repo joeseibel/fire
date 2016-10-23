@@ -255,4 +255,210 @@ class FireParsingTest{
 			4.assertEquals((statements.get(7).argument as IntegerLiteral).value)
 		]
 	}
+	
+	@Test
+	def void testOperatorPrecedence() {
+		'''
+			program
+				writeln(true and false or true and false)
+				writeln(true xor false and true xor false)
+				writeln(1 = 2 xor 3 <> 4)
+				writeln(5 < 6 = 7 <= 8 <> 9 > 10 = 11 >= 12)
+				writeln(13 + 14 < 15 - 16)
+				writeln(17 + 18 <= 19 - 20)
+				writeln(21 + 22 > 23 - 24)
+				writeln(25 + 26 >= 27 - 28)
+				writeln(29 * 30 + 31 div 32 - 33 mod 34)
+				writeln(35.35 * 36.36 + 37.37 / 38.38 - 39.39)
+				writeln(not true = not false <> not true)
+				writeln(-40 * -41 div -42 mod -43)
+				writeln(-44.44 * -45.45 / -46.46)
+			end
+		'''.parse => [
+			assertNoIssues
+			13.assertEquals(statements.size)
+			statements.get(0).argument as OrExpression => [
+				left as AndExpression => [
+					(left as BooleanLiteral).value.assertTrue;
+					(right as BooleanLiteral).value.assertFalse
+				]
+				right as AndExpression => [
+					(left as BooleanLiteral).value.assertTrue;
+					(right as BooleanLiteral).value.assertFalse
+				]
+			]
+			statements.get(1).argument as AndExpression => [
+				left as XorExpression => [
+					(left as BooleanLiteral).value.assertTrue;
+					(right as BooleanLiteral).value.assertFalse;
+				]
+				right as XorExpression => [
+					(left as BooleanLiteral).value.assertTrue;
+					(right as BooleanLiteral).value.assertFalse
+				]
+			]
+			statements.get(2).argument as XorExpression => [
+				left as EqualityExpression => [
+					1.assertEquals((left as IntegerLiteral).value)
+					EqualityOperator.EQUALS.assertEquals(operator)
+					2.assertEquals((right as IntegerLiteral).value)
+				]
+				right as EqualityExpression => [
+					3.assertEquals((left as IntegerLiteral).value)
+					EqualityOperator.NOT_EQUALS.assertEquals(operator)
+					4.assertEquals((right as IntegerLiteral).value)
+				]
+			]
+			statements.get(3).argument as EqualityExpression => [
+				left as EqualityExpression => [
+					left as EqualityExpression => [
+						left as ComparisonExpression => [
+							5.assertEquals((left as IntegerLiteral).value)
+							ComparisonOperator.LESS.assertEquals(operator)
+							6.assertEquals((right as IntegerLiteral).value)
+						]
+						EqualityOperator.EQUALS.assertEquals(operator)
+						right as ComparisonExpression => [
+							7.assertEquals((left as IntegerLiteral).value)
+							ComparisonOperator.LESS_EQUAL.assertEquals(operator)
+							8.assertEquals((right as IntegerLiteral).value)
+						]
+					]
+					EqualityOperator.NOT_EQUALS.assertEquals(operator)
+					right as ComparisonExpression => [
+						9.assertEquals((left as IntegerLiteral).value)
+						ComparisonOperator.GREATER.assertEquals(operator)
+						10.assertEquals((right as IntegerLiteral).value)
+					]
+				]
+				EqualityOperator.EQUALS.assertEquals(operator)
+				right as ComparisonExpression => [
+					11.assertEquals((left as IntegerLiteral).value)
+					ComparisonOperator.GREATER_EQUAL.assertEquals(operator)
+					12.assertEquals((right as IntegerLiteral).value)
+				]
+			]
+			statements.get(4).argument as ComparisonExpression => [
+				left as AdditiveExpression => [
+					13.assertEquals((left as IntegerLiteral).value)
+					AdditiveOperator.ADD.assertEquals(operator)
+					14.assertEquals((right as IntegerLiteral).value)
+				]
+				ComparisonOperator.LESS.assertEquals(operator)
+				right as AdditiveExpression => [
+					15.assertEquals((left as IntegerLiteral).value)
+					AdditiveOperator.SUBTRACT.assertEquals(operator)
+					16.assertEquals((right as IntegerLiteral).value)
+				]
+			]
+			statements.get(5).argument as ComparisonExpression => [
+				left as AdditiveExpression => [
+					17.assertEquals((left as IntegerLiteral).value)
+					AdditiveOperator.ADD.assertEquals(operator)
+					18.assertEquals((right as IntegerLiteral).value)
+				]
+				ComparisonOperator.LESS_EQUAL.assertEquals(operator)
+				right as AdditiveExpression => [
+					19.assertEquals((left as IntegerLiteral).value)
+					AdditiveOperator.SUBTRACT.assertEquals(operator)
+					20.assertEquals((right as IntegerLiteral).value)
+				]
+			]
+			statements.get(6).argument as ComparisonExpression => [
+				left as AdditiveExpression => [
+					21.assertEquals((left as IntegerLiteral).value)
+					AdditiveOperator.ADD.assertEquals(operator)
+					22.assertEquals((right as IntegerLiteral).value)
+				]
+				ComparisonOperator.GREATER.assertEquals(operator)
+				right as AdditiveExpression => [
+					23.assertEquals((left as IntegerLiteral).value)
+					AdditiveOperator.SUBTRACT.assertEquals(operator)
+					24.assertEquals((right as IntegerLiteral).value)
+				]
+			]
+			statements.get(7).argument as ComparisonExpression => [
+				left as AdditiveExpression => [
+					25.assertEquals((left as IntegerLiteral).value)
+					AdditiveOperator.ADD.assertEquals(operator)
+					26.assertEquals((right as IntegerLiteral).value)
+				]
+				ComparisonOperator.GREATER_EQUAL.assertEquals(operator)
+				right as AdditiveExpression => [
+					27.assertEquals((left as IntegerLiteral).value)
+					AdditiveOperator.SUBTRACT.assertEquals(operator)
+					28.assertEquals((right as IntegerLiteral).value)
+				]
+			]
+			statements.get(8).argument as AdditiveExpression => [
+				left as AdditiveExpression => [
+					left as MultiplicativeExpression => [
+						29.assertEquals((left as IntegerLiteral).value)
+						MultiplicativeOperator.MULTIPLY.assertEquals(operator)
+						30.assertEquals((right as IntegerLiteral).value)
+					]
+					AdditiveOperator.ADD.assertEquals(operator)
+					right as MultiplicativeExpression => [
+						31.assertEquals((left as IntegerLiteral).value)
+						MultiplicativeOperator.INTEGER_DIVIDE.assertEquals(operator)
+						32.assertEquals((right as IntegerLiteral).value)
+					]
+				]
+				AdditiveOperator.SUBTRACT.assertEquals(operator)
+				right as MultiplicativeExpression => [
+					33.assertEquals((left as IntegerLiteral).value)
+					MultiplicativeOperator.MODULUS.assertEquals(operator)
+					34.assertEquals((right as IntegerLiteral).value)
+				]
+			]
+			statements.get(9).argument as AdditiveExpression => [
+				left as AdditiveExpression => [
+					left as MultiplicativeExpression => [
+						35.35.assertEquals((left as RealLiteral).value, 0)
+						MultiplicativeOperator.MULTIPLY.assertEquals(operator)
+						36.36.assertEquals((right as RealLiteral).value, 0)
+					]
+					AdditiveOperator.ADD.assertEquals(operator)
+					right as MultiplicativeExpression => [
+						37.37.assertEquals((left as RealLiteral).value, 0)
+						MultiplicativeOperator.REAL_DIVIDE.assertEquals(operator)
+						38.38.assertEquals((right as RealLiteral).value, 0)
+					]
+				]
+				AdditiveOperator.SUBTRACT.assertEquals(operator)
+				39.39.assertEquals((right as RealLiteral).value, 0)
+			]
+			statements.get(10).argument as EqualityExpression => [
+				left as EqualityExpression => [
+					((left as NotExpression).operand as BooleanLiteral).value.assertTrue
+					EqualityOperator.EQUALS.assertEquals(operator)
+					((right as NotExpression).operand as BooleanLiteral).value.assertFalse
+				]
+				EqualityOperator.NOT_EQUALS.assertEquals(operator)
+				((right as NotExpression).operand as BooleanLiteral).value.assertTrue
+			]
+			statements.get(11).argument as MultiplicativeExpression => [
+				left as MultiplicativeExpression => [
+					left as MultiplicativeExpression => [
+						40.assertEquals(((left as NegationExpression).operand as IntegerLiteral).value)
+						MultiplicativeOperator.MULTIPLY.assertEquals(operator)
+						41.assertEquals(((right as NegationExpression).operand as IntegerLiteral).value)
+					]
+					MultiplicativeOperator.INTEGER_DIVIDE.assertEquals(operator)
+					42.assertEquals(((right as NegationExpression).operand as IntegerLiteral).value)
+				]
+				MultiplicativeOperator.MODULUS.assertEquals(operator)
+				43.assertEquals(((right as NegationExpression).operand as IntegerLiteral).value)
+			]
+			statements.get(12).argument as MultiplicativeExpression => [
+				left as MultiplicativeExpression => [
+					44.44.assertEquals(((left as NegationExpression).operand as RealLiteral).value, 0)
+					MultiplicativeOperator.MULTIPLY.assertEquals(operator)
+					45.45.assertEquals(((right as NegationExpression).operand as RealLiteral).value, 0)
+				]
+				MultiplicativeOperator.REAL_DIVIDE.assertEquals(operator)
+				46.46.assertEquals(((right as NegationExpression).operand as RealLiteral).value, 0)
+			]
+		]
+	}
 }
