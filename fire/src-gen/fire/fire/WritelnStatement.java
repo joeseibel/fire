@@ -3,7 +3,6 @@
  */
 package fire.fire;
 
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,7 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface WritelnStatement extends EObject
+public interface WritelnStatement extends Statement
 {
   /**
    * Returns the value of the '<em><b>Argument</b></em>' containment reference.

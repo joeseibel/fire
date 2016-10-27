@@ -8,6 +8,7 @@ import fire.fire.AdditiveExpression;
 import fire.fire.AndExpression;
 import fire.fire.BooleanLiteral;
 import fire.fire.ComparisonExpression;
+import fire.fire.ConstantDeclaration;
 import fire.fire.EqualityExpression;
 import fire.fire.FirePackage;
 import fire.fire.IntegerLiteral;
@@ -58,6 +59,9 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case FirePackage.COMPARISON_EXPRESSION:
 				sequence_ComparisonExpression(context, (ComparisonExpression) semanticObject); 
 				return; 
+			case FirePackage.CONSTANT_DECLARATION:
+				sequence_Statement(context, (ConstantDeclaration) semanticObject); 
+				return; 
 			case FirePackage.EQUALITY_EXPRESSION:
 				sequence_EqualityExpression(context, (EqualityExpression) semanticObject); 
 				return; 
@@ -86,7 +90,7 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				sequence_TerminalExpression(context, (StringLiteral) semanticObject); 
 				return; 
 			case FirePackage.WRITELN_STATEMENT:
-				sequence_WritelnStatement(context, (WritelnStatement) semanticObject); 
+				sequence_Statement(context, (WritelnStatement) semanticObject); 
 				return; 
 			case FirePackage.XOR_EXPRESSION:
 				sequence_XorExpression(context, (XorExpression) semanticObject); 
@@ -323,10 +327,52 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Program returns Program
 	 *
 	 * Constraint:
-	 *     statements+=WritelnStatement*
+	 *     statements+=Statement*
 	 */
 	protected void sequence_Program(ISerializationContext context, Program semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Statement returns ConstantDeclaration
+	 *
+	 * Constraint:
+	 *     (name=ID type=BuiltInType value=Expression)
+	 */
+	protected void sequence_Statement(ISerializationContext context, ConstantDeclaration semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, FirePackage.Literals.CONSTANT_DECLARATION__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FirePackage.Literals.CONSTANT_DECLARATION__NAME));
+			if (transientValues.isValueTransient(semanticObject, FirePackage.Literals.CONSTANT_DECLARATION__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FirePackage.Literals.CONSTANT_DECLARATION__TYPE));
+			if (transientValues.isValueTransient(semanticObject, FirePackage.Literals.CONSTANT_DECLARATION__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FirePackage.Literals.CONSTANT_DECLARATION__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getStatementAccess().getNameIDTerminalRuleCall_0_2_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getStatementAccess().getTypeBuiltInTypeEnumRuleCall_0_4_0(), semanticObject.getType());
+		feeder.accept(grammarAccess.getStatementAccess().getValueExpressionParserRuleCall_0_6_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Statement returns WritelnStatement
+	 *
+	 * Constraint:
+	 *     argument=Expression
+	 */
+	protected void sequence_Statement(ISerializationContext context, WritelnStatement semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, FirePackage.Literals.WRITELN_STATEMENT__ARGUMENT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FirePackage.Literals.WRITELN_STATEMENT__ARGUMENT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getStatementAccess().getArgumentExpressionParserRuleCall_1_3_0(), semanticObject.getArgument());
+		feeder.finish();
 	}
 	
 	
@@ -512,24 +558,6 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getTerminalExpressionAccess().getValueSTRINGTerminalRuleCall_0_1_0(), semanticObject.getValue());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     WritelnStatement returns WritelnStatement
-	 *
-	 * Constraint:
-	 *     argument=Expression
-	 */
-	protected void sequence_WritelnStatement(ISerializationContext context, WritelnStatement semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, FirePackage.Literals.WRITELN_STATEMENT__ARGUMENT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FirePackage.Literals.WRITELN_STATEMENT__ARGUMENT));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getWritelnStatementAccess().getArgumentExpressionParserRuleCall_2_0(), semanticObject.getArgument());
 		feeder.finish();
 	}
 	

@@ -91,9 +91,9 @@ ruleProgram returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getProgramAccess().getStatementsWritelnStatementParserRuleCall_2_0());
+					newCompositeNode(grammarAccess.getProgramAccess().getStatementsStatementParserRuleCall_2_0());
 				}
-				lv_statements_2_0=ruleWritelnStatement
+				lv_statements_2_0=ruleStatement
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getProgramRule());
@@ -102,7 +102,7 @@ ruleProgram returns [EObject current=null]
 						$current,
 						"statements",
 						lv_statements_2_0,
-						"fire.Fire.WritelnStatement");
+						"fire.Fire.Statement");
 					afterParserOrEnumRuleCall();
 				}
 			)
@@ -114,15 +114,15 @@ ruleProgram returns [EObject current=null]
 	)
 ;
 
-// Entry rule entryRuleWritelnStatement
-entryRuleWritelnStatement returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getWritelnStatementRule()); }
-	iv_ruleWritelnStatement=ruleWritelnStatement
-	{ $current=$iv_ruleWritelnStatement.current; }
+// Entry rule entryRuleStatement
+entryRuleStatement returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getStatementRule()); }
+	iv_ruleStatement=ruleStatement
+	{ $current=$iv_ruleStatement.current; }
 	EOF;
 
-// Rule WritelnStatement
-ruleWritelnStatement returns [EObject current=null]
+// Rule Statement
+ruleStatement returns [EObject current=null]
 @init {
 	enterRule();
 }
@@ -130,37 +130,124 @@ ruleWritelnStatement returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='writeln'
-		{
-			newLeafNode(otherlv_0, grammarAccess.getWritelnStatementAccess().getWritelnKeyword_0());
-		}
-		otherlv_1='('
-		{
-			newLeafNode(otherlv_1, grammarAccess.getWritelnStatementAccess().getLeftParenthesisKeyword_1());
-		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getWritelnStatementAccess().getArgumentExpressionParserRuleCall_2_0());
-				}
-				lv_argument_2_0=ruleExpression
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getWritelnStatementRule());
-					}
-					set(
-						$current,
-						"argument",
-						lv_argument_2_0,
-						"fire.Fire.Expression");
-					afterParserOrEnumRuleCall();
+					$current = forceCreateModelElement(
+						grammarAccess.getStatementAccess().getConstantDeclarationAction_0_0(),
+						$current);
 				}
 			)
+			otherlv_1='const'
+			{
+				newLeafNode(otherlv_1, grammarAccess.getStatementAccess().getConstKeyword_0_1());
+			}
+			(
+				(
+					lv_name_2_0=RULE_ID
+					{
+						newLeafNode(lv_name_2_0, grammarAccess.getStatementAccess().getNameIDTerminalRuleCall_0_2_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getStatementRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"name",
+							lv_name_2_0,
+							"org.eclipse.xtext.common.Terminals.ID");
+					}
+				)
+			)
+			otherlv_3=':'
+			{
+				newLeafNode(otherlv_3, grammarAccess.getStatementAccess().getColonKeyword_0_3());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getStatementAccess().getTypeBuiltInTypeEnumRuleCall_0_4_0());
+					}
+					lv_type_4_0=ruleBuiltInType
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getStatementRule());
+						}
+						set(
+							$current,
+							"type",
+							lv_type_4_0,
+							"fire.Fire.BuiltInType");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+			otherlv_5=':='
+			{
+				newLeafNode(otherlv_5, grammarAccess.getStatementAccess().getColonEqualsSignKeyword_0_5());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getStatementAccess().getValueExpressionParserRuleCall_0_6_0());
+					}
+					lv_value_6_0=ruleExpression
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getStatementRule());
+						}
+						set(
+							$current,
+							"value",
+							lv_value_6_0,
+							"fire.Fire.Expression");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
 		)
-		otherlv_3=')'
-		{
-			newLeafNode(otherlv_3, grammarAccess.getWritelnStatementAccess().getRightParenthesisKeyword_3());
-		}
+		    |
+		(
+			(
+				{
+					$current = forceCreateModelElement(
+						grammarAccess.getStatementAccess().getWritelnStatementAction_1_0(),
+						$current);
+				}
+			)
+			otherlv_8='writeln'
+			{
+				newLeafNode(otherlv_8, grammarAccess.getStatementAccess().getWritelnKeyword_1_1());
+			}
+			otherlv_9='('
+			{
+				newLeafNode(otherlv_9, grammarAccess.getStatementAccess().getLeftParenthesisKeyword_1_2());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getStatementAccess().getArgumentExpressionParserRuleCall_1_3_0());
+					}
+					lv_argument_10_0=ruleExpression
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getStatementRule());
+						}
+						set(
+							$current,
+							"argument",
+							lv_argument_10_0,
+							"fire.Fire.Expression");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+			otherlv_11=')'
+			{
+				newLeafNode(otherlv_11, grammarAccess.getStatementAccess().getRightParenthesisKeyword_1_4());
+			}
+		)
 	)
 ;
 
@@ -916,6 +1003,49 @@ ruleDouble returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
 		{
 			newLeafNode(this_INT_2, grammarAccess.getDoubleAccess().getINTTerminalRuleCall_2());
 		}
+	)
+;
+
+// Rule BuiltInType
+ruleBuiltInType returns [Enumerator current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			enumLiteral_0='String'
+			{
+				$current = grammarAccess.getBuiltInTypeAccess().getSTRINGEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_0, grammarAccess.getBuiltInTypeAccess().getSTRINGEnumLiteralDeclaration_0());
+			}
+		)
+		    |
+		(
+			enumLiteral_1='Boolean'
+			{
+				$current = grammarAccess.getBuiltInTypeAccess().getBOOLEANEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_1, grammarAccess.getBuiltInTypeAccess().getBOOLEANEnumLiteralDeclaration_1());
+			}
+		)
+		    |
+		(
+			enumLiteral_2='Integer'
+			{
+				$current = grammarAccess.getBuiltInTypeAccess().getINTEGEREnumLiteralDeclaration_2().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_2, grammarAccess.getBuiltInTypeAccess().getINTEGEREnumLiteralDeclaration_2());
+			}
+		)
+		    |
+		(
+			enumLiteral_3='Real'
+			{
+				$current = grammarAccess.getBuiltInTypeAccess().getREALEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_3, grammarAccess.getBuiltInTypeAccess().getREALEnumLiteralDeclaration_3());
+			}
+		)
 	)
 ;
 

@@ -3,11 +3,14 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="fire" nsURI="http://www.Fire.fire" nsPrefix="fire">
   <eClassifiers xsi:type="ecore:EClass" name="Program">
     <eStructuralFeatures xsi:type="ecore:EReference" name="statements" upperBound="-1"
-        eType="#//WritelnStatement" containment="true"/>
+        eType="#//Statement" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="WritelnStatement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="argument" eType="#//Expression"
-        containment="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Statement"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="BuiltInType">
+    <eLiterals name="STRING" literal="String"/>
+    <eLiterals name="BOOLEAN" value="1" literal="Boolean"/>
+    <eLiterals name="INTEGER" value="2" literal="Integer"/>
+    <eLiterals name="REAL" value="3" literal="Real"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Expression"/>
   <eClassifiers xsi:type="ecore:EEnum" name="EqualityOperator">
@@ -29,6 +32,16 @@
     <eLiterals name="REAL_DIVIDE" value="1" literal="/"/>
     <eLiterals name="INTEGER_DIVIDE" value="2" literal="div"/>
     <eLiterals name="MODULUS" value="3" literal="mod"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConstantDeclaration" eSuperTypes="#//Statement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//BuiltInType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WritelnStatement" eSuperTypes="#//Statement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="argument" eType="#//Expression"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OrExpression" eSuperTypes="#//Expression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//Expression"

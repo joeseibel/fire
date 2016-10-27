@@ -5,6 +5,7 @@ import fire.fire.AdditiveExpression
 import fire.fire.AndExpression
 import fire.fire.BooleanLiteral
 import fire.fire.ComparisonExpression
+import fire.fire.ConstantDeclaration
 import fire.fire.EqualityExpression
 import fire.fire.Expression
 import fire.fire.IntegerLiteral
@@ -69,11 +70,15 @@ class FireGenerator extends AbstractGenerator {
 		val functionType = FunctionType.get(builder.voidTy, false)
 		val mainFunction = Function.create(functionType, LinkageTypes.EXTERNAL_LINKAGE, "main", module)
 		builder.insertPoint = BasicBlock.create(llvmContext, "entry", mainFunction)
-		program.statements.forEach[generate]
+		program.statements.forEach[generateStatement]
 		builder.createRetVoid
 	}
 	
-	def private void generate(WritelnStatement statement) {
+	def private dispatch void generateStatement(ConstantDeclaration constant) {
+		constant.value.generateExpression
+	}
+	
+	def private dispatch void generateStatement(WritelnStatement statement) {
 		val argumentValue = statement.argument.generateExpression
 		switch statement.argument.type {
 			case STRING: builder.createCall(printfFunction, #[builder.createGlobalStringPtr("%s\n"), argumentValue])

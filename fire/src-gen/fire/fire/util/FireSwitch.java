@@ -80,10 +80,10 @@ public class FireSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case FirePackage.WRITELN_STATEMENT:
+      case FirePackage.STATEMENT:
       {
-        WritelnStatement writelnStatement = (WritelnStatement)theEObject;
-        T result = caseWritelnStatement(writelnStatement);
+        Statement statement = (Statement)theEObject;
+        T result = caseStatement(statement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -91,6 +91,22 @@ public class FireSwitch<T> extends Switch<T>
       {
         Expression expression = (Expression)theEObject;
         T result = caseExpression(expression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case FirePackage.CONSTANT_DECLARATION:
+      {
+        ConstantDeclaration constantDeclaration = (ConstantDeclaration)theEObject;
+        T result = caseConstantDeclaration(constantDeclaration);
+        if (result == null) result = caseStatement(constantDeclaration);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case FirePackage.WRITELN_STATEMENT:
+      {
+        WritelnStatement writelnStatement = (WritelnStatement)theEObject;
+        T result = caseWritelnStatement(writelnStatement);
+        if (result == null) result = caseStatement(writelnStatement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -219,17 +235,17 @@ public class FireSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Writeln Statement</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Statement</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Writeln Statement</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Statement</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseWritelnStatement(WritelnStatement object)
+  public T caseStatement(Statement object)
   {
     return null;
   }
@@ -246,6 +262,38 @@ public class FireSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseExpression(Expression object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Constant Declaration</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Constant Declaration</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseConstantDeclaration(ConstantDeclaration object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Writeln Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Writeln Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseWritelnStatement(WritelnStatement object)
   {
     return null;
   }

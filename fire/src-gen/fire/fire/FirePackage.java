@@ -87,32 +87,23 @@ public interface FirePackage extends EPackage
   int PROGRAM_FEATURE_COUNT = 1;
 
   /**
-   * The meta object id for the '{@link fire.fire.impl.WritelnStatementImpl <em>Writeln Statement</em>}' class.
+   * The meta object id for the '{@link fire.fire.impl.StatementImpl <em>Statement</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see fire.fire.impl.WritelnStatementImpl
-   * @see fire.fire.impl.FirePackageImpl#getWritelnStatement()
+   * @see fire.fire.impl.StatementImpl
+   * @see fire.fire.impl.FirePackageImpl#getStatement()
    * @generated
    */
-  int WRITELN_STATEMENT = 1;
+  int STATEMENT = 1;
 
   /**
-   * The feature id for the '<em><b>Argument</b></em>' containment reference.
+   * The number of structural features of the '<em>Statement</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int WRITELN_STATEMENT__ARGUMENT = 0;
-
-  /**
-   * The number of structural features of the '<em>Writeln Statement</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int WRITELN_STATEMENT_FEATURE_COUNT = 1;
+  int STATEMENT_FEATURE_COUNT = 0;
 
   /**
    * The meta object id for the '{@link fire.fire.impl.ExpressionImpl <em>Expression</em>}' class.
@@ -134,6 +125,80 @@ public interface FirePackage extends EPackage
   int EXPRESSION_FEATURE_COUNT = 0;
 
   /**
+   * The meta object id for the '{@link fire.fire.impl.ConstantDeclarationImpl <em>Constant Declaration</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see fire.fire.impl.ConstantDeclarationImpl
+   * @see fire.fire.impl.FirePackageImpl#getConstantDeclaration()
+   * @generated
+   */
+  int CONSTANT_DECLARATION = 3;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONSTANT_DECLARATION__NAME = STATEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONSTANT_DECLARATION__TYPE = STATEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONSTANT_DECLARATION__VALUE = STATEMENT_FEATURE_COUNT + 2;
+
+  /**
+   * The number of structural features of the '<em>Constant Declaration</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONSTANT_DECLARATION_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 3;
+
+  /**
+   * The meta object id for the '{@link fire.fire.impl.WritelnStatementImpl <em>Writeln Statement</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see fire.fire.impl.WritelnStatementImpl
+   * @see fire.fire.impl.FirePackageImpl#getWritelnStatement()
+   * @generated
+   */
+  int WRITELN_STATEMENT = 4;
+
+  /**
+   * The feature id for the '<em><b>Argument</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WRITELN_STATEMENT__ARGUMENT = STATEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Writeln Statement</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WRITELN_STATEMENT_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 1;
+
+  /**
    * The meta object id for the '{@link fire.fire.impl.OrExpressionImpl <em>Or Expression</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -141,7 +206,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getOrExpression()
    * @generated
    */
-  int OR_EXPRESSION = 3;
+  int OR_EXPRESSION = 5;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -178,7 +243,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getAndExpression()
    * @generated
    */
-  int AND_EXPRESSION = 4;
+  int AND_EXPRESSION = 6;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -215,7 +280,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getXorExpression()
    * @generated
    */
-  int XOR_EXPRESSION = 5;
+  int XOR_EXPRESSION = 7;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -252,7 +317,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getEqualityExpression()
    * @generated
    */
-  int EQUALITY_EXPRESSION = 6;
+  int EQUALITY_EXPRESSION = 8;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -298,7 +363,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getComparisonExpression()
    * @generated
    */
-  int COMPARISON_EXPRESSION = 7;
+  int COMPARISON_EXPRESSION = 9;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -344,7 +409,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getAdditiveExpression()
    * @generated
    */
-  int ADDITIVE_EXPRESSION = 8;
+  int ADDITIVE_EXPRESSION = 10;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -390,7 +455,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getMultiplicativeExpression()
    * @generated
    */
-  int MULTIPLICATIVE_EXPRESSION = 9;
+  int MULTIPLICATIVE_EXPRESSION = 11;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -436,7 +501,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getStringLiteral()
    * @generated
    */
-  int STRING_LITERAL = 10;
+  int STRING_LITERAL = 12;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -464,7 +529,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getBooleanLiteral()
    * @generated
    */
-  int BOOLEAN_LITERAL = 11;
+  int BOOLEAN_LITERAL = 13;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -492,7 +557,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getIntegerLiteral()
    * @generated
    */
-  int INTEGER_LITERAL = 12;
+  int INTEGER_LITERAL = 14;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -520,7 +585,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getRealLiteral()
    * @generated
    */
-  int REAL_LITERAL = 13;
+  int REAL_LITERAL = 15;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -548,7 +613,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getNotExpression()
    * @generated
    */
-  int NOT_EXPRESSION = 14;
+  int NOT_EXPRESSION = 16;
 
   /**
    * The feature id for the '<em><b>Operand</b></em>' containment reference.
@@ -576,7 +641,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getNegationExpression()
    * @generated
    */
-  int NEGATION_EXPRESSION = 15;
+  int NEGATION_EXPRESSION = 17;
 
   /**
    * The feature id for the '<em><b>Operand</b></em>' containment reference.
@@ -597,6 +662,16 @@ public interface FirePackage extends EPackage
   int NEGATION_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
+   * The meta object id for the '{@link fire.fire.BuiltInType <em>Built In Type</em>}' enum.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see fire.fire.BuiltInType
+   * @see fire.fire.impl.FirePackageImpl#getBuiltInType()
+   * @generated
+   */
+  int BUILT_IN_TYPE = 18;
+
+  /**
    * The meta object id for the '{@link fire.fire.EqualityOperator <em>Equality Operator</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -604,7 +679,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getEqualityOperator()
    * @generated
    */
-  int EQUALITY_OPERATOR = 16;
+  int EQUALITY_OPERATOR = 19;
 
   /**
    * The meta object id for the '{@link fire.fire.ComparisonOperator <em>Comparison Operator</em>}' enum.
@@ -614,7 +689,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getComparisonOperator()
    * @generated
    */
-  int COMPARISON_OPERATOR = 17;
+  int COMPARISON_OPERATOR = 20;
 
   /**
    * The meta object id for the '{@link fire.fire.AdditiveOperator <em>Additive Operator</em>}' enum.
@@ -624,7 +699,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getAdditiveOperator()
    * @generated
    */
-  int ADDITIVE_OPERATOR = 18;
+  int ADDITIVE_OPERATOR = 21;
 
   /**
    * The meta object id for the '{@link fire.fire.MultiplicativeOperator <em>Multiplicative Operator</em>}' enum.
@@ -634,7 +709,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getMultiplicativeOperator()
    * @generated
    */
-  int MULTIPLICATIVE_OPERATOR = 19;
+  int MULTIPLICATIVE_OPERATOR = 22;
 
 
   /**
@@ -659,6 +734,69 @@ public interface FirePackage extends EPackage
   EReference getProgram_Statements();
 
   /**
+   * Returns the meta object for class '{@link fire.fire.Statement <em>Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Statement</em>'.
+   * @see fire.fire.Statement
+   * @generated
+   */
+  EClass getStatement();
+
+  /**
+   * Returns the meta object for class '{@link fire.fire.Expression <em>Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Expression</em>'.
+   * @see fire.fire.Expression
+   * @generated
+   */
+  EClass getExpression();
+
+  /**
+   * Returns the meta object for class '{@link fire.fire.ConstantDeclaration <em>Constant Declaration</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Constant Declaration</em>'.
+   * @see fire.fire.ConstantDeclaration
+   * @generated
+   */
+  EClass getConstantDeclaration();
+
+  /**
+   * Returns the meta object for the attribute '{@link fire.fire.ConstantDeclaration#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see fire.fire.ConstantDeclaration#getName()
+   * @see #getConstantDeclaration()
+   * @generated
+   */
+  EAttribute getConstantDeclaration_Name();
+
+  /**
+   * Returns the meta object for the attribute '{@link fire.fire.ConstantDeclaration#getType <em>Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Type</em>'.
+   * @see fire.fire.ConstantDeclaration#getType()
+   * @see #getConstantDeclaration()
+   * @generated
+   */
+  EAttribute getConstantDeclaration_Type();
+
+  /**
+   * Returns the meta object for the containment reference '{@link fire.fire.ConstantDeclaration#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Value</em>'.
+   * @see fire.fire.ConstantDeclaration#getValue()
+   * @see #getConstantDeclaration()
+   * @generated
+   */
+  EReference getConstantDeclaration_Value();
+
+  /**
    * Returns the meta object for class '{@link fire.fire.WritelnStatement <em>Writeln Statement</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -678,16 +816,6 @@ public interface FirePackage extends EPackage
    * @generated
    */
   EReference getWritelnStatement_Argument();
-
-  /**
-   * Returns the meta object for class '{@link fire.fire.Expression <em>Expression</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Expression</em>'.
-   * @see fire.fire.Expression
-   * @generated
-   */
-  EClass getExpression();
 
   /**
    * Returns the meta object for class '{@link fire.fire.OrExpression <em>Or Expression</em>}'.
@@ -1084,6 +1212,16 @@ public interface FirePackage extends EPackage
   EReference getNegationExpression_Operand();
 
   /**
+   * Returns the meta object for enum '{@link fire.fire.BuiltInType <em>Built In Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for enum '<em>Built In Type</em>'.
+   * @see fire.fire.BuiltInType
+   * @generated
+   */
+  EEnum getBuiltInType();
+
+  /**
    * Returns the meta object for enum '{@link fire.fire.EqualityOperator <em>Equality Operator</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1165,6 +1303,60 @@ public interface FirePackage extends EPackage
     EReference PROGRAM__STATEMENTS = eINSTANCE.getProgram_Statements();
 
     /**
+     * The meta object literal for the '{@link fire.fire.impl.StatementImpl <em>Statement</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see fire.fire.impl.StatementImpl
+     * @see fire.fire.impl.FirePackageImpl#getStatement()
+     * @generated
+     */
+    EClass STATEMENT = eINSTANCE.getStatement();
+
+    /**
+     * The meta object literal for the '{@link fire.fire.impl.ExpressionImpl <em>Expression</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see fire.fire.impl.ExpressionImpl
+     * @see fire.fire.impl.FirePackageImpl#getExpression()
+     * @generated
+     */
+    EClass EXPRESSION = eINSTANCE.getExpression();
+
+    /**
+     * The meta object literal for the '{@link fire.fire.impl.ConstantDeclarationImpl <em>Constant Declaration</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see fire.fire.impl.ConstantDeclarationImpl
+     * @see fire.fire.impl.FirePackageImpl#getConstantDeclaration()
+     * @generated
+     */
+    EClass CONSTANT_DECLARATION = eINSTANCE.getConstantDeclaration();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CONSTANT_DECLARATION__NAME = eINSTANCE.getConstantDeclaration_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CONSTANT_DECLARATION__TYPE = eINSTANCE.getConstantDeclaration_Type();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CONSTANT_DECLARATION__VALUE = eINSTANCE.getConstantDeclaration_Value();
+
+    /**
      * The meta object literal for the '{@link fire.fire.impl.WritelnStatementImpl <em>Writeln Statement</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1181,16 +1373,6 @@ public interface FirePackage extends EPackage
      * @generated
      */
     EReference WRITELN_STATEMENT__ARGUMENT = eINSTANCE.getWritelnStatement_Argument();
-
-    /**
-     * The meta object literal for the '{@link fire.fire.impl.ExpressionImpl <em>Expression</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see fire.fire.impl.ExpressionImpl
-     * @see fire.fire.impl.FirePackageImpl#getExpression()
-     * @generated
-     */
-    EClass EXPRESSION = eINSTANCE.getExpression();
 
     /**
      * The meta object literal for the '{@link fire.fire.impl.OrExpressionImpl <em>Or Expression</em>}' class.
@@ -1513,6 +1695,16 @@ public interface FirePackage extends EPackage
      * @generated
      */
     EReference NEGATION_EXPRESSION__OPERAND = eINSTANCE.getNegationExpression_Operand();
+
+    /**
+     * The meta object literal for the '{@link fire.fire.BuiltInType <em>Built In Type</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see fire.fire.BuiltInType
+     * @see fire.fire.impl.FirePackageImpl#getBuiltInType()
+     * @generated
+     */
+    EEnum BUILT_IN_TYPE = eINSTANCE.getBuiltInType();
 
     /**
      * The meta object literal for the '{@link fire.fire.EqualityOperator <em>Equality Operator</em>}' enum.

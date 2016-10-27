@@ -1,16 +1,18 @@
 package fire.validation
 
 import com.google.inject.Inject
-import fire.FireType
 import fire.fire.AdditiveExpression
 import fire.fire.AndExpression
+import fire.fire.BuiltInType
 import fire.fire.ComparisonExpression
+import fire.fire.ConstantDeclaration
 import fire.fire.EqualityExpression
 import fire.fire.FirePackage
 import fire.fire.MultiplicativeExpression
 import fire.fire.NegationExpression
 import fire.fire.NotExpression
 import fire.fire.OrExpression
+import fire.fire.Program
 import fire.fire.XorExpression
 import fire.services.FireGrammarAccess
 import org.eclipse.xtext.validation.Check
@@ -23,10 +25,25 @@ class FireValidator extends AbstractFireValidator {
 	FireGrammarAccess grammarAccess
 	
 	@Check
+	def void checkDuplicateNames(Program program) {
+		program.statements.filter(ConstantDeclaration).groupBy[name].filter[name, constants | constants.size > 1].forEach[name, constants | constants.tail.forEach[constant |
+			error(name + " is already declared", constant, FirePackage.Literals.CONSTANT_DECLARATION__NAME)
+		]]
+	}
+	
+	@Check
+	def void typeCheckConstantDeclaration(ConstantDeclaration constant) {
+		val valueType = constant.value?.type
+		if (valueType != null && constant.type != null && valueType != constant.type) {
+			error('''Expected «constant.type», found «valueType»''', FirePackage.Literals.CONSTANT_DECLARATION__VALUE)
+		}
+	}
+	
+	@Check
 	def void typeCheckOrExpression(OrExpression expression) {
 		val leftType = expression.left?.type
 		val rightType = expression.right?.type
-		if (leftType != null && rightType != null && (leftType != FireType.BOOLEAN || rightType != FireType.BOOLEAN)) {
+		if (leftType != null && rightType != null && (leftType != BuiltInType.BOOLEAN || rightType != BuiltInType.BOOLEAN)) {
 			val orKeyword = grammarAccess.expressionAccess.orKeyword_1_1
 			val message = '''«orKeyword.value» operator cannot be applied to types «leftType» and «rightType»'''
 			val orKeywordNode = expression.node.children.findFirst[grammarElement == orKeyword]
@@ -38,7 +55,7 @@ class FireValidator extends AbstractFireValidator {
 	def void typeCheckAndExpression(AndExpression expression) {
 		val leftType = expression.left?.type
 		val rightType = expression.right?.type
-		if (leftType != null && rightType != null && (leftType != FireType.BOOLEAN || rightType != FireType.BOOLEAN)) {
+		if (leftType != null && rightType != null && (leftType != BuiltInType.BOOLEAN || rightType != BuiltInType.BOOLEAN)) {
 			val andKeyword = grammarAccess.andExpressionAccess.andKeyword_1_1
 			val message = '''«andKeyword.value» operator cannot be applied to types «leftType» and «rightType»'''
 			val andKeywordNode = expression.node.children.findFirst[grammarElement == andKeyword]
@@ -50,7 +67,7 @@ class FireValidator extends AbstractFireValidator {
 	def void typeCheckXorExpression(XorExpression expression) {
 		val leftType = expression.left?.type
 		val rightType = expression.right?.type
-		if (leftType != null && rightType != null && (leftType != FireType.BOOLEAN || rightType != FireType.BOOLEAN)) {
+		if (leftType != null && rightType != null && (leftType != BuiltInType.BOOLEAN || rightType != BuiltInType.BOOLEAN)) {
 			val xorKeyword = grammarAccess.xorExpressionAccess.xorKeyword_1_1
 			val message = '''«xorKeyword.value» operator cannot be applied to types «leftType» and «rightType»'''
 			val xorKeywordNode = expression.node.children.findFirst[grammarElement == xorKeyword]
@@ -63,7 +80,7 @@ class FireValidator extends AbstractFireValidator {
 		val leftType = expression.left?.type
 		val rightType = expression.right?.type
 		if (leftType != null && rightType != null && (leftType != rightType ||
-			(leftType != FireType.BOOLEAN && leftType != FireType.INTEGER && leftType != FireType.REAL)
+			(leftType != BuiltInType.BOOLEAN && leftType != BuiltInType.INTEGER && leftType != BuiltInType.REAL)
 		)) {
 			val message = '''«expression.operator.literal» operator cannot be applied to types «leftType» and «rightType»'''
 			error(message, FirePackage.Literals.EQUALITY_EXPRESSION__OPERATOR)
@@ -75,7 +92,7 @@ class FireValidator extends AbstractFireValidator {
 		val leftType = expression.left?.type
 		val rightType = expression.right?.type
 		if (leftType != null && rightType != null &&
-			(leftType != rightType || (leftType != FireType.INTEGER && leftType != FireType.REAL))
+			(leftType != rightType || (leftType != BuiltInType.INTEGER && leftType != BuiltInType.REAL))
 		) {
 			val message = '''«expression.operator.literal» operator cannot be applied to types «leftType» and «rightType»'''
 			error(message, FirePackage.Literals.COMPARISON_EXPRESSION__OPERATOR)
@@ -87,7 +104,7 @@ class FireValidator extends AbstractFireValidator {
 		val leftType = expression.left?.type
 		val rightType = expression.right?.type
 		if (leftType != null && rightType != null &&
-			(leftType != rightType || (leftType != FireType.INTEGER && leftType != FireType.REAL))
+			(leftType != rightType || (leftType != BuiltInType.INTEGER && leftType != BuiltInType.REAL))
 		) {
 			val message = '''«expression.operator.literal» operator cannot be applied to types «leftType» and «rightType»'''
 			error(message, FirePackage.Literals.ADDITIVE_EXPRESSION__OPERATOR)
@@ -100,10 +117,10 @@ class FireValidator extends AbstractFireValidator {
 		val rightType = expression.right?.type
 		if (leftType != null && rightType != null) {
 			val reportError = leftType != rightType || switch expression.operator {
-				case MULTIPLY: leftType != FireType.INTEGER && leftType != FireType.REAL
-				case REAL_DIVIDE: leftType != FireType.REAL
-				case INTEGER_DIVIDE: leftType != FireType.INTEGER
-				case MODULUS: leftType != FireType.INTEGER
+				case MULTIPLY: leftType != BuiltInType.INTEGER && leftType != BuiltInType.REAL
+				case REAL_DIVIDE: leftType != BuiltInType.REAL
+				case INTEGER_DIVIDE: leftType != BuiltInType.INTEGER
+				case MODULUS: leftType != BuiltInType.INTEGER
 			}
 			if (reportError) {
 				val message = '''«expression.operator.literal» operator cannot be applied to types «leftType» and «rightType»'''
@@ -115,7 +132,7 @@ class FireValidator extends AbstractFireValidator {
 	@Check
 	def void typeCheckNotExpression(NotExpression expression) {
 		val operandType = expression.operand?.type
-		if (operandType != null && operandType != FireType.BOOLEAN) {
+		if (operandType != null && operandType != BuiltInType.BOOLEAN) {
 			val notKeyword = grammarAccess.terminalExpressionAccess.notKeyword_4_1
 			val message = notKeyword.value + " operator cannot be applied to type " + operandType
 			val notKeywordNode = expression.node.children.findFirst[grammarElement == notKeyword]
@@ -126,7 +143,7 @@ class FireValidator extends AbstractFireValidator {
 	@Check
 	def void typeCheckNegationExpression(NegationExpression expression) {
 		val operandType = expression.operand?.type
-		if (operandType != null && operandType != FireType.INTEGER && operandType != FireType.REAL) {
+		if (operandType != null && operandType != BuiltInType.INTEGER && operandType != BuiltInType.REAL) {
 			val negationKeyword = grammarAccess.terminalExpressionAccess.hyphenMinusKeyword_5_1
 			val message = negationKeyword.value + " operator cannot be applied to type " + operandType
 			val negationKeywordNode = expression.node.children.findFirst[grammarElement == negationKeyword]

@@ -32,17 +32,17 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 		private final Action cProgramAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cProgramKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cStatementsAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cStatementsWritelnStatementParserRuleCall_2_0 = (RuleCall)cStatementsAssignment_2.eContents().get(0);
+		private final RuleCall cStatementsStatementParserRuleCall_2_0 = (RuleCall)cStatementsAssignment_2.eContents().get(0);
 		private final Keyword cEndKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//Program:
 		//	{Program}
 		//	'program'
-		//	statements+=WritelnStatement*
+		//	statements+=Statement*
 		//	'end';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Program} 'program' statements+=WritelnStatement* 'end'
+		//{Program} 'program' statements+=Statement* 'end'
 		public Group getGroup() { return cGroup; }
 		
 		//{Program}
@@ -51,45 +51,99 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 		//'program'
 		public Keyword getProgramKeyword_1() { return cProgramKeyword_1; }
 		
-		//statements+=WritelnStatement*
+		//statements+=Statement*
 		public Assignment getStatementsAssignment_2() { return cStatementsAssignment_2; }
 		
-		//WritelnStatement
-		public RuleCall getStatementsWritelnStatementParserRuleCall_2_0() { return cStatementsWritelnStatementParserRuleCall_2_0; }
+		//Statement
+		public RuleCall getStatementsStatementParserRuleCall_2_0() { return cStatementsStatementParserRuleCall_2_0; }
 		
 		//'end'
 		public Keyword getEndKeyword_3() { return cEndKeyword_3; }
 	}
-	public class WritelnStatementElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fire.Fire.WritelnStatement");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cWritelnKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cArgumentAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cArgumentExpressionParserRuleCall_2_0 = (RuleCall)cArgumentAssignment_2.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
+	public class StatementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fire.Fire.Statement");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
+		private final Action cConstantDeclarationAction_0_0 = (Action)cGroup_0.eContents().get(0);
+		private final Keyword cConstKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
+		private final Assignment cNameAssignment_0_2 = (Assignment)cGroup_0.eContents().get(2);
+		private final RuleCall cNameIDTerminalRuleCall_0_2_0 = (RuleCall)cNameAssignment_0_2.eContents().get(0);
+		private final Keyword cColonKeyword_0_3 = (Keyword)cGroup_0.eContents().get(3);
+		private final Assignment cTypeAssignment_0_4 = (Assignment)cGroup_0.eContents().get(4);
+		private final RuleCall cTypeBuiltInTypeEnumRuleCall_0_4_0 = (RuleCall)cTypeAssignment_0_4.eContents().get(0);
+		private final Keyword cColonEqualsSignKeyword_0_5 = (Keyword)cGroup_0.eContents().get(5);
+		private final Assignment cValueAssignment_0_6 = (Assignment)cGroup_0.eContents().get(6);
+		private final RuleCall cValueExpressionParserRuleCall_0_6_0 = (RuleCall)cValueAssignment_0_6.eContents().get(0);
+		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
+		private final Action cWritelnStatementAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Keyword cWritelnKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_1_2 = (Keyword)cGroup_1.eContents().get(2);
+		private final Assignment cArgumentAssignment_1_3 = (Assignment)cGroup_1.eContents().get(3);
+		private final RuleCall cArgumentExpressionParserRuleCall_1_3_0 = (RuleCall)cArgumentAssignment_1_3.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_1_4 = (Keyword)cGroup_1.eContents().get(4);
 		
-		//WritelnStatement:
-		//	'writeln' '(' argument=Expression ')';
+		//Statement:
+		//	{ConstantDeclaration} 'const' name=ID ':' type=BuiltInType ':=' value=Expression | {WritelnStatement} 'writeln' '('
+		//	argument=Expression ')';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'writeln' '(' argument=Expression ')'
-		public Group getGroup() { return cGroup; }
+		//{ConstantDeclaration} 'const' name=ID ':' type=BuiltInType ':=' value=Expression | {WritelnStatement} 'writeln' '('
+		//argument=Expression ')'
+		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//'writeln'
-		public Keyword getWritelnKeyword_0() { return cWritelnKeyword_0; }
+		//{ConstantDeclaration} 'const' name=ID ':' type=BuiltInType ':=' value=Expression
+		public Group getGroup_0() { return cGroup_0; }
 		
-		//'('
-		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
+		//{ConstantDeclaration}
+		public Action getConstantDeclarationAction_0_0() { return cConstantDeclarationAction_0_0; }
 		
-		//argument=Expression
-		public Assignment getArgumentAssignment_2() { return cArgumentAssignment_2; }
+		//'const'
+		public Keyword getConstKeyword_0_1() { return cConstKeyword_0_1; }
+		
+		//name=ID
+		public Assignment getNameAssignment_0_2() { return cNameAssignment_0_2; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_0_2_0() { return cNameIDTerminalRuleCall_0_2_0; }
+		
+		//':'
+		public Keyword getColonKeyword_0_3() { return cColonKeyword_0_3; }
+		
+		//type=BuiltInType
+		public Assignment getTypeAssignment_0_4() { return cTypeAssignment_0_4; }
+		
+		//BuiltInType
+		public RuleCall getTypeBuiltInTypeEnumRuleCall_0_4_0() { return cTypeBuiltInTypeEnumRuleCall_0_4_0; }
+		
+		//':='
+		public Keyword getColonEqualsSignKeyword_0_5() { return cColonEqualsSignKeyword_0_5; }
+		
+		//value=Expression
+		public Assignment getValueAssignment_0_6() { return cValueAssignment_0_6; }
 		
 		//Expression
-		public RuleCall getArgumentExpressionParserRuleCall_2_0() { return cArgumentExpressionParserRuleCall_2_0; }
+		public RuleCall getValueExpressionParserRuleCall_0_6_0() { return cValueExpressionParserRuleCall_0_6_0; }
+		
+		//{WritelnStatement} 'writeln' '(' argument=Expression ')'
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//{WritelnStatement}
+		public Action getWritelnStatementAction_1_0() { return cWritelnStatementAction_1_0; }
+		
+		//'writeln'
+		public Keyword getWritelnKeyword_1_1() { return cWritelnKeyword_1_1; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_1_2() { return cLeftParenthesisKeyword_1_2; }
+		
+		//argument=Expression
+		public Assignment getArgumentAssignment_1_3() { return cArgumentAssignment_1_3; }
+		
+		//Expression
+		public RuleCall getArgumentExpressionParserRuleCall_1_3_0() { return cArgumentExpressionParserRuleCall_1_3_0; }
 		
 		//')'
-		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
+		public Keyword getRightParenthesisKeyword_1_4() { return cRightParenthesisKeyword_1_4; }
 	}
 	public class ExpressionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fire.Fire.Expression");
@@ -531,6 +585,52 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getINTTerminalRuleCall_2() { return cINTTerminalRuleCall_2; }
 	}
 	
+	public class BuiltInTypeElements extends AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "fire.Fire.BuiltInType");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cSTRINGEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cSTRINGStringKeyword_0_0 = (Keyword)cSTRINGEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cBOOLEANEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cBOOLEANBooleanKeyword_1_0 = (Keyword)cBOOLEANEnumLiteralDeclaration_1.eContents().get(0);
+		private final EnumLiteralDeclaration cINTEGEREnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
+		private final Keyword cINTEGERIntegerKeyword_2_0 = (Keyword)cINTEGEREnumLiteralDeclaration_2.eContents().get(0);
+		private final EnumLiteralDeclaration cREALEnumLiteralDeclaration_3 = (EnumLiteralDeclaration)cAlternatives.eContents().get(3);
+		private final Keyword cREALRealKeyword_3_0 = (Keyword)cREALEnumLiteralDeclaration_3.eContents().get(0);
+		
+		//enum BuiltInType:
+		//	STRING='String' |
+		//	BOOLEAN='Boolean' |
+		//	INTEGER='Integer' |
+		//	REAL='Real';
+		public EnumRule getRule() { return rule; }
+		
+		//STRING='String' | BOOLEAN='Boolean' | INTEGER='Integer' | REAL='Real'
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//STRING='String'
+		public EnumLiteralDeclaration getSTRINGEnumLiteralDeclaration_0() { return cSTRINGEnumLiteralDeclaration_0; }
+		
+		//'String'
+		public Keyword getSTRINGStringKeyword_0_0() { return cSTRINGStringKeyword_0_0; }
+		
+		//BOOLEAN='Boolean'
+		public EnumLiteralDeclaration getBOOLEANEnumLiteralDeclaration_1() { return cBOOLEANEnumLiteralDeclaration_1; }
+		
+		//'Boolean'
+		public Keyword getBOOLEANBooleanKeyword_1_0() { return cBOOLEANBooleanKeyword_1_0; }
+		
+		//INTEGER='Integer'
+		public EnumLiteralDeclaration getINTEGEREnumLiteralDeclaration_2() { return cINTEGEREnumLiteralDeclaration_2; }
+		
+		//'Integer'
+		public Keyword getINTEGERIntegerKeyword_2_0() { return cINTEGERIntegerKeyword_2_0; }
+		
+		//REAL='Real'
+		public EnumLiteralDeclaration getREALEnumLiteralDeclaration_3() { return cREALEnumLiteralDeclaration_3; }
+		
+		//'Real'
+		public Keyword getREALRealKeyword_3_0() { return cREALRealKeyword_3_0; }
+	}
 	public class EqualityOperatorElements extends AbstractEnumRuleElementFinder {
 		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "fire.Fire.EqualityOperator");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
@@ -681,7 +781,8 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	private final ProgramElements pProgram;
-	private final WritelnStatementElements pWritelnStatement;
+	private final StatementElements pStatement;
+	private final BuiltInTypeElements eBuiltInType;
 	private final ExpressionElements pExpression;
 	private final AndExpressionElements pAndExpression;
 	private final XorExpressionElements pXorExpression;
@@ -707,7 +808,8 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaTerminals = gaTerminals;
 		this.pProgram = new ProgramElements();
-		this.pWritelnStatement = new WritelnStatementElements();
+		this.pStatement = new StatementElements();
+		this.eBuiltInType = new BuiltInTypeElements();
 		this.pExpression = new ExpressionElements();
 		this.pAndExpression = new AndExpressionElements();
 		this.pXorExpression = new XorExpressionElements();
@@ -754,7 +856,7 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 	//Program:
 	//	{Program}
 	//	'program'
-	//	statements+=WritelnStatement*
+	//	statements+=Statement*
 	//	'end';
 	public ProgramElements getProgramAccess() {
 		return pProgram;
@@ -764,14 +866,28 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 		return getProgramAccess().getRule();
 	}
 	
-	//WritelnStatement:
-	//	'writeln' '(' argument=Expression ')';
-	public WritelnStatementElements getWritelnStatementAccess() {
-		return pWritelnStatement;
+	//Statement:
+	//	{ConstantDeclaration} 'const' name=ID ':' type=BuiltInType ':=' value=Expression | {WritelnStatement} 'writeln' '('
+	//	argument=Expression ')';
+	public StatementElements getStatementAccess() {
+		return pStatement;
 	}
 	
-	public ParserRule getWritelnStatementRule() {
-		return getWritelnStatementAccess().getRule();
+	public ParserRule getStatementRule() {
+		return getStatementAccess().getRule();
+	}
+	
+	//enum BuiltInType:
+	//	STRING='String' |
+	//	BOOLEAN='Boolean' |
+	//	INTEGER='Integer' |
+	//	REAL='Real';
+	public BuiltInTypeElements getBuiltInTypeAccess() {
+		return eBuiltInType;
+	}
+	
+	public EnumRule getBuiltInTypeRule() {
+		return getBuiltInTypeAccess().getRule();
 	}
 	
 	//Expression:

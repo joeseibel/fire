@@ -5,7 +5,7 @@ package fire.fire.impl;
 
 import fire.fire.FirePackage;
 import fire.fire.Program;
-import fire.fire.WritelnStatement;
+import fire.fire.Statement;
 
 import java.util.Collection;
 
@@ -44,7 +44,7 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
    * @generated
    * @ordered
    */
-  protected EList<WritelnStatement> statements;
+  protected EList<Statement> statements;
 
   /**
    * <!-- begin-user-doc -->
@@ -72,11 +72,11 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<WritelnStatement> getStatements()
+  public EList<Statement> getStatements()
   {
     if (statements == null)
     {
-      statements = new EObjectContainmentEList<WritelnStatement>(WritelnStatement.class, this, FirePackage.PROGRAM__STATEMENTS);
+      statements = new EObjectContainmentEList<Statement>(Statement.class, this, FirePackage.PROGRAM__STATEMENTS);
     }
     return statements;
   }
@@ -126,7 +126,7 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
     {
       case FirePackage.PROGRAM__STATEMENTS:
         getStatements().clear();
-        getStatements().addAll((Collection<? extends WritelnStatement>)newValue);
+        getStatements().addAll((Collection<? extends Statement>)newValue);
         return;
     }
     super.eSet(featureID, newValue);

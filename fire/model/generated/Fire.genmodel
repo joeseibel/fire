@@ -6,6 +6,12 @@
     copyrightFields="false" runtimeVersion="2.12">
   <genPackages prefix="Fire" basePackage="fire" disposableProviderFactory="true" fileExtensions="fire"
       ecorePackage="Fire.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Fire.ecore#//BuiltInType">
+      <genEnumLiterals ecoreEnumLiteral="Fire.ecore#//BuiltInType/STRING"/>
+      <genEnumLiterals ecoreEnumLiteral="Fire.ecore#//BuiltInType/BOOLEAN"/>
+      <genEnumLiterals ecoreEnumLiteral="Fire.ecore#//BuiltInType/INTEGER"/>
+      <genEnumLiterals ecoreEnumLiteral="Fire.ecore#//BuiltInType/REAL"/>
+    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="Fire.ecore#//EqualityOperator">
       <genEnumLiterals ecoreEnumLiteral="Fire.ecore#//EqualityOperator/EQUALS"/>
       <genEnumLiterals ecoreEnumLiteral="Fire.ecore#//EqualityOperator/NOT_EQUALS"/>
@@ -29,10 +35,16 @@
     <genClasses ecoreClass="Fire.ecore#//Program">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Fire.ecore#//Program/statements"/>
     </genClasses>
+    <genClasses ecoreClass="Fire.ecore#//Statement"/>
+    <genClasses ecoreClass="Fire.ecore#//Expression"/>
+    <genClasses ecoreClass="Fire.ecore#//ConstantDeclaration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Fire.ecore#//ConstantDeclaration/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Fire.ecore#//ConstantDeclaration/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Fire.ecore#//ConstantDeclaration/value"/>
+    </genClasses>
     <genClasses ecoreClass="Fire.ecore#//WritelnStatement">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Fire.ecore#//WritelnStatement/argument"/>
     </genClasses>
-    <genClasses ecoreClass="Fire.ecore#//Expression"/>
     <genClasses ecoreClass="Fire.ecore#//OrExpression">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Fire.ecore#//OrExpression/left"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Fire.ecore#//OrExpression/right"/>

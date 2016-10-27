@@ -8,8 +8,10 @@ import fire.fire.AdditiveExpression
 import fire.fire.AdditiveOperator
 import fire.fire.AndExpression
 import fire.fire.BooleanLiteral
+import fire.fire.BuiltInType
 import fire.fire.ComparisonExpression
 import fire.fire.ComparisonOperator
+import fire.fire.ConstantDeclaration
 import fire.fire.EqualityExpression
 import fire.fire.EqualityOperator
 import fire.fire.IntegerLiteral
@@ -21,6 +23,7 @@ import fire.fire.OrExpression
 import fire.fire.Program
 import fire.fire.RealLiteral
 import fire.fire.StringLiteral
+import fire.fire.WritelnStatement
 import fire.fire.XorExpression
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
@@ -52,15 +55,21 @@ class FireParsingTest{
 	}
 	
 	@Test
-	def void testWritelnStatement() {
+	def void testStatement() {
 		'''
 			program
+				const c1: Integer := 1
 				writeln("string1")
 			end
 		'''.parse => [
 			assertNoIssues
-			1.assertEquals(statements.size)
-			"string1".assertEquals((statements.head.argument as StringLiteral).value)
+			2.assertEquals(statements.size)
+			statements.get(0) as ConstantDeclaration => [
+				"c1".assertEquals(name)
+				BuiltInType.INTEGER.assertEquals(type)
+				1.assertEquals((value as IntegerLiteral).value)
+			]
+			"string1".assertEquals(((statements.get(1) as WritelnStatement).argument as StringLiteral).value)
 		]
 	}
 	
@@ -73,7 +82,7 @@ class FireParsingTest{
 		'''.parse => [
 			assertNoIssues
 			1.assertEquals(statements.size)
-			statements.head.argument as OrExpression => [
+			(statements.head as WritelnStatement).argument as OrExpression => [
 				left as OrExpression => [
 					(left as BooleanLiteral).value.assertTrue;
 					(right as BooleanLiteral).value.assertFalse
@@ -92,7 +101,7 @@ class FireParsingTest{
 		'''.parse => [
 			assertNoIssues
 			1.assertEquals(statements.size)
-			statements.head.argument as AndExpression => [
+			(statements.head as WritelnStatement).argument as AndExpression => [
 				left as AndExpression => [
 					(left as BooleanLiteral).value.assertTrue;
 					(right as BooleanLiteral).value.assertFalse
@@ -111,7 +120,7 @@ class FireParsingTest{
 		'''.parse => [
 			assertNoIssues
 			1.assertEquals(statements.size)
-			statements.head.argument as XorExpression => [
+			(statements.head as WritelnStatement).argument as XorExpression => [
 				left as XorExpression => [
 					(left as BooleanLiteral).value.assertTrue;
 					(right as BooleanLiteral).value.assertFalse
@@ -130,7 +139,7 @@ class FireParsingTest{
 		'''.parse => [
 			assertNoIssues
 			1.assertEquals(statements.size)
-			statements.head.argument as EqualityExpression => [
+			(statements.head as WritelnStatement).argument as EqualityExpression => [
 				left as EqualityExpression => [
 					1.assertEquals((left as IntegerLiteral).value)
 					EqualityOperator.EQUALS.assertEquals(operator)
@@ -154,22 +163,22 @@ class FireParsingTest{
 		'''.parse => [
 			assertNoIssues
 			4.assertEquals(statements.size)
-			statements.get(0).argument as ComparisonExpression => [
+			(statements.get(0) as WritelnStatement).argument as ComparisonExpression => [
 				1.assertEquals((left as IntegerLiteral).value)
 				ComparisonOperator.LESS.assertEquals(operator)
 				2.assertEquals((right as IntegerLiteral).value)
 			]
-			statements.get(1).argument as ComparisonExpression => [
+			(statements.get(1) as WritelnStatement).argument as ComparisonExpression => [
 				3.assertEquals((left as IntegerLiteral).value)
 				ComparisonOperator.LESS_EQUAL.assertEquals(operator)
 				4.assertEquals((right as IntegerLiteral).value)
 			]
-			statements.get(2).argument as ComparisonExpression => [
+			(statements.get(2) as WritelnStatement).argument as ComparisonExpression => [
 				5.assertEquals((left as IntegerLiteral).value)
 				ComparisonOperator.GREATER.assertEquals(operator)
 				6.assertEquals((right as IntegerLiteral).value)
 			]
-			statements.get(3).argument as ComparisonExpression => [
+			(statements.get(3) as WritelnStatement).argument as ComparisonExpression => [
 				7.assertEquals((left as IntegerLiteral).value)
 				ComparisonOperator.GREATER_EQUAL.assertEquals(operator)
 				8.assertEquals((right as IntegerLiteral).value)
@@ -186,7 +195,7 @@ class FireParsingTest{
 		'''.parse => [
 			assertNoIssues
 			1.assertEquals(statements.size)
-			statements.head.argument as AdditiveExpression => [
+			(statements.head as WritelnStatement).argument as AdditiveExpression => [
 				left as AdditiveExpression => [
 					1.assertEquals((left as IntegerLiteral).value)
 					AdditiveOperator.ADD.assertEquals(operator)
@@ -208,7 +217,7 @@ class FireParsingTest{
 		'''.parse => [
 			assertNoIssues
 			2.assertEquals(statements.size)
-			statements.get(0).argument as MultiplicativeExpression => [
+			(statements.get(0) as WritelnStatement).argument as MultiplicativeExpression => [
 				left as MultiplicativeExpression => [
 					left as MultiplicativeExpression => [
 						1.assertEquals((left as IntegerLiteral).value)
@@ -221,7 +230,7 @@ class FireParsingTest{
 				MultiplicativeOperator.MODULUS.assertEquals(operator)
 				4.assertEquals((right as IntegerLiteral).value)
 			]
-			statements.get(1).argument as MultiplicativeExpression => [
+			(statements.get(1) as WritelnStatement).argument as MultiplicativeExpression => [
 				5.5.assertEquals((left as RealLiteral).value, 0)
 				MultiplicativeOperator.REAL_DIVIDE.assertEquals(operator)
 				6.6.assertEquals((right as RealLiteral).value, 0)
@@ -245,14 +254,14 @@ class FireParsingTest{
 		'''.parse => [
 			assertNoIssues
 			8.assertEquals(statements.size)
-			"string1".assertEquals((statements.get(0).argument as StringLiteral).value)
-			(statements.get(1).argument as BooleanLiteral).value.assertTrue;
-			(statements.get(2).argument as BooleanLiteral).value.assertFalse
-			1.assertEquals((statements.get(3).argument as IntegerLiteral).value)
-			2.2.assertEquals((statements.get(4).argument as RealLiteral).value, 0)
-			((statements.get(5).argument as NotExpression).operand as BooleanLiteral).value.assertTrue
-			3.assertEquals(((statements.get(6).argument as NegationExpression).operand as IntegerLiteral).value)
-			4.assertEquals((statements.get(7).argument as IntegerLiteral).value)
+			"string1".assertEquals(((statements.get(0) as WritelnStatement).argument as StringLiteral).value)
+			((statements.get(1) as WritelnStatement).argument as BooleanLiteral).value.assertTrue;
+			((statements.get(2) as WritelnStatement).argument as BooleanLiteral).value.assertFalse
+			1.assertEquals(((statements.get(3) as WritelnStatement).argument as IntegerLiteral).value)
+			2.2.assertEquals(((statements.get(4) as WritelnStatement).argument as RealLiteral).value, 0)
+			(((statements.get(5) as WritelnStatement).argument as NotExpression).operand as BooleanLiteral).value.assertTrue
+			3.assertEquals((((statements.get(6) as WritelnStatement).argument as NegationExpression).operand as IntegerLiteral).value)
+			4.assertEquals(((statements.get(7) as WritelnStatement).argument as IntegerLiteral).value)
 		]
 	}
 	
@@ -277,7 +286,7 @@ class FireParsingTest{
 		'''.parse => [
 			assertNoIssues
 			13.assertEquals(statements.size)
-			statements.get(0).argument as OrExpression => [
+			(statements.get(0) as WritelnStatement).argument as OrExpression => [
 				left as AndExpression => [
 					(left as BooleanLiteral).value.assertTrue;
 					(right as BooleanLiteral).value.assertFalse
@@ -287,7 +296,7 @@ class FireParsingTest{
 					(right as BooleanLiteral).value.assertFalse
 				]
 			]
-			statements.get(1).argument as AndExpression => [
+			(statements.get(1) as WritelnStatement).argument as AndExpression => [
 				left as XorExpression => [
 					(left as BooleanLiteral).value.assertTrue;
 					(right as BooleanLiteral).value.assertFalse;
@@ -297,7 +306,7 @@ class FireParsingTest{
 					(right as BooleanLiteral).value.assertFalse
 				]
 			]
-			statements.get(2).argument as XorExpression => [
+			(statements.get(2) as WritelnStatement).argument as XorExpression => [
 				left as EqualityExpression => [
 					1.assertEquals((left as IntegerLiteral).value)
 					EqualityOperator.EQUALS.assertEquals(operator)
@@ -309,7 +318,7 @@ class FireParsingTest{
 					4.assertEquals((right as IntegerLiteral).value)
 				]
 			]
-			statements.get(3).argument as EqualityExpression => [
+			(statements.get(3) as WritelnStatement).argument as EqualityExpression => [
 				left as EqualityExpression => [
 					left as EqualityExpression => [
 						left as ComparisonExpression => [
@@ -338,7 +347,7 @@ class FireParsingTest{
 					12.assertEquals((right as IntegerLiteral).value)
 				]
 			]
-			statements.get(4).argument as ComparisonExpression => [
+			(statements.get(4) as WritelnStatement).argument as ComparisonExpression => [
 				left as AdditiveExpression => [
 					13.assertEquals((left as IntegerLiteral).value)
 					AdditiveOperator.ADD.assertEquals(operator)
@@ -351,7 +360,7 @@ class FireParsingTest{
 					16.assertEquals((right as IntegerLiteral).value)
 				]
 			]
-			statements.get(5).argument as ComparisonExpression => [
+			(statements.get(5) as WritelnStatement).argument as ComparisonExpression => [
 				left as AdditiveExpression => [
 					17.assertEquals((left as IntegerLiteral).value)
 					AdditiveOperator.ADD.assertEquals(operator)
@@ -364,7 +373,7 @@ class FireParsingTest{
 					20.assertEquals((right as IntegerLiteral).value)
 				]
 			]
-			statements.get(6).argument as ComparisonExpression => [
+			(statements.get(6) as WritelnStatement).argument as ComparisonExpression => [
 				left as AdditiveExpression => [
 					21.assertEquals((left as IntegerLiteral).value)
 					AdditiveOperator.ADD.assertEquals(operator)
@@ -377,7 +386,7 @@ class FireParsingTest{
 					24.assertEquals((right as IntegerLiteral).value)
 				]
 			]
-			statements.get(7).argument as ComparisonExpression => [
+			(statements.get(7) as WritelnStatement).argument as ComparisonExpression => [
 				left as AdditiveExpression => [
 					25.assertEquals((left as IntegerLiteral).value)
 					AdditiveOperator.ADD.assertEquals(operator)
@@ -390,7 +399,7 @@ class FireParsingTest{
 					28.assertEquals((right as IntegerLiteral).value)
 				]
 			]
-			statements.get(8).argument as AdditiveExpression => [
+			(statements.get(8) as WritelnStatement).argument as AdditiveExpression => [
 				left as AdditiveExpression => [
 					left as MultiplicativeExpression => [
 						29.assertEquals((left as IntegerLiteral).value)
@@ -411,7 +420,7 @@ class FireParsingTest{
 					34.assertEquals((right as IntegerLiteral).value)
 				]
 			]
-			statements.get(9).argument as AdditiveExpression => [
+			(statements.get(9) as WritelnStatement).argument as AdditiveExpression => [
 				left as AdditiveExpression => [
 					left as MultiplicativeExpression => [
 						35.35.assertEquals((left as RealLiteral).value, 0)
@@ -428,7 +437,7 @@ class FireParsingTest{
 				AdditiveOperator.SUBTRACT.assertEquals(operator)
 				39.39.assertEquals((right as RealLiteral).value, 0)
 			]
-			statements.get(10).argument as EqualityExpression => [
+			(statements.get(10) as WritelnStatement).argument as EqualityExpression => [
 				left as EqualityExpression => [
 					((left as NotExpression).operand as BooleanLiteral).value.assertTrue
 					EqualityOperator.EQUALS.assertEquals(operator)
@@ -437,7 +446,7 @@ class FireParsingTest{
 				EqualityOperator.NOT_EQUALS.assertEquals(operator)
 				((right as NotExpression).operand as BooleanLiteral).value.assertTrue
 			]
-			statements.get(11).argument as MultiplicativeExpression => [
+			(statements.get(11) as WritelnStatement).argument as MultiplicativeExpression => [
 				left as MultiplicativeExpression => [
 					left as MultiplicativeExpression => [
 						40.assertEquals(((left as NegationExpression).operand as IntegerLiteral).value)
@@ -450,7 +459,7 @@ class FireParsingTest{
 				MultiplicativeOperator.MODULUS.assertEquals(operator)
 				43.assertEquals(((right as NegationExpression).operand as IntegerLiteral).value)
 			]
-			statements.get(12).argument as MultiplicativeExpression => [
+			(statements.get(12) as WritelnStatement).argument as MultiplicativeExpression => [
 				left as MultiplicativeExpression => [
 					44.44.assertEquals(((left as NegationExpression).operand as RealLiteral).value, 0)
 					MultiplicativeOperator.MULTIPLY.assertEquals(operator)

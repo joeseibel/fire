@@ -1,14 +1,18 @@
 package fire.tests
 
 import com.google.inject.Inject
+import fire.fire.FirePackage
 import fire.fire.Program
 import fire.validation.FireValidator
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
 import org.eclipse.xtext.junit4.util.ParseHelper
+import org.eclipse.xtext.junit4.validation.ValidationTestHelper
 import org.eclipse.xtext.junit4.validation.ValidatorTester
 import org.junit.Test
 import org.junit.runner.RunWith
+
+import static extension org.junit.Assert.assertEquals
 
 @RunWith(XtextRunner)
 @InjectWith(FireInjectorProvider)
@@ -16,7 +20,42 @@ class ValidatorTest {
 	@Inject
 	extension ParseHelper<Program>
 	@Inject
+	extension ValidationTestHelper
+	@Inject
 	ValidatorTester<FireValidator> tester
+	
+	@Test
+	def void checkDuplicateNames() {
+		'''
+			program
+				const c1: Integer := 1
+				const c1: Integer := 2
+				const c1: Integer := 3
+			end
+		'''.parse => [
+			2.assertEquals(validate.size)
+			statements.get(1).assertError(FirePackage.Literals.CONSTANT_DECLARATION, null, "c1 is already declared")
+			statements.get(2).assertError(FirePackage.Literals.CONSTANT_DECLARATION, null, "c1 is already declared")
+		]
+	}
+	
+	@Test
+	def void testTypeCheckConstantDeclaration() {
+		'''
+			program
+				const c1: String := "string1"
+				const c2: String := 1
+			end
+		'''.parse => [
+			tester.validate(statements.get(0)) => [
+				assertDiagnosticsCount(0)
+			]
+			tester.validate(statements.get(1)) => [
+				assertDiagnosticsCount(1)
+				assertError(null, "Expected String, found Integer")
+			]
+		]
+	}
 	
 	@Test
 	def void testTypeCheckOrExpression() {

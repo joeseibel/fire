@@ -67,8 +67,10 @@ public class FireFactoryImpl extends EFactoryImpl implements FireFactory
     switch (eClass.getClassifierID())
     {
       case FirePackage.PROGRAM: return createProgram();
-      case FirePackage.WRITELN_STATEMENT: return createWritelnStatement();
+      case FirePackage.STATEMENT: return createStatement();
       case FirePackage.EXPRESSION: return createExpression();
+      case FirePackage.CONSTANT_DECLARATION: return createConstantDeclaration();
+      case FirePackage.WRITELN_STATEMENT: return createWritelnStatement();
       case FirePackage.OR_EXPRESSION: return createOrExpression();
       case FirePackage.AND_EXPRESSION: return createAndExpression();
       case FirePackage.XOR_EXPRESSION: return createXorExpression();
@@ -97,6 +99,8 @@ public class FireFactoryImpl extends EFactoryImpl implements FireFactory
   {
     switch (eDataType.getClassifierID())
     {
+      case FirePackage.BUILT_IN_TYPE:
+        return createBuiltInTypeFromString(eDataType, initialValue);
       case FirePackage.EQUALITY_OPERATOR:
         return createEqualityOperatorFromString(eDataType, initialValue);
       case FirePackage.COMPARISON_OPERATOR:
@@ -120,6 +124,8 @@ public class FireFactoryImpl extends EFactoryImpl implements FireFactory
   {
     switch (eDataType.getClassifierID())
     {
+      case FirePackage.BUILT_IN_TYPE:
+        return convertBuiltInTypeToString(eDataType, instanceValue);
       case FirePackage.EQUALITY_OPERATOR:
         return convertEqualityOperatorToString(eDataType, instanceValue);
       case FirePackage.COMPARISON_OPERATOR:
@@ -149,10 +155,10 @@ public class FireFactoryImpl extends EFactoryImpl implements FireFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public WritelnStatement createWritelnStatement()
+  public Statement createStatement()
   {
-    WritelnStatementImpl writelnStatement = new WritelnStatementImpl();
-    return writelnStatement;
+    StatementImpl statement = new StatementImpl();
+    return statement;
   }
 
   /**
@@ -164,6 +170,28 @@ public class FireFactoryImpl extends EFactoryImpl implements FireFactory
   {
     ExpressionImpl expression = new ExpressionImpl();
     return expression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ConstantDeclaration createConstantDeclaration()
+  {
+    ConstantDeclarationImpl constantDeclaration = new ConstantDeclarationImpl();
+    return constantDeclaration;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public WritelnStatement createWritelnStatement()
+  {
+    WritelnStatementImpl writelnStatement = new WritelnStatementImpl();
+    return writelnStatement;
   }
 
   /**
@@ -307,6 +335,28 @@ public class FireFactoryImpl extends EFactoryImpl implements FireFactory
   {
     NegationExpressionImpl negationExpression = new NegationExpressionImpl();
     return negationExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public BuiltInType createBuiltInTypeFromString(EDataType eDataType, String initialValue)
+  {
+    BuiltInType result = BuiltInType.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertBuiltInTypeToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
   }
 
   /**

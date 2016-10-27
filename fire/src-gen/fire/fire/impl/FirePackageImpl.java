@@ -7,8 +7,10 @@ import fire.fire.AdditiveExpression;
 import fire.fire.AdditiveOperator;
 import fire.fire.AndExpression;
 import fire.fire.BooleanLiteral;
+import fire.fire.BuiltInType;
 import fire.fire.ComparisonExpression;
 import fire.fire.ComparisonOperator;
+import fire.fire.ConstantDeclaration;
 import fire.fire.EqualityExpression;
 import fire.fire.EqualityOperator;
 import fire.fire.Expression;
@@ -22,6 +24,7 @@ import fire.fire.NotExpression;
 import fire.fire.OrExpression;
 import fire.fire.Program;
 import fire.fire.RealLiteral;
+import fire.fire.Statement;
 import fire.fire.StringLiteral;
 import fire.fire.WritelnStatement;
 import fire.fire.XorExpression;
@@ -54,7 +57,7 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass writelnStatementEClass = null;
+  private EClass statementEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -62,6 +65,20 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
    * @generated
    */
   private EClass expressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass constantDeclarationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass writelnStatementEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -153,6 +170,13 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
    * @generated
    */
   private EClass negationExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum builtInTypeEEnum = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -270,6 +294,66 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getStatement()
+  {
+    return statementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getExpression()
+  {
+    return expressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getConstantDeclaration()
+  {
+    return constantDeclarationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getConstantDeclaration_Name()
+  {
+    return (EAttribute)constantDeclarationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getConstantDeclaration_Type()
+  {
+    return (EAttribute)constantDeclarationEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getConstantDeclaration_Value()
+  {
+    return (EReference)constantDeclarationEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getWritelnStatement()
   {
     return writelnStatementEClass;
@@ -283,16 +367,6 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
   public EReference getWritelnStatement_Argument()
   {
     return (EReference)writelnStatementEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getExpression()
-  {
-    return expressionEClass;
   }
 
   /**
@@ -670,6 +744,16 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EEnum getBuiltInType()
+  {
+    return builtInTypeEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EEnum getEqualityOperator()
   {
     return equalityOperatorEEnum;
@@ -738,10 +822,17 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
     programEClass = createEClass(PROGRAM);
     createEReference(programEClass, PROGRAM__STATEMENTS);
 
-    writelnStatementEClass = createEClass(WRITELN_STATEMENT);
-    createEReference(writelnStatementEClass, WRITELN_STATEMENT__ARGUMENT);
+    statementEClass = createEClass(STATEMENT);
 
     expressionEClass = createEClass(EXPRESSION);
+
+    constantDeclarationEClass = createEClass(CONSTANT_DECLARATION);
+    createEAttribute(constantDeclarationEClass, CONSTANT_DECLARATION__NAME);
+    createEAttribute(constantDeclarationEClass, CONSTANT_DECLARATION__TYPE);
+    createEReference(constantDeclarationEClass, CONSTANT_DECLARATION__VALUE);
+
+    writelnStatementEClass = createEClass(WRITELN_STATEMENT);
+    createEReference(writelnStatementEClass, WRITELN_STATEMENT__ARGUMENT);
 
     orExpressionEClass = createEClass(OR_EXPRESSION);
     createEReference(orExpressionEClass, OR_EXPRESSION__LEFT);
@@ -794,6 +885,7 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
     createEReference(negationExpressionEClass, NEGATION_EXPRESSION__OPERAND);
 
     // Create enums
+    builtInTypeEEnum = createEEnum(BUILT_IN_TYPE);
     equalityOperatorEEnum = createEEnum(EQUALITY_OPERATOR);
     comparisonOperatorEEnum = createEEnum(COMPARISON_OPERATOR);
     additiveOperatorEEnum = createEEnum(ADDITIVE_OPERATOR);
@@ -829,6 +921,8 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
+    constantDeclarationEClass.getESuperTypes().add(this.getStatement());
+    writelnStatementEClass.getESuperTypes().add(this.getStatement());
     orExpressionEClass.getESuperTypes().add(this.getExpression());
     andExpressionEClass.getESuperTypes().add(this.getExpression());
     xorExpressionEClass.getESuperTypes().add(this.getExpression());
@@ -845,12 +939,19 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
 
     // Initialize classes and features; add operations and parameters
     initEClass(programEClass, Program.class, "Program", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getProgram_Statements(), this.getWritelnStatement(), null, "statements", null, 0, -1, Program.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getProgram_Statements(), this.getStatement(), null, "statements", null, 0, -1, Program.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(statementEClass, Statement.class, "Statement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(expressionEClass, Expression.class, "Expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(constantDeclarationEClass, ConstantDeclaration.class, "ConstantDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getConstantDeclaration_Name(), ecorePackage.getEString(), "name", null, 0, 1, ConstantDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getConstantDeclaration_Type(), this.getBuiltInType(), "type", null, 0, 1, ConstantDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getConstantDeclaration_Value(), this.getExpression(), null, "value", null, 0, 1, ConstantDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(writelnStatementEClass, WritelnStatement.class, "WritelnStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getWritelnStatement_Argument(), this.getExpression(), null, "argument", null, 0, 1, WritelnStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(expressionEClass, Expression.class, "Expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(orExpressionEClass, OrExpression.class, "OrExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getOrExpression_Left(), this.getExpression(), null, "left", null, 0, 1, OrExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -903,6 +1004,12 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
     initEReference(getNegationExpression_Operand(), this.getExpression(), null, "operand", null, 0, 1, NegationExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Initialize enums and add enum literals
+    initEEnum(builtInTypeEEnum, BuiltInType.class, "BuiltInType");
+    addEEnumLiteral(builtInTypeEEnum, BuiltInType.STRING);
+    addEEnumLiteral(builtInTypeEEnum, BuiltInType.BOOLEAN);
+    addEEnumLiteral(builtInTypeEEnum, BuiltInType.INTEGER);
+    addEEnumLiteral(builtInTypeEEnum, BuiltInType.REAL);
+
     initEEnum(equalityOperatorEEnum, EqualityOperator.class, "EqualityOperator");
     addEEnumLiteral(equalityOperatorEEnum, EqualityOperator.EQUALS);
     addEEnumLiteral(equalityOperatorEEnum, EqualityOperator.NOT_EQUALS);

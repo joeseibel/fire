@@ -33,13 +33,13 @@ public interface FireFactory extends EFactory
   Program createProgram();
 
   /**
-   * Returns a new object of class '<em>Writeln Statement</em>'.
+   * Returns a new object of class '<em>Statement</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Writeln Statement</em>'.
+   * @return a new object of class '<em>Statement</em>'.
    * @generated
    */
-  WritelnStatement createWritelnStatement();
+  Statement createStatement();
 
   /**
    * Returns a new object of class '<em>Expression</em>'.
@@ -49,6 +49,24 @@ public interface FireFactory extends EFactory
    * @generated
    */
   Expression createExpression();
+
+  /**
+   * Returns a new object of class '<em>Constant Declaration</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Constant Declaration</em>'.
+   * @generated
+   */
+  ConstantDeclaration createConstantDeclaration();
+
+  /**
+   * Returns a new object of class '<em>Writeln Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Writeln Statement</em>'.
+   * @generated
+   */
+  WritelnStatement createWritelnStatement();
 
   /**
    * Returns a new object of class '<em>Or Expression</em>'.
