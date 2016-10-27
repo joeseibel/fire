@@ -494,6 +494,34 @@ public interface FirePackage extends EPackage
   int MULTIPLICATIVE_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 3;
 
   /**
+   * The meta object id for the '{@link fire.fire.impl.IdExpressionImpl <em>Id Expression</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see fire.fire.impl.IdExpressionImpl
+   * @see fire.fire.impl.FirePackageImpl#getIdExpression()
+   * @generated
+   */
+  int ID_EXPRESSION = 12;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ID_EXPRESSION__VALUE = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Id Expression</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ID_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
    * The meta object id for the '{@link fire.fire.impl.StringLiteralImpl <em>String Literal</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -501,7 +529,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getStringLiteral()
    * @generated
    */
-  int STRING_LITERAL = 12;
+  int STRING_LITERAL = 13;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -529,7 +557,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getBooleanLiteral()
    * @generated
    */
-  int BOOLEAN_LITERAL = 13;
+  int BOOLEAN_LITERAL = 14;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -557,7 +585,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getIntegerLiteral()
    * @generated
    */
-  int INTEGER_LITERAL = 14;
+  int INTEGER_LITERAL = 15;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -585,7 +613,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getRealLiteral()
    * @generated
    */
-  int REAL_LITERAL = 15;
+  int REAL_LITERAL = 16;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -613,7 +641,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getNotExpression()
    * @generated
    */
-  int NOT_EXPRESSION = 16;
+  int NOT_EXPRESSION = 17;
 
   /**
    * The feature id for the '<em><b>Operand</b></em>' containment reference.
@@ -641,7 +669,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getNegationExpression()
    * @generated
    */
-  int NEGATION_EXPRESSION = 17;
+  int NEGATION_EXPRESSION = 18;
 
   /**
    * The feature id for the '<em><b>Operand</b></em>' containment reference.
@@ -669,7 +697,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getBuiltInType()
    * @generated
    */
-  int BUILT_IN_TYPE = 18;
+  int BUILT_IN_TYPE = 19;
 
   /**
    * The meta object id for the '{@link fire.fire.EqualityOperator <em>Equality Operator</em>}' enum.
@@ -679,7 +707,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getEqualityOperator()
    * @generated
    */
-  int EQUALITY_OPERATOR = 19;
+  int EQUALITY_OPERATOR = 20;
 
   /**
    * The meta object id for the '{@link fire.fire.ComparisonOperator <em>Comparison Operator</em>}' enum.
@@ -689,7 +717,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getComparisonOperator()
    * @generated
    */
-  int COMPARISON_OPERATOR = 20;
+  int COMPARISON_OPERATOR = 21;
 
   /**
    * The meta object id for the '{@link fire.fire.AdditiveOperator <em>Additive Operator</em>}' enum.
@@ -699,7 +727,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getAdditiveOperator()
    * @generated
    */
-  int ADDITIVE_OPERATOR = 21;
+  int ADDITIVE_OPERATOR = 22;
 
   /**
    * The meta object id for the '{@link fire.fire.MultiplicativeOperator <em>Multiplicative Operator</em>}' enum.
@@ -709,7 +737,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getMultiplicativeOperator()
    * @generated
    */
-  int MULTIPLICATIVE_OPERATOR = 22;
+  int MULTIPLICATIVE_OPERATOR = 23;
 
 
   /**
@@ -1084,6 +1112,27 @@ public interface FirePackage extends EPackage
    * @generated
    */
   EReference getMultiplicativeExpression_Right();
+
+  /**
+   * Returns the meta object for class '{@link fire.fire.IdExpression <em>Id Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Id Expression</em>'.
+   * @see fire.fire.IdExpression
+   * @generated
+   */
+  EClass getIdExpression();
+
+  /**
+   * Returns the meta object for the reference '{@link fire.fire.IdExpression#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Value</em>'.
+   * @see fire.fire.IdExpression#getValue()
+   * @see #getIdExpression()
+   * @generated
+   */
+  EReference getIdExpression_Value();
 
   /**
    * Returns the meta object for class '{@link fire.fire.StringLiteral <em>String Literal</em>}'.
@@ -1587,6 +1636,24 @@ public interface FirePackage extends EPackage
      * @generated
      */
     EReference MULTIPLICATIVE_EXPRESSION__RIGHT = eINSTANCE.getMultiplicativeExpression_Right();
+
+    /**
+     * The meta object literal for the '{@link fire.fire.impl.IdExpressionImpl <em>Id Expression</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see fire.fire.impl.IdExpressionImpl
+     * @see fire.fire.impl.FirePackageImpl#getIdExpression()
+     * @generated
+     */
+    EClass ID_EXPRESSION = eINSTANCE.getIdExpression();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ID_EXPRESSION__VALUE = eINSTANCE.getIdExpression_Value();
 
     /**
      * The meta object literal for the '{@link fire.fire.impl.StringLiteralImpl <em>String Literal</em>}' class.

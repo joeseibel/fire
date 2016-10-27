@@ -9,6 +9,7 @@ import java.util.List;
 import org.eclipse.xtext.Action;
 import org.eclipse.xtext.Alternatives;
 import org.eclipse.xtext.Assignment;
+import org.eclipse.xtext.CrossReference;
 import org.eclipse.xtext.EnumLiteralDeclaration;
 import org.eclipse.xtext.EnumRule;
 import org.eclipse.xtext.Grammar;
@@ -410,127 +411,132 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fire.Fire.TerminalExpression");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
-		private final Action cStringLiteralAction_0_0 = (Action)cGroup_0.eContents().get(0);
+		private final Action cIdExpressionAction_0_0 = (Action)cGroup_0.eContents().get(0);
 		private final Assignment cValueAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
-		private final RuleCall cValueSTRINGTerminalRuleCall_0_1_0 = (RuleCall)cValueAssignment_0_1.eContents().get(0);
+		private final CrossReference cValueConstantDeclarationCrossReference_0_1_0 = (CrossReference)cValueAssignment_0_1.eContents().get(0);
+		private final RuleCall cValueConstantDeclarationIDTerminalRuleCall_0_1_0_1 = (RuleCall)cValueConstantDeclarationCrossReference_0_1_0.eContents().get(1);
 		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
-		private final Action cBooleanLiteralAction_1_0 = (Action)cGroup_1.eContents().get(0);
-		private final Alternatives cAlternatives_1_1 = (Alternatives)cGroup_1.eContents().get(1);
-		private final Assignment cValueAssignment_1_1_0 = (Assignment)cAlternatives_1_1.eContents().get(0);
-		private final Keyword cValueTrueKeyword_1_1_0_0 = (Keyword)cValueAssignment_1_1_0.eContents().get(0);
-		private final Keyword cFalseKeyword_1_1_1 = (Keyword)cAlternatives_1_1.eContents().get(1);
+		private final Action cStringLiteralAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Assignment cValueAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cValueSTRINGTerminalRuleCall_1_1_0 = (RuleCall)cValueAssignment_1_1.eContents().get(0);
 		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
-		private final Action cIntegerLiteralAction_2_0 = (Action)cGroup_2.eContents().get(0);
-		private final Assignment cValueAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
-		private final RuleCall cValueLongParserRuleCall_2_1_0 = (RuleCall)cValueAssignment_2_1.eContents().get(0);
+		private final Action cBooleanLiteralAction_2_0 = (Action)cGroup_2.eContents().get(0);
+		private final Alternatives cAlternatives_2_1 = (Alternatives)cGroup_2.eContents().get(1);
+		private final Assignment cValueAssignment_2_1_0 = (Assignment)cAlternatives_2_1.eContents().get(0);
+		private final Keyword cValueTrueKeyword_2_1_0_0 = (Keyword)cValueAssignment_2_1_0.eContents().get(0);
+		private final Keyword cFalseKeyword_2_1_1 = (Keyword)cAlternatives_2_1.eContents().get(1);
 		private final Group cGroup_3 = (Group)cAlternatives.eContents().get(3);
-		private final Action cRealLiteralAction_3_0 = (Action)cGroup_3.eContents().get(0);
+		private final Action cIntegerLiteralAction_3_0 = (Action)cGroup_3.eContents().get(0);
 		private final Assignment cValueAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
-		private final RuleCall cValueDoubleParserRuleCall_3_1_0 = (RuleCall)cValueAssignment_3_1.eContents().get(0);
+		private final RuleCall cValueLongParserRuleCall_3_1_0 = (RuleCall)cValueAssignment_3_1.eContents().get(0);
 		private final Group cGroup_4 = (Group)cAlternatives.eContents().get(4);
-		private final Action cNotExpressionAction_4_0 = (Action)cGroup_4.eContents().get(0);
-		private final Keyword cNotKeyword_4_1 = (Keyword)cGroup_4.eContents().get(1);
-		private final Assignment cOperandAssignment_4_2 = (Assignment)cGroup_4.eContents().get(2);
-		private final RuleCall cOperandTerminalExpressionParserRuleCall_4_2_0 = (RuleCall)cOperandAssignment_4_2.eContents().get(0);
+		private final Action cRealLiteralAction_4_0 = (Action)cGroup_4.eContents().get(0);
+		private final Assignment cValueAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final RuleCall cValueDoubleParserRuleCall_4_1_0 = (RuleCall)cValueAssignment_4_1.eContents().get(0);
 		private final Group cGroup_5 = (Group)cAlternatives.eContents().get(5);
-		private final Action cNegationExpressionAction_5_0 = (Action)cGroup_5.eContents().get(0);
-		private final Keyword cHyphenMinusKeyword_5_1 = (Keyword)cGroup_5.eContents().get(1);
+		private final Action cNotExpressionAction_5_0 = (Action)cGroup_5.eContents().get(0);
+		private final Keyword cNotKeyword_5_1 = (Keyword)cGroup_5.eContents().get(1);
 		private final Assignment cOperandAssignment_5_2 = (Assignment)cGroup_5.eContents().get(2);
 		private final RuleCall cOperandTerminalExpressionParserRuleCall_5_2_0 = (RuleCall)cOperandAssignment_5_2.eContents().get(0);
 		private final Group cGroup_6 = (Group)cAlternatives.eContents().get(6);
-		private final Keyword cLeftParenthesisKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
-		private final RuleCall cExpressionParserRuleCall_6_1 = (RuleCall)cGroup_6.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_6_2 = (Keyword)cGroup_6.eContents().get(2);
+		private final Action cNegationExpressionAction_6_0 = (Action)cGroup_6.eContents().get(0);
+		private final Keyword cHyphenMinusKeyword_6_1 = (Keyword)cGroup_6.eContents().get(1);
+		private final Assignment cOperandAssignment_6_2 = (Assignment)cGroup_6.eContents().get(2);
+		private final RuleCall cOperandTerminalExpressionParserRuleCall_6_2_0 = (RuleCall)cOperandAssignment_6_2.eContents().get(0);
+		private final Group cGroup_7 = (Group)cAlternatives.eContents().get(7);
+		private final Keyword cLeftParenthesisKeyword_7_0 = (Keyword)cGroup_7.eContents().get(0);
+		private final RuleCall cExpressionParserRuleCall_7_1 = (RuleCall)cGroup_7.eContents().get(1);
+		private final Keyword cRightParenthesisKeyword_7_2 = (Keyword)cGroup_7.eContents().get(2);
 		
 		//TerminalExpression Expression:
-		//	{StringLiteral} value=STRING | {BooleanLiteral} (value?='true' | 'false') | {IntegerLiteral} value=Long |
-		//	{RealLiteral} value=Double | {NotExpression} 'not' operand=TerminalExpression | {NegationExpression} '-'
-		//	operand=TerminalExpression |
+		//	{IdExpression} value=[ConstantDeclaration] | {StringLiteral} value=STRING | {BooleanLiteral} (value?='true' | 'false')
+		//	| {IntegerLiteral} value=Long | {RealLiteral} value=Double | {NotExpression} 'not' operand=TerminalExpression |
+		//	{NegationExpression} '-' operand=TerminalExpression |
 		//	'(' Expression ')'
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{StringLiteral} value=STRING | {BooleanLiteral} (value?='true' | 'false') | {IntegerLiteral} value=Long | {RealLiteral}
-		//value=Double | {NotExpression} 'not' operand=TerminalExpression | {NegationExpression} '-' operand=TerminalExpression |
-		//'(' Expression ')'
+		//{IdExpression} value=[ConstantDeclaration] | {StringLiteral} value=STRING | {BooleanLiteral} (value?='true' | 'false') |
+		//{IntegerLiteral} value=Long | {RealLiteral} value=Double | {NotExpression} 'not' operand=TerminalExpression |
+		//{NegationExpression} '-' operand=TerminalExpression | '(' Expression ')'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//{StringLiteral} value=STRING
+		//{IdExpression} value=[ConstantDeclaration]
 		public Group getGroup_0() { return cGroup_0; }
 		
-		//{StringLiteral}
-		public Action getStringLiteralAction_0_0() { return cStringLiteralAction_0_0; }
+		//{IdExpression}
+		public Action getIdExpressionAction_0_0() { return cIdExpressionAction_0_0; }
 		
-		//value=STRING
+		//value=[ConstantDeclaration]
 		public Assignment getValueAssignment_0_1() { return cValueAssignment_0_1; }
 		
-		//STRING
-		public RuleCall getValueSTRINGTerminalRuleCall_0_1_0() { return cValueSTRINGTerminalRuleCall_0_1_0; }
+		//[ConstantDeclaration]
+		public CrossReference getValueConstantDeclarationCrossReference_0_1_0() { return cValueConstantDeclarationCrossReference_0_1_0; }
 		
-		//{BooleanLiteral} (value?='true' | 'false')
+		//ID
+		public RuleCall getValueConstantDeclarationIDTerminalRuleCall_0_1_0_1() { return cValueConstantDeclarationIDTerminalRuleCall_0_1_0_1; }
+		
+		//{StringLiteral} value=STRING
 		public Group getGroup_1() { return cGroup_1; }
 		
-		//{BooleanLiteral}
-		public Action getBooleanLiteralAction_1_0() { return cBooleanLiteralAction_1_0; }
+		//{StringLiteral}
+		public Action getStringLiteralAction_1_0() { return cStringLiteralAction_1_0; }
 		
-		//(value?='true' | 'false')
-		public Alternatives getAlternatives_1_1() { return cAlternatives_1_1; }
+		//value=STRING
+		public Assignment getValueAssignment_1_1() { return cValueAssignment_1_1; }
 		
-		//value?='true'
-		public Assignment getValueAssignment_1_1_0() { return cValueAssignment_1_1_0; }
+		//STRING
+		public RuleCall getValueSTRINGTerminalRuleCall_1_1_0() { return cValueSTRINGTerminalRuleCall_1_1_0; }
 		
-		//'true'
-		public Keyword getValueTrueKeyword_1_1_0_0() { return cValueTrueKeyword_1_1_0_0; }
-		
-		//'false'
-		public Keyword getFalseKeyword_1_1_1() { return cFalseKeyword_1_1_1; }
-		
-		//{IntegerLiteral} value=Long
+		//{BooleanLiteral} (value?='true' | 'false')
 		public Group getGroup_2() { return cGroup_2; }
 		
-		//{IntegerLiteral}
-		public Action getIntegerLiteralAction_2_0() { return cIntegerLiteralAction_2_0; }
+		//{BooleanLiteral}
+		public Action getBooleanLiteralAction_2_0() { return cBooleanLiteralAction_2_0; }
 		
-		//value=Long
-		public Assignment getValueAssignment_2_1() { return cValueAssignment_2_1; }
+		//(value?='true' | 'false')
+		public Alternatives getAlternatives_2_1() { return cAlternatives_2_1; }
 		
-		//Long
-		public RuleCall getValueLongParserRuleCall_2_1_0() { return cValueLongParserRuleCall_2_1_0; }
+		//value?='true'
+		public Assignment getValueAssignment_2_1_0() { return cValueAssignment_2_1_0; }
 		
-		//{RealLiteral} value=Double
+		//'true'
+		public Keyword getValueTrueKeyword_2_1_0_0() { return cValueTrueKeyword_2_1_0_0; }
+		
+		//'false'
+		public Keyword getFalseKeyword_2_1_1() { return cFalseKeyword_2_1_1; }
+		
+		//{IntegerLiteral} value=Long
 		public Group getGroup_3() { return cGroup_3; }
 		
-		//{RealLiteral}
-		public Action getRealLiteralAction_3_0() { return cRealLiteralAction_3_0; }
+		//{IntegerLiteral}
+		public Action getIntegerLiteralAction_3_0() { return cIntegerLiteralAction_3_0; }
 		
-		//value=Double
+		//value=Long
 		public Assignment getValueAssignment_3_1() { return cValueAssignment_3_1; }
 		
-		//Double
-		public RuleCall getValueDoubleParserRuleCall_3_1_0() { return cValueDoubleParserRuleCall_3_1_0; }
+		//Long
+		public RuleCall getValueLongParserRuleCall_3_1_0() { return cValueLongParserRuleCall_3_1_0; }
 		
-		//{NotExpression} 'not' operand=TerminalExpression
+		//{RealLiteral} value=Double
 		public Group getGroup_4() { return cGroup_4; }
 		
-		//{NotExpression}
-		public Action getNotExpressionAction_4_0() { return cNotExpressionAction_4_0; }
+		//{RealLiteral}
+		public Action getRealLiteralAction_4_0() { return cRealLiteralAction_4_0; }
 		
-		//'not'
-		public Keyword getNotKeyword_4_1() { return cNotKeyword_4_1; }
+		//value=Double
+		public Assignment getValueAssignment_4_1() { return cValueAssignment_4_1; }
 		
-		//operand=TerminalExpression
-		public Assignment getOperandAssignment_4_2() { return cOperandAssignment_4_2; }
+		//Double
+		public RuleCall getValueDoubleParserRuleCall_4_1_0() { return cValueDoubleParserRuleCall_4_1_0; }
 		
-		//TerminalExpression
-		public RuleCall getOperandTerminalExpressionParserRuleCall_4_2_0() { return cOperandTerminalExpressionParserRuleCall_4_2_0; }
-		
-		//{NegationExpression} '-' operand=TerminalExpression
+		//{NotExpression} 'not' operand=TerminalExpression
 		public Group getGroup_5() { return cGroup_5; }
 		
-		//{NegationExpression}
-		public Action getNegationExpressionAction_5_0() { return cNegationExpressionAction_5_0; }
+		//{NotExpression}
+		public Action getNotExpressionAction_5_0() { return cNotExpressionAction_5_0; }
 		
-		//'-'
-		public Keyword getHyphenMinusKeyword_5_1() { return cHyphenMinusKeyword_5_1; }
+		//'not'
+		public Keyword getNotKeyword_5_1() { return cNotKeyword_5_1; }
 		
 		//operand=TerminalExpression
 		public Assignment getOperandAssignment_5_2() { return cOperandAssignment_5_2; }
@@ -538,17 +544,32 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 		//TerminalExpression
 		public RuleCall getOperandTerminalExpressionParserRuleCall_5_2_0() { return cOperandTerminalExpressionParserRuleCall_5_2_0; }
 		
-		//'(' Expression ')'
+		//{NegationExpression} '-' operand=TerminalExpression
 		public Group getGroup_6() { return cGroup_6; }
 		
+		//{NegationExpression}
+		public Action getNegationExpressionAction_6_0() { return cNegationExpressionAction_6_0; }
+		
+		//'-'
+		public Keyword getHyphenMinusKeyword_6_1() { return cHyphenMinusKeyword_6_1; }
+		
+		//operand=TerminalExpression
+		public Assignment getOperandAssignment_6_2() { return cOperandAssignment_6_2; }
+		
+		//TerminalExpression
+		public RuleCall getOperandTerminalExpressionParserRuleCall_6_2_0() { return cOperandTerminalExpressionParserRuleCall_6_2_0; }
+		
+		//'(' Expression ')'
+		public Group getGroup_7() { return cGroup_7; }
+		
 		//'('
-		public Keyword getLeftParenthesisKeyword_6_0() { return cLeftParenthesisKeyword_6_0; }
+		public Keyword getLeftParenthesisKeyword_7_0() { return cLeftParenthesisKeyword_7_0; }
 		
 		//Expression
-		public RuleCall getExpressionParserRuleCall_6_1() { return cExpressionParserRuleCall_6_1; }
+		public RuleCall getExpressionParserRuleCall_7_1() { return cExpressionParserRuleCall_7_1; }
 		
 		//')'
-		public Keyword getRightParenthesisKeyword_6_2() { return cRightParenthesisKeyword_6_2; }
+		public Keyword getRightParenthesisKeyword_7_2() { return cRightParenthesisKeyword_7_2; }
 	}
 	public class LongElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fire.Fire.Long");
@@ -1009,9 +1030,9 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//TerminalExpression Expression:
-	//	{StringLiteral} value=STRING | {BooleanLiteral} (value?='true' | 'false') | {IntegerLiteral} value=Long |
-	//	{RealLiteral} value=Double | {NotExpression} 'not' operand=TerminalExpression | {NegationExpression} '-'
-	//	operand=TerminalExpression |
+	//	{IdExpression} value=[ConstantDeclaration] | {StringLiteral} value=STRING | {BooleanLiteral} (value?='true' | 'false')
+	//	| {IntegerLiteral} value=Long | {RealLiteral} value=Double | {NotExpression} 'not' operand=TerminalExpression |
+	//	{NegationExpression} '-' operand=TerminalExpression |
 	//	'(' Expression ')'
 	public TerminalExpressionElements getTerminalExpressionAccess() {
 		return pTerminalExpression;

@@ -8,6 +8,7 @@ import fire.fire.ComparisonExpression
 import fire.fire.ConstantDeclaration
 import fire.fire.EqualityExpression
 import fire.fire.Expression
+import fire.fire.IdExpression
 import fire.fire.IntegerLiteral
 import fire.fire.MultiplicativeExpression
 import fire.fire.NegationExpression
@@ -48,6 +49,8 @@ class FireGenerator extends AbstractGenerator {
 	Module module
 	IRBuilder builder
 	
+	val generatedConstantDeclarations = <ConstantDeclaration, Value>newHashMap
+	
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		llvmContext = new LLVMContext
 		module = new Module(resource.URI.lastSegment, llvmContext)
@@ -63,6 +66,8 @@ class FireGenerator extends AbstractGenerator {
 			module = null
 			llvmContext.delete
 			llvmContext = null
+			
+			generatedConstantDeclarations.clear
 		}
 	}
 	
@@ -75,7 +80,7 @@ class FireGenerator extends AbstractGenerator {
 	}
 	
 	def private dispatch void generateStatement(ConstantDeclaration constant) {
-		constant.value.generateExpression
+		generatedConstantDeclarations.put(constant, constant.value.generateExpression)
 	}
 	
 	def private dispatch void generateStatement(WritelnStatement statement) {
@@ -252,6 +257,10 @@ class FireGenerator extends AbstractGenerator {
 		function.addBasicBlock(afterIfBlock)
 		builder.insertPoint = afterIfBlock
 		operation.apply(expression.left.generateExpression, rightValue)
+	}
+	
+	def private dispatch Value generateExpression(IdExpression literal) {
+		generatedConstantDeclarations.get(literal.value)
 	}
 	
 	def private dispatch Value generateExpression(StringLiteral literal) {

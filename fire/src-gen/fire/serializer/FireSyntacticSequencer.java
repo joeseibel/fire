@@ -20,14 +20,14 @@ import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 public class FireSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected FireGrammarAccess grammarAccess;
-	protected AbstractElementAlias match_TerminalExpression_LeftParenthesisKeyword_6_0_a;
-	protected AbstractElementAlias match_TerminalExpression_LeftParenthesisKeyword_6_0_p;
+	protected AbstractElementAlias match_TerminalExpression_LeftParenthesisKeyword_7_0_a;
+	protected AbstractElementAlias match_TerminalExpression_LeftParenthesisKeyword_7_0_p;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (FireGrammarAccess) access;
-		match_TerminalExpression_LeftParenthesisKeyword_6_0_a = new TokenAlias(true, true, grammarAccess.getTerminalExpressionAccess().getLeftParenthesisKeyword_6_0());
-		match_TerminalExpression_LeftParenthesisKeyword_6_0_p = new TokenAlias(true, false, grammarAccess.getTerminalExpressionAccess().getLeftParenthesisKeyword_6_0());
+		match_TerminalExpression_LeftParenthesisKeyword_7_0_a = new TokenAlias(true, true, grammarAccess.getTerminalExpressionAccess().getLeftParenthesisKeyword_7_0());
+		match_TerminalExpression_LeftParenthesisKeyword_7_0_p = new TokenAlias(true, false, grammarAccess.getTerminalExpressionAccess().getLeftParenthesisKeyword_7_0());
 	}
 	
 	@Override
@@ -42,10 +42,10 @@ public class FireSyntacticSequencer extends AbstractSyntacticSequencer {
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if (match_TerminalExpression_LeftParenthesisKeyword_6_0_a.equals(syntax))
-				emit_TerminalExpression_LeftParenthesisKeyword_6_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_TerminalExpression_LeftParenthesisKeyword_6_0_p.equals(syntax))
-				emit_TerminalExpression_LeftParenthesisKeyword_6_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
+			if (match_TerminalExpression_LeftParenthesisKeyword_7_0_a.equals(syntax))
+				emit_TerminalExpression_LeftParenthesisKeyword_7_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_TerminalExpression_LeftParenthesisKeyword_7_0_p.equals(syntax))
+				emit_TerminalExpression_LeftParenthesisKeyword_7_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
@@ -61,6 +61,7 @@ public class FireSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     (rule start) (ambiguity) value=Double
 	 *     (rule start) (ambiguity) value=Long
 	 *     (rule start) (ambiguity) value=STRING
+	 *     (rule start) (ambiguity) value=[ConstantDeclaration|ID]
 	 *     (rule start) (ambiguity) value?='true'
 	 *     (rule start) (ambiguity) {AdditiveExpression.left=}
 	 *     (rule start) (ambiguity) {AndExpression.left=}
@@ -70,7 +71,7 @@ public class FireSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     (rule start) (ambiguity) {OrExpression.left=}
 	 *     (rule start) (ambiguity) {XorExpression.left=}
 	 */
-	protected void emit_TerminalExpression_LeftParenthesisKeyword_6_0_a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_TerminalExpression_LeftParenthesisKeyword_7_0_a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
@@ -87,7 +88,7 @@ public class FireSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     (rule start) (ambiguity) {OrExpression.left=}
 	 *     (rule start) (ambiguity) {XorExpression.left=}
 	 */
-	protected void emit_TerminalExpression_LeftParenthesisKeyword_6_0_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_TerminalExpression_LeftParenthesisKeyword_7_0_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

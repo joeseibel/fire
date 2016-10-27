@@ -11,6 +11,7 @@ import fire.fire.ComparisonExpression;
 import fire.fire.ConstantDeclaration;
 import fire.fire.EqualityExpression;
 import fire.fire.FirePackage;
+import fire.fire.IdExpression;
 import fire.fire.IntegerLiteral;
 import fire.fire.MultiplicativeExpression;
 import fire.fire.NegationExpression;
@@ -64,6 +65,9 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				return; 
 			case FirePackage.EQUALITY_EXPRESSION:
 				sequence_EqualityExpression(context, (EqualityExpression) semanticObject); 
+				return; 
+			case FirePackage.ID_EXPRESSION:
+				sequence_TerminalExpression(context, (IdExpression) semanticObject); 
 				return; 
 			case FirePackage.INTEGER_LITERAL:
 				sequence_TerminalExpression(context, (IntegerLiteral) semanticObject); 
@@ -404,6 +408,38 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
+	 *     Expression returns IdExpression
+	 *     Expression.OrExpression_1_0 returns IdExpression
+	 *     AndExpression returns IdExpression
+	 *     AndExpression.AndExpression_1_0 returns IdExpression
+	 *     XorExpression returns IdExpression
+	 *     XorExpression.XorExpression_1_0 returns IdExpression
+	 *     EqualityExpression returns IdExpression
+	 *     EqualityExpression.EqualityExpression_1_0 returns IdExpression
+	 *     ComparisonExpression returns IdExpression
+	 *     ComparisonExpression.ComparisonExpression_1_0 returns IdExpression
+	 *     AdditiveExpression returns IdExpression
+	 *     AdditiveExpression.AdditiveExpression_1_0 returns IdExpression
+	 *     MultiplicativeExpression returns IdExpression
+	 *     MultiplicativeExpression.MultiplicativeExpression_1_0 returns IdExpression
+	 *     TerminalExpression returns IdExpression
+	 *
+	 * Constraint:
+	 *     value=[ConstantDeclaration|ID]
+	 */
+	protected void sequence_TerminalExpression(ISerializationContext context, IdExpression semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, FirePackage.Literals.ID_EXPRESSION__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FirePackage.Literals.ID_EXPRESSION__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getTerminalExpressionAccess().getValueConstantDeclarationIDTerminalRuleCall_0_1_0_1(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     Expression returns IntegerLiteral
 	 *     Expression.OrExpression_1_0 returns IntegerLiteral
 	 *     AndExpression returns IntegerLiteral
@@ -429,7 +465,7 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FirePackage.Literals.INTEGER_LITERAL__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getTerminalExpressionAccess().getValueLongParserRuleCall_2_1_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getTerminalExpressionAccess().getValueLongParserRuleCall_3_1_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
@@ -461,7 +497,7 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FirePackage.Literals.NEGATION_EXPRESSION__OPERAND));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getTerminalExpressionAccess().getOperandTerminalExpressionParserRuleCall_5_2_0(), semanticObject.getOperand());
+		feeder.accept(grammarAccess.getTerminalExpressionAccess().getOperandTerminalExpressionParserRuleCall_6_2_0(), semanticObject.getOperand());
 		feeder.finish();
 	}
 	
@@ -493,7 +529,7 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FirePackage.Literals.NOT_EXPRESSION__OPERAND));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getTerminalExpressionAccess().getOperandTerminalExpressionParserRuleCall_4_2_0(), semanticObject.getOperand());
+		feeder.accept(grammarAccess.getTerminalExpressionAccess().getOperandTerminalExpressionParserRuleCall_5_2_0(), semanticObject.getOperand());
 		feeder.finish();
 	}
 	
@@ -525,7 +561,7 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FirePackage.Literals.REAL_LITERAL__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getTerminalExpressionAccess().getValueDoubleParserRuleCall_3_1_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getTerminalExpressionAccess().getValueDoubleParserRuleCall_4_1_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
@@ -557,7 +593,7 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FirePackage.Literals.STRING_LITERAL__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getTerminalExpressionAccess().getValueSTRINGTerminalRuleCall_0_1_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getTerminalExpressionAccess().getValueSTRINGTerminalRuleCall_1_1_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	

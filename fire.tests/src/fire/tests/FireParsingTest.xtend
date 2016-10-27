@@ -14,6 +14,7 @@ import fire.fire.ComparisonOperator
 import fire.fire.ConstantDeclaration
 import fire.fire.EqualityExpression
 import fire.fire.EqualityOperator
+import fire.fire.IdExpression
 import fire.fire.IntegerLiteral
 import fire.fire.MultiplicativeExpression
 import fire.fire.MultiplicativeOperator
@@ -60,16 +61,18 @@ class FireParsingTest{
 			program
 				const c1: Integer := 1
 				writeln("string1")
+				writeln(c1)
 			end
 		'''.parse => [
 			assertNoIssues
-			2.assertEquals(statements.size)
+			3.assertEquals(statements.size)
 			statements.get(0) as ConstantDeclaration => [
 				"c1".assertEquals(name)
 				BuiltInType.INTEGER.assertEquals(type)
 				1.assertEquals((value as IntegerLiteral).value)
 			]
 			"string1".assertEquals(((statements.get(1) as WritelnStatement).argument as StringLiteral).value)
+			statements.get(0).assertEquals(((statements.get(2) as WritelnStatement).argument as IdExpression).value)
 		]
 	}
 	
@@ -242,26 +245,29 @@ class FireParsingTest{
 	def void testTerminalExpression() {
 		'''
 			program
+				const c1: Integer := 1
+				writeln(c1)
 				writeln("string1")
 				writeln(true)
 				writeln(false)
-				writeln(1)
-				writeln(2.2)
+				writeln(2)
+				writeln(3.3)
 				writeln(not true)
-				writeln(-3)
-				writeln((4))
+				writeln(-4)
+				writeln((5))
 			end
 		'''.parse => [
 			assertNoIssues
-			8.assertEquals(statements.size)
-			"string1".assertEquals(((statements.get(0) as WritelnStatement).argument as StringLiteral).value)
-			((statements.get(1) as WritelnStatement).argument as BooleanLiteral).value.assertTrue;
-			((statements.get(2) as WritelnStatement).argument as BooleanLiteral).value.assertFalse
-			1.assertEquals(((statements.get(3) as WritelnStatement).argument as IntegerLiteral).value)
-			2.2.assertEquals(((statements.get(4) as WritelnStatement).argument as RealLiteral).value, 0)
-			(((statements.get(5) as WritelnStatement).argument as NotExpression).operand as BooleanLiteral).value.assertTrue
-			3.assertEquals((((statements.get(6) as WritelnStatement).argument as NegationExpression).operand as IntegerLiteral).value)
-			4.assertEquals(((statements.get(7) as WritelnStatement).argument as IntegerLiteral).value)
+			10.assertEquals(statements.size)
+			statements.get(0).assertEquals(((statements.get(1) as WritelnStatement).argument as IdExpression).value)
+			"string1".assertEquals(((statements.get(2) as WritelnStatement).argument as StringLiteral).value)
+			((statements.get(3) as WritelnStatement).argument as BooleanLiteral).value.assertTrue;
+			((statements.get(4) as WritelnStatement).argument as BooleanLiteral).value.assertFalse
+			2.assertEquals(((statements.get(5) as WritelnStatement).argument as IntegerLiteral).value)
+			3.3.assertEquals(((statements.get(6) as WritelnStatement).argument as RealLiteral).value, 0)
+			(((statements.get(7) as WritelnStatement).argument as NotExpression).operand as BooleanLiteral).value.assertTrue
+			4.assertEquals((((statements.get(8) as WritelnStatement).argument as NegationExpression).operand as IntegerLiteral).value)
+			5.assertEquals(((statements.get(9) as WritelnStatement).argument as IntegerLiteral).value)
 		]
 	}
 	

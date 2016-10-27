@@ -75,6 +75,7 @@ enum MultiplicativeOperator:
 ;
 
 TerminalExpression returns Expression:
+	{IdExpression} value=[ConstantDeclaration] |
 	{StringLiteral} value=STRING |
 	{BooleanLiteral} (value?='true' | 'false') |
 	{IntegerLiteral} value=Long |

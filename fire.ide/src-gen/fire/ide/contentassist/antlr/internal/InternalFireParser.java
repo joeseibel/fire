@@ -1340,66 +1340,15 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TerminalExpression__Alternatives"
-    // InternalFire.g:453:1: rule__TerminalExpression__Alternatives : ( ( ( rule__TerminalExpression__Group_0__0 ) ) | ( ( rule__TerminalExpression__Group_1__0 ) ) | ( ( rule__TerminalExpression__Group_2__0 ) ) | ( ( rule__TerminalExpression__Group_3__0 ) ) | ( ( rule__TerminalExpression__Group_4__0 ) ) | ( ( rule__TerminalExpression__Group_5__0 ) ) | ( ( rule__TerminalExpression__Group_6__0 ) ) );
+    // InternalFire.g:453:1: rule__TerminalExpression__Alternatives : ( ( ( rule__TerminalExpression__Group_0__0 ) ) | ( ( rule__TerminalExpression__Group_1__0 ) ) | ( ( rule__TerminalExpression__Group_2__0 ) ) | ( ( rule__TerminalExpression__Group_3__0 ) ) | ( ( rule__TerminalExpression__Group_4__0 ) ) | ( ( rule__TerminalExpression__Group_5__0 ) ) | ( ( rule__TerminalExpression__Group_6__0 ) ) | ( ( rule__TerminalExpression__Group_7__0 ) ) );
     public final void rule__TerminalExpression__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:457:1: ( ( ( rule__TerminalExpression__Group_0__0 ) ) | ( ( rule__TerminalExpression__Group_1__0 ) ) | ( ( rule__TerminalExpression__Group_2__0 ) ) | ( ( rule__TerminalExpression__Group_3__0 ) ) | ( ( rule__TerminalExpression__Group_4__0 ) ) | ( ( rule__TerminalExpression__Group_5__0 ) ) | ( ( rule__TerminalExpression__Group_6__0 ) ) )
-            int alt2=7;
-            switch ( input.LA(1) ) {
-            case RULE_STRING:
-                {
-                alt2=1;
-                }
-                break;
-            case 11:
-            case 41:
-                {
-                alt2=2;
-                }
-                break;
-            case RULE_INT:
-                {
-                int LA2_3 = input.LA(2);
-
-                if ( (LA2_3==EOF||(LA2_3>=16 && LA2_3<=27)||(LA2_3>=29 && LA2_3<=30)||LA2_3==33||(LA2_3>=35 && LA2_3<=38)) ) {
-                    alt2=3;
-                }
-                else if ( (LA2_3==40) ) {
-                    alt2=4;
-                }
-                else {
-                    NoViableAltException nvae =
-                        new NoViableAltException("", 2, 3, input);
-
-                    throw nvae;
-                }
-                }
-                break;
-            case 39:
-                {
-                alt2=5;
-                }
-                break;
-            case 23:
-                {
-                alt2=6;
-                }
-                break;
-            case 34:
-                {
-                alt2=7;
-                }
-                break;
-            default:
-                NoViableAltException nvae =
-                    new NoViableAltException("", 2, 0, input);
-
-                throw nvae;
-            }
-
+            // InternalFire.g:457:1: ( ( ( rule__TerminalExpression__Group_0__0 ) ) | ( ( rule__TerminalExpression__Group_1__0 ) ) | ( ( rule__TerminalExpression__Group_2__0 ) ) | ( ( rule__TerminalExpression__Group_3__0 ) ) | ( ( rule__TerminalExpression__Group_4__0 ) ) | ( ( rule__TerminalExpression__Group_5__0 ) ) | ( ( rule__TerminalExpression__Group_6__0 ) ) | ( ( rule__TerminalExpression__Group_7__0 ) ) )
+            int alt2=8;
+            alt2 = dfa2.predict(input);
             switch (alt2) {
                 case 1 :
                     // InternalFire.g:458:2: ( ( rule__TerminalExpression__Group_0__0 ) )
@@ -1576,6 +1525,31 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
                     }
                     break;
+                case 8 :
+                    // InternalFire.g:500:2: ( ( rule__TerminalExpression__Group_7__0 ) )
+                    {
+                    // InternalFire.g:500:2: ( ( rule__TerminalExpression__Group_7__0 ) )
+                    // InternalFire.g:501:3: ( rule__TerminalExpression__Group_7__0 )
+                    {
+                     before(grammarAccess.getTerminalExpressionAccess().getGroup_7()); 
+                    // InternalFire.g:502:3: ( rule__TerminalExpression__Group_7__0 )
+                    // InternalFire.g:502:4: rule__TerminalExpression__Group_7__0
+                    {
+                    pushFollow(FOLLOW_2);
+                    rule__TerminalExpression__Group_7__0();
+
+                    state._fsp--;
+
+
+                    }
+
+                     after(grammarAccess.getTerminalExpressionAccess().getGroup_7()); 
+
+                    }
+
+
+                    }
+                    break;
 
             }
         }
@@ -1593,14 +1567,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__TerminalExpression__Alternatives"
 
 
-    // $ANTLR start "rule__TerminalExpression__Alternatives_1_1"
-    // InternalFire.g:504:1: rule__TerminalExpression__Alternatives_1_1 : ( ( ( rule__TerminalExpression__ValueAssignment_1_1_0 ) ) | ( 'false' ) );
-    public final void rule__TerminalExpression__Alternatives_1_1() throws RecognitionException {
+    // $ANTLR start "rule__TerminalExpression__Alternatives_2_1"
+    // InternalFire.g:510:1: rule__TerminalExpression__Alternatives_2_1 : ( ( ( rule__TerminalExpression__ValueAssignment_2_1_0 ) ) | ( 'false' ) );
+    public final void rule__TerminalExpression__Alternatives_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:508:1: ( ( ( rule__TerminalExpression__ValueAssignment_1_1_0 ) ) | ( 'false' ) )
+            // InternalFire.g:514:1: ( ( ( rule__TerminalExpression__ValueAssignment_2_1_0 ) ) | ( 'false' ) )
             int alt3=2;
             int LA3_0 = input.LA(1);
 
@@ -1618,24 +1592,24 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
             }
             switch (alt3) {
                 case 1 :
-                    // InternalFire.g:509:2: ( ( rule__TerminalExpression__ValueAssignment_1_1_0 ) )
+                    // InternalFire.g:515:2: ( ( rule__TerminalExpression__ValueAssignment_2_1_0 ) )
                     {
-                    // InternalFire.g:509:2: ( ( rule__TerminalExpression__ValueAssignment_1_1_0 ) )
-                    // InternalFire.g:510:3: ( rule__TerminalExpression__ValueAssignment_1_1_0 )
+                    // InternalFire.g:515:2: ( ( rule__TerminalExpression__ValueAssignment_2_1_0 ) )
+                    // InternalFire.g:516:3: ( rule__TerminalExpression__ValueAssignment_2_1_0 )
                     {
-                     before(grammarAccess.getTerminalExpressionAccess().getValueAssignment_1_1_0()); 
-                    // InternalFire.g:511:3: ( rule__TerminalExpression__ValueAssignment_1_1_0 )
-                    // InternalFire.g:511:4: rule__TerminalExpression__ValueAssignment_1_1_0
+                     before(grammarAccess.getTerminalExpressionAccess().getValueAssignment_2_1_0()); 
+                    // InternalFire.g:517:3: ( rule__TerminalExpression__ValueAssignment_2_1_0 )
+                    // InternalFire.g:517:4: rule__TerminalExpression__ValueAssignment_2_1_0
                     {
                     pushFollow(FOLLOW_2);
-                    rule__TerminalExpression__ValueAssignment_1_1_0();
+                    rule__TerminalExpression__ValueAssignment_2_1_0();
 
                     state._fsp--;
 
 
                     }
 
-                     after(grammarAccess.getTerminalExpressionAccess().getValueAssignment_1_1_0()); 
+                     after(grammarAccess.getTerminalExpressionAccess().getValueAssignment_2_1_0()); 
 
                     }
 
@@ -1643,14 +1617,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 2 :
-                    // InternalFire.g:515:2: ( 'false' )
+                    // InternalFire.g:521:2: ( 'false' )
                     {
-                    // InternalFire.g:515:2: ( 'false' )
-                    // InternalFire.g:516:3: 'false'
+                    // InternalFire.g:521:2: ( 'false' )
+                    // InternalFire.g:522:3: 'false'
                     {
-                     before(grammarAccess.getTerminalExpressionAccess().getFalseKeyword_1_1_1()); 
+                     before(grammarAccess.getTerminalExpressionAccess().getFalseKeyword_2_1_1()); 
                     match(input,11,FOLLOW_2); 
-                     after(grammarAccess.getTerminalExpressionAccess().getFalseKeyword_1_1_1()); 
+                     after(grammarAccess.getTerminalExpressionAccess().getFalseKeyword_2_1_1()); 
 
                     }
 
@@ -1671,17 +1645,17 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__TerminalExpression__Alternatives_1_1"
+    // $ANTLR end "rule__TerminalExpression__Alternatives_2_1"
 
 
     // $ANTLR start "rule__BuiltInType__Alternatives"
-    // InternalFire.g:525:1: rule__BuiltInType__Alternatives : ( ( ( 'String' ) ) | ( ( 'Boolean' ) ) | ( ( 'Integer' ) ) | ( ( 'Real' ) ) );
+    // InternalFire.g:531:1: rule__BuiltInType__Alternatives : ( ( ( 'String' ) ) | ( ( 'Boolean' ) ) | ( ( 'Integer' ) ) | ( ( 'Real' ) ) );
     public final void rule__BuiltInType__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:529:1: ( ( ( 'String' ) ) | ( ( 'Boolean' ) ) | ( ( 'Integer' ) ) | ( ( 'Real' ) ) )
+            // InternalFire.g:535:1: ( ( ( 'String' ) ) | ( ( 'Boolean' ) ) | ( ( 'Integer' ) ) | ( ( 'Real' ) ) )
             int alt4=4;
             switch ( input.LA(1) ) {
             case 12:
@@ -1713,14 +1687,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
             switch (alt4) {
                 case 1 :
-                    // InternalFire.g:530:2: ( ( 'String' ) )
+                    // InternalFire.g:536:2: ( ( 'String' ) )
                     {
-                    // InternalFire.g:530:2: ( ( 'String' ) )
-                    // InternalFire.g:531:3: ( 'String' )
+                    // InternalFire.g:536:2: ( ( 'String' ) )
+                    // InternalFire.g:537:3: ( 'String' )
                     {
                      before(grammarAccess.getBuiltInTypeAccess().getSTRINGEnumLiteralDeclaration_0()); 
-                    // InternalFire.g:532:3: ( 'String' )
-                    // InternalFire.g:532:4: 'String'
+                    // InternalFire.g:538:3: ( 'String' )
+                    // InternalFire.g:538:4: 'String'
                     {
                     match(input,12,FOLLOW_2); 
 
@@ -1734,14 +1708,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 2 :
-                    // InternalFire.g:536:2: ( ( 'Boolean' ) )
+                    // InternalFire.g:542:2: ( ( 'Boolean' ) )
                     {
-                    // InternalFire.g:536:2: ( ( 'Boolean' ) )
-                    // InternalFire.g:537:3: ( 'Boolean' )
+                    // InternalFire.g:542:2: ( ( 'Boolean' ) )
+                    // InternalFire.g:543:3: ( 'Boolean' )
                     {
                      before(grammarAccess.getBuiltInTypeAccess().getBOOLEANEnumLiteralDeclaration_1()); 
-                    // InternalFire.g:538:3: ( 'Boolean' )
-                    // InternalFire.g:538:4: 'Boolean'
+                    // InternalFire.g:544:3: ( 'Boolean' )
+                    // InternalFire.g:544:4: 'Boolean'
                     {
                     match(input,13,FOLLOW_2); 
 
@@ -1755,14 +1729,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 3 :
-                    // InternalFire.g:542:2: ( ( 'Integer' ) )
+                    // InternalFire.g:548:2: ( ( 'Integer' ) )
                     {
-                    // InternalFire.g:542:2: ( ( 'Integer' ) )
-                    // InternalFire.g:543:3: ( 'Integer' )
+                    // InternalFire.g:548:2: ( ( 'Integer' ) )
+                    // InternalFire.g:549:3: ( 'Integer' )
                     {
                      before(grammarAccess.getBuiltInTypeAccess().getINTEGEREnumLiteralDeclaration_2()); 
-                    // InternalFire.g:544:3: ( 'Integer' )
-                    // InternalFire.g:544:4: 'Integer'
+                    // InternalFire.g:550:3: ( 'Integer' )
+                    // InternalFire.g:550:4: 'Integer'
                     {
                     match(input,14,FOLLOW_2); 
 
@@ -1776,14 +1750,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 4 :
-                    // InternalFire.g:548:2: ( ( 'Real' ) )
+                    // InternalFire.g:554:2: ( ( 'Real' ) )
                     {
-                    // InternalFire.g:548:2: ( ( 'Real' ) )
-                    // InternalFire.g:549:3: ( 'Real' )
+                    // InternalFire.g:554:2: ( ( 'Real' ) )
+                    // InternalFire.g:555:3: ( 'Real' )
                     {
                      before(grammarAccess.getBuiltInTypeAccess().getREALEnumLiteralDeclaration_3()); 
-                    // InternalFire.g:550:3: ( 'Real' )
-                    // InternalFire.g:550:4: 'Real'
+                    // InternalFire.g:556:3: ( 'Real' )
+                    // InternalFire.g:556:4: 'Real'
                     {
                     match(input,15,FOLLOW_2); 
 
@@ -1814,13 +1788,13 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__EqualityOperator__Alternatives"
-    // InternalFire.g:558:1: rule__EqualityOperator__Alternatives : ( ( ( '=' ) ) | ( ( '<>' ) ) );
+    // InternalFire.g:564:1: rule__EqualityOperator__Alternatives : ( ( ( '=' ) ) | ( ( '<>' ) ) );
     public final void rule__EqualityOperator__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:562:1: ( ( ( '=' ) ) | ( ( '<>' ) ) )
+            // InternalFire.g:568:1: ( ( ( '=' ) ) | ( ( '<>' ) ) )
             int alt5=2;
             int LA5_0 = input.LA(1);
 
@@ -1838,14 +1812,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
             }
             switch (alt5) {
                 case 1 :
-                    // InternalFire.g:563:2: ( ( '=' ) )
+                    // InternalFire.g:569:2: ( ( '=' ) )
                     {
-                    // InternalFire.g:563:2: ( ( '=' ) )
-                    // InternalFire.g:564:3: ( '=' )
+                    // InternalFire.g:569:2: ( ( '=' ) )
+                    // InternalFire.g:570:3: ( '=' )
                     {
                      before(grammarAccess.getEqualityOperatorAccess().getEQUALSEnumLiteralDeclaration_0()); 
-                    // InternalFire.g:565:3: ( '=' )
-                    // InternalFire.g:565:4: '='
+                    // InternalFire.g:571:3: ( '=' )
+                    // InternalFire.g:571:4: '='
                     {
                     match(input,16,FOLLOW_2); 
 
@@ -1859,14 +1833,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 2 :
-                    // InternalFire.g:569:2: ( ( '<>' ) )
+                    // InternalFire.g:575:2: ( ( '<>' ) )
                     {
-                    // InternalFire.g:569:2: ( ( '<>' ) )
-                    // InternalFire.g:570:3: ( '<>' )
+                    // InternalFire.g:575:2: ( ( '<>' ) )
+                    // InternalFire.g:576:3: ( '<>' )
                     {
                      before(grammarAccess.getEqualityOperatorAccess().getNOT_EQUALSEnumLiteralDeclaration_1()); 
-                    // InternalFire.g:571:3: ( '<>' )
-                    // InternalFire.g:571:4: '<>'
+                    // InternalFire.g:577:3: ( '<>' )
+                    // InternalFire.g:577:4: '<>'
                     {
                     match(input,17,FOLLOW_2); 
 
@@ -1897,13 +1871,13 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ComparisonOperator__Alternatives"
-    // InternalFire.g:579:1: rule__ComparisonOperator__Alternatives : ( ( ( '<' ) ) | ( ( '<=' ) ) | ( ( '>' ) ) | ( ( '>=' ) ) );
+    // InternalFire.g:585:1: rule__ComparisonOperator__Alternatives : ( ( ( '<' ) ) | ( ( '<=' ) ) | ( ( '>' ) ) | ( ( '>=' ) ) );
     public final void rule__ComparisonOperator__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:583:1: ( ( ( '<' ) ) | ( ( '<=' ) ) | ( ( '>' ) ) | ( ( '>=' ) ) )
+            // InternalFire.g:589:1: ( ( ( '<' ) ) | ( ( '<=' ) ) | ( ( '>' ) ) | ( ( '>=' ) ) )
             int alt6=4;
             switch ( input.LA(1) ) {
             case 18:
@@ -1935,14 +1909,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
             switch (alt6) {
                 case 1 :
-                    // InternalFire.g:584:2: ( ( '<' ) )
+                    // InternalFire.g:590:2: ( ( '<' ) )
                     {
-                    // InternalFire.g:584:2: ( ( '<' ) )
-                    // InternalFire.g:585:3: ( '<' )
+                    // InternalFire.g:590:2: ( ( '<' ) )
+                    // InternalFire.g:591:3: ( '<' )
                     {
                      before(grammarAccess.getComparisonOperatorAccess().getLESSEnumLiteralDeclaration_0()); 
-                    // InternalFire.g:586:3: ( '<' )
-                    // InternalFire.g:586:4: '<'
+                    // InternalFire.g:592:3: ( '<' )
+                    // InternalFire.g:592:4: '<'
                     {
                     match(input,18,FOLLOW_2); 
 
@@ -1956,14 +1930,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 2 :
-                    // InternalFire.g:590:2: ( ( '<=' ) )
+                    // InternalFire.g:596:2: ( ( '<=' ) )
                     {
-                    // InternalFire.g:590:2: ( ( '<=' ) )
-                    // InternalFire.g:591:3: ( '<=' )
+                    // InternalFire.g:596:2: ( ( '<=' ) )
+                    // InternalFire.g:597:3: ( '<=' )
                     {
                      before(grammarAccess.getComparisonOperatorAccess().getLESS_EQUALEnumLiteralDeclaration_1()); 
-                    // InternalFire.g:592:3: ( '<=' )
-                    // InternalFire.g:592:4: '<='
+                    // InternalFire.g:598:3: ( '<=' )
+                    // InternalFire.g:598:4: '<='
                     {
                     match(input,19,FOLLOW_2); 
 
@@ -1977,14 +1951,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 3 :
-                    // InternalFire.g:596:2: ( ( '>' ) )
+                    // InternalFire.g:602:2: ( ( '>' ) )
                     {
-                    // InternalFire.g:596:2: ( ( '>' ) )
-                    // InternalFire.g:597:3: ( '>' )
+                    // InternalFire.g:602:2: ( ( '>' ) )
+                    // InternalFire.g:603:3: ( '>' )
                     {
                      before(grammarAccess.getComparisonOperatorAccess().getGREATEREnumLiteralDeclaration_2()); 
-                    // InternalFire.g:598:3: ( '>' )
-                    // InternalFire.g:598:4: '>'
+                    // InternalFire.g:604:3: ( '>' )
+                    // InternalFire.g:604:4: '>'
                     {
                     match(input,20,FOLLOW_2); 
 
@@ -1998,14 +1972,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 4 :
-                    // InternalFire.g:602:2: ( ( '>=' ) )
+                    // InternalFire.g:608:2: ( ( '>=' ) )
                     {
-                    // InternalFire.g:602:2: ( ( '>=' ) )
-                    // InternalFire.g:603:3: ( '>=' )
+                    // InternalFire.g:608:2: ( ( '>=' ) )
+                    // InternalFire.g:609:3: ( '>=' )
                     {
                      before(grammarAccess.getComparisonOperatorAccess().getGREATER_EQUALEnumLiteralDeclaration_3()); 
-                    // InternalFire.g:604:3: ( '>=' )
-                    // InternalFire.g:604:4: '>='
+                    // InternalFire.g:610:3: ( '>=' )
+                    // InternalFire.g:610:4: '>='
                     {
                     match(input,21,FOLLOW_2); 
 
@@ -2036,13 +2010,13 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__AdditiveOperator__Alternatives"
-    // InternalFire.g:612:1: rule__AdditiveOperator__Alternatives : ( ( ( '+' ) ) | ( ( '-' ) ) );
+    // InternalFire.g:618:1: rule__AdditiveOperator__Alternatives : ( ( ( '+' ) ) | ( ( '-' ) ) );
     public final void rule__AdditiveOperator__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:616:1: ( ( ( '+' ) ) | ( ( '-' ) ) )
+            // InternalFire.g:622:1: ( ( ( '+' ) ) | ( ( '-' ) ) )
             int alt7=2;
             int LA7_0 = input.LA(1);
 
@@ -2060,14 +2034,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
             }
             switch (alt7) {
                 case 1 :
-                    // InternalFire.g:617:2: ( ( '+' ) )
+                    // InternalFire.g:623:2: ( ( '+' ) )
                     {
-                    // InternalFire.g:617:2: ( ( '+' ) )
-                    // InternalFire.g:618:3: ( '+' )
+                    // InternalFire.g:623:2: ( ( '+' ) )
+                    // InternalFire.g:624:3: ( '+' )
                     {
                      before(grammarAccess.getAdditiveOperatorAccess().getADDEnumLiteralDeclaration_0()); 
-                    // InternalFire.g:619:3: ( '+' )
-                    // InternalFire.g:619:4: '+'
+                    // InternalFire.g:625:3: ( '+' )
+                    // InternalFire.g:625:4: '+'
                     {
                     match(input,22,FOLLOW_2); 
 
@@ -2081,14 +2055,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 2 :
-                    // InternalFire.g:623:2: ( ( '-' ) )
+                    // InternalFire.g:629:2: ( ( '-' ) )
                     {
-                    // InternalFire.g:623:2: ( ( '-' ) )
-                    // InternalFire.g:624:3: ( '-' )
+                    // InternalFire.g:629:2: ( ( '-' ) )
+                    // InternalFire.g:630:3: ( '-' )
                     {
                      before(grammarAccess.getAdditiveOperatorAccess().getSUBTRACTEnumLiteralDeclaration_1()); 
-                    // InternalFire.g:625:3: ( '-' )
-                    // InternalFire.g:625:4: '-'
+                    // InternalFire.g:631:3: ( '-' )
+                    // InternalFire.g:631:4: '-'
                     {
                     match(input,23,FOLLOW_2); 
 
@@ -2119,13 +2093,13 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MultiplicativeOperator__Alternatives"
-    // InternalFire.g:633:1: rule__MultiplicativeOperator__Alternatives : ( ( ( '*' ) ) | ( ( '/' ) ) | ( ( 'div' ) ) | ( ( 'mod' ) ) );
+    // InternalFire.g:639:1: rule__MultiplicativeOperator__Alternatives : ( ( ( '*' ) ) | ( ( '/' ) ) | ( ( 'div' ) ) | ( ( 'mod' ) ) );
     public final void rule__MultiplicativeOperator__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:637:1: ( ( ( '*' ) ) | ( ( '/' ) ) | ( ( 'div' ) ) | ( ( 'mod' ) ) )
+            // InternalFire.g:643:1: ( ( ( '*' ) ) | ( ( '/' ) ) | ( ( 'div' ) ) | ( ( 'mod' ) ) )
             int alt8=4;
             switch ( input.LA(1) ) {
             case 24:
@@ -2157,14 +2131,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
             switch (alt8) {
                 case 1 :
-                    // InternalFire.g:638:2: ( ( '*' ) )
+                    // InternalFire.g:644:2: ( ( '*' ) )
                     {
-                    // InternalFire.g:638:2: ( ( '*' ) )
-                    // InternalFire.g:639:3: ( '*' )
+                    // InternalFire.g:644:2: ( ( '*' ) )
+                    // InternalFire.g:645:3: ( '*' )
                     {
                      before(grammarAccess.getMultiplicativeOperatorAccess().getMULTIPLYEnumLiteralDeclaration_0()); 
-                    // InternalFire.g:640:3: ( '*' )
-                    // InternalFire.g:640:4: '*'
+                    // InternalFire.g:646:3: ( '*' )
+                    // InternalFire.g:646:4: '*'
                     {
                     match(input,24,FOLLOW_2); 
 
@@ -2178,14 +2152,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 2 :
-                    // InternalFire.g:644:2: ( ( '/' ) )
+                    // InternalFire.g:650:2: ( ( '/' ) )
                     {
-                    // InternalFire.g:644:2: ( ( '/' ) )
-                    // InternalFire.g:645:3: ( '/' )
+                    // InternalFire.g:650:2: ( ( '/' ) )
+                    // InternalFire.g:651:3: ( '/' )
                     {
                      before(grammarAccess.getMultiplicativeOperatorAccess().getREAL_DIVIDEEnumLiteralDeclaration_1()); 
-                    // InternalFire.g:646:3: ( '/' )
-                    // InternalFire.g:646:4: '/'
+                    // InternalFire.g:652:3: ( '/' )
+                    // InternalFire.g:652:4: '/'
                     {
                     match(input,25,FOLLOW_2); 
 
@@ -2199,14 +2173,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 3 :
-                    // InternalFire.g:650:2: ( ( 'div' ) )
+                    // InternalFire.g:656:2: ( ( 'div' ) )
                     {
-                    // InternalFire.g:650:2: ( ( 'div' ) )
-                    // InternalFire.g:651:3: ( 'div' )
+                    // InternalFire.g:656:2: ( ( 'div' ) )
+                    // InternalFire.g:657:3: ( 'div' )
                     {
                      before(grammarAccess.getMultiplicativeOperatorAccess().getINTEGER_DIVIDEEnumLiteralDeclaration_2()); 
-                    // InternalFire.g:652:3: ( 'div' )
-                    // InternalFire.g:652:4: 'div'
+                    // InternalFire.g:658:3: ( 'div' )
+                    // InternalFire.g:658:4: 'div'
                     {
                     match(input,26,FOLLOW_2); 
 
@@ -2220,14 +2194,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 4 :
-                    // InternalFire.g:656:2: ( ( 'mod' ) )
+                    // InternalFire.g:662:2: ( ( 'mod' ) )
                     {
-                    // InternalFire.g:656:2: ( ( 'mod' ) )
-                    // InternalFire.g:657:3: ( 'mod' )
+                    // InternalFire.g:662:2: ( ( 'mod' ) )
+                    // InternalFire.g:663:3: ( 'mod' )
                     {
                      before(grammarAccess.getMultiplicativeOperatorAccess().getMODULUSEnumLiteralDeclaration_3()); 
-                    // InternalFire.g:658:3: ( 'mod' )
-                    // InternalFire.g:658:4: 'mod'
+                    // InternalFire.g:664:3: ( 'mod' )
+                    // InternalFire.g:664:4: 'mod'
                     {
                     match(input,27,FOLLOW_2); 
 
@@ -2258,14 +2232,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Program__Group__0"
-    // InternalFire.g:666:1: rule__Program__Group__0 : rule__Program__Group__0__Impl rule__Program__Group__1 ;
+    // InternalFire.g:672:1: rule__Program__Group__0 : rule__Program__Group__0__Impl rule__Program__Group__1 ;
     public final void rule__Program__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:670:1: ( rule__Program__Group__0__Impl rule__Program__Group__1 )
-            // InternalFire.g:671:2: rule__Program__Group__0__Impl rule__Program__Group__1
+            // InternalFire.g:676:1: ( rule__Program__Group__0__Impl rule__Program__Group__1 )
+            // InternalFire.g:677:2: rule__Program__Group__0__Impl rule__Program__Group__1
             {
             pushFollow(FOLLOW_3);
             rule__Program__Group__0__Impl();
@@ -2296,21 +2270,21 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Program__Group__0__Impl"
-    // InternalFire.g:678:1: rule__Program__Group__0__Impl : ( () ) ;
+    // InternalFire.g:684:1: rule__Program__Group__0__Impl : ( () ) ;
     public final void rule__Program__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:682:1: ( ( () ) )
-            // InternalFire.g:683:1: ( () )
+            // InternalFire.g:688:1: ( ( () ) )
+            // InternalFire.g:689:1: ( () )
             {
-            // InternalFire.g:683:1: ( () )
-            // InternalFire.g:684:2: ()
+            // InternalFire.g:689:1: ( () )
+            // InternalFire.g:690:2: ()
             {
              before(grammarAccess.getProgramAccess().getProgramAction_0()); 
-            // InternalFire.g:685:2: ()
-            // InternalFire.g:685:3: 
+            // InternalFire.g:691:2: ()
+            // InternalFire.g:691:3: 
             {
             }
 
@@ -2333,14 +2307,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Program__Group__1"
-    // InternalFire.g:693:1: rule__Program__Group__1 : rule__Program__Group__1__Impl rule__Program__Group__2 ;
+    // InternalFire.g:699:1: rule__Program__Group__1 : rule__Program__Group__1__Impl rule__Program__Group__2 ;
     public final void rule__Program__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:697:1: ( rule__Program__Group__1__Impl rule__Program__Group__2 )
-            // InternalFire.g:698:2: rule__Program__Group__1__Impl rule__Program__Group__2
+            // InternalFire.g:703:1: ( rule__Program__Group__1__Impl rule__Program__Group__2 )
+            // InternalFire.g:704:2: rule__Program__Group__1__Impl rule__Program__Group__2
             {
             pushFollow(FOLLOW_4);
             rule__Program__Group__1__Impl();
@@ -2371,17 +2345,17 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Program__Group__1__Impl"
-    // InternalFire.g:705:1: rule__Program__Group__1__Impl : ( 'program' ) ;
+    // InternalFire.g:711:1: rule__Program__Group__1__Impl : ( 'program' ) ;
     public final void rule__Program__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:709:1: ( ( 'program' ) )
-            // InternalFire.g:710:1: ( 'program' )
+            // InternalFire.g:715:1: ( ( 'program' ) )
+            // InternalFire.g:716:1: ( 'program' )
             {
-            // InternalFire.g:710:1: ( 'program' )
-            // InternalFire.g:711:2: 'program'
+            // InternalFire.g:716:1: ( 'program' )
+            // InternalFire.g:717:2: 'program'
             {
              before(grammarAccess.getProgramAccess().getProgramKeyword_1()); 
             match(input,28,FOLLOW_2); 
@@ -2408,14 +2382,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Program__Group__2"
-    // InternalFire.g:720:1: rule__Program__Group__2 : rule__Program__Group__2__Impl rule__Program__Group__3 ;
+    // InternalFire.g:726:1: rule__Program__Group__2 : rule__Program__Group__2__Impl rule__Program__Group__3 ;
     public final void rule__Program__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:724:1: ( rule__Program__Group__2__Impl rule__Program__Group__3 )
-            // InternalFire.g:725:2: rule__Program__Group__2__Impl rule__Program__Group__3
+            // InternalFire.g:730:1: ( rule__Program__Group__2__Impl rule__Program__Group__3 )
+            // InternalFire.g:731:2: rule__Program__Group__2__Impl rule__Program__Group__3
             {
             pushFollow(FOLLOW_4);
             rule__Program__Group__2__Impl();
@@ -2446,20 +2420,20 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Program__Group__2__Impl"
-    // InternalFire.g:732:1: rule__Program__Group__2__Impl : ( ( rule__Program__StatementsAssignment_2 )* ) ;
+    // InternalFire.g:738:1: rule__Program__Group__2__Impl : ( ( rule__Program__StatementsAssignment_2 )* ) ;
     public final void rule__Program__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:736:1: ( ( ( rule__Program__StatementsAssignment_2 )* ) )
-            // InternalFire.g:737:1: ( ( rule__Program__StatementsAssignment_2 )* )
+            // InternalFire.g:742:1: ( ( ( rule__Program__StatementsAssignment_2 )* ) )
+            // InternalFire.g:743:1: ( ( rule__Program__StatementsAssignment_2 )* )
             {
-            // InternalFire.g:737:1: ( ( rule__Program__StatementsAssignment_2 )* )
-            // InternalFire.g:738:2: ( rule__Program__StatementsAssignment_2 )*
+            // InternalFire.g:743:1: ( ( rule__Program__StatementsAssignment_2 )* )
+            // InternalFire.g:744:2: ( rule__Program__StatementsAssignment_2 )*
             {
              before(grammarAccess.getProgramAccess().getStatementsAssignment_2()); 
-            // InternalFire.g:739:2: ( rule__Program__StatementsAssignment_2 )*
+            // InternalFire.g:745:2: ( rule__Program__StatementsAssignment_2 )*
             loop9:
             do {
                 int alt9=2;
@@ -2472,7 +2446,7 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
                 switch (alt9) {
             	case 1 :
-            	    // InternalFire.g:739:3: rule__Program__StatementsAssignment_2
+            	    // InternalFire.g:745:3: rule__Program__StatementsAssignment_2
             	    {
             	    pushFollow(FOLLOW_5);
             	    rule__Program__StatementsAssignment_2();
@@ -2511,14 +2485,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Program__Group__3"
-    // InternalFire.g:747:1: rule__Program__Group__3 : rule__Program__Group__3__Impl ;
+    // InternalFire.g:753:1: rule__Program__Group__3 : rule__Program__Group__3__Impl ;
     public final void rule__Program__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:751:1: ( rule__Program__Group__3__Impl )
-            // InternalFire.g:752:2: rule__Program__Group__3__Impl
+            // InternalFire.g:757:1: ( rule__Program__Group__3__Impl )
+            // InternalFire.g:758:2: rule__Program__Group__3__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Program__Group__3__Impl();
@@ -2544,17 +2518,17 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Program__Group__3__Impl"
-    // InternalFire.g:758:1: rule__Program__Group__3__Impl : ( 'end' ) ;
+    // InternalFire.g:764:1: rule__Program__Group__3__Impl : ( 'end' ) ;
     public final void rule__Program__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:762:1: ( ( 'end' ) )
-            // InternalFire.g:763:1: ( 'end' )
+            // InternalFire.g:768:1: ( ( 'end' ) )
+            // InternalFire.g:769:1: ( 'end' )
             {
-            // InternalFire.g:763:1: ( 'end' )
-            // InternalFire.g:764:2: 'end'
+            // InternalFire.g:769:1: ( 'end' )
+            // InternalFire.g:770:2: 'end'
             {
              before(grammarAccess.getProgramAccess().getEndKeyword_3()); 
             match(input,29,FOLLOW_2); 
@@ -2581,14 +2555,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Statement__Group_0__0"
-    // InternalFire.g:774:1: rule__Statement__Group_0__0 : rule__Statement__Group_0__0__Impl rule__Statement__Group_0__1 ;
+    // InternalFire.g:780:1: rule__Statement__Group_0__0 : rule__Statement__Group_0__0__Impl rule__Statement__Group_0__1 ;
     public final void rule__Statement__Group_0__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:778:1: ( rule__Statement__Group_0__0__Impl rule__Statement__Group_0__1 )
-            // InternalFire.g:779:2: rule__Statement__Group_0__0__Impl rule__Statement__Group_0__1
+            // InternalFire.g:784:1: ( rule__Statement__Group_0__0__Impl rule__Statement__Group_0__1 )
+            // InternalFire.g:785:2: rule__Statement__Group_0__0__Impl rule__Statement__Group_0__1
             {
             pushFollow(FOLLOW_6);
             rule__Statement__Group_0__0__Impl();
@@ -2619,21 +2593,21 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Statement__Group_0__0__Impl"
-    // InternalFire.g:786:1: rule__Statement__Group_0__0__Impl : ( () ) ;
+    // InternalFire.g:792:1: rule__Statement__Group_0__0__Impl : ( () ) ;
     public final void rule__Statement__Group_0__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:790:1: ( ( () ) )
-            // InternalFire.g:791:1: ( () )
+            // InternalFire.g:796:1: ( ( () ) )
+            // InternalFire.g:797:1: ( () )
             {
-            // InternalFire.g:791:1: ( () )
-            // InternalFire.g:792:2: ()
+            // InternalFire.g:797:1: ( () )
+            // InternalFire.g:798:2: ()
             {
              before(grammarAccess.getStatementAccess().getConstantDeclarationAction_0_0()); 
-            // InternalFire.g:793:2: ()
-            // InternalFire.g:793:3: 
+            // InternalFire.g:799:2: ()
+            // InternalFire.g:799:3: 
             {
             }
 
@@ -2656,14 +2630,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Statement__Group_0__1"
-    // InternalFire.g:801:1: rule__Statement__Group_0__1 : rule__Statement__Group_0__1__Impl rule__Statement__Group_0__2 ;
+    // InternalFire.g:807:1: rule__Statement__Group_0__1 : rule__Statement__Group_0__1__Impl rule__Statement__Group_0__2 ;
     public final void rule__Statement__Group_0__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:805:1: ( rule__Statement__Group_0__1__Impl rule__Statement__Group_0__2 )
-            // InternalFire.g:806:2: rule__Statement__Group_0__1__Impl rule__Statement__Group_0__2
+            // InternalFire.g:811:1: ( rule__Statement__Group_0__1__Impl rule__Statement__Group_0__2 )
+            // InternalFire.g:812:2: rule__Statement__Group_0__1__Impl rule__Statement__Group_0__2
             {
             pushFollow(FOLLOW_7);
             rule__Statement__Group_0__1__Impl();
@@ -2694,17 +2668,17 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Statement__Group_0__1__Impl"
-    // InternalFire.g:813:1: rule__Statement__Group_0__1__Impl : ( 'const' ) ;
+    // InternalFire.g:819:1: rule__Statement__Group_0__1__Impl : ( 'const' ) ;
     public final void rule__Statement__Group_0__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:817:1: ( ( 'const' ) )
-            // InternalFire.g:818:1: ( 'const' )
+            // InternalFire.g:823:1: ( ( 'const' ) )
+            // InternalFire.g:824:1: ( 'const' )
             {
-            // InternalFire.g:818:1: ( 'const' )
-            // InternalFire.g:819:2: 'const'
+            // InternalFire.g:824:1: ( 'const' )
+            // InternalFire.g:825:2: 'const'
             {
              before(grammarAccess.getStatementAccess().getConstKeyword_0_1()); 
             match(input,30,FOLLOW_2); 
@@ -2731,14 +2705,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Statement__Group_0__2"
-    // InternalFire.g:828:1: rule__Statement__Group_0__2 : rule__Statement__Group_0__2__Impl rule__Statement__Group_0__3 ;
+    // InternalFire.g:834:1: rule__Statement__Group_0__2 : rule__Statement__Group_0__2__Impl rule__Statement__Group_0__3 ;
     public final void rule__Statement__Group_0__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:832:1: ( rule__Statement__Group_0__2__Impl rule__Statement__Group_0__3 )
-            // InternalFire.g:833:2: rule__Statement__Group_0__2__Impl rule__Statement__Group_0__3
+            // InternalFire.g:838:1: ( rule__Statement__Group_0__2__Impl rule__Statement__Group_0__3 )
+            // InternalFire.g:839:2: rule__Statement__Group_0__2__Impl rule__Statement__Group_0__3
             {
             pushFollow(FOLLOW_8);
             rule__Statement__Group_0__2__Impl();
@@ -2769,21 +2743,21 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Statement__Group_0__2__Impl"
-    // InternalFire.g:840:1: rule__Statement__Group_0__2__Impl : ( ( rule__Statement__NameAssignment_0_2 ) ) ;
+    // InternalFire.g:846:1: rule__Statement__Group_0__2__Impl : ( ( rule__Statement__NameAssignment_0_2 ) ) ;
     public final void rule__Statement__Group_0__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:844:1: ( ( ( rule__Statement__NameAssignment_0_2 ) ) )
-            // InternalFire.g:845:1: ( ( rule__Statement__NameAssignment_0_2 ) )
+            // InternalFire.g:850:1: ( ( ( rule__Statement__NameAssignment_0_2 ) ) )
+            // InternalFire.g:851:1: ( ( rule__Statement__NameAssignment_0_2 ) )
             {
-            // InternalFire.g:845:1: ( ( rule__Statement__NameAssignment_0_2 ) )
-            // InternalFire.g:846:2: ( rule__Statement__NameAssignment_0_2 )
+            // InternalFire.g:851:1: ( ( rule__Statement__NameAssignment_0_2 ) )
+            // InternalFire.g:852:2: ( rule__Statement__NameAssignment_0_2 )
             {
              before(grammarAccess.getStatementAccess().getNameAssignment_0_2()); 
-            // InternalFire.g:847:2: ( rule__Statement__NameAssignment_0_2 )
-            // InternalFire.g:847:3: rule__Statement__NameAssignment_0_2
+            // InternalFire.g:853:2: ( rule__Statement__NameAssignment_0_2 )
+            // InternalFire.g:853:3: rule__Statement__NameAssignment_0_2
             {
             pushFollow(FOLLOW_2);
             rule__Statement__NameAssignment_0_2();
@@ -2816,14 +2790,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Statement__Group_0__3"
-    // InternalFire.g:855:1: rule__Statement__Group_0__3 : rule__Statement__Group_0__3__Impl rule__Statement__Group_0__4 ;
+    // InternalFire.g:861:1: rule__Statement__Group_0__3 : rule__Statement__Group_0__3__Impl rule__Statement__Group_0__4 ;
     public final void rule__Statement__Group_0__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:859:1: ( rule__Statement__Group_0__3__Impl rule__Statement__Group_0__4 )
-            // InternalFire.g:860:2: rule__Statement__Group_0__3__Impl rule__Statement__Group_0__4
+            // InternalFire.g:865:1: ( rule__Statement__Group_0__3__Impl rule__Statement__Group_0__4 )
+            // InternalFire.g:866:2: rule__Statement__Group_0__3__Impl rule__Statement__Group_0__4
             {
             pushFollow(FOLLOW_9);
             rule__Statement__Group_0__3__Impl();
@@ -2854,17 +2828,17 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Statement__Group_0__3__Impl"
-    // InternalFire.g:867:1: rule__Statement__Group_0__3__Impl : ( ':' ) ;
+    // InternalFire.g:873:1: rule__Statement__Group_0__3__Impl : ( ':' ) ;
     public final void rule__Statement__Group_0__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:871:1: ( ( ':' ) )
-            // InternalFire.g:872:1: ( ':' )
+            // InternalFire.g:877:1: ( ( ':' ) )
+            // InternalFire.g:878:1: ( ':' )
             {
-            // InternalFire.g:872:1: ( ':' )
-            // InternalFire.g:873:2: ':'
+            // InternalFire.g:878:1: ( ':' )
+            // InternalFire.g:879:2: ':'
             {
              before(grammarAccess.getStatementAccess().getColonKeyword_0_3()); 
             match(input,31,FOLLOW_2); 
@@ -2891,14 +2865,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Statement__Group_0__4"
-    // InternalFire.g:882:1: rule__Statement__Group_0__4 : rule__Statement__Group_0__4__Impl rule__Statement__Group_0__5 ;
+    // InternalFire.g:888:1: rule__Statement__Group_0__4 : rule__Statement__Group_0__4__Impl rule__Statement__Group_0__5 ;
     public final void rule__Statement__Group_0__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:886:1: ( rule__Statement__Group_0__4__Impl rule__Statement__Group_0__5 )
-            // InternalFire.g:887:2: rule__Statement__Group_0__4__Impl rule__Statement__Group_0__5
+            // InternalFire.g:892:1: ( rule__Statement__Group_0__4__Impl rule__Statement__Group_0__5 )
+            // InternalFire.g:893:2: rule__Statement__Group_0__4__Impl rule__Statement__Group_0__5
             {
             pushFollow(FOLLOW_10);
             rule__Statement__Group_0__4__Impl();
@@ -2929,21 +2903,21 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Statement__Group_0__4__Impl"
-    // InternalFire.g:894:1: rule__Statement__Group_0__4__Impl : ( ( rule__Statement__TypeAssignment_0_4 ) ) ;
+    // InternalFire.g:900:1: rule__Statement__Group_0__4__Impl : ( ( rule__Statement__TypeAssignment_0_4 ) ) ;
     public final void rule__Statement__Group_0__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:898:1: ( ( ( rule__Statement__TypeAssignment_0_4 ) ) )
-            // InternalFire.g:899:1: ( ( rule__Statement__TypeAssignment_0_4 ) )
+            // InternalFire.g:904:1: ( ( ( rule__Statement__TypeAssignment_0_4 ) ) )
+            // InternalFire.g:905:1: ( ( rule__Statement__TypeAssignment_0_4 ) )
             {
-            // InternalFire.g:899:1: ( ( rule__Statement__TypeAssignment_0_4 ) )
-            // InternalFire.g:900:2: ( rule__Statement__TypeAssignment_0_4 )
+            // InternalFire.g:905:1: ( ( rule__Statement__TypeAssignment_0_4 ) )
+            // InternalFire.g:906:2: ( rule__Statement__TypeAssignment_0_4 )
             {
              before(grammarAccess.getStatementAccess().getTypeAssignment_0_4()); 
-            // InternalFire.g:901:2: ( rule__Statement__TypeAssignment_0_4 )
-            // InternalFire.g:901:3: rule__Statement__TypeAssignment_0_4
+            // InternalFire.g:907:2: ( rule__Statement__TypeAssignment_0_4 )
+            // InternalFire.g:907:3: rule__Statement__TypeAssignment_0_4
             {
             pushFollow(FOLLOW_2);
             rule__Statement__TypeAssignment_0_4();
@@ -2976,14 +2950,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Statement__Group_0__5"
-    // InternalFire.g:909:1: rule__Statement__Group_0__5 : rule__Statement__Group_0__5__Impl rule__Statement__Group_0__6 ;
+    // InternalFire.g:915:1: rule__Statement__Group_0__5 : rule__Statement__Group_0__5__Impl rule__Statement__Group_0__6 ;
     public final void rule__Statement__Group_0__5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:913:1: ( rule__Statement__Group_0__5__Impl rule__Statement__Group_0__6 )
-            // InternalFire.g:914:2: rule__Statement__Group_0__5__Impl rule__Statement__Group_0__6
+            // InternalFire.g:919:1: ( rule__Statement__Group_0__5__Impl rule__Statement__Group_0__6 )
+            // InternalFire.g:920:2: rule__Statement__Group_0__5__Impl rule__Statement__Group_0__6
             {
             pushFollow(FOLLOW_11);
             rule__Statement__Group_0__5__Impl();
@@ -3014,17 +2988,17 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Statement__Group_0__5__Impl"
-    // InternalFire.g:921:1: rule__Statement__Group_0__5__Impl : ( ':=' ) ;
+    // InternalFire.g:927:1: rule__Statement__Group_0__5__Impl : ( ':=' ) ;
     public final void rule__Statement__Group_0__5__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:925:1: ( ( ':=' ) )
-            // InternalFire.g:926:1: ( ':=' )
+            // InternalFire.g:931:1: ( ( ':=' ) )
+            // InternalFire.g:932:1: ( ':=' )
             {
-            // InternalFire.g:926:1: ( ':=' )
-            // InternalFire.g:927:2: ':='
+            // InternalFire.g:932:1: ( ':=' )
+            // InternalFire.g:933:2: ':='
             {
              before(grammarAccess.getStatementAccess().getColonEqualsSignKeyword_0_5()); 
             match(input,32,FOLLOW_2); 
@@ -3051,14 +3025,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Statement__Group_0__6"
-    // InternalFire.g:936:1: rule__Statement__Group_0__6 : rule__Statement__Group_0__6__Impl ;
+    // InternalFire.g:942:1: rule__Statement__Group_0__6 : rule__Statement__Group_0__6__Impl ;
     public final void rule__Statement__Group_0__6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:940:1: ( rule__Statement__Group_0__6__Impl )
-            // InternalFire.g:941:2: rule__Statement__Group_0__6__Impl
+            // InternalFire.g:946:1: ( rule__Statement__Group_0__6__Impl )
+            // InternalFire.g:947:2: rule__Statement__Group_0__6__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Statement__Group_0__6__Impl();
@@ -3084,21 +3058,21 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Statement__Group_0__6__Impl"
-    // InternalFire.g:947:1: rule__Statement__Group_0__6__Impl : ( ( rule__Statement__ValueAssignment_0_6 ) ) ;
+    // InternalFire.g:953:1: rule__Statement__Group_0__6__Impl : ( ( rule__Statement__ValueAssignment_0_6 ) ) ;
     public final void rule__Statement__Group_0__6__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:951:1: ( ( ( rule__Statement__ValueAssignment_0_6 ) ) )
-            // InternalFire.g:952:1: ( ( rule__Statement__ValueAssignment_0_6 ) )
+            // InternalFire.g:957:1: ( ( ( rule__Statement__ValueAssignment_0_6 ) ) )
+            // InternalFire.g:958:1: ( ( rule__Statement__ValueAssignment_0_6 ) )
             {
-            // InternalFire.g:952:1: ( ( rule__Statement__ValueAssignment_0_6 ) )
-            // InternalFire.g:953:2: ( rule__Statement__ValueAssignment_0_6 )
+            // InternalFire.g:958:1: ( ( rule__Statement__ValueAssignment_0_6 ) )
+            // InternalFire.g:959:2: ( rule__Statement__ValueAssignment_0_6 )
             {
              before(grammarAccess.getStatementAccess().getValueAssignment_0_6()); 
-            // InternalFire.g:954:2: ( rule__Statement__ValueAssignment_0_6 )
-            // InternalFire.g:954:3: rule__Statement__ValueAssignment_0_6
+            // InternalFire.g:960:2: ( rule__Statement__ValueAssignment_0_6 )
+            // InternalFire.g:960:3: rule__Statement__ValueAssignment_0_6
             {
             pushFollow(FOLLOW_2);
             rule__Statement__ValueAssignment_0_6();
@@ -3131,14 +3105,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Statement__Group_1__0"
-    // InternalFire.g:963:1: rule__Statement__Group_1__0 : rule__Statement__Group_1__0__Impl rule__Statement__Group_1__1 ;
+    // InternalFire.g:969:1: rule__Statement__Group_1__0 : rule__Statement__Group_1__0__Impl rule__Statement__Group_1__1 ;
     public final void rule__Statement__Group_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:967:1: ( rule__Statement__Group_1__0__Impl rule__Statement__Group_1__1 )
-            // InternalFire.g:968:2: rule__Statement__Group_1__0__Impl rule__Statement__Group_1__1
+            // InternalFire.g:973:1: ( rule__Statement__Group_1__0__Impl rule__Statement__Group_1__1 )
+            // InternalFire.g:974:2: rule__Statement__Group_1__0__Impl rule__Statement__Group_1__1
             {
             pushFollow(FOLLOW_12);
             rule__Statement__Group_1__0__Impl();
@@ -3169,21 +3143,21 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Statement__Group_1__0__Impl"
-    // InternalFire.g:975:1: rule__Statement__Group_1__0__Impl : ( () ) ;
+    // InternalFire.g:981:1: rule__Statement__Group_1__0__Impl : ( () ) ;
     public final void rule__Statement__Group_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:979:1: ( ( () ) )
-            // InternalFire.g:980:1: ( () )
+            // InternalFire.g:985:1: ( ( () ) )
+            // InternalFire.g:986:1: ( () )
             {
-            // InternalFire.g:980:1: ( () )
-            // InternalFire.g:981:2: ()
+            // InternalFire.g:986:1: ( () )
+            // InternalFire.g:987:2: ()
             {
              before(grammarAccess.getStatementAccess().getWritelnStatementAction_1_0()); 
-            // InternalFire.g:982:2: ()
-            // InternalFire.g:982:3: 
+            // InternalFire.g:988:2: ()
+            // InternalFire.g:988:3: 
             {
             }
 
@@ -3206,14 +3180,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Statement__Group_1__1"
-    // InternalFire.g:990:1: rule__Statement__Group_1__1 : rule__Statement__Group_1__1__Impl rule__Statement__Group_1__2 ;
+    // InternalFire.g:996:1: rule__Statement__Group_1__1 : rule__Statement__Group_1__1__Impl rule__Statement__Group_1__2 ;
     public final void rule__Statement__Group_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:994:1: ( rule__Statement__Group_1__1__Impl rule__Statement__Group_1__2 )
-            // InternalFire.g:995:2: rule__Statement__Group_1__1__Impl rule__Statement__Group_1__2
+            // InternalFire.g:1000:1: ( rule__Statement__Group_1__1__Impl rule__Statement__Group_1__2 )
+            // InternalFire.g:1001:2: rule__Statement__Group_1__1__Impl rule__Statement__Group_1__2
             {
             pushFollow(FOLLOW_13);
             rule__Statement__Group_1__1__Impl();
@@ -3244,17 +3218,17 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Statement__Group_1__1__Impl"
-    // InternalFire.g:1002:1: rule__Statement__Group_1__1__Impl : ( 'writeln' ) ;
+    // InternalFire.g:1008:1: rule__Statement__Group_1__1__Impl : ( 'writeln' ) ;
     public final void rule__Statement__Group_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1006:1: ( ( 'writeln' ) )
-            // InternalFire.g:1007:1: ( 'writeln' )
+            // InternalFire.g:1012:1: ( ( 'writeln' ) )
+            // InternalFire.g:1013:1: ( 'writeln' )
             {
-            // InternalFire.g:1007:1: ( 'writeln' )
-            // InternalFire.g:1008:2: 'writeln'
+            // InternalFire.g:1013:1: ( 'writeln' )
+            // InternalFire.g:1014:2: 'writeln'
             {
              before(grammarAccess.getStatementAccess().getWritelnKeyword_1_1()); 
             match(input,33,FOLLOW_2); 
@@ -3281,14 +3255,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Statement__Group_1__2"
-    // InternalFire.g:1017:1: rule__Statement__Group_1__2 : rule__Statement__Group_1__2__Impl rule__Statement__Group_1__3 ;
+    // InternalFire.g:1023:1: rule__Statement__Group_1__2 : rule__Statement__Group_1__2__Impl rule__Statement__Group_1__3 ;
     public final void rule__Statement__Group_1__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1021:1: ( rule__Statement__Group_1__2__Impl rule__Statement__Group_1__3 )
-            // InternalFire.g:1022:2: rule__Statement__Group_1__2__Impl rule__Statement__Group_1__3
+            // InternalFire.g:1027:1: ( rule__Statement__Group_1__2__Impl rule__Statement__Group_1__3 )
+            // InternalFire.g:1028:2: rule__Statement__Group_1__2__Impl rule__Statement__Group_1__3
             {
             pushFollow(FOLLOW_11);
             rule__Statement__Group_1__2__Impl();
@@ -3319,17 +3293,17 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Statement__Group_1__2__Impl"
-    // InternalFire.g:1029:1: rule__Statement__Group_1__2__Impl : ( '(' ) ;
+    // InternalFire.g:1035:1: rule__Statement__Group_1__2__Impl : ( '(' ) ;
     public final void rule__Statement__Group_1__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1033:1: ( ( '(' ) )
-            // InternalFire.g:1034:1: ( '(' )
+            // InternalFire.g:1039:1: ( ( '(' ) )
+            // InternalFire.g:1040:1: ( '(' )
             {
-            // InternalFire.g:1034:1: ( '(' )
-            // InternalFire.g:1035:2: '('
+            // InternalFire.g:1040:1: ( '(' )
+            // InternalFire.g:1041:2: '('
             {
              before(grammarAccess.getStatementAccess().getLeftParenthesisKeyword_1_2()); 
             match(input,34,FOLLOW_2); 
@@ -3356,14 +3330,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Statement__Group_1__3"
-    // InternalFire.g:1044:1: rule__Statement__Group_1__3 : rule__Statement__Group_1__3__Impl rule__Statement__Group_1__4 ;
+    // InternalFire.g:1050:1: rule__Statement__Group_1__3 : rule__Statement__Group_1__3__Impl rule__Statement__Group_1__4 ;
     public final void rule__Statement__Group_1__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1048:1: ( rule__Statement__Group_1__3__Impl rule__Statement__Group_1__4 )
-            // InternalFire.g:1049:2: rule__Statement__Group_1__3__Impl rule__Statement__Group_1__4
+            // InternalFire.g:1054:1: ( rule__Statement__Group_1__3__Impl rule__Statement__Group_1__4 )
+            // InternalFire.g:1055:2: rule__Statement__Group_1__3__Impl rule__Statement__Group_1__4
             {
             pushFollow(FOLLOW_14);
             rule__Statement__Group_1__3__Impl();
@@ -3394,21 +3368,21 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Statement__Group_1__3__Impl"
-    // InternalFire.g:1056:1: rule__Statement__Group_1__3__Impl : ( ( rule__Statement__ArgumentAssignment_1_3 ) ) ;
+    // InternalFire.g:1062:1: rule__Statement__Group_1__3__Impl : ( ( rule__Statement__ArgumentAssignment_1_3 ) ) ;
     public final void rule__Statement__Group_1__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1060:1: ( ( ( rule__Statement__ArgumentAssignment_1_3 ) ) )
-            // InternalFire.g:1061:1: ( ( rule__Statement__ArgumentAssignment_1_3 ) )
+            // InternalFire.g:1066:1: ( ( ( rule__Statement__ArgumentAssignment_1_3 ) ) )
+            // InternalFire.g:1067:1: ( ( rule__Statement__ArgumentAssignment_1_3 ) )
             {
-            // InternalFire.g:1061:1: ( ( rule__Statement__ArgumentAssignment_1_3 ) )
-            // InternalFire.g:1062:2: ( rule__Statement__ArgumentAssignment_1_3 )
+            // InternalFire.g:1067:1: ( ( rule__Statement__ArgumentAssignment_1_3 ) )
+            // InternalFire.g:1068:2: ( rule__Statement__ArgumentAssignment_1_3 )
             {
              before(grammarAccess.getStatementAccess().getArgumentAssignment_1_3()); 
-            // InternalFire.g:1063:2: ( rule__Statement__ArgumentAssignment_1_3 )
-            // InternalFire.g:1063:3: rule__Statement__ArgumentAssignment_1_3
+            // InternalFire.g:1069:2: ( rule__Statement__ArgumentAssignment_1_3 )
+            // InternalFire.g:1069:3: rule__Statement__ArgumentAssignment_1_3
             {
             pushFollow(FOLLOW_2);
             rule__Statement__ArgumentAssignment_1_3();
@@ -3441,14 +3415,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Statement__Group_1__4"
-    // InternalFire.g:1071:1: rule__Statement__Group_1__4 : rule__Statement__Group_1__4__Impl ;
+    // InternalFire.g:1077:1: rule__Statement__Group_1__4 : rule__Statement__Group_1__4__Impl ;
     public final void rule__Statement__Group_1__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1075:1: ( rule__Statement__Group_1__4__Impl )
-            // InternalFire.g:1076:2: rule__Statement__Group_1__4__Impl
+            // InternalFire.g:1081:1: ( rule__Statement__Group_1__4__Impl )
+            // InternalFire.g:1082:2: rule__Statement__Group_1__4__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Statement__Group_1__4__Impl();
@@ -3474,17 +3448,17 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Statement__Group_1__4__Impl"
-    // InternalFire.g:1082:1: rule__Statement__Group_1__4__Impl : ( ')' ) ;
+    // InternalFire.g:1088:1: rule__Statement__Group_1__4__Impl : ( ')' ) ;
     public final void rule__Statement__Group_1__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1086:1: ( ( ')' ) )
-            // InternalFire.g:1087:1: ( ')' )
+            // InternalFire.g:1092:1: ( ( ')' ) )
+            // InternalFire.g:1093:1: ( ')' )
             {
-            // InternalFire.g:1087:1: ( ')' )
-            // InternalFire.g:1088:2: ')'
+            // InternalFire.g:1093:1: ( ')' )
+            // InternalFire.g:1094:2: ')'
             {
              before(grammarAccess.getStatementAccess().getRightParenthesisKeyword_1_4()); 
             match(input,35,FOLLOW_2); 
@@ -3511,14 +3485,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Expression__Group__0"
-    // InternalFire.g:1098:1: rule__Expression__Group__0 : rule__Expression__Group__0__Impl rule__Expression__Group__1 ;
+    // InternalFire.g:1104:1: rule__Expression__Group__0 : rule__Expression__Group__0__Impl rule__Expression__Group__1 ;
     public final void rule__Expression__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1102:1: ( rule__Expression__Group__0__Impl rule__Expression__Group__1 )
-            // InternalFire.g:1103:2: rule__Expression__Group__0__Impl rule__Expression__Group__1
+            // InternalFire.g:1108:1: ( rule__Expression__Group__0__Impl rule__Expression__Group__1 )
+            // InternalFire.g:1109:2: rule__Expression__Group__0__Impl rule__Expression__Group__1
             {
             pushFollow(FOLLOW_15);
             rule__Expression__Group__0__Impl();
@@ -3549,17 +3523,17 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Expression__Group__0__Impl"
-    // InternalFire.g:1110:1: rule__Expression__Group__0__Impl : ( ruleAndExpression ) ;
+    // InternalFire.g:1116:1: rule__Expression__Group__0__Impl : ( ruleAndExpression ) ;
     public final void rule__Expression__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1114:1: ( ( ruleAndExpression ) )
-            // InternalFire.g:1115:1: ( ruleAndExpression )
+            // InternalFire.g:1120:1: ( ( ruleAndExpression ) )
+            // InternalFire.g:1121:1: ( ruleAndExpression )
             {
-            // InternalFire.g:1115:1: ( ruleAndExpression )
-            // InternalFire.g:1116:2: ruleAndExpression
+            // InternalFire.g:1121:1: ( ruleAndExpression )
+            // InternalFire.g:1122:2: ruleAndExpression
             {
              before(grammarAccess.getExpressionAccess().getAndExpressionParserRuleCall_0()); 
             pushFollow(FOLLOW_2);
@@ -3590,14 +3564,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Expression__Group__1"
-    // InternalFire.g:1125:1: rule__Expression__Group__1 : rule__Expression__Group__1__Impl ;
+    // InternalFire.g:1131:1: rule__Expression__Group__1 : rule__Expression__Group__1__Impl ;
     public final void rule__Expression__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1129:1: ( rule__Expression__Group__1__Impl )
-            // InternalFire.g:1130:2: rule__Expression__Group__1__Impl
+            // InternalFire.g:1135:1: ( rule__Expression__Group__1__Impl )
+            // InternalFire.g:1136:2: rule__Expression__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Expression__Group__1__Impl();
@@ -3623,20 +3597,20 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Expression__Group__1__Impl"
-    // InternalFire.g:1136:1: rule__Expression__Group__1__Impl : ( ( rule__Expression__Group_1__0 )* ) ;
+    // InternalFire.g:1142:1: rule__Expression__Group__1__Impl : ( ( rule__Expression__Group_1__0 )* ) ;
     public final void rule__Expression__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1140:1: ( ( ( rule__Expression__Group_1__0 )* ) )
-            // InternalFire.g:1141:1: ( ( rule__Expression__Group_1__0 )* )
+            // InternalFire.g:1146:1: ( ( ( rule__Expression__Group_1__0 )* ) )
+            // InternalFire.g:1147:1: ( ( rule__Expression__Group_1__0 )* )
             {
-            // InternalFire.g:1141:1: ( ( rule__Expression__Group_1__0 )* )
-            // InternalFire.g:1142:2: ( rule__Expression__Group_1__0 )*
+            // InternalFire.g:1147:1: ( ( rule__Expression__Group_1__0 )* )
+            // InternalFire.g:1148:2: ( rule__Expression__Group_1__0 )*
             {
              before(grammarAccess.getExpressionAccess().getGroup_1()); 
-            // InternalFire.g:1143:2: ( rule__Expression__Group_1__0 )*
+            // InternalFire.g:1149:2: ( rule__Expression__Group_1__0 )*
             loop10:
             do {
                 int alt10=2;
@@ -3649,7 +3623,7 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
                 switch (alt10) {
             	case 1 :
-            	    // InternalFire.g:1143:3: rule__Expression__Group_1__0
+            	    // InternalFire.g:1149:3: rule__Expression__Group_1__0
             	    {
             	    pushFollow(FOLLOW_16);
             	    rule__Expression__Group_1__0();
@@ -3688,14 +3662,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Expression__Group_1__0"
-    // InternalFire.g:1152:1: rule__Expression__Group_1__0 : rule__Expression__Group_1__0__Impl rule__Expression__Group_1__1 ;
+    // InternalFire.g:1158:1: rule__Expression__Group_1__0 : rule__Expression__Group_1__0__Impl rule__Expression__Group_1__1 ;
     public final void rule__Expression__Group_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1156:1: ( rule__Expression__Group_1__0__Impl rule__Expression__Group_1__1 )
-            // InternalFire.g:1157:2: rule__Expression__Group_1__0__Impl rule__Expression__Group_1__1
+            // InternalFire.g:1162:1: ( rule__Expression__Group_1__0__Impl rule__Expression__Group_1__1 )
+            // InternalFire.g:1163:2: rule__Expression__Group_1__0__Impl rule__Expression__Group_1__1
             {
             pushFollow(FOLLOW_15);
             rule__Expression__Group_1__0__Impl();
@@ -3726,21 +3700,21 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Expression__Group_1__0__Impl"
-    // InternalFire.g:1164:1: rule__Expression__Group_1__0__Impl : ( () ) ;
+    // InternalFire.g:1170:1: rule__Expression__Group_1__0__Impl : ( () ) ;
     public final void rule__Expression__Group_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1168:1: ( ( () ) )
-            // InternalFire.g:1169:1: ( () )
+            // InternalFire.g:1174:1: ( ( () ) )
+            // InternalFire.g:1175:1: ( () )
             {
-            // InternalFire.g:1169:1: ( () )
-            // InternalFire.g:1170:2: ()
+            // InternalFire.g:1175:1: ( () )
+            // InternalFire.g:1176:2: ()
             {
              before(grammarAccess.getExpressionAccess().getOrExpressionLeftAction_1_0()); 
-            // InternalFire.g:1171:2: ()
-            // InternalFire.g:1171:3: 
+            // InternalFire.g:1177:2: ()
+            // InternalFire.g:1177:3: 
             {
             }
 
@@ -3763,14 +3737,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Expression__Group_1__1"
-    // InternalFire.g:1179:1: rule__Expression__Group_1__1 : rule__Expression__Group_1__1__Impl rule__Expression__Group_1__2 ;
+    // InternalFire.g:1185:1: rule__Expression__Group_1__1 : rule__Expression__Group_1__1__Impl rule__Expression__Group_1__2 ;
     public final void rule__Expression__Group_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1183:1: ( rule__Expression__Group_1__1__Impl rule__Expression__Group_1__2 )
-            // InternalFire.g:1184:2: rule__Expression__Group_1__1__Impl rule__Expression__Group_1__2
+            // InternalFire.g:1189:1: ( rule__Expression__Group_1__1__Impl rule__Expression__Group_1__2 )
+            // InternalFire.g:1190:2: rule__Expression__Group_1__1__Impl rule__Expression__Group_1__2
             {
             pushFollow(FOLLOW_11);
             rule__Expression__Group_1__1__Impl();
@@ -3801,17 +3775,17 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Expression__Group_1__1__Impl"
-    // InternalFire.g:1191:1: rule__Expression__Group_1__1__Impl : ( 'or' ) ;
+    // InternalFire.g:1197:1: rule__Expression__Group_1__1__Impl : ( 'or' ) ;
     public final void rule__Expression__Group_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1195:1: ( ( 'or' ) )
-            // InternalFire.g:1196:1: ( 'or' )
+            // InternalFire.g:1201:1: ( ( 'or' ) )
+            // InternalFire.g:1202:1: ( 'or' )
             {
-            // InternalFire.g:1196:1: ( 'or' )
-            // InternalFire.g:1197:2: 'or'
+            // InternalFire.g:1202:1: ( 'or' )
+            // InternalFire.g:1203:2: 'or'
             {
              before(grammarAccess.getExpressionAccess().getOrKeyword_1_1()); 
             match(input,36,FOLLOW_2); 
@@ -3838,14 +3812,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Expression__Group_1__2"
-    // InternalFire.g:1206:1: rule__Expression__Group_1__2 : rule__Expression__Group_1__2__Impl ;
+    // InternalFire.g:1212:1: rule__Expression__Group_1__2 : rule__Expression__Group_1__2__Impl ;
     public final void rule__Expression__Group_1__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1210:1: ( rule__Expression__Group_1__2__Impl )
-            // InternalFire.g:1211:2: rule__Expression__Group_1__2__Impl
+            // InternalFire.g:1216:1: ( rule__Expression__Group_1__2__Impl )
+            // InternalFire.g:1217:2: rule__Expression__Group_1__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Expression__Group_1__2__Impl();
@@ -3871,21 +3845,21 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Expression__Group_1__2__Impl"
-    // InternalFire.g:1217:1: rule__Expression__Group_1__2__Impl : ( ( rule__Expression__RightAssignment_1_2 ) ) ;
+    // InternalFire.g:1223:1: rule__Expression__Group_1__2__Impl : ( ( rule__Expression__RightAssignment_1_2 ) ) ;
     public final void rule__Expression__Group_1__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1221:1: ( ( ( rule__Expression__RightAssignment_1_2 ) ) )
-            // InternalFire.g:1222:1: ( ( rule__Expression__RightAssignment_1_2 ) )
+            // InternalFire.g:1227:1: ( ( ( rule__Expression__RightAssignment_1_2 ) ) )
+            // InternalFire.g:1228:1: ( ( rule__Expression__RightAssignment_1_2 ) )
             {
-            // InternalFire.g:1222:1: ( ( rule__Expression__RightAssignment_1_2 ) )
-            // InternalFire.g:1223:2: ( rule__Expression__RightAssignment_1_2 )
+            // InternalFire.g:1228:1: ( ( rule__Expression__RightAssignment_1_2 ) )
+            // InternalFire.g:1229:2: ( rule__Expression__RightAssignment_1_2 )
             {
              before(grammarAccess.getExpressionAccess().getRightAssignment_1_2()); 
-            // InternalFire.g:1224:2: ( rule__Expression__RightAssignment_1_2 )
-            // InternalFire.g:1224:3: rule__Expression__RightAssignment_1_2
+            // InternalFire.g:1230:2: ( rule__Expression__RightAssignment_1_2 )
+            // InternalFire.g:1230:3: rule__Expression__RightAssignment_1_2
             {
             pushFollow(FOLLOW_2);
             rule__Expression__RightAssignment_1_2();
@@ -3918,14 +3892,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__AndExpression__Group__0"
-    // InternalFire.g:1233:1: rule__AndExpression__Group__0 : rule__AndExpression__Group__0__Impl rule__AndExpression__Group__1 ;
+    // InternalFire.g:1239:1: rule__AndExpression__Group__0 : rule__AndExpression__Group__0__Impl rule__AndExpression__Group__1 ;
     public final void rule__AndExpression__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1237:1: ( rule__AndExpression__Group__0__Impl rule__AndExpression__Group__1 )
-            // InternalFire.g:1238:2: rule__AndExpression__Group__0__Impl rule__AndExpression__Group__1
+            // InternalFire.g:1243:1: ( rule__AndExpression__Group__0__Impl rule__AndExpression__Group__1 )
+            // InternalFire.g:1244:2: rule__AndExpression__Group__0__Impl rule__AndExpression__Group__1
             {
             pushFollow(FOLLOW_17);
             rule__AndExpression__Group__0__Impl();
@@ -3956,17 +3930,17 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__AndExpression__Group__0__Impl"
-    // InternalFire.g:1245:1: rule__AndExpression__Group__0__Impl : ( ruleXorExpression ) ;
+    // InternalFire.g:1251:1: rule__AndExpression__Group__0__Impl : ( ruleXorExpression ) ;
     public final void rule__AndExpression__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1249:1: ( ( ruleXorExpression ) )
-            // InternalFire.g:1250:1: ( ruleXorExpression )
+            // InternalFire.g:1255:1: ( ( ruleXorExpression ) )
+            // InternalFire.g:1256:1: ( ruleXorExpression )
             {
-            // InternalFire.g:1250:1: ( ruleXorExpression )
-            // InternalFire.g:1251:2: ruleXorExpression
+            // InternalFire.g:1256:1: ( ruleXorExpression )
+            // InternalFire.g:1257:2: ruleXorExpression
             {
              before(grammarAccess.getAndExpressionAccess().getXorExpressionParserRuleCall_0()); 
             pushFollow(FOLLOW_2);
@@ -3997,14 +3971,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__AndExpression__Group__1"
-    // InternalFire.g:1260:1: rule__AndExpression__Group__1 : rule__AndExpression__Group__1__Impl ;
+    // InternalFire.g:1266:1: rule__AndExpression__Group__1 : rule__AndExpression__Group__1__Impl ;
     public final void rule__AndExpression__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1264:1: ( rule__AndExpression__Group__1__Impl )
-            // InternalFire.g:1265:2: rule__AndExpression__Group__1__Impl
+            // InternalFire.g:1270:1: ( rule__AndExpression__Group__1__Impl )
+            // InternalFire.g:1271:2: rule__AndExpression__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__AndExpression__Group__1__Impl();
@@ -4030,20 +4004,20 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__AndExpression__Group__1__Impl"
-    // InternalFire.g:1271:1: rule__AndExpression__Group__1__Impl : ( ( rule__AndExpression__Group_1__0 )* ) ;
+    // InternalFire.g:1277:1: rule__AndExpression__Group__1__Impl : ( ( rule__AndExpression__Group_1__0 )* ) ;
     public final void rule__AndExpression__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1275:1: ( ( ( rule__AndExpression__Group_1__0 )* ) )
-            // InternalFire.g:1276:1: ( ( rule__AndExpression__Group_1__0 )* )
+            // InternalFire.g:1281:1: ( ( ( rule__AndExpression__Group_1__0 )* ) )
+            // InternalFire.g:1282:1: ( ( rule__AndExpression__Group_1__0 )* )
             {
-            // InternalFire.g:1276:1: ( ( rule__AndExpression__Group_1__0 )* )
-            // InternalFire.g:1277:2: ( rule__AndExpression__Group_1__0 )*
+            // InternalFire.g:1282:1: ( ( rule__AndExpression__Group_1__0 )* )
+            // InternalFire.g:1283:2: ( rule__AndExpression__Group_1__0 )*
             {
              before(grammarAccess.getAndExpressionAccess().getGroup_1()); 
-            // InternalFire.g:1278:2: ( rule__AndExpression__Group_1__0 )*
+            // InternalFire.g:1284:2: ( rule__AndExpression__Group_1__0 )*
             loop11:
             do {
                 int alt11=2;
@@ -4056,7 +4030,7 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
                 switch (alt11) {
             	case 1 :
-            	    // InternalFire.g:1278:3: rule__AndExpression__Group_1__0
+            	    // InternalFire.g:1284:3: rule__AndExpression__Group_1__0
             	    {
             	    pushFollow(FOLLOW_18);
             	    rule__AndExpression__Group_1__0();
@@ -4095,14 +4069,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__AndExpression__Group_1__0"
-    // InternalFire.g:1287:1: rule__AndExpression__Group_1__0 : rule__AndExpression__Group_1__0__Impl rule__AndExpression__Group_1__1 ;
+    // InternalFire.g:1293:1: rule__AndExpression__Group_1__0 : rule__AndExpression__Group_1__0__Impl rule__AndExpression__Group_1__1 ;
     public final void rule__AndExpression__Group_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1291:1: ( rule__AndExpression__Group_1__0__Impl rule__AndExpression__Group_1__1 )
-            // InternalFire.g:1292:2: rule__AndExpression__Group_1__0__Impl rule__AndExpression__Group_1__1
+            // InternalFire.g:1297:1: ( rule__AndExpression__Group_1__0__Impl rule__AndExpression__Group_1__1 )
+            // InternalFire.g:1298:2: rule__AndExpression__Group_1__0__Impl rule__AndExpression__Group_1__1
             {
             pushFollow(FOLLOW_17);
             rule__AndExpression__Group_1__0__Impl();
@@ -4133,21 +4107,21 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__AndExpression__Group_1__0__Impl"
-    // InternalFire.g:1299:1: rule__AndExpression__Group_1__0__Impl : ( () ) ;
+    // InternalFire.g:1305:1: rule__AndExpression__Group_1__0__Impl : ( () ) ;
     public final void rule__AndExpression__Group_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1303:1: ( ( () ) )
-            // InternalFire.g:1304:1: ( () )
+            // InternalFire.g:1309:1: ( ( () ) )
+            // InternalFire.g:1310:1: ( () )
             {
-            // InternalFire.g:1304:1: ( () )
-            // InternalFire.g:1305:2: ()
+            // InternalFire.g:1310:1: ( () )
+            // InternalFire.g:1311:2: ()
             {
              before(grammarAccess.getAndExpressionAccess().getAndExpressionLeftAction_1_0()); 
-            // InternalFire.g:1306:2: ()
-            // InternalFire.g:1306:3: 
+            // InternalFire.g:1312:2: ()
+            // InternalFire.g:1312:3: 
             {
             }
 
@@ -4170,14 +4144,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__AndExpression__Group_1__1"
-    // InternalFire.g:1314:1: rule__AndExpression__Group_1__1 : rule__AndExpression__Group_1__1__Impl rule__AndExpression__Group_1__2 ;
+    // InternalFire.g:1320:1: rule__AndExpression__Group_1__1 : rule__AndExpression__Group_1__1__Impl rule__AndExpression__Group_1__2 ;
     public final void rule__AndExpression__Group_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1318:1: ( rule__AndExpression__Group_1__1__Impl rule__AndExpression__Group_1__2 )
-            // InternalFire.g:1319:2: rule__AndExpression__Group_1__1__Impl rule__AndExpression__Group_1__2
+            // InternalFire.g:1324:1: ( rule__AndExpression__Group_1__1__Impl rule__AndExpression__Group_1__2 )
+            // InternalFire.g:1325:2: rule__AndExpression__Group_1__1__Impl rule__AndExpression__Group_1__2
             {
             pushFollow(FOLLOW_11);
             rule__AndExpression__Group_1__1__Impl();
@@ -4208,17 +4182,17 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__AndExpression__Group_1__1__Impl"
-    // InternalFire.g:1326:1: rule__AndExpression__Group_1__1__Impl : ( 'and' ) ;
+    // InternalFire.g:1332:1: rule__AndExpression__Group_1__1__Impl : ( 'and' ) ;
     public final void rule__AndExpression__Group_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1330:1: ( ( 'and' ) )
-            // InternalFire.g:1331:1: ( 'and' )
+            // InternalFire.g:1336:1: ( ( 'and' ) )
+            // InternalFire.g:1337:1: ( 'and' )
             {
-            // InternalFire.g:1331:1: ( 'and' )
-            // InternalFire.g:1332:2: 'and'
+            // InternalFire.g:1337:1: ( 'and' )
+            // InternalFire.g:1338:2: 'and'
             {
              before(grammarAccess.getAndExpressionAccess().getAndKeyword_1_1()); 
             match(input,37,FOLLOW_2); 
@@ -4245,14 +4219,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__AndExpression__Group_1__2"
-    // InternalFire.g:1341:1: rule__AndExpression__Group_1__2 : rule__AndExpression__Group_1__2__Impl ;
+    // InternalFire.g:1347:1: rule__AndExpression__Group_1__2 : rule__AndExpression__Group_1__2__Impl ;
     public final void rule__AndExpression__Group_1__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1345:1: ( rule__AndExpression__Group_1__2__Impl )
-            // InternalFire.g:1346:2: rule__AndExpression__Group_1__2__Impl
+            // InternalFire.g:1351:1: ( rule__AndExpression__Group_1__2__Impl )
+            // InternalFire.g:1352:2: rule__AndExpression__Group_1__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__AndExpression__Group_1__2__Impl();
@@ -4278,21 +4252,21 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__AndExpression__Group_1__2__Impl"
-    // InternalFire.g:1352:1: rule__AndExpression__Group_1__2__Impl : ( ( rule__AndExpression__RightAssignment_1_2 ) ) ;
+    // InternalFire.g:1358:1: rule__AndExpression__Group_1__2__Impl : ( ( rule__AndExpression__RightAssignment_1_2 ) ) ;
     public final void rule__AndExpression__Group_1__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1356:1: ( ( ( rule__AndExpression__RightAssignment_1_2 ) ) )
-            // InternalFire.g:1357:1: ( ( rule__AndExpression__RightAssignment_1_2 ) )
+            // InternalFire.g:1362:1: ( ( ( rule__AndExpression__RightAssignment_1_2 ) ) )
+            // InternalFire.g:1363:1: ( ( rule__AndExpression__RightAssignment_1_2 ) )
             {
-            // InternalFire.g:1357:1: ( ( rule__AndExpression__RightAssignment_1_2 ) )
-            // InternalFire.g:1358:2: ( rule__AndExpression__RightAssignment_1_2 )
+            // InternalFire.g:1363:1: ( ( rule__AndExpression__RightAssignment_1_2 ) )
+            // InternalFire.g:1364:2: ( rule__AndExpression__RightAssignment_1_2 )
             {
              before(grammarAccess.getAndExpressionAccess().getRightAssignment_1_2()); 
-            // InternalFire.g:1359:2: ( rule__AndExpression__RightAssignment_1_2 )
-            // InternalFire.g:1359:3: rule__AndExpression__RightAssignment_1_2
+            // InternalFire.g:1365:2: ( rule__AndExpression__RightAssignment_1_2 )
+            // InternalFire.g:1365:3: rule__AndExpression__RightAssignment_1_2
             {
             pushFollow(FOLLOW_2);
             rule__AndExpression__RightAssignment_1_2();
@@ -4325,14 +4299,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__XorExpression__Group__0"
-    // InternalFire.g:1368:1: rule__XorExpression__Group__0 : rule__XorExpression__Group__0__Impl rule__XorExpression__Group__1 ;
+    // InternalFire.g:1374:1: rule__XorExpression__Group__0 : rule__XorExpression__Group__0__Impl rule__XorExpression__Group__1 ;
     public final void rule__XorExpression__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1372:1: ( rule__XorExpression__Group__0__Impl rule__XorExpression__Group__1 )
-            // InternalFire.g:1373:2: rule__XorExpression__Group__0__Impl rule__XorExpression__Group__1
+            // InternalFire.g:1378:1: ( rule__XorExpression__Group__0__Impl rule__XorExpression__Group__1 )
+            // InternalFire.g:1379:2: rule__XorExpression__Group__0__Impl rule__XorExpression__Group__1
             {
             pushFollow(FOLLOW_19);
             rule__XorExpression__Group__0__Impl();
@@ -4363,17 +4337,17 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__XorExpression__Group__0__Impl"
-    // InternalFire.g:1380:1: rule__XorExpression__Group__0__Impl : ( ruleEqualityExpression ) ;
+    // InternalFire.g:1386:1: rule__XorExpression__Group__0__Impl : ( ruleEqualityExpression ) ;
     public final void rule__XorExpression__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1384:1: ( ( ruleEqualityExpression ) )
-            // InternalFire.g:1385:1: ( ruleEqualityExpression )
+            // InternalFire.g:1390:1: ( ( ruleEqualityExpression ) )
+            // InternalFire.g:1391:1: ( ruleEqualityExpression )
             {
-            // InternalFire.g:1385:1: ( ruleEqualityExpression )
-            // InternalFire.g:1386:2: ruleEqualityExpression
+            // InternalFire.g:1391:1: ( ruleEqualityExpression )
+            // InternalFire.g:1392:2: ruleEqualityExpression
             {
              before(grammarAccess.getXorExpressionAccess().getEqualityExpressionParserRuleCall_0()); 
             pushFollow(FOLLOW_2);
@@ -4404,14 +4378,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__XorExpression__Group__1"
-    // InternalFire.g:1395:1: rule__XorExpression__Group__1 : rule__XorExpression__Group__1__Impl ;
+    // InternalFire.g:1401:1: rule__XorExpression__Group__1 : rule__XorExpression__Group__1__Impl ;
     public final void rule__XorExpression__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1399:1: ( rule__XorExpression__Group__1__Impl )
-            // InternalFire.g:1400:2: rule__XorExpression__Group__1__Impl
+            // InternalFire.g:1405:1: ( rule__XorExpression__Group__1__Impl )
+            // InternalFire.g:1406:2: rule__XorExpression__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__XorExpression__Group__1__Impl();
@@ -4437,20 +4411,20 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__XorExpression__Group__1__Impl"
-    // InternalFire.g:1406:1: rule__XorExpression__Group__1__Impl : ( ( rule__XorExpression__Group_1__0 )* ) ;
+    // InternalFire.g:1412:1: rule__XorExpression__Group__1__Impl : ( ( rule__XorExpression__Group_1__0 )* ) ;
     public final void rule__XorExpression__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1410:1: ( ( ( rule__XorExpression__Group_1__0 )* ) )
-            // InternalFire.g:1411:1: ( ( rule__XorExpression__Group_1__0 )* )
+            // InternalFire.g:1416:1: ( ( ( rule__XorExpression__Group_1__0 )* ) )
+            // InternalFire.g:1417:1: ( ( rule__XorExpression__Group_1__0 )* )
             {
-            // InternalFire.g:1411:1: ( ( rule__XorExpression__Group_1__0 )* )
-            // InternalFire.g:1412:2: ( rule__XorExpression__Group_1__0 )*
+            // InternalFire.g:1417:1: ( ( rule__XorExpression__Group_1__0 )* )
+            // InternalFire.g:1418:2: ( rule__XorExpression__Group_1__0 )*
             {
              before(grammarAccess.getXorExpressionAccess().getGroup_1()); 
-            // InternalFire.g:1413:2: ( rule__XorExpression__Group_1__0 )*
+            // InternalFire.g:1419:2: ( rule__XorExpression__Group_1__0 )*
             loop12:
             do {
                 int alt12=2;
@@ -4463,7 +4437,7 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
                 switch (alt12) {
             	case 1 :
-            	    // InternalFire.g:1413:3: rule__XorExpression__Group_1__0
+            	    // InternalFire.g:1419:3: rule__XorExpression__Group_1__0
             	    {
             	    pushFollow(FOLLOW_20);
             	    rule__XorExpression__Group_1__0();
@@ -4502,14 +4476,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__XorExpression__Group_1__0"
-    // InternalFire.g:1422:1: rule__XorExpression__Group_1__0 : rule__XorExpression__Group_1__0__Impl rule__XorExpression__Group_1__1 ;
+    // InternalFire.g:1428:1: rule__XorExpression__Group_1__0 : rule__XorExpression__Group_1__0__Impl rule__XorExpression__Group_1__1 ;
     public final void rule__XorExpression__Group_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1426:1: ( rule__XorExpression__Group_1__0__Impl rule__XorExpression__Group_1__1 )
-            // InternalFire.g:1427:2: rule__XorExpression__Group_1__0__Impl rule__XorExpression__Group_1__1
+            // InternalFire.g:1432:1: ( rule__XorExpression__Group_1__0__Impl rule__XorExpression__Group_1__1 )
+            // InternalFire.g:1433:2: rule__XorExpression__Group_1__0__Impl rule__XorExpression__Group_1__1
             {
             pushFollow(FOLLOW_19);
             rule__XorExpression__Group_1__0__Impl();
@@ -4540,21 +4514,21 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__XorExpression__Group_1__0__Impl"
-    // InternalFire.g:1434:1: rule__XorExpression__Group_1__0__Impl : ( () ) ;
+    // InternalFire.g:1440:1: rule__XorExpression__Group_1__0__Impl : ( () ) ;
     public final void rule__XorExpression__Group_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1438:1: ( ( () ) )
-            // InternalFire.g:1439:1: ( () )
+            // InternalFire.g:1444:1: ( ( () ) )
+            // InternalFire.g:1445:1: ( () )
             {
-            // InternalFire.g:1439:1: ( () )
-            // InternalFire.g:1440:2: ()
+            // InternalFire.g:1445:1: ( () )
+            // InternalFire.g:1446:2: ()
             {
              before(grammarAccess.getXorExpressionAccess().getXorExpressionLeftAction_1_0()); 
-            // InternalFire.g:1441:2: ()
-            // InternalFire.g:1441:3: 
+            // InternalFire.g:1447:2: ()
+            // InternalFire.g:1447:3: 
             {
             }
 
@@ -4577,14 +4551,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__XorExpression__Group_1__1"
-    // InternalFire.g:1449:1: rule__XorExpression__Group_1__1 : rule__XorExpression__Group_1__1__Impl rule__XorExpression__Group_1__2 ;
+    // InternalFire.g:1455:1: rule__XorExpression__Group_1__1 : rule__XorExpression__Group_1__1__Impl rule__XorExpression__Group_1__2 ;
     public final void rule__XorExpression__Group_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1453:1: ( rule__XorExpression__Group_1__1__Impl rule__XorExpression__Group_1__2 )
-            // InternalFire.g:1454:2: rule__XorExpression__Group_1__1__Impl rule__XorExpression__Group_1__2
+            // InternalFire.g:1459:1: ( rule__XorExpression__Group_1__1__Impl rule__XorExpression__Group_1__2 )
+            // InternalFire.g:1460:2: rule__XorExpression__Group_1__1__Impl rule__XorExpression__Group_1__2
             {
             pushFollow(FOLLOW_11);
             rule__XorExpression__Group_1__1__Impl();
@@ -4615,17 +4589,17 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__XorExpression__Group_1__1__Impl"
-    // InternalFire.g:1461:1: rule__XorExpression__Group_1__1__Impl : ( 'xor' ) ;
+    // InternalFire.g:1467:1: rule__XorExpression__Group_1__1__Impl : ( 'xor' ) ;
     public final void rule__XorExpression__Group_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1465:1: ( ( 'xor' ) )
-            // InternalFire.g:1466:1: ( 'xor' )
+            // InternalFire.g:1471:1: ( ( 'xor' ) )
+            // InternalFire.g:1472:1: ( 'xor' )
             {
-            // InternalFire.g:1466:1: ( 'xor' )
-            // InternalFire.g:1467:2: 'xor'
+            // InternalFire.g:1472:1: ( 'xor' )
+            // InternalFire.g:1473:2: 'xor'
             {
              before(grammarAccess.getXorExpressionAccess().getXorKeyword_1_1()); 
             match(input,38,FOLLOW_2); 
@@ -4652,14 +4626,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__XorExpression__Group_1__2"
-    // InternalFire.g:1476:1: rule__XorExpression__Group_1__2 : rule__XorExpression__Group_1__2__Impl ;
+    // InternalFire.g:1482:1: rule__XorExpression__Group_1__2 : rule__XorExpression__Group_1__2__Impl ;
     public final void rule__XorExpression__Group_1__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1480:1: ( rule__XorExpression__Group_1__2__Impl )
-            // InternalFire.g:1481:2: rule__XorExpression__Group_1__2__Impl
+            // InternalFire.g:1486:1: ( rule__XorExpression__Group_1__2__Impl )
+            // InternalFire.g:1487:2: rule__XorExpression__Group_1__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__XorExpression__Group_1__2__Impl();
@@ -4685,21 +4659,21 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__XorExpression__Group_1__2__Impl"
-    // InternalFire.g:1487:1: rule__XorExpression__Group_1__2__Impl : ( ( rule__XorExpression__RightAssignment_1_2 ) ) ;
+    // InternalFire.g:1493:1: rule__XorExpression__Group_1__2__Impl : ( ( rule__XorExpression__RightAssignment_1_2 ) ) ;
     public final void rule__XorExpression__Group_1__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1491:1: ( ( ( rule__XorExpression__RightAssignment_1_2 ) ) )
-            // InternalFire.g:1492:1: ( ( rule__XorExpression__RightAssignment_1_2 ) )
+            // InternalFire.g:1497:1: ( ( ( rule__XorExpression__RightAssignment_1_2 ) ) )
+            // InternalFire.g:1498:1: ( ( rule__XorExpression__RightAssignment_1_2 ) )
             {
-            // InternalFire.g:1492:1: ( ( rule__XorExpression__RightAssignment_1_2 ) )
-            // InternalFire.g:1493:2: ( rule__XorExpression__RightAssignment_1_2 )
+            // InternalFire.g:1498:1: ( ( rule__XorExpression__RightAssignment_1_2 ) )
+            // InternalFire.g:1499:2: ( rule__XorExpression__RightAssignment_1_2 )
             {
              before(grammarAccess.getXorExpressionAccess().getRightAssignment_1_2()); 
-            // InternalFire.g:1494:2: ( rule__XorExpression__RightAssignment_1_2 )
-            // InternalFire.g:1494:3: rule__XorExpression__RightAssignment_1_2
+            // InternalFire.g:1500:2: ( rule__XorExpression__RightAssignment_1_2 )
+            // InternalFire.g:1500:3: rule__XorExpression__RightAssignment_1_2
             {
             pushFollow(FOLLOW_2);
             rule__XorExpression__RightAssignment_1_2();
@@ -4732,14 +4706,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__EqualityExpression__Group__0"
-    // InternalFire.g:1503:1: rule__EqualityExpression__Group__0 : rule__EqualityExpression__Group__0__Impl rule__EqualityExpression__Group__1 ;
+    // InternalFire.g:1509:1: rule__EqualityExpression__Group__0 : rule__EqualityExpression__Group__0__Impl rule__EqualityExpression__Group__1 ;
     public final void rule__EqualityExpression__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1507:1: ( rule__EqualityExpression__Group__0__Impl rule__EqualityExpression__Group__1 )
-            // InternalFire.g:1508:2: rule__EqualityExpression__Group__0__Impl rule__EqualityExpression__Group__1
+            // InternalFire.g:1513:1: ( rule__EqualityExpression__Group__0__Impl rule__EqualityExpression__Group__1 )
+            // InternalFire.g:1514:2: rule__EqualityExpression__Group__0__Impl rule__EqualityExpression__Group__1
             {
             pushFollow(FOLLOW_21);
             rule__EqualityExpression__Group__0__Impl();
@@ -4770,17 +4744,17 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__EqualityExpression__Group__0__Impl"
-    // InternalFire.g:1515:1: rule__EqualityExpression__Group__0__Impl : ( ruleComparisonExpression ) ;
+    // InternalFire.g:1521:1: rule__EqualityExpression__Group__0__Impl : ( ruleComparisonExpression ) ;
     public final void rule__EqualityExpression__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1519:1: ( ( ruleComparisonExpression ) )
-            // InternalFire.g:1520:1: ( ruleComparisonExpression )
+            // InternalFire.g:1525:1: ( ( ruleComparisonExpression ) )
+            // InternalFire.g:1526:1: ( ruleComparisonExpression )
             {
-            // InternalFire.g:1520:1: ( ruleComparisonExpression )
-            // InternalFire.g:1521:2: ruleComparisonExpression
+            // InternalFire.g:1526:1: ( ruleComparisonExpression )
+            // InternalFire.g:1527:2: ruleComparisonExpression
             {
              before(grammarAccess.getEqualityExpressionAccess().getComparisonExpressionParserRuleCall_0()); 
             pushFollow(FOLLOW_2);
@@ -4811,14 +4785,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__EqualityExpression__Group__1"
-    // InternalFire.g:1530:1: rule__EqualityExpression__Group__1 : rule__EqualityExpression__Group__1__Impl ;
+    // InternalFire.g:1536:1: rule__EqualityExpression__Group__1 : rule__EqualityExpression__Group__1__Impl ;
     public final void rule__EqualityExpression__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1534:1: ( rule__EqualityExpression__Group__1__Impl )
-            // InternalFire.g:1535:2: rule__EqualityExpression__Group__1__Impl
+            // InternalFire.g:1540:1: ( rule__EqualityExpression__Group__1__Impl )
+            // InternalFire.g:1541:2: rule__EqualityExpression__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__EqualityExpression__Group__1__Impl();
@@ -4844,20 +4818,20 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__EqualityExpression__Group__1__Impl"
-    // InternalFire.g:1541:1: rule__EqualityExpression__Group__1__Impl : ( ( rule__EqualityExpression__Group_1__0 )* ) ;
+    // InternalFire.g:1547:1: rule__EqualityExpression__Group__1__Impl : ( ( rule__EqualityExpression__Group_1__0 )* ) ;
     public final void rule__EqualityExpression__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1545:1: ( ( ( rule__EqualityExpression__Group_1__0 )* ) )
-            // InternalFire.g:1546:1: ( ( rule__EqualityExpression__Group_1__0 )* )
+            // InternalFire.g:1551:1: ( ( ( rule__EqualityExpression__Group_1__0 )* ) )
+            // InternalFire.g:1552:1: ( ( rule__EqualityExpression__Group_1__0 )* )
             {
-            // InternalFire.g:1546:1: ( ( rule__EqualityExpression__Group_1__0 )* )
-            // InternalFire.g:1547:2: ( rule__EqualityExpression__Group_1__0 )*
+            // InternalFire.g:1552:1: ( ( rule__EqualityExpression__Group_1__0 )* )
+            // InternalFire.g:1553:2: ( rule__EqualityExpression__Group_1__0 )*
             {
              before(grammarAccess.getEqualityExpressionAccess().getGroup_1()); 
-            // InternalFire.g:1548:2: ( rule__EqualityExpression__Group_1__0 )*
+            // InternalFire.g:1554:2: ( rule__EqualityExpression__Group_1__0 )*
             loop13:
             do {
                 int alt13=2;
@@ -4870,7 +4844,7 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
                 switch (alt13) {
             	case 1 :
-            	    // InternalFire.g:1548:3: rule__EqualityExpression__Group_1__0
+            	    // InternalFire.g:1554:3: rule__EqualityExpression__Group_1__0
             	    {
             	    pushFollow(FOLLOW_22);
             	    rule__EqualityExpression__Group_1__0();
@@ -4909,14 +4883,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__EqualityExpression__Group_1__0"
-    // InternalFire.g:1557:1: rule__EqualityExpression__Group_1__0 : rule__EqualityExpression__Group_1__0__Impl rule__EqualityExpression__Group_1__1 ;
+    // InternalFire.g:1563:1: rule__EqualityExpression__Group_1__0 : rule__EqualityExpression__Group_1__0__Impl rule__EqualityExpression__Group_1__1 ;
     public final void rule__EqualityExpression__Group_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1561:1: ( rule__EqualityExpression__Group_1__0__Impl rule__EqualityExpression__Group_1__1 )
-            // InternalFire.g:1562:2: rule__EqualityExpression__Group_1__0__Impl rule__EqualityExpression__Group_1__1
+            // InternalFire.g:1567:1: ( rule__EqualityExpression__Group_1__0__Impl rule__EqualityExpression__Group_1__1 )
+            // InternalFire.g:1568:2: rule__EqualityExpression__Group_1__0__Impl rule__EqualityExpression__Group_1__1
             {
             pushFollow(FOLLOW_21);
             rule__EqualityExpression__Group_1__0__Impl();
@@ -4947,21 +4921,21 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__EqualityExpression__Group_1__0__Impl"
-    // InternalFire.g:1569:1: rule__EqualityExpression__Group_1__0__Impl : ( () ) ;
+    // InternalFire.g:1575:1: rule__EqualityExpression__Group_1__0__Impl : ( () ) ;
     public final void rule__EqualityExpression__Group_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1573:1: ( ( () ) )
-            // InternalFire.g:1574:1: ( () )
+            // InternalFire.g:1579:1: ( ( () ) )
+            // InternalFire.g:1580:1: ( () )
             {
-            // InternalFire.g:1574:1: ( () )
-            // InternalFire.g:1575:2: ()
+            // InternalFire.g:1580:1: ( () )
+            // InternalFire.g:1581:2: ()
             {
              before(grammarAccess.getEqualityExpressionAccess().getEqualityExpressionLeftAction_1_0()); 
-            // InternalFire.g:1576:2: ()
-            // InternalFire.g:1576:3: 
+            // InternalFire.g:1582:2: ()
+            // InternalFire.g:1582:3: 
             {
             }
 
@@ -4984,14 +4958,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__EqualityExpression__Group_1__1"
-    // InternalFire.g:1584:1: rule__EqualityExpression__Group_1__1 : rule__EqualityExpression__Group_1__1__Impl rule__EqualityExpression__Group_1__2 ;
+    // InternalFire.g:1590:1: rule__EqualityExpression__Group_1__1 : rule__EqualityExpression__Group_1__1__Impl rule__EqualityExpression__Group_1__2 ;
     public final void rule__EqualityExpression__Group_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1588:1: ( rule__EqualityExpression__Group_1__1__Impl rule__EqualityExpression__Group_1__2 )
-            // InternalFire.g:1589:2: rule__EqualityExpression__Group_1__1__Impl rule__EqualityExpression__Group_1__2
+            // InternalFire.g:1594:1: ( rule__EqualityExpression__Group_1__1__Impl rule__EqualityExpression__Group_1__2 )
+            // InternalFire.g:1595:2: rule__EqualityExpression__Group_1__1__Impl rule__EqualityExpression__Group_1__2
             {
             pushFollow(FOLLOW_11);
             rule__EqualityExpression__Group_1__1__Impl();
@@ -5022,21 +4996,21 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__EqualityExpression__Group_1__1__Impl"
-    // InternalFire.g:1596:1: rule__EqualityExpression__Group_1__1__Impl : ( ( rule__EqualityExpression__OperatorAssignment_1_1 ) ) ;
+    // InternalFire.g:1602:1: rule__EqualityExpression__Group_1__1__Impl : ( ( rule__EqualityExpression__OperatorAssignment_1_1 ) ) ;
     public final void rule__EqualityExpression__Group_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1600:1: ( ( ( rule__EqualityExpression__OperatorAssignment_1_1 ) ) )
-            // InternalFire.g:1601:1: ( ( rule__EqualityExpression__OperatorAssignment_1_1 ) )
+            // InternalFire.g:1606:1: ( ( ( rule__EqualityExpression__OperatorAssignment_1_1 ) ) )
+            // InternalFire.g:1607:1: ( ( rule__EqualityExpression__OperatorAssignment_1_1 ) )
             {
-            // InternalFire.g:1601:1: ( ( rule__EqualityExpression__OperatorAssignment_1_1 ) )
-            // InternalFire.g:1602:2: ( rule__EqualityExpression__OperatorAssignment_1_1 )
+            // InternalFire.g:1607:1: ( ( rule__EqualityExpression__OperatorAssignment_1_1 ) )
+            // InternalFire.g:1608:2: ( rule__EqualityExpression__OperatorAssignment_1_1 )
             {
              before(grammarAccess.getEqualityExpressionAccess().getOperatorAssignment_1_1()); 
-            // InternalFire.g:1603:2: ( rule__EqualityExpression__OperatorAssignment_1_1 )
-            // InternalFire.g:1603:3: rule__EqualityExpression__OperatorAssignment_1_1
+            // InternalFire.g:1609:2: ( rule__EqualityExpression__OperatorAssignment_1_1 )
+            // InternalFire.g:1609:3: rule__EqualityExpression__OperatorAssignment_1_1
             {
             pushFollow(FOLLOW_2);
             rule__EqualityExpression__OperatorAssignment_1_1();
@@ -5069,14 +5043,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__EqualityExpression__Group_1__2"
-    // InternalFire.g:1611:1: rule__EqualityExpression__Group_1__2 : rule__EqualityExpression__Group_1__2__Impl ;
+    // InternalFire.g:1617:1: rule__EqualityExpression__Group_1__2 : rule__EqualityExpression__Group_1__2__Impl ;
     public final void rule__EqualityExpression__Group_1__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1615:1: ( rule__EqualityExpression__Group_1__2__Impl )
-            // InternalFire.g:1616:2: rule__EqualityExpression__Group_1__2__Impl
+            // InternalFire.g:1621:1: ( rule__EqualityExpression__Group_1__2__Impl )
+            // InternalFire.g:1622:2: rule__EqualityExpression__Group_1__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__EqualityExpression__Group_1__2__Impl();
@@ -5102,21 +5076,21 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__EqualityExpression__Group_1__2__Impl"
-    // InternalFire.g:1622:1: rule__EqualityExpression__Group_1__2__Impl : ( ( rule__EqualityExpression__RightAssignment_1_2 ) ) ;
+    // InternalFire.g:1628:1: rule__EqualityExpression__Group_1__2__Impl : ( ( rule__EqualityExpression__RightAssignment_1_2 ) ) ;
     public final void rule__EqualityExpression__Group_1__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1626:1: ( ( ( rule__EqualityExpression__RightAssignment_1_2 ) ) )
-            // InternalFire.g:1627:1: ( ( rule__EqualityExpression__RightAssignment_1_2 ) )
+            // InternalFire.g:1632:1: ( ( ( rule__EqualityExpression__RightAssignment_1_2 ) ) )
+            // InternalFire.g:1633:1: ( ( rule__EqualityExpression__RightAssignment_1_2 ) )
             {
-            // InternalFire.g:1627:1: ( ( rule__EqualityExpression__RightAssignment_1_2 ) )
-            // InternalFire.g:1628:2: ( rule__EqualityExpression__RightAssignment_1_2 )
+            // InternalFire.g:1633:1: ( ( rule__EqualityExpression__RightAssignment_1_2 ) )
+            // InternalFire.g:1634:2: ( rule__EqualityExpression__RightAssignment_1_2 )
             {
              before(grammarAccess.getEqualityExpressionAccess().getRightAssignment_1_2()); 
-            // InternalFire.g:1629:2: ( rule__EqualityExpression__RightAssignment_1_2 )
-            // InternalFire.g:1629:3: rule__EqualityExpression__RightAssignment_1_2
+            // InternalFire.g:1635:2: ( rule__EqualityExpression__RightAssignment_1_2 )
+            // InternalFire.g:1635:3: rule__EqualityExpression__RightAssignment_1_2
             {
             pushFollow(FOLLOW_2);
             rule__EqualityExpression__RightAssignment_1_2();
@@ -5149,14 +5123,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ComparisonExpression__Group__0"
-    // InternalFire.g:1638:1: rule__ComparisonExpression__Group__0 : rule__ComparisonExpression__Group__0__Impl rule__ComparisonExpression__Group__1 ;
+    // InternalFire.g:1644:1: rule__ComparisonExpression__Group__0 : rule__ComparisonExpression__Group__0__Impl rule__ComparisonExpression__Group__1 ;
     public final void rule__ComparisonExpression__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1642:1: ( rule__ComparisonExpression__Group__0__Impl rule__ComparisonExpression__Group__1 )
-            // InternalFire.g:1643:2: rule__ComparisonExpression__Group__0__Impl rule__ComparisonExpression__Group__1
+            // InternalFire.g:1648:1: ( rule__ComparisonExpression__Group__0__Impl rule__ComparisonExpression__Group__1 )
+            // InternalFire.g:1649:2: rule__ComparisonExpression__Group__0__Impl rule__ComparisonExpression__Group__1
             {
             pushFollow(FOLLOW_23);
             rule__ComparisonExpression__Group__0__Impl();
@@ -5187,17 +5161,17 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ComparisonExpression__Group__0__Impl"
-    // InternalFire.g:1650:1: rule__ComparisonExpression__Group__0__Impl : ( ruleAdditiveExpression ) ;
+    // InternalFire.g:1656:1: rule__ComparisonExpression__Group__0__Impl : ( ruleAdditiveExpression ) ;
     public final void rule__ComparisonExpression__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1654:1: ( ( ruleAdditiveExpression ) )
-            // InternalFire.g:1655:1: ( ruleAdditiveExpression )
+            // InternalFire.g:1660:1: ( ( ruleAdditiveExpression ) )
+            // InternalFire.g:1661:1: ( ruleAdditiveExpression )
             {
-            // InternalFire.g:1655:1: ( ruleAdditiveExpression )
-            // InternalFire.g:1656:2: ruleAdditiveExpression
+            // InternalFire.g:1661:1: ( ruleAdditiveExpression )
+            // InternalFire.g:1662:2: ruleAdditiveExpression
             {
              before(grammarAccess.getComparisonExpressionAccess().getAdditiveExpressionParserRuleCall_0()); 
             pushFollow(FOLLOW_2);
@@ -5228,14 +5202,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ComparisonExpression__Group__1"
-    // InternalFire.g:1665:1: rule__ComparisonExpression__Group__1 : rule__ComparisonExpression__Group__1__Impl ;
+    // InternalFire.g:1671:1: rule__ComparisonExpression__Group__1 : rule__ComparisonExpression__Group__1__Impl ;
     public final void rule__ComparisonExpression__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1669:1: ( rule__ComparisonExpression__Group__1__Impl )
-            // InternalFire.g:1670:2: rule__ComparisonExpression__Group__1__Impl
+            // InternalFire.g:1675:1: ( rule__ComparisonExpression__Group__1__Impl )
+            // InternalFire.g:1676:2: rule__ComparisonExpression__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__ComparisonExpression__Group__1__Impl();
@@ -5261,20 +5235,20 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ComparisonExpression__Group__1__Impl"
-    // InternalFire.g:1676:1: rule__ComparisonExpression__Group__1__Impl : ( ( rule__ComparisonExpression__Group_1__0 )* ) ;
+    // InternalFire.g:1682:1: rule__ComparisonExpression__Group__1__Impl : ( ( rule__ComparisonExpression__Group_1__0 )* ) ;
     public final void rule__ComparisonExpression__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1680:1: ( ( ( rule__ComparisonExpression__Group_1__0 )* ) )
-            // InternalFire.g:1681:1: ( ( rule__ComparisonExpression__Group_1__0 )* )
+            // InternalFire.g:1686:1: ( ( ( rule__ComparisonExpression__Group_1__0 )* ) )
+            // InternalFire.g:1687:1: ( ( rule__ComparisonExpression__Group_1__0 )* )
             {
-            // InternalFire.g:1681:1: ( ( rule__ComparisonExpression__Group_1__0 )* )
-            // InternalFire.g:1682:2: ( rule__ComparisonExpression__Group_1__0 )*
+            // InternalFire.g:1687:1: ( ( rule__ComparisonExpression__Group_1__0 )* )
+            // InternalFire.g:1688:2: ( rule__ComparisonExpression__Group_1__0 )*
             {
              before(grammarAccess.getComparisonExpressionAccess().getGroup_1()); 
-            // InternalFire.g:1683:2: ( rule__ComparisonExpression__Group_1__0 )*
+            // InternalFire.g:1689:2: ( rule__ComparisonExpression__Group_1__0 )*
             loop14:
             do {
                 int alt14=2;
@@ -5287,7 +5261,7 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
                 switch (alt14) {
             	case 1 :
-            	    // InternalFire.g:1683:3: rule__ComparisonExpression__Group_1__0
+            	    // InternalFire.g:1689:3: rule__ComparisonExpression__Group_1__0
             	    {
             	    pushFollow(FOLLOW_24);
             	    rule__ComparisonExpression__Group_1__0();
@@ -5326,14 +5300,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ComparisonExpression__Group_1__0"
-    // InternalFire.g:1692:1: rule__ComparisonExpression__Group_1__0 : rule__ComparisonExpression__Group_1__0__Impl rule__ComparisonExpression__Group_1__1 ;
+    // InternalFire.g:1698:1: rule__ComparisonExpression__Group_1__0 : rule__ComparisonExpression__Group_1__0__Impl rule__ComparisonExpression__Group_1__1 ;
     public final void rule__ComparisonExpression__Group_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1696:1: ( rule__ComparisonExpression__Group_1__0__Impl rule__ComparisonExpression__Group_1__1 )
-            // InternalFire.g:1697:2: rule__ComparisonExpression__Group_1__0__Impl rule__ComparisonExpression__Group_1__1
+            // InternalFire.g:1702:1: ( rule__ComparisonExpression__Group_1__0__Impl rule__ComparisonExpression__Group_1__1 )
+            // InternalFire.g:1703:2: rule__ComparisonExpression__Group_1__0__Impl rule__ComparisonExpression__Group_1__1
             {
             pushFollow(FOLLOW_23);
             rule__ComparisonExpression__Group_1__0__Impl();
@@ -5364,21 +5338,21 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ComparisonExpression__Group_1__0__Impl"
-    // InternalFire.g:1704:1: rule__ComparisonExpression__Group_1__0__Impl : ( () ) ;
+    // InternalFire.g:1710:1: rule__ComparisonExpression__Group_1__0__Impl : ( () ) ;
     public final void rule__ComparisonExpression__Group_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1708:1: ( ( () ) )
-            // InternalFire.g:1709:1: ( () )
+            // InternalFire.g:1714:1: ( ( () ) )
+            // InternalFire.g:1715:1: ( () )
             {
-            // InternalFire.g:1709:1: ( () )
-            // InternalFire.g:1710:2: ()
+            // InternalFire.g:1715:1: ( () )
+            // InternalFire.g:1716:2: ()
             {
              before(grammarAccess.getComparisonExpressionAccess().getComparisonExpressionLeftAction_1_0()); 
-            // InternalFire.g:1711:2: ()
-            // InternalFire.g:1711:3: 
+            // InternalFire.g:1717:2: ()
+            // InternalFire.g:1717:3: 
             {
             }
 
@@ -5401,14 +5375,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ComparisonExpression__Group_1__1"
-    // InternalFire.g:1719:1: rule__ComparisonExpression__Group_1__1 : rule__ComparisonExpression__Group_1__1__Impl rule__ComparisonExpression__Group_1__2 ;
+    // InternalFire.g:1725:1: rule__ComparisonExpression__Group_1__1 : rule__ComparisonExpression__Group_1__1__Impl rule__ComparisonExpression__Group_1__2 ;
     public final void rule__ComparisonExpression__Group_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1723:1: ( rule__ComparisonExpression__Group_1__1__Impl rule__ComparisonExpression__Group_1__2 )
-            // InternalFire.g:1724:2: rule__ComparisonExpression__Group_1__1__Impl rule__ComparisonExpression__Group_1__2
+            // InternalFire.g:1729:1: ( rule__ComparisonExpression__Group_1__1__Impl rule__ComparisonExpression__Group_1__2 )
+            // InternalFire.g:1730:2: rule__ComparisonExpression__Group_1__1__Impl rule__ComparisonExpression__Group_1__2
             {
             pushFollow(FOLLOW_11);
             rule__ComparisonExpression__Group_1__1__Impl();
@@ -5439,21 +5413,21 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ComparisonExpression__Group_1__1__Impl"
-    // InternalFire.g:1731:1: rule__ComparisonExpression__Group_1__1__Impl : ( ( rule__ComparisonExpression__OperatorAssignment_1_1 ) ) ;
+    // InternalFire.g:1737:1: rule__ComparisonExpression__Group_1__1__Impl : ( ( rule__ComparisonExpression__OperatorAssignment_1_1 ) ) ;
     public final void rule__ComparisonExpression__Group_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1735:1: ( ( ( rule__ComparisonExpression__OperatorAssignment_1_1 ) ) )
-            // InternalFire.g:1736:1: ( ( rule__ComparisonExpression__OperatorAssignment_1_1 ) )
+            // InternalFire.g:1741:1: ( ( ( rule__ComparisonExpression__OperatorAssignment_1_1 ) ) )
+            // InternalFire.g:1742:1: ( ( rule__ComparisonExpression__OperatorAssignment_1_1 ) )
             {
-            // InternalFire.g:1736:1: ( ( rule__ComparisonExpression__OperatorAssignment_1_1 ) )
-            // InternalFire.g:1737:2: ( rule__ComparisonExpression__OperatorAssignment_1_1 )
+            // InternalFire.g:1742:1: ( ( rule__ComparisonExpression__OperatorAssignment_1_1 ) )
+            // InternalFire.g:1743:2: ( rule__ComparisonExpression__OperatorAssignment_1_1 )
             {
              before(grammarAccess.getComparisonExpressionAccess().getOperatorAssignment_1_1()); 
-            // InternalFire.g:1738:2: ( rule__ComparisonExpression__OperatorAssignment_1_1 )
-            // InternalFire.g:1738:3: rule__ComparisonExpression__OperatorAssignment_1_1
+            // InternalFire.g:1744:2: ( rule__ComparisonExpression__OperatorAssignment_1_1 )
+            // InternalFire.g:1744:3: rule__ComparisonExpression__OperatorAssignment_1_1
             {
             pushFollow(FOLLOW_2);
             rule__ComparisonExpression__OperatorAssignment_1_1();
@@ -5486,14 +5460,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ComparisonExpression__Group_1__2"
-    // InternalFire.g:1746:1: rule__ComparisonExpression__Group_1__2 : rule__ComparisonExpression__Group_1__2__Impl ;
+    // InternalFire.g:1752:1: rule__ComparisonExpression__Group_1__2 : rule__ComparisonExpression__Group_1__2__Impl ;
     public final void rule__ComparisonExpression__Group_1__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1750:1: ( rule__ComparisonExpression__Group_1__2__Impl )
-            // InternalFire.g:1751:2: rule__ComparisonExpression__Group_1__2__Impl
+            // InternalFire.g:1756:1: ( rule__ComparisonExpression__Group_1__2__Impl )
+            // InternalFire.g:1757:2: rule__ComparisonExpression__Group_1__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__ComparisonExpression__Group_1__2__Impl();
@@ -5519,21 +5493,21 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ComparisonExpression__Group_1__2__Impl"
-    // InternalFire.g:1757:1: rule__ComparisonExpression__Group_1__2__Impl : ( ( rule__ComparisonExpression__RightAssignment_1_2 ) ) ;
+    // InternalFire.g:1763:1: rule__ComparisonExpression__Group_1__2__Impl : ( ( rule__ComparisonExpression__RightAssignment_1_2 ) ) ;
     public final void rule__ComparisonExpression__Group_1__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1761:1: ( ( ( rule__ComparisonExpression__RightAssignment_1_2 ) ) )
-            // InternalFire.g:1762:1: ( ( rule__ComparisonExpression__RightAssignment_1_2 ) )
+            // InternalFire.g:1767:1: ( ( ( rule__ComparisonExpression__RightAssignment_1_2 ) ) )
+            // InternalFire.g:1768:1: ( ( rule__ComparisonExpression__RightAssignment_1_2 ) )
             {
-            // InternalFire.g:1762:1: ( ( rule__ComparisonExpression__RightAssignment_1_2 ) )
-            // InternalFire.g:1763:2: ( rule__ComparisonExpression__RightAssignment_1_2 )
+            // InternalFire.g:1768:1: ( ( rule__ComparisonExpression__RightAssignment_1_2 ) )
+            // InternalFire.g:1769:2: ( rule__ComparisonExpression__RightAssignment_1_2 )
             {
              before(grammarAccess.getComparisonExpressionAccess().getRightAssignment_1_2()); 
-            // InternalFire.g:1764:2: ( rule__ComparisonExpression__RightAssignment_1_2 )
-            // InternalFire.g:1764:3: rule__ComparisonExpression__RightAssignment_1_2
+            // InternalFire.g:1770:2: ( rule__ComparisonExpression__RightAssignment_1_2 )
+            // InternalFire.g:1770:3: rule__ComparisonExpression__RightAssignment_1_2
             {
             pushFollow(FOLLOW_2);
             rule__ComparisonExpression__RightAssignment_1_2();
@@ -5566,14 +5540,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__AdditiveExpression__Group__0"
-    // InternalFire.g:1773:1: rule__AdditiveExpression__Group__0 : rule__AdditiveExpression__Group__0__Impl rule__AdditiveExpression__Group__1 ;
+    // InternalFire.g:1779:1: rule__AdditiveExpression__Group__0 : rule__AdditiveExpression__Group__0__Impl rule__AdditiveExpression__Group__1 ;
     public final void rule__AdditiveExpression__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1777:1: ( rule__AdditiveExpression__Group__0__Impl rule__AdditiveExpression__Group__1 )
-            // InternalFire.g:1778:2: rule__AdditiveExpression__Group__0__Impl rule__AdditiveExpression__Group__1
+            // InternalFire.g:1783:1: ( rule__AdditiveExpression__Group__0__Impl rule__AdditiveExpression__Group__1 )
+            // InternalFire.g:1784:2: rule__AdditiveExpression__Group__0__Impl rule__AdditiveExpression__Group__1
             {
             pushFollow(FOLLOW_25);
             rule__AdditiveExpression__Group__0__Impl();
@@ -5604,17 +5578,17 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__AdditiveExpression__Group__0__Impl"
-    // InternalFire.g:1785:1: rule__AdditiveExpression__Group__0__Impl : ( ruleMultiplicativeExpression ) ;
+    // InternalFire.g:1791:1: rule__AdditiveExpression__Group__0__Impl : ( ruleMultiplicativeExpression ) ;
     public final void rule__AdditiveExpression__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1789:1: ( ( ruleMultiplicativeExpression ) )
-            // InternalFire.g:1790:1: ( ruleMultiplicativeExpression )
+            // InternalFire.g:1795:1: ( ( ruleMultiplicativeExpression ) )
+            // InternalFire.g:1796:1: ( ruleMultiplicativeExpression )
             {
-            // InternalFire.g:1790:1: ( ruleMultiplicativeExpression )
-            // InternalFire.g:1791:2: ruleMultiplicativeExpression
+            // InternalFire.g:1796:1: ( ruleMultiplicativeExpression )
+            // InternalFire.g:1797:2: ruleMultiplicativeExpression
             {
              before(grammarAccess.getAdditiveExpressionAccess().getMultiplicativeExpressionParserRuleCall_0()); 
             pushFollow(FOLLOW_2);
@@ -5645,14 +5619,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__AdditiveExpression__Group__1"
-    // InternalFire.g:1800:1: rule__AdditiveExpression__Group__1 : rule__AdditiveExpression__Group__1__Impl ;
+    // InternalFire.g:1806:1: rule__AdditiveExpression__Group__1 : rule__AdditiveExpression__Group__1__Impl ;
     public final void rule__AdditiveExpression__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1804:1: ( rule__AdditiveExpression__Group__1__Impl )
-            // InternalFire.g:1805:2: rule__AdditiveExpression__Group__1__Impl
+            // InternalFire.g:1810:1: ( rule__AdditiveExpression__Group__1__Impl )
+            // InternalFire.g:1811:2: rule__AdditiveExpression__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__AdditiveExpression__Group__1__Impl();
@@ -5678,20 +5652,20 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__AdditiveExpression__Group__1__Impl"
-    // InternalFire.g:1811:1: rule__AdditiveExpression__Group__1__Impl : ( ( rule__AdditiveExpression__Group_1__0 )* ) ;
+    // InternalFire.g:1817:1: rule__AdditiveExpression__Group__1__Impl : ( ( rule__AdditiveExpression__Group_1__0 )* ) ;
     public final void rule__AdditiveExpression__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1815:1: ( ( ( rule__AdditiveExpression__Group_1__0 )* ) )
-            // InternalFire.g:1816:1: ( ( rule__AdditiveExpression__Group_1__0 )* )
+            // InternalFire.g:1821:1: ( ( ( rule__AdditiveExpression__Group_1__0 )* ) )
+            // InternalFire.g:1822:1: ( ( rule__AdditiveExpression__Group_1__0 )* )
             {
-            // InternalFire.g:1816:1: ( ( rule__AdditiveExpression__Group_1__0 )* )
-            // InternalFire.g:1817:2: ( rule__AdditiveExpression__Group_1__0 )*
+            // InternalFire.g:1822:1: ( ( rule__AdditiveExpression__Group_1__0 )* )
+            // InternalFire.g:1823:2: ( rule__AdditiveExpression__Group_1__0 )*
             {
              before(grammarAccess.getAdditiveExpressionAccess().getGroup_1()); 
-            // InternalFire.g:1818:2: ( rule__AdditiveExpression__Group_1__0 )*
+            // InternalFire.g:1824:2: ( rule__AdditiveExpression__Group_1__0 )*
             loop15:
             do {
                 int alt15=2;
@@ -5704,7 +5678,7 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
                 switch (alt15) {
             	case 1 :
-            	    // InternalFire.g:1818:3: rule__AdditiveExpression__Group_1__0
+            	    // InternalFire.g:1824:3: rule__AdditiveExpression__Group_1__0
             	    {
             	    pushFollow(FOLLOW_26);
             	    rule__AdditiveExpression__Group_1__0();
@@ -5743,14 +5717,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__AdditiveExpression__Group_1__0"
-    // InternalFire.g:1827:1: rule__AdditiveExpression__Group_1__0 : rule__AdditiveExpression__Group_1__0__Impl rule__AdditiveExpression__Group_1__1 ;
+    // InternalFire.g:1833:1: rule__AdditiveExpression__Group_1__0 : rule__AdditiveExpression__Group_1__0__Impl rule__AdditiveExpression__Group_1__1 ;
     public final void rule__AdditiveExpression__Group_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1831:1: ( rule__AdditiveExpression__Group_1__0__Impl rule__AdditiveExpression__Group_1__1 )
-            // InternalFire.g:1832:2: rule__AdditiveExpression__Group_1__0__Impl rule__AdditiveExpression__Group_1__1
+            // InternalFire.g:1837:1: ( rule__AdditiveExpression__Group_1__0__Impl rule__AdditiveExpression__Group_1__1 )
+            // InternalFire.g:1838:2: rule__AdditiveExpression__Group_1__0__Impl rule__AdditiveExpression__Group_1__1
             {
             pushFollow(FOLLOW_25);
             rule__AdditiveExpression__Group_1__0__Impl();
@@ -5781,21 +5755,21 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__AdditiveExpression__Group_1__0__Impl"
-    // InternalFire.g:1839:1: rule__AdditiveExpression__Group_1__0__Impl : ( () ) ;
+    // InternalFire.g:1845:1: rule__AdditiveExpression__Group_1__0__Impl : ( () ) ;
     public final void rule__AdditiveExpression__Group_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1843:1: ( ( () ) )
-            // InternalFire.g:1844:1: ( () )
+            // InternalFire.g:1849:1: ( ( () ) )
+            // InternalFire.g:1850:1: ( () )
             {
-            // InternalFire.g:1844:1: ( () )
-            // InternalFire.g:1845:2: ()
+            // InternalFire.g:1850:1: ( () )
+            // InternalFire.g:1851:2: ()
             {
              before(grammarAccess.getAdditiveExpressionAccess().getAdditiveExpressionLeftAction_1_0()); 
-            // InternalFire.g:1846:2: ()
-            // InternalFire.g:1846:3: 
+            // InternalFire.g:1852:2: ()
+            // InternalFire.g:1852:3: 
             {
             }
 
@@ -5818,14 +5792,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__AdditiveExpression__Group_1__1"
-    // InternalFire.g:1854:1: rule__AdditiveExpression__Group_1__1 : rule__AdditiveExpression__Group_1__1__Impl rule__AdditiveExpression__Group_1__2 ;
+    // InternalFire.g:1860:1: rule__AdditiveExpression__Group_1__1 : rule__AdditiveExpression__Group_1__1__Impl rule__AdditiveExpression__Group_1__2 ;
     public final void rule__AdditiveExpression__Group_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1858:1: ( rule__AdditiveExpression__Group_1__1__Impl rule__AdditiveExpression__Group_1__2 )
-            // InternalFire.g:1859:2: rule__AdditiveExpression__Group_1__1__Impl rule__AdditiveExpression__Group_1__2
+            // InternalFire.g:1864:1: ( rule__AdditiveExpression__Group_1__1__Impl rule__AdditiveExpression__Group_1__2 )
+            // InternalFire.g:1865:2: rule__AdditiveExpression__Group_1__1__Impl rule__AdditiveExpression__Group_1__2
             {
             pushFollow(FOLLOW_11);
             rule__AdditiveExpression__Group_1__1__Impl();
@@ -5856,21 +5830,21 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__AdditiveExpression__Group_1__1__Impl"
-    // InternalFire.g:1866:1: rule__AdditiveExpression__Group_1__1__Impl : ( ( rule__AdditiveExpression__OperatorAssignment_1_1 ) ) ;
+    // InternalFire.g:1872:1: rule__AdditiveExpression__Group_1__1__Impl : ( ( rule__AdditiveExpression__OperatorAssignment_1_1 ) ) ;
     public final void rule__AdditiveExpression__Group_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1870:1: ( ( ( rule__AdditiveExpression__OperatorAssignment_1_1 ) ) )
-            // InternalFire.g:1871:1: ( ( rule__AdditiveExpression__OperatorAssignment_1_1 ) )
+            // InternalFire.g:1876:1: ( ( ( rule__AdditiveExpression__OperatorAssignment_1_1 ) ) )
+            // InternalFire.g:1877:1: ( ( rule__AdditiveExpression__OperatorAssignment_1_1 ) )
             {
-            // InternalFire.g:1871:1: ( ( rule__AdditiveExpression__OperatorAssignment_1_1 ) )
-            // InternalFire.g:1872:2: ( rule__AdditiveExpression__OperatorAssignment_1_1 )
+            // InternalFire.g:1877:1: ( ( rule__AdditiveExpression__OperatorAssignment_1_1 ) )
+            // InternalFire.g:1878:2: ( rule__AdditiveExpression__OperatorAssignment_1_1 )
             {
              before(grammarAccess.getAdditiveExpressionAccess().getOperatorAssignment_1_1()); 
-            // InternalFire.g:1873:2: ( rule__AdditiveExpression__OperatorAssignment_1_1 )
-            // InternalFire.g:1873:3: rule__AdditiveExpression__OperatorAssignment_1_1
+            // InternalFire.g:1879:2: ( rule__AdditiveExpression__OperatorAssignment_1_1 )
+            // InternalFire.g:1879:3: rule__AdditiveExpression__OperatorAssignment_1_1
             {
             pushFollow(FOLLOW_2);
             rule__AdditiveExpression__OperatorAssignment_1_1();
@@ -5903,14 +5877,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__AdditiveExpression__Group_1__2"
-    // InternalFire.g:1881:1: rule__AdditiveExpression__Group_1__2 : rule__AdditiveExpression__Group_1__2__Impl ;
+    // InternalFire.g:1887:1: rule__AdditiveExpression__Group_1__2 : rule__AdditiveExpression__Group_1__2__Impl ;
     public final void rule__AdditiveExpression__Group_1__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1885:1: ( rule__AdditiveExpression__Group_1__2__Impl )
-            // InternalFire.g:1886:2: rule__AdditiveExpression__Group_1__2__Impl
+            // InternalFire.g:1891:1: ( rule__AdditiveExpression__Group_1__2__Impl )
+            // InternalFire.g:1892:2: rule__AdditiveExpression__Group_1__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__AdditiveExpression__Group_1__2__Impl();
@@ -5936,21 +5910,21 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__AdditiveExpression__Group_1__2__Impl"
-    // InternalFire.g:1892:1: rule__AdditiveExpression__Group_1__2__Impl : ( ( rule__AdditiveExpression__RightAssignment_1_2 ) ) ;
+    // InternalFire.g:1898:1: rule__AdditiveExpression__Group_1__2__Impl : ( ( rule__AdditiveExpression__RightAssignment_1_2 ) ) ;
     public final void rule__AdditiveExpression__Group_1__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1896:1: ( ( ( rule__AdditiveExpression__RightAssignment_1_2 ) ) )
-            // InternalFire.g:1897:1: ( ( rule__AdditiveExpression__RightAssignment_1_2 ) )
+            // InternalFire.g:1902:1: ( ( ( rule__AdditiveExpression__RightAssignment_1_2 ) ) )
+            // InternalFire.g:1903:1: ( ( rule__AdditiveExpression__RightAssignment_1_2 ) )
             {
-            // InternalFire.g:1897:1: ( ( rule__AdditiveExpression__RightAssignment_1_2 ) )
-            // InternalFire.g:1898:2: ( rule__AdditiveExpression__RightAssignment_1_2 )
+            // InternalFire.g:1903:1: ( ( rule__AdditiveExpression__RightAssignment_1_2 ) )
+            // InternalFire.g:1904:2: ( rule__AdditiveExpression__RightAssignment_1_2 )
             {
              before(grammarAccess.getAdditiveExpressionAccess().getRightAssignment_1_2()); 
-            // InternalFire.g:1899:2: ( rule__AdditiveExpression__RightAssignment_1_2 )
-            // InternalFire.g:1899:3: rule__AdditiveExpression__RightAssignment_1_2
+            // InternalFire.g:1905:2: ( rule__AdditiveExpression__RightAssignment_1_2 )
+            // InternalFire.g:1905:3: rule__AdditiveExpression__RightAssignment_1_2
             {
             pushFollow(FOLLOW_2);
             rule__AdditiveExpression__RightAssignment_1_2();
@@ -5983,14 +5957,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MultiplicativeExpression__Group__0"
-    // InternalFire.g:1908:1: rule__MultiplicativeExpression__Group__0 : rule__MultiplicativeExpression__Group__0__Impl rule__MultiplicativeExpression__Group__1 ;
+    // InternalFire.g:1914:1: rule__MultiplicativeExpression__Group__0 : rule__MultiplicativeExpression__Group__0__Impl rule__MultiplicativeExpression__Group__1 ;
     public final void rule__MultiplicativeExpression__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1912:1: ( rule__MultiplicativeExpression__Group__0__Impl rule__MultiplicativeExpression__Group__1 )
-            // InternalFire.g:1913:2: rule__MultiplicativeExpression__Group__0__Impl rule__MultiplicativeExpression__Group__1
+            // InternalFire.g:1918:1: ( rule__MultiplicativeExpression__Group__0__Impl rule__MultiplicativeExpression__Group__1 )
+            // InternalFire.g:1919:2: rule__MultiplicativeExpression__Group__0__Impl rule__MultiplicativeExpression__Group__1
             {
             pushFollow(FOLLOW_27);
             rule__MultiplicativeExpression__Group__0__Impl();
@@ -6021,17 +5995,17 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MultiplicativeExpression__Group__0__Impl"
-    // InternalFire.g:1920:1: rule__MultiplicativeExpression__Group__0__Impl : ( ruleTerminalExpression ) ;
+    // InternalFire.g:1926:1: rule__MultiplicativeExpression__Group__0__Impl : ( ruleTerminalExpression ) ;
     public final void rule__MultiplicativeExpression__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1924:1: ( ( ruleTerminalExpression ) )
-            // InternalFire.g:1925:1: ( ruleTerminalExpression )
+            // InternalFire.g:1930:1: ( ( ruleTerminalExpression ) )
+            // InternalFire.g:1931:1: ( ruleTerminalExpression )
             {
-            // InternalFire.g:1925:1: ( ruleTerminalExpression )
-            // InternalFire.g:1926:2: ruleTerminalExpression
+            // InternalFire.g:1931:1: ( ruleTerminalExpression )
+            // InternalFire.g:1932:2: ruleTerminalExpression
             {
              before(grammarAccess.getMultiplicativeExpressionAccess().getTerminalExpressionParserRuleCall_0()); 
             pushFollow(FOLLOW_2);
@@ -6062,14 +6036,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MultiplicativeExpression__Group__1"
-    // InternalFire.g:1935:1: rule__MultiplicativeExpression__Group__1 : rule__MultiplicativeExpression__Group__1__Impl ;
+    // InternalFire.g:1941:1: rule__MultiplicativeExpression__Group__1 : rule__MultiplicativeExpression__Group__1__Impl ;
     public final void rule__MultiplicativeExpression__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1939:1: ( rule__MultiplicativeExpression__Group__1__Impl )
-            // InternalFire.g:1940:2: rule__MultiplicativeExpression__Group__1__Impl
+            // InternalFire.g:1945:1: ( rule__MultiplicativeExpression__Group__1__Impl )
+            // InternalFire.g:1946:2: rule__MultiplicativeExpression__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__MultiplicativeExpression__Group__1__Impl();
@@ -6095,20 +6069,20 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MultiplicativeExpression__Group__1__Impl"
-    // InternalFire.g:1946:1: rule__MultiplicativeExpression__Group__1__Impl : ( ( rule__MultiplicativeExpression__Group_1__0 )* ) ;
+    // InternalFire.g:1952:1: rule__MultiplicativeExpression__Group__1__Impl : ( ( rule__MultiplicativeExpression__Group_1__0 )* ) ;
     public final void rule__MultiplicativeExpression__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1950:1: ( ( ( rule__MultiplicativeExpression__Group_1__0 )* ) )
-            // InternalFire.g:1951:1: ( ( rule__MultiplicativeExpression__Group_1__0 )* )
+            // InternalFire.g:1956:1: ( ( ( rule__MultiplicativeExpression__Group_1__0 )* ) )
+            // InternalFire.g:1957:1: ( ( rule__MultiplicativeExpression__Group_1__0 )* )
             {
-            // InternalFire.g:1951:1: ( ( rule__MultiplicativeExpression__Group_1__0 )* )
-            // InternalFire.g:1952:2: ( rule__MultiplicativeExpression__Group_1__0 )*
+            // InternalFire.g:1957:1: ( ( rule__MultiplicativeExpression__Group_1__0 )* )
+            // InternalFire.g:1958:2: ( rule__MultiplicativeExpression__Group_1__0 )*
             {
              before(grammarAccess.getMultiplicativeExpressionAccess().getGroup_1()); 
-            // InternalFire.g:1953:2: ( rule__MultiplicativeExpression__Group_1__0 )*
+            // InternalFire.g:1959:2: ( rule__MultiplicativeExpression__Group_1__0 )*
             loop16:
             do {
                 int alt16=2;
@@ -6121,7 +6095,7 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
                 switch (alt16) {
             	case 1 :
-            	    // InternalFire.g:1953:3: rule__MultiplicativeExpression__Group_1__0
+            	    // InternalFire.g:1959:3: rule__MultiplicativeExpression__Group_1__0
             	    {
             	    pushFollow(FOLLOW_28);
             	    rule__MultiplicativeExpression__Group_1__0();
@@ -6160,14 +6134,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MultiplicativeExpression__Group_1__0"
-    // InternalFire.g:1962:1: rule__MultiplicativeExpression__Group_1__0 : rule__MultiplicativeExpression__Group_1__0__Impl rule__MultiplicativeExpression__Group_1__1 ;
+    // InternalFire.g:1968:1: rule__MultiplicativeExpression__Group_1__0 : rule__MultiplicativeExpression__Group_1__0__Impl rule__MultiplicativeExpression__Group_1__1 ;
     public final void rule__MultiplicativeExpression__Group_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1966:1: ( rule__MultiplicativeExpression__Group_1__0__Impl rule__MultiplicativeExpression__Group_1__1 )
-            // InternalFire.g:1967:2: rule__MultiplicativeExpression__Group_1__0__Impl rule__MultiplicativeExpression__Group_1__1
+            // InternalFire.g:1972:1: ( rule__MultiplicativeExpression__Group_1__0__Impl rule__MultiplicativeExpression__Group_1__1 )
+            // InternalFire.g:1973:2: rule__MultiplicativeExpression__Group_1__0__Impl rule__MultiplicativeExpression__Group_1__1
             {
             pushFollow(FOLLOW_27);
             rule__MultiplicativeExpression__Group_1__0__Impl();
@@ -6198,21 +6172,21 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MultiplicativeExpression__Group_1__0__Impl"
-    // InternalFire.g:1974:1: rule__MultiplicativeExpression__Group_1__0__Impl : ( () ) ;
+    // InternalFire.g:1980:1: rule__MultiplicativeExpression__Group_1__0__Impl : ( () ) ;
     public final void rule__MultiplicativeExpression__Group_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1978:1: ( ( () ) )
-            // InternalFire.g:1979:1: ( () )
+            // InternalFire.g:1984:1: ( ( () ) )
+            // InternalFire.g:1985:1: ( () )
             {
-            // InternalFire.g:1979:1: ( () )
-            // InternalFire.g:1980:2: ()
+            // InternalFire.g:1985:1: ( () )
+            // InternalFire.g:1986:2: ()
             {
              before(grammarAccess.getMultiplicativeExpressionAccess().getMultiplicativeExpressionLeftAction_1_0()); 
-            // InternalFire.g:1981:2: ()
-            // InternalFire.g:1981:3: 
+            // InternalFire.g:1987:2: ()
+            // InternalFire.g:1987:3: 
             {
             }
 
@@ -6235,14 +6209,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MultiplicativeExpression__Group_1__1"
-    // InternalFire.g:1989:1: rule__MultiplicativeExpression__Group_1__1 : rule__MultiplicativeExpression__Group_1__1__Impl rule__MultiplicativeExpression__Group_1__2 ;
+    // InternalFire.g:1995:1: rule__MultiplicativeExpression__Group_1__1 : rule__MultiplicativeExpression__Group_1__1__Impl rule__MultiplicativeExpression__Group_1__2 ;
     public final void rule__MultiplicativeExpression__Group_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:1993:1: ( rule__MultiplicativeExpression__Group_1__1__Impl rule__MultiplicativeExpression__Group_1__2 )
-            // InternalFire.g:1994:2: rule__MultiplicativeExpression__Group_1__1__Impl rule__MultiplicativeExpression__Group_1__2
+            // InternalFire.g:1999:1: ( rule__MultiplicativeExpression__Group_1__1__Impl rule__MultiplicativeExpression__Group_1__2 )
+            // InternalFire.g:2000:2: rule__MultiplicativeExpression__Group_1__1__Impl rule__MultiplicativeExpression__Group_1__2
             {
             pushFollow(FOLLOW_11);
             rule__MultiplicativeExpression__Group_1__1__Impl();
@@ -6273,21 +6247,21 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MultiplicativeExpression__Group_1__1__Impl"
-    // InternalFire.g:2001:1: rule__MultiplicativeExpression__Group_1__1__Impl : ( ( rule__MultiplicativeExpression__OperatorAssignment_1_1 ) ) ;
+    // InternalFire.g:2007:1: rule__MultiplicativeExpression__Group_1__1__Impl : ( ( rule__MultiplicativeExpression__OperatorAssignment_1_1 ) ) ;
     public final void rule__MultiplicativeExpression__Group_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2005:1: ( ( ( rule__MultiplicativeExpression__OperatorAssignment_1_1 ) ) )
-            // InternalFire.g:2006:1: ( ( rule__MultiplicativeExpression__OperatorAssignment_1_1 ) )
+            // InternalFire.g:2011:1: ( ( ( rule__MultiplicativeExpression__OperatorAssignment_1_1 ) ) )
+            // InternalFire.g:2012:1: ( ( rule__MultiplicativeExpression__OperatorAssignment_1_1 ) )
             {
-            // InternalFire.g:2006:1: ( ( rule__MultiplicativeExpression__OperatorAssignment_1_1 ) )
-            // InternalFire.g:2007:2: ( rule__MultiplicativeExpression__OperatorAssignment_1_1 )
+            // InternalFire.g:2012:1: ( ( rule__MultiplicativeExpression__OperatorAssignment_1_1 ) )
+            // InternalFire.g:2013:2: ( rule__MultiplicativeExpression__OperatorAssignment_1_1 )
             {
              before(grammarAccess.getMultiplicativeExpressionAccess().getOperatorAssignment_1_1()); 
-            // InternalFire.g:2008:2: ( rule__MultiplicativeExpression__OperatorAssignment_1_1 )
-            // InternalFire.g:2008:3: rule__MultiplicativeExpression__OperatorAssignment_1_1
+            // InternalFire.g:2014:2: ( rule__MultiplicativeExpression__OperatorAssignment_1_1 )
+            // InternalFire.g:2014:3: rule__MultiplicativeExpression__OperatorAssignment_1_1
             {
             pushFollow(FOLLOW_2);
             rule__MultiplicativeExpression__OperatorAssignment_1_1();
@@ -6320,14 +6294,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MultiplicativeExpression__Group_1__2"
-    // InternalFire.g:2016:1: rule__MultiplicativeExpression__Group_1__2 : rule__MultiplicativeExpression__Group_1__2__Impl ;
+    // InternalFire.g:2022:1: rule__MultiplicativeExpression__Group_1__2 : rule__MultiplicativeExpression__Group_1__2__Impl ;
     public final void rule__MultiplicativeExpression__Group_1__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2020:1: ( rule__MultiplicativeExpression__Group_1__2__Impl )
-            // InternalFire.g:2021:2: rule__MultiplicativeExpression__Group_1__2__Impl
+            // InternalFire.g:2026:1: ( rule__MultiplicativeExpression__Group_1__2__Impl )
+            // InternalFire.g:2027:2: rule__MultiplicativeExpression__Group_1__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__MultiplicativeExpression__Group_1__2__Impl();
@@ -6353,21 +6327,21 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MultiplicativeExpression__Group_1__2__Impl"
-    // InternalFire.g:2027:1: rule__MultiplicativeExpression__Group_1__2__Impl : ( ( rule__MultiplicativeExpression__RightAssignment_1_2 ) ) ;
+    // InternalFire.g:2033:1: rule__MultiplicativeExpression__Group_1__2__Impl : ( ( rule__MultiplicativeExpression__RightAssignment_1_2 ) ) ;
     public final void rule__MultiplicativeExpression__Group_1__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2031:1: ( ( ( rule__MultiplicativeExpression__RightAssignment_1_2 ) ) )
-            // InternalFire.g:2032:1: ( ( rule__MultiplicativeExpression__RightAssignment_1_2 ) )
+            // InternalFire.g:2037:1: ( ( ( rule__MultiplicativeExpression__RightAssignment_1_2 ) ) )
+            // InternalFire.g:2038:1: ( ( rule__MultiplicativeExpression__RightAssignment_1_2 ) )
             {
-            // InternalFire.g:2032:1: ( ( rule__MultiplicativeExpression__RightAssignment_1_2 ) )
-            // InternalFire.g:2033:2: ( rule__MultiplicativeExpression__RightAssignment_1_2 )
+            // InternalFire.g:2038:1: ( ( rule__MultiplicativeExpression__RightAssignment_1_2 ) )
+            // InternalFire.g:2039:2: ( rule__MultiplicativeExpression__RightAssignment_1_2 )
             {
              before(grammarAccess.getMultiplicativeExpressionAccess().getRightAssignment_1_2()); 
-            // InternalFire.g:2034:2: ( rule__MultiplicativeExpression__RightAssignment_1_2 )
-            // InternalFire.g:2034:3: rule__MultiplicativeExpression__RightAssignment_1_2
+            // InternalFire.g:2040:2: ( rule__MultiplicativeExpression__RightAssignment_1_2 )
+            // InternalFire.g:2040:3: rule__MultiplicativeExpression__RightAssignment_1_2
             {
             pushFollow(FOLLOW_2);
             rule__MultiplicativeExpression__RightAssignment_1_2();
@@ -6400,16 +6374,16 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TerminalExpression__Group_0__0"
-    // InternalFire.g:2043:1: rule__TerminalExpression__Group_0__0 : rule__TerminalExpression__Group_0__0__Impl rule__TerminalExpression__Group_0__1 ;
+    // InternalFire.g:2049:1: rule__TerminalExpression__Group_0__0 : rule__TerminalExpression__Group_0__0__Impl rule__TerminalExpression__Group_0__1 ;
     public final void rule__TerminalExpression__Group_0__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2047:1: ( rule__TerminalExpression__Group_0__0__Impl rule__TerminalExpression__Group_0__1 )
-            // InternalFire.g:2048:2: rule__TerminalExpression__Group_0__0__Impl rule__TerminalExpression__Group_0__1
+            // InternalFire.g:2053:1: ( rule__TerminalExpression__Group_0__0__Impl rule__TerminalExpression__Group_0__1 )
+            // InternalFire.g:2054:2: rule__TerminalExpression__Group_0__0__Impl rule__TerminalExpression__Group_0__1
             {
-            pushFollow(FOLLOW_29);
+            pushFollow(FOLLOW_7);
             rule__TerminalExpression__Group_0__0__Impl();
 
             state._fsp--;
@@ -6438,25 +6412,25 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TerminalExpression__Group_0__0__Impl"
-    // InternalFire.g:2055:1: rule__TerminalExpression__Group_0__0__Impl : ( () ) ;
+    // InternalFire.g:2061:1: rule__TerminalExpression__Group_0__0__Impl : ( () ) ;
     public final void rule__TerminalExpression__Group_0__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2059:1: ( ( () ) )
-            // InternalFire.g:2060:1: ( () )
+            // InternalFire.g:2065:1: ( ( () ) )
+            // InternalFire.g:2066:1: ( () )
             {
-            // InternalFire.g:2060:1: ( () )
-            // InternalFire.g:2061:2: ()
+            // InternalFire.g:2066:1: ( () )
+            // InternalFire.g:2067:2: ()
             {
-             before(grammarAccess.getTerminalExpressionAccess().getStringLiteralAction_0_0()); 
-            // InternalFire.g:2062:2: ()
-            // InternalFire.g:2062:3: 
+             before(grammarAccess.getTerminalExpressionAccess().getIdExpressionAction_0_0()); 
+            // InternalFire.g:2068:2: ()
+            // InternalFire.g:2068:3: 
             {
             }
 
-             after(grammarAccess.getTerminalExpressionAccess().getStringLiteralAction_0_0()); 
+             after(grammarAccess.getTerminalExpressionAccess().getIdExpressionAction_0_0()); 
 
             }
 
@@ -6475,14 +6449,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TerminalExpression__Group_0__1"
-    // InternalFire.g:2070:1: rule__TerminalExpression__Group_0__1 : rule__TerminalExpression__Group_0__1__Impl ;
+    // InternalFire.g:2076:1: rule__TerminalExpression__Group_0__1 : rule__TerminalExpression__Group_0__1__Impl ;
     public final void rule__TerminalExpression__Group_0__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2074:1: ( rule__TerminalExpression__Group_0__1__Impl )
-            // InternalFire.g:2075:2: rule__TerminalExpression__Group_0__1__Impl
+            // InternalFire.g:2080:1: ( rule__TerminalExpression__Group_0__1__Impl )
+            // InternalFire.g:2081:2: rule__TerminalExpression__Group_0__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__TerminalExpression__Group_0__1__Impl();
@@ -6508,21 +6482,21 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TerminalExpression__Group_0__1__Impl"
-    // InternalFire.g:2081:1: rule__TerminalExpression__Group_0__1__Impl : ( ( rule__TerminalExpression__ValueAssignment_0_1 ) ) ;
+    // InternalFire.g:2087:1: rule__TerminalExpression__Group_0__1__Impl : ( ( rule__TerminalExpression__ValueAssignment_0_1 ) ) ;
     public final void rule__TerminalExpression__Group_0__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2085:1: ( ( ( rule__TerminalExpression__ValueAssignment_0_1 ) ) )
-            // InternalFire.g:2086:1: ( ( rule__TerminalExpression__ValueAssignment_0_1 ) )
+            // InternalFire.g:2091:1: ( ( ( rule__TerminalExpression__ValueAssignment_0_1 ) ) )
+            // InternalFire.g:2092:1: ( ( rule__TerminalExpression__ValueAssignment_0_1 ) )
             {
-            // InternalFire.g:2086:1: ( ( rule__TerminalExpression__ValueAssignment_0_1 ) )
-            // InternalFire.g:2087:2: ( rule__TerminalExpression__ValueAssignment_0_1 )
+            // InternalFire.g:2092:1: ( ( rule__TerminalExpression__ValueAssignment_0_1 ) )
+            // InternalFire.g:2093:2: ( rule__TerminalExpression__ValueAssignment_0_1 )
             {
              before(grammarAccess.getTerminalExpressionAccess().getValueAssignment_0_1()); 
-            // InternalFire.g:2088:2: ( rule__TerminalExpression__ValueAssignment_0_1 )
-            // InternalFire.g:2088:3: rule__TerminalExpression__ValueAssignment_0_1
+            // InternalFire.g:2094:2: ( rule__TerminalExpression__ValueAssignment_0_1 )
+            // InternalFire.g:2094:3: rule__TerminalExpression__ValueAssignment_0_1
             {
             pushFollow(FOLLOW_2);
             rule__TerminalExpression__ValueAssignment_0_1();
@@ -6555,16 +6529,16 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TerminalExpression__Group_1__0"
-    // InternalFire.g:2097:1: rule__TerminalExpression__Group_1__0 : rule__TerminalExpression__Group_1__0__Impl rule__TerminalExpression__Group_1__1 ;
+    // InternalFire.g:2103:1: rule__TerminalExpression__Group_1__0 : rule__TerminalExpression__Group_1__0__Impl rule__TerminalExpression__Group_1__1 ;
     public final void rule__TerminalExpression__Group_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2101:1: ( rule__TerminalExpression__Group_1__0__Impl rule__TerminalExpression__Group_1__1 )
-            // InternalFire.g:2102:2: rule__TerminalExpression__Group_1__0__Impl rule__TerminalExpression__Group_1__1
+            // InternalFire.g:2107:1: ( rule__TerminalExpression__Group_1__0__Impl rule__TerminalExpression__Group_1__1 )
+            // InternalFire.g:2108:2: rule__TerminalExpression__Group_1__0__Impl rule__TerminalExpression__Group_1__1
             {
-            pushFollow(FOLLOW_30);
+            pushFollow(FOLLOW_29);
             rule__TerminalExpression__Group_1__0__Impl();
 
             state._fsp--;
@@ -6593,25 +6567,25 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TerminalExpression__Group_1__0__Impl"
-    // InternalFire.g:2109:1: rule__TerminalExpression__Group_1__0__Impl : ( () ) ;
+    // InternalFire.g:2115:1: rule__TerminalExpression__Group_1__0__Impl : ( () ) ;
     public final void rule__TerminalExpression__Group_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2113:1: ( ( () ) )
-            // InternalFire.g:2114:1: ( () )
+            // InternalFire.g:2119:1: ( ( () ) )
+            // InternalFire.g:2120:1: ( () )
             {
-            // InternalFire.g:2114:1: ( () )
-            // InternalFire.g:2115:2: ()
+            // InternalFire.g:2120:1: ( () )
+            // InternalFire.g:2121:2: ()
             {
-             before(grammarAccess.getTerminalExpressionAccess().getBooleanLiteralAction_1_0()); 
-            // InternalFire.g:2116:2: ()
-            // InternalFire.g:2116:3: 
+             before(grammarAccess.getTerminalExpressionAccess().getStringLiteralAction_1_0()); 
+            // InternalFire.g:2122:2: ()
+            // InternalFire.g:2122:3: 
             {
             }
 
-             after(grammarAccess.getTerminalExpressionAccess().getBooleanLiteralAction_1_0()); 
+             after(grammarAccess.getTerminalExpressionAccess().getStringLiteralAction_1_0()); 
 
             }
 
@@ -6630,14 +6604,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TerminalExpression__Group_1__1"
-    // InternalFire.g:2124:1: rule__TerminalExpression__Group_1__1 : rule__TerminalExpression__Group_1__1__Impl ;
+    // InternalFire.g:2130:1: rule__TerminalExpression__Group_1__1 : rule__TerminalExpression__Group_1__1__Impl ;
     public final void rule__TerminalExpression__Group_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2128:1: ( rule__TerminalExpression__Group_1__1__Impl )
-            // InternalFire.g:2129:2: rule__TerminalExpression__Group_1__1__Impl
+            // InternalFire.g:2134:1: ( rule__TerminalExpression__Group_1__1__Impl )
+            // InternalFire.g:2135:2: rule__TerminalExpression__Group_1__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__TerminalExpression__Group_1__1__Impl();
@@ -6663,31 +6637,31 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TerminalExpression__Group_1__1__Impl"
-    // InternalFire.g:2135:1: rule__TerminalExpression__Group_1__1__Impl : ( ( rule__TerminalExpression__Alternatives_1_1 ) ) ;
+    // InternalFire.g:2141:1: rule__TerminalExpression__Group_1__1__Impl : ( ( rule__TerminalExpression__ValueAssignment_1_1 ) ) ;
     public final void rule__TerminalExpression__Group_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2139:1: ( ( ( rule__TerminalExpression__Alternatives_1_1 ) ) )
-            // InternalFire.g:2140:1: ( ( rule__TerminalExpression__Alternatives_1_1 ) )
+            // InternalFire.g:2145:1: ( ( ( rule__TerminalExpression__ValueAssignment_1_1 ) ) )
+            // InternalFire.g:2146:1: ( ( rule__TerminalExpression__ValueAssignment_1_1 ) )
             {
-            // InternalFire.g:2140:1: ( ( rule__TerminalExpression__Alternatives_1_1 ) )
-            // InternalFire.g:2141:2: ( rule__TerminalExpression__Alternatives_1_1 )
+            // InternalFire.g:2146:1: ( ( rule__TerminalExpression__ValueAssignment_1_1 ) )
+            // InternalFire.g:2147:2: ( rule__TerminalExpression__ValueAssignment_1_1 )
             {
-             before(grammarAccess.getTerminalExpressionAccess().getAlternatives_1_1()); 
-            // InternalFire.g:2142:2: ( rule__TerminalExpression__Alternatives_1_1 )
-            // InternalFire.g:2142:3: rule__TerminalExpression__Alternatives_1_1
+             before(grammarAccess.getTerminalExpressionAccess().getValueAssignment_1_1()); 
+            // InternalFire.g:2148:2: ( rule__TerminalExpression__ValueAssignment_1_1 )
+            // InternalFire.g:2148:3: rule__TerminalExpression__ValueAssignment_1_1
             {
             pushFollow(FOLLOW_2);
-            rule__TerminalExpression__Alternatives_1_1();
+            rule__TerminalExpression__ValueAssignment_1_1();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getTerminalExpressionAccess().getAlternatives_1_1()); 
+             after(grammarAccess.getTerminalExpressionAccess().getValueAssignment_1_1()); 
 
             }
 
@@ -6710,16 +6684,16 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TerminalExpression__Group_2__0"
-    // InternalFire.g:2151:1: rule__TerminalExpression__Group_2__0 : rule__TerminalExpression__Group_2__0__Impl rule__TerminalExpression__Group_2__1 ;
+    // InternalFire.g:2157:1: rule__TerminalExpression__Group_2__0 : rule__TerminalExpression__Group_2__0__Impl rule__TerminalExpression__Group_2__1 ;
     public final void rule__TerminalExpression__Group_2__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2155:1: ( rule__TerminalExpression__Group_2__0__Impl rule__TerminalExpression__Group_2__1 )
-            // InternalFire.g:2156:2: rule__TerminalExpression__Group_2__0__Impl rule__TerminalExpression__Group_2__1
+            // InternalFire.g:2161:1: ( rule__TerminalExpression__Group_2__0__Impl rule__TerminalExpression__Group_2__1 )
+            // InternalFire.g:2162:2: rule__TerminalExpression__Group_2__0__Impl rule__TerminalExpression__Group_2__1
             {
-            pushFollow(FOLLOW_31);
+            pushFollow(FOLLOW_30);
             rule__TerminalExpression__Group_2__0__Impl();
 
             state._fsp--;
@@ -6748,25 +6722,25 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TerminalExpression__Group_2__0__Impl"
-    // InternalFire.g:2163:1: rule__TerminalExpression__Group_2__0__Impl : ( () ) ;
+    // InternalFire.g:2169:1: rule__TerminalExpression__Group_2__0__Impl : ( () ) ;
     public final void rule__TerminalExpression__Group_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2167:1: ( ( () ) )
-            // InternalFire.g:2168:1: ( () )
+            // InternalFire.g:2173:1: ( ( () ) )
+            // InternalFire.g:2174:1: ( () )
             {
-            // InternalFire.g:2168:1: ( () )
-            // InternalFire.g:2169:2: ()
+            // InternalFire.g:2174:1: ( () )
+            // InternalFire.g:2175:2: ()
             {
-             before(grammarAccess.getTerminalExpressionAccess().getIntegerLiteralAction_2_0()); 
-            // InternalFire.g:2170:2: ()
-            // InternalFire.g:2170:3: 
+             before(grammarAccess.getTerminalExpressionAccess().getBooleanLiteralAction_2_0()); 
+            // InternalFire.g:2176:2: ()
+            // InternalFire.g:2176:3: 
             {
             }
 
-             after(grammarAccess.getTerminalExpressionAccess().getIntegerLiteralAction_2_0()); 
+             after(grammarAccess.getTerminalExpressionAccess().getBooleanLiteralAction_2_0()); 
 
             }
 
@@ -6785,14 +6759,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TerminalExpression__Group_2__1"
-    // InternalFire.g:2178:1: rule__TerminalExpression__Group_2__1 : rule__TerminalExpression__Group_2__1__Impl ;
+    // InternalFire.g:2184:1: rule__TerminalExpression__Group_2__1 : rule__TerminalExpression__Group_2__1__Impl ;
     public final void rule__TerminalExpression__Group_2__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2182:1: ( rule__TerminalExpression__Group_2__1__Impl )
-            // InternalFire.g:2183:2: rule__TerminalExpression__Group_2__1__Impl
+            // InternalFire.g:2188:1: ( rule__TerminalExpression__Group_2__1__Impl )
+            // InternalFire.g:2189:2: rule__TerminalExpression__Group_2__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__TerminalExpression__Group_2__1__Impl();
@@ -6818,31 +6792,31 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TerminalExpression__Group_2__1__Impl"
-    // InternalFire.g:2189:1: rule__TerminalExpression__Group_2__1__Impl : ( ( rule__TerminalExpression__ValueAssignment_2_1 ) ) ;
+    // InternalFire.g:2195:1: rule__TerminalExpression__Group_2__1__Impl : ( ( rule__TerminalExpression__Alternatives_2_1 ) ) ;
     public final void rule__TerminalExpression__Group_2__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2193:1: ( ( ( rule__TerminalExpression__ValueAssignment_2_1 ) ) )
-            // InternalFire.g:2194:1: ( ( rule__TerminalExpression__ValueAssignment_2_1 ) )
+            // InternalFire.g:2199:1: ( ( ( rule__TerminalExpression__Alternatives_2_1 ) ) )
+            // InternalFire.g:2200:1: ( ( rule__TerminalExpression__Alternatives_2_1 ) )
             {
-            // InternalFire.g:2194:1: ( ( rule__TerminalExpression__ValueAssignment_2_1 ) )
-            // InternalFire.g:2195:2: ( rule__TerminalExpression__ValueAssignment_2_1 )
+            // InternalFire.g:2200:1: ( ( rule__TerminalExpression__Alternatives_2_1 ) )
+            // InternalFire.g:2201:2: ( rule__TerminalExpression__Alternatives_2_1 )
             {
-             before(grammarAccess.getTerminalExpressionAccess().getValueAssignment_2_1()); 
-            // InternalFire.g:2196:2: ( rule__TerminalExpression__ValueAssignment_2_1 )
-            // InternalFire.g:2196:3: rule__TerminalExpression__ValueAssignment_2_1
+             before(grammarAccess.getTerminalExpressionAccess().getAlternatives_2_1()); 
+            // InternalFire.g:2202:2: ( rule__TerminalExpression__Alternatives_2_1 )
+            // InternalFire.g:2202:3: rule__TerminalExpression__Alternatives_2_1
             {
             pushFollow(FOLLOW_2);
-            rule__TerminalExpression__ValueAssignment_2_1();
+            rule__TerminalExpression__Alternatives_2_1();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getTerminalExpressionAccess().getValueAssignment_2_1()); 
+             after(grammarAccess.getTerminalExpressionAccess().getAlternatives_2_1()); 
 
             }
 
@@ -6865,14 +6839,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TerminalExpression__Group_3__0"
-    // InternalFire.g:2205:1: rule__TerminalExpression__Group_3__0 : rule__TerminalExpression__Group_3__0__Impl rule__TerminalExpression__Group_3__1 ;
+    // InternalFire.g:2211:1: rule__TerminalExpression__Group_3__0 : rule__TerminalExpression__Group_3__0__Impl rule__TerminalExpression__Group_3__1 ;
     public final void rule__TerminalExpression__Group_3__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2209:1: ( rule__TerminalExpression__Group_3__0__Impl rule__TerminalExpression__Group_3__1 )
-            // InternalFire.g:2210:2: rule__TerminalExpression__Group_3__0__Impl rule__TerminalExpression__Group_3__1
+            // InternalFire.g:2215:1: ( rule__TerminalExpression__Group_3__0__Impl rule__TerminalExpression__Group_3__1 )
+            // InternalFire.g:2216:2: rule__TerminalExpression__Group_3__0__Impl rule__TerminalExpression__Group_3__1
             {
             pushFollow(FOLLOW_31);
             rule__TerminalExpression__Group_3__0__Impl();
@@ -6903,25 +6877,25 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TerminalExpression__Group_3__0__Impl"
-    // InternalFire.g:2217:1: rule__TerminalExpression__Group_3__0__Impl : ( () ) ;
+    // InternalFire.g:2223:1: rule__TerminalExpression__Group_3__0__Impl : ( () ) ;
     public final void rule__TerminalExpression__Group_3__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2221:1: ( ( () ) )
-            // InternalFire.g:2222:1: ( () )
+            // InternalFire.g:2227:1: ( ( () ) )
+            // InternalFire.g:2228:1: ( () )
             {
-            // InternalFire.g:2222:1: ( () )
-            // InternalFire.g:2223:2: ()
+            // InternalFire.g:2228:1: ( () )
+            // InternalFire.g:2229:2: ()
             {
-             before(grammarAccess.getTerminalExpressionAccess().getRealLiteralAction_3_0()); 
-            // InternalFire.g:2224:2: ()
-            // InternalFire.g:2224:3: 
+             before(grammarAccess.getTerminalExpressionAccess().getIntegerLiteralAction_3_0()); 
+            // InternalFire.g:2230:2: ()
+            // InternalFire.g:2230:3: 
             {
             }
 
-             after(grammarAccess.getTerminalExpressionAccess().getRealLiteralAction_3_0()); 
+             after(grammarAccess.getTerminalExpressionAccess().getIntegerLiteralAction_3_0()); 
 
             }
 
@@ -6940,14 +6914,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TerminalExpression__Group_3__1"
-    // InternalFire.g:2232:1: rule__TerminalExpression__Group_3__1 : rule__TerminalExpression__Group_3__1__Impl ;
+    // InternalFire.g:2238:1: rule__TerminalExpression__Group_3__1 : rule__TerminalExpression__Group_3__1__Impl ;
     public final void rule__TerminalExpression__Group_3__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2236:1: ( rule__TerminalExpression__Group_3__1__Impl )
-            // InternalFire.g:2237:2: rule__TerminalExpression__Group_3__1__Impl
+            // InternalFire.g:2242:1: ( rule__TerminalExpression__Group_3__1__Impl )
+            // InternalFire.g:2243:2: rule__TerminalExpression__Group_3__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__TerminalExpression__Group_3__1__Impl();
@@ -6973,21 +6947,21 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TerminalExpression__Group_3__1__Impl"
-    // InternalFire.g:2243:1: rule__TerminalExpression__Group_3__1__Impl : ( ( rule__TerminalExpression__ValueAssignment_3_1 ) ) ;
+    // InternalFire.g:2249:1: rule__TerminalExpression__Group_3__1__Impl : ( ( rule__TerminalExpression__ValueAssignment_3_1 ) ) ;
     public final void rule__TerminalExpression__Group_3__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2247:1: ( ( ( rule__TerminalExpression__ValueAssignment_3_1 ) ) )
-            // InternalFire.g:2248:1: ( ( rule__TerminalExpression__ValueAssignment_3_1 ) )
+            // InternalFire.g:2253:1: ( ( ( rule__TerminalExpression__ValueAssignment_3_1 ) ) )
+            // InternalFire.g:2254:1: ( ( rule__TerminalExpression__ValueAssignment_3_1 ) )
             {
-            // InternalFire.g:2248:1: ( ( rule__TerminalExpression__ValueAssignment_3_1 ) )
-            // InternalFire.g:2249:2: ( rule__TerminalExpression__ValueAssignment_3_1 )
+            // InternalFire.g:2254:1: ( ( rule__TerminalExpression__ValueAssignment_3_1 ) )
+            // InternalFire.g:2255:2: ( rule__TerminalExpression__ValueAssignment_3_1 )
             {
              before(grammarAccess.getTerminalExpressionAccess().getValueAssignment_3_1()); 
-            // InternalFire.g:2250:2: ( rule__TerminalExpression__ValueAssignment_3_1 )
-            // InternalFire.g:2250:3: rule__TerminalExpression__ValueAssignment_3_1
+            // InternalFire.g:2256:2: ( rule__TerminalExpression__ValueAssignment_3_1 )
+            // InternalFire.g:2256:3: rule__TerminalExpression__ValueAssignment_3_1
             {
             pushFollow(FOLLOW_2);
             rule__TerminalExpression__ValueAssignment_3_1();
@@ -7020,16 +6994,16 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TerminalExpression__Group_4__0"
-    // InternalFire.g:2259:1: rule__TerminalExpression__Group_4__0 : rule__TerminalExpression__Group_4__0__Impl rule__TerminalExpression__Group_4__1 ;
+    // InternalFire.g:2265:1: rule__TerminalExpression__Group_4__0 : rule__TerminalExpression__Group_4__0__Impl rule__TerminalExpression__Group_4__1 ;
     public final void rule__TerminalExpression__Group_4__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2263:1: ( rule__TerminalExpression__Group_4__0__Impl rule__TerminalExpression__Group_4__1 )
-            // InternalFire.g:2264:2: rule__TerminalExpression__Group_4__0__Impl rule__TerminalExpression__Group_4__1
+            // InternalFire.g:2269:1: ( rule__TerminalExpression__Group_4__0__Impl rule__TerminalExpression__Group_4__1 )
+            // InternalFire.g:2270:2: rule__TerminalExpression__Group_4__0__Impl rule__TerminalExpression__Group_4__1
             {
-            pushFollow(FOLLOW_32);
+            pushFollow(FOLLOW_31);
             rule__TerminalExpression__Group_4__0__Impl();
 
             state._fsp--;
@@ -7058,25 +7032,25 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TerminalExpression__Group_4__0__Impl"
-    // InternalFire.g:2271:1: rule__TerminalExpression__Group_4__0__Impl : ( () ) ;
+    // InternalFire.g:2277:1: rule__TerminalExpression__Group_4__0__Impl : ( () ) ;
     public final void rule__TerminalExpression__Group_4__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2275:1: ( ( () ) )
-            // InternalFire.g:2276:1: ( () )
+            // InternalFire.g:2281:1: ( ( () ) )
+            // InternalFire.g:2282:1: ( () )
             {
-            // InternalFire.g:2276:1: ( () )
-            // InternalFire.g:2277:2: ()
+            // InternalFire.g:2282:1: ( () )
+            // InternalFire.g:2283:2: ()
             {
-             before(grammarAccess.getTerminalExpressionAccess().getNotExpressionAction_4_0()); 
-            // InternalFire.g:2278:2: ()
-            // InternalFire.g:2278:3: 
+             before(grammarAccess.getTerminalExpressionAccess().getRealLiteralAction_4_0()); 
+            // InternalFire.g:2284:2: ()
+            // InternalFire.g:2284:3: 
             {
             }
 
-             after(grammarAccess.getTerminalExpressionAccess().getNotExpressionAction_4_0()); 
+             after(grammarAccess.getTerminalExpressionAccess().getRealLiteralAction_4_0()); 
 
             }
 
@@ -7095,22 +7069,17 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TerminalExpression__Group_4__1"
-    // InternalFire.g:2286:1: rule__TerminalExpression__Group_4__1 : rule__TerminalExpression__Group_4__1__Impl rule__TerminalExpression__Group_4__2 ;
+    // InternalFire.g:2292:1: rule__TerminalExpression__Group_4__1 : rule__TerminalExpression__Group_4__1__Impl ;
     public final void rule__TerminalExpression__Group_4__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2290:1: ( rule__TerminalExpression__Group_4__1__Impl rule__TerminalExpression__Group_4__2 )
-            // InternalFire.g:2291:2: rule__TerminalExpression__Group_4__1__Impl rule__TerminalExpression__Group_4__2
+            // InternalFire.g:2296:1: ( rule__TerminalExpression__Group_4__1__Impl )
+            // InternalFire.g:2297:2: rule__TerminalExpression__Group_4__1__Impl
             {
-            pushFollow(FOLLOW_11);
-            rule__TerminalExpression__Group_4__1__Impl();
-
-            state._fsp--;
-
             pushFollow(FOLLOW_2);
-            rule__TerminalExpression__Group_4__2();
+            rule__TerminalExpression__Group_4__1__Impl();
 
             state._fsp--;
 
@@ -7133,21 +7102,31 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TerminalExpression__Group_4__1__Impl"
-    // InternalFire.g:2298:1: rule__TerminalExpression__Group_4__1__Impl : ( 'not' ) ;
+    // InternalFire.g:2303:1: rule__TerminalExpression__Group_4__1__Impl : ( ( rule__TerminalExpression__ValueAssignment_4_1 ) ) ;
     public final void rule__TerminalExpression__Group_4__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2302:1: ( ( 'not' ) )
-            // InternalFire.g:2303:1: ( 'not' )
+            // InternalFire.g:2307:1: ( ( ( rule__TerminalExpression__ValueAssignment_4_1 ) ) )
+            // InternalFire.g:2308:1: ( ( rule__TerminalExpression__ValueAssignment_4_1 ) )
             {
-            // InternalFire.g:2303:1: ( 'not' )
-            // InternalFire.g:2304:2: 'not'
+            // InternalFire.g:2308:1: ( ( rule__TerminalExpression__ValueAssignment_4_1 ) )
+            // InternalFire.g:2309:2: ( rule__TerminalExpression__ValueAssignment_4_1 )
             {
-             before(grammarAccess.getTerminalExpressionAccess().getNotKeyword_4_1()); 
-            match(input,39,FOLLOW_2); 
-             after(grammarAccess.getTerminalExpressionAccess().getNotKeyword_4_1()); 
+             before(grammarAccess.getTerminalExpressionAccess().getValueAssignment_4_1()); 
+            // InternalFire.g:2310:2: ( rule__TerminalExpression__ValueAssignment_4_1 )
+            // InternalFire.g:2310:3: rule__TerminalExpression__ValueAssignment_4_1
+            {
+            pushFollow(FOLLOW_2);
+            rule__TerminalExpression__ValueAssignment_4_1();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getTerminalExpressionAccess().getValueAssignment_4_1()); 
 
             }
 
@@ -7169,97 +7148,17 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__TerminalExpression__Group_4__1__Impl"
 
 
-    // $ANTLR start "rule__TerminalExpression__Group_4__2"
-    // InternalFire.g:2313:1: rule__TerminalExpression__Group_4__2 : rule__TerminalExpression__Group_4__2__Impl ;
-    public final void rule__TerminalExpression__Group_4__2() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalFire.g:2317:1: ( rule__TerminalExpression__Group_4__2__Impl )
-            // InternalFire.g:2318:2: rule__TerminalExpression__Group_4__2__Impl
-            {
-            pushFollow(FOLLOW_2);
-            rule__TerminalExpression__Group_4__2__Impl();
-
-            state._fsp--;
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__TerminalExpression__Group_4__2"
-
-
-    // $ANTLR start "rule__TerminalExpression__Group_4__2__Impl"
-    // InternalFire.g:2324:1: rule__TerminalExpression__Group_4__2__Impl : ( ( rule__TerminalExpression__OperandAssignment_4_2 ) ) ;
-    public final void rule__TerminalExpression__Group_4__2__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalFire.g:2328:1: ( ( ( rule__TerminalExpression__OperandAssignment_4_2 ) ) )
-            // InternalFire.g:2329:1: ( ( rule__TerminalExpression__OperandAssignment_4_2 ) )
-            {
-            // InternalFire.g:2329:1: ( ( rule__TerminalExpression__OperandAssignment_4_2 ) )
-            // InternalFire.g:2330:2: ( rule__TerminalExpression__OperandAssignment_4_2 )
-            {
-             before(grammarAccess.getTerminalExpressionAccess().getOperandAssignment_4_2()); 
-            // InternalFire.g:2331:2: ( rule__TerminalExpression__OperandAssignment_4_2 )
-            // InternalFire.g:2331:3: rule__TerminalExpression__OperandAssignment_4_2
-            {
-            pushFollow(FOLLOW_2);
-            rule__TerminalExpression__OperandAssignment_4_2();
-
-            state._fsp--;
-
-
-            }
-
-             after(grammarAccess.getTerminalExpressionAccess().getOperandAssignment_4_2()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__TerminalExpression__Group_4__2__Impl"
-
-
     // $ANTLR start "rule__TerminalExpression__Group_5__0"
-    // InternalFire.g:2340:1: rule__TerminalExpression__Group_5__0 : rule__TerminalExpression__Group_5__0__Impl rule__TerminalExpression__Group_5__1 ;
+    // InternalFire.g:2319:1: rule__TerminalExpression__Group_5__0 : rule__TerminalExpression__Group_5__0__Impl rule__TerminalExpression__Group_5__1 ;
     public final void rule__TerminalExpression__Group_5__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2344:1: ( rule__TerminalExpression__Group_5__0__Impl rule__TerminalExpression__Group_5__1 )
-            // InternalFire.g:2345:2: rule__TerminalExpression__Group_5__0__Impl rule__TerminalExpression__Group_5__1
+            // InternalFire.g:2323:1: ( rule__TerminalExpression__Group_5__0__Impl rule__TerminalExpression__Group_5__1 )
+            // InternalFire.g:2324:2: rule__TerminalExpression__Group_5__0__Impl rule__TerminalExpression__Group_5__1
             {
-            pushFollow(FOLLOW_33);
+            pushFollow(FOLLOW_32);
             rule__TerminalExpression__Group_5__0__Impl();
 
             state._fsp--;
@@ -7288,25 +7187,25 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TerminalExpression__Group_5__0__Impl"
-    // InternalFire.g:2352:1: rule__TerminalExpression__Group_5__0__Impl : ( () ) ;
+    // InternalFire.g:2331:1: rule__TerminalExpression__Group_5__0__Impl : ( () ) ;
     public final void rule__TerminalExpression__Group_5__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2356:1: ( ( () ) )
-            // InternalFire.g:2357:1: ( () )
+            // InternalFire.g:2335:1: ( ( () ) )
+            // InternalFire.g:2336:1: ( () )
             {
-            // InternalFire.g:2357:1: ( () )
-            // InternalFire.g:2358:2: ()
+            // InternalFire.g:2336:1: ( () )
+            // InternalFire.g:2337:2: ()
             {
-             before(grammarAccess.getTerminalExpressionAccess().getNegationExpressionAction_5_0()); 
-            // InternalFire.g:2359:2: ()
-            // InternalFire.g:2359:3: 
+             before(grammarAccess.getTerminalExpressionAccess().getNotExpressionAction_5_0()); 
+            // InternalFire.g:2338:2: ()
+            // InternalFire.g:2338:3: 
             {
             }
 
-             after(grammarAccess.getTerminalExpressionAccess().getNegationExpressionAction_5_0()); 
+             after(grammarAccess.getTerminalExpressionAccess().getNotExpressionAction_5_0()); 
 
             }
 
@@ -7325,14 +7224,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TerminalExpression__Group_5__1"
-    // InternalFire.g:2367:1: rule__TerminalExpression__Group_5__1 : rule__TerminalExpression__Group_5__1__Impl rule__TerminalExpression__Group_5__2 ;
+    // InternalFire.g:2346:1: rule__TerminalExpression__Group_5__1 : rule__TerminalExpression__Group_5__1__Impl rule__TerminalExpression__Group_5__2 ;
     public final void rule__TerminalExpression__Group_5__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2371:1: ( rule__TerminalExpression__Group_5__1__Impl rule__TerminalExpression__Group_5__2 )
-            // InternalFire.g:2372:2: rule__TerminalExpression__Group_5__1__Impl rule__TerminalExpression__Group_5__2
+            // InternalFire.g:2350:1: ( rule__TerminalExpression__Group_5__1__Impl rule__TerminalExpression__Group_5__2 )
+            // InternalFire.g:2351:2: rule__TerminalExpression__Group_5__1__Impl rule__TerminalExpression__Group_5__2
             {
             pushFollow(FOLLOW_11);
             rule__TerminalExpression__Group_5__1__Impl();
@@ -7363,21 +7262,21 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TerminalExpression__Group_5__1__Impl"
-    // InternalFire.g:2379:1: rule__TerminalExpression__Group_5__1__Impl : ( '-' ) ;
+    // InternalFire.g:2358:1: rule__TerminalExpression__Group_5__1__Impl : ( 'not' ) ;
     public final void rule__TerminalExpression__Group_5__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2383:1: ( ( '-' ) )
-            // InternalFire.g:2384:1: ( '-' )
+            // InternalFire.g:2362:1: ( ( 'not' ) )
+            // InternalFire.g:2363:1: ( 'not' )
             {
-            // InternalFire.g:2384:1: ( '-' )
-            // InternalFire.g:2385:2: '-'
+            // InternalFire.g:2363:1: ( 'not' )
+            // InternalFire.g:2364:2: 'not'
             {
-             before(grammarAccess.getTerminalExpressionAccess().getHyphenMinusKeyword_5_1()); 
-            match(input,23,FOLLOW_2); 
-             after(grammarAccess.getTerminalExpressionAccess().getHyphenMinusKeyword_5_1()); 
+             before(grammarAccess.getTerminalExpressionAccess().getNotKeyword_5_1()); 
+            match(input,39,FOLLOW_2); 
+             after(grammarAccess.getTerminalExpressionAccess().getNotKeyword_5_1()); 
 
             }
 
@@ -7400,14 +7299,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TerminalExpression__Group_5__2"
-    // InternalFire.g:2394:1: rule__TerminalExpression__Group_5__2 : rule__TerminalExpression__Group_5__2__Impl ;
+    // InternalFire.g:2373:1: rule__TerminalExpression__Group_5__2 : rule__TerminalExpression__Group_5__2__Impl ;
     public final void rule__TerminalExpression__Group_5__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2398:1: ( rule__TerminalExpression__Group_5__2__Impl )
-            // InternalFire.g:2399:2: rule__TerminalExpression__Group_5__2__Impl
+            // InternalFire.g:2377:1: ( rule__TerminalExpression__Group_5__2__Impl )
+            // InternalFire.g:2378:2: rule__TerminalExpression__Group_5__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__TerminalExpression__Group_5__2__Impl();
@@ -7433,21 +7332,21 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TerminalExpression__Group_5__2__Impl"
-    // InternalFire.g:2405:1: rule__TerminalExpression__Group_5__2__Impl : ( ( rule__TerminalExpression__OperandAssignment_5_2 ) ) ;
+    // InternalFire.g:2384:1: rule__TerminalExpression__Group_5__2__Impl : ( ( rule__TerminalExpression__OperandAssignment_5_2 ) ) ;
     public final void rule__TerminalExpression__Group_5__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2409:1: ( ( ( rule__TerminalExpression__OperandAssignment_5_2 ) ) )
-            // InternalFire.g:2410:1: ( ( rule__TerminalExpression__OperandAssignment_5_2 ) )
+            // InternalFire.g:2388:1: ( ( ( rule__TerminalExpression__OperandAssignment_5_2 ) ) )
+            // InternalFire.g:2389:1: ( ( rule__TerminalExpression__OperandAssignment_5_2 ) )
             {
-            // InternalFire.g:2410:1: ( ( rule__TerminalExpression__OperandAssignment_5_2 ) )
-            // InternalFire.g:2411:2: ( rule__TerminalExpression__OperandAssignment_5_2 )
+            // InternalFire.g:2389:1: ( ( rule__TerminalExpression__OperandAssignment_5_2 ) )
+            // InternalFire.g:2390:2: ( rule__TerminalExpression__OperandAssignment_5_2 )
             {
              before(grammarAccess.getTerminalExpressionAccess().getOperandAssignment_5_2()); 
-            // InternalFire.g:2412:2: ( rule__TerminalExpression__OperandAssignment_5_2 )
-            // InternalFire.g:2412:3: rule__TerminalExpression__OperandAssignment_5_2
+            // InternalFire.g:2391:2: ( rule__TerminalExpression__OperandAssignment_5_2 )
+            // InternalFire.g:2391:3: rule__TerminalExpression__OperandAssignment_5_2
             {
             pushFollow(FOLLOW_2);
             rule__TerminalExpression__OperandAssignment_5_2();
@@ -7480,16 +7379,16 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TerminalExpression__Group_6__0"
-    // InternalFire.g:2421:1: rule__TerminalExpression__Group_6__0 : rule__TerminalExpression__Group_6__0__Impl rule__TerminalExpression__Group_6__1 ;
+    // InternalFire.g:2400:1: rule__TerminalExpression__Group_6__0 : rule__TerminalExpression__Group_6__0__Impl rule__TerminalExpression__Group_6__1 ;
     public final void rule__TerminalExpression__Group_6__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2425:1: ( rule__TerminalExpression__Group_6__0__Impl rule__TerminalExpression__Group_6__1 )
-            // InternalFire.g:2426:2: rule__TerminalExpression__Group_6__0__Impl rule__TerminalExpression__Group_6__1
+            // InternalFire.g:2404:1: ( rule__TerminalExpression__Group_6__0__Impl rule__TerminalExpression__Group_6__1 )
+            // InternalFire.g:2405:2: rule__TerminalExpression__Group_6__0__Impl rule__TerminalExpression__Group_6__1
             {
-            pushFollow(FOLLOW_11);
+            pushFollow(FOLLOW_33);
             rule__TerminalExpression__Group_6__0__Impl();
 
             state._fsp--;
@@ -7518,31 +7417,31 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TerminalExpression__Group_6__0__Impl"
-    // InternalFire.g:2433:1: rule__TerminalExpression__Group_6__0__Impl : ( '(' ) ;
+    // InternalFire.g:2412:1: rule__TerminalExpression__Group_6__0__Impl : ( () ) ;
     public final void rule__TerminalExpression__Group_6__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2437:1: ( ( '(' ) )
-            // InternalFire.g:2438:1: ( '(' )
+            // InternalFire.g:2416:1: ( ( () ) )
+            // InternalFire.g:2417:1: ( () )
             {
-            // InternalFire.g:2438:1: ( '(' )
-            // InternalFire.g:2439:2: '('
+            // InternalFire.g:2417:1: ( () )
+            // InternalFire.g:2418:2: ()
             {
-             before(grammarAccess.getTerminalExpressionAccess().getLeftParenthesisKeyword_6_0()); 
-            match(input,34,FOLLOW_2); 
-             after(grammarAccess.getTerminalExpressionAccess().getLeftParenthesisKeyword_6_0()); 
+             before(grammarAccess.getTerminalExpressionAccess().getNegationExpressionAction_6_0()); 
+            // InternalFire.g:2419:2: ()
+            // InternalFire.g:2419:3: 
+            {
+            }
+
+             after(grammarAccess.getTerminalExpressionAccess().getNegationExpressionAction_6_0()); 
 
             }
 
 
             }
 
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
         }
         finally {
 
@@ -7555,16 +7454,16 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TerminalExpression__Group_6__1"
-    // InternalFire.g:2448:1: rule__TerminalExpression__Group_6__1 : rule__TerminalExpression__Group_6__1__Impl rule__TerminalExpression__Group_6__2 ;
+    // InternalFire.g:2427:1: rule__TerminalExpression__Group_6__1 : rule__TerminalExpression__Group_6__1__Impl rule__TerminalExpression__Group_6__2 ;
     public final void rule__TerminalExpression__Group_6__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2452:1: ( rule__TerminalExpression__Group_6__1__Impl rule__TerminalExpression__Group_6__2 )
-            // InternalFire.g:2453:2: rule__TerminalExpression__Group_6__1__Impl rule__TerminalExpression__Group_6__2
+            // InternalFire.g:2431:1: ( rule__TerminalExpression__Group_6__1__Impl rule__TerminalExpression__Group_6__2 )
+            // InternalFire.g:2432:2: rule__TerminalExpression__Group_6__1__Impl rule__TerminalExpression__Group_6__2
             {
-            pushFollow(FOLLOW_14);
+            pushFollow(FOLLOW_11);
             rule__TerminalExpression__Group_6__1__Impl();
 
             state._fsp--;
@@ -7593,25 +7492,21 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TerminalExpression__Group_6__1__Impl"
-    // InternalFire.g:2460:1: rule__TerminalExpression__Group_6__1__Impl : ( ruleExpression ) ;
+    // InternalFire.g:2439:1: rule__TerminalExpression__Group_6__1__Impl : ( '-' ) ;
     public final void rule__TerminalExpression__Group_6__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2464:1: ( ( ruleExpression ) )
-            // InternalFire.g:2465:1: ( ruleExpression )
+            // InternalFire.g:2443:1: ( ( '-' ) )
+            // InternalFire.g:2444:1: ( '-' )
             {
-            // InternalFire.g:2465:1: ( ruleExpression )
-            // InternalFire.g:2466:2: ruleExpression
+            // InternalFire.g:2444:1: ( '-' )
+            // InternalFire.g:2445:2: '-'
             {
-             before(grammarAccess.getTerminalExpressionAccess().getExpressionParserRuleCall_6_1()); 
-            pushFollow(FOLLOW_2);
-            ruleExpression();
-
-            state._fsp--;
-
-             after(grammarAccess.getTerminalExpressionAccess().getExpressionParserRuleCall_6_1()); 
+             before(grammarAccess.getTerminalExpressionAccess().getHyphenMinusKeyword_6_1()); 
+            match(input,23,FOLLOW_2); 
+             after(grammarAccess.getTerminalExpressionAccess().getHyphenMinusKeyword_6_1()); 
 
             }
 
@@ -7634,14 +7529,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TerminalExpression__Group_6__2"
-    // InternalFire.g:2475:1: rule__TerminalExpression__Group_6__2 : rule__TerminalExpression__Group_6__2__Impl ;
+    // InternalFire.g:2454:1: rule__TerminalExpression__Group_6__2 : rule__TerminalExpression__Group_6__2__Impl ;
     public final void rule__TerminalExpression__Group_6__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2479:1: ( rule__TerminalExpression__Group_6__2__Impl )
-            // InternalFire.g:2480:2: rule__TerminalExpression__Group_6__2__Impl
+            // InternalFire.g:2458:1: ( rule__TerminalExpression__Group_6__2__Impl )
+            // InternalFire.g:2459:2: rule__TerminalExpression__Group_6__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__TerminalExpression__Group_6__2__Impl();
@@ -7667,21 +7562,31 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TerminalExpression__Group_6__2__Impl"
-    // InternalFire.g:2486:1: rule__TerminalExpression__Group_6__2__Impl : ( ')' ) ;
+    // InternalFire.g:2465:1: rule__TerminalExpression__Group_6__2__Impl : ( ( rule__TerminalExpression__OperandAssignment_6_2 ) ) ;
     public final void rule__TerminalExpression__Group_6__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2490:1: ( ( ')' ) )
-            // InternalFire.g:2491:1: ( ')' )
+            // InternalFire.g:2469:1: ( ( ( rule__TerminalExpression__OperandAssignment_6_2 ) ) )
+            // InternalFire.g:2470:1: ( ( rule__TerminalExpression__OperandAssignment_6_2 ) )
             {
-            // InternalFire.g:2491:1: ( ')' )
-            // InternalFire.g:2492:2: ')'
+            // InternalFire.g:2470:1: ( ( rule__TerminalExpression__OperandAssignment_6_2 ) )
+            // InternalFire.g:2471:2: ( rule__TerminalExpression__OperandAssignment_6_2 )
             {
-             before(grammarAccess.getTerminalExpressionAccess().getRightParenthesisKeyword_6_2()); 
-            match(input,35,FOLLOW_2); 
-             after(grammarAccess.getTerminalExpressionAccess().getRightParenthesisKeyword_6_2()); 
+             before(grammarAccess.getTerminalExpressionAccess().getOperandAssignment_6_2()); 
+            // InternalFire.g:2472:2: ( rule__TerminalExpression__OperandAssignment_6_2 )
+            // InternalFire.g:2472:3: rule__TerminalExpression__OperandAssignment_6_2
+            {
+            pushFollow(FOLLOW_2);
+            rule__TerminalExpression__OperandAssignment_6_2();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getTerminalExpressionAccess().getOperandAssignment_6_2()); 
 
             }
 
@@ -7703,15 +7608,239 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__TerminalExpression__Group_6__2__Impl"
 
 
+    // $ANTLR start "rule__TerminalExpression__Group_7__0"
+    // InternalFire.g:2481:1: rule__TerminalExpression__Group_7__0 : rule__TerminalExpression__Group_7__0__Impl rule__TerminalExpression__Group_7__1 ;
+    public final void rule__TerminalExpression__Group_7__0() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalFire.g:2485:1: ( rule__TerminalExpression__Group_7__0__Impl rule__TerminalExpression__Group_7__1 )
+            // InternalFire.g:2486:2: rule__TerminalExpression__Group_7__0__Impl rule__TerminalExpression__Group_7__1
+            {
+            pushFollow(FOLLOW_11);
+            rule__TerminalExpression__Group_7__0__Impl();
+
+            state._fsp--;
+
+            pushFollow(FOLLOW_2);
+            rule__TerminalExpression__Group_7__1();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__TerminalExpression__Group_7__0"
+
+
+    // $ANTLR start "rule__TerminalExpression__Group_7__0__Impl"
+    // InternalFire.g:2493:1: rule__TerminalExpression__Group_7__0__Impl : ( '(' ) ;
+    public final void rule__TerminalExpression__Group_7__0__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalFire.g:2497:1: ( ( '(' ) )
+            // InternalFire.g:2498:1: ( '(' )
+            {
+            // InternalFire.g:2498:1: ( '(' )
+            // InternalFire.g:2499:2: '('
+            {
+             before(grammarAccess.getTerminalExpressionAccess().getLeftParenthesisKeyword_7_0()); 
+            match(input,34,FOLLOW_2); 
+             after(grammarAccess.getTerminalExpressionAccess().getLeftParenthesisKeyword_7_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__TerminalExpression__Group_7__0__Impl"
+
+
+    // $ANTLR start "rule__TerminalExpression__Group_7__1"
+    // InternalFire.g:2508:1: rule__TerminalExpression__Group_7__1 : rule__TerminalExpression__Group_7__1__Impl rule__TerminalExpression__Group_7__2 ;
+    public final void rule__TerminalExpression__Group_7__1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalFire.g:2512:1: ( rule__TerminalExpression__Group_7__1__Impl rule__TerminalExpression__Group_7__2 )
+            // InternalFire.g:2513:2: rule__TerminalExpression__Group_7__1__Impl rule__TerminalExpression__Group_7__2
+            {
+            pushFollow(FOLLOW_14);
+            rule__TerminalExpression__Group_7__1__Impl();
+
+            state._fsp--;
+
+            pushFollow(FOLLOW_2);
+            rule__TerminalExpression__Group_7__2();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__TerminalExpression__Group_7__1"
+
+
+    // $ANTLR start "rule__TerminalExpression__Group_7__1__Impl"
+    // InternalFire.g:2520:1: rule__TerminalExpression__Group_7__1__Impl : ( ruleExpression ) ;
+    public final void rule__TerminalExpression__Group_7__1__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalFire.g:2524:1: ( ( ruleExpression ) )
+            // InternalFire.g:2525:1: ( ruleExpression )
+            {
+            // InternalFire.g:2525:1: ( ruleExpression )
+            // InternalFire.g:2526:2: ruleExpression
+            {
+             before(grammarAccess.getTerminalExpressionAccess().getExpressionParserRuleCall_7_1()); 
+            pushFollow(FOLLOW_2);
+            ruleExpression();
+
+            state._fsp--;
+
+             after(grammarAccess.getTerminalExpressionAccess().getExpressionParserRuleCall_7_1()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__TerminalExpression__Group_7__1__Impl"
+
+
+    // $ANTLR start "rule__TerminalExpression__Group_7__2"
+    // InternalFire.g:2535:1: rule__TerminalExpression__Group_7__2 : rule__TerminalExpression__Group_7__2__Impl ;
+    public final void rule__TerminalExpression__Group_7__2() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalFire.g:2539:1: ( rule__TerminalExpression__Group_7__2__Impl )
+            // InternalFire.g:2540:2: rule__TerminalExpression__Group_7__2__Impl
+            {
+            pushFollow(FOLLOW_2);
+            rule__TerminalExpression__Group_7__2__Impl();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__TerminalExpression__Group_7__2"
+
+
+    // $ANTLR start "rule__TerminalExpression__Group_7__2__Impl"
+    // InternalFire.g:2546:1: rule__TerminalExpression__Group_7__2__Impl : ( ')' ) ;
+    public final void rule__TerminalExpression__Group_7__2__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalFire.g:2550:1: ( ( ')' ) )
+            // InternalFire.g:2551:1: ( ')' )
+            {
+            // InternalFire.g:2551:1: ( ')' )
+            // InternalFire.g:2552:2: ')'
+            {
+             before(grammarAccess.getTerminalExpressionAccess().getRightParenthesisKeyword_7_2()); 
+            match(input,35,FOLLOW_2); 
+             after(grammarAccess.getTerminalExpressionAccess().getRightParenthesisKeyword_7_2()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__TerminalExpression__Group_7__2__Impl"
+
+
     // $ANTLR start "rule__Double__Group__0"
-    // InternalFire.g:2502:1: rule__Double__Group__0 : rule__Double__Group__0__Impl rule__Double__Group__1 ;
+    // InternalFire.g:2562:1: rule__Double__Group__0 : rule__Double__Group__0__Impl rule__Double__Group__1 ;
     public final void rule__Double__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2506:1: ( rule__Double__Group__0__Impl rule__Double__Group__1 )
-            // InternalFire.g:2507:2: rule__Double__Group__0__Impl rule__Double__Group__1
+            // InternalFire.g:2566:1: ( rule__Double__Group__0__Impl rule__Double__Group__1 )
+            // InternalFire.g:2567:2: rule__Double__Group__0__Impl rule__Double__Group__1
             {
             pushFollow(FOLLOW_34);
             rule__Double__Group__0__Impl();
@@ -7742,17 +7871,17 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Double__Group__0__Impl"
-    // InternalFire.g:2514:1: rule__Double__Group__0__Impl : ( RULE_INT ) ;
+    // InternalFire.g:2574:1: rule__Double__Group__0__Impl : ( RULE_INT ) ;
     public final void rule__Double__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2518:1: ( ( RULE_INT ) )
-            // InternalFire.g:2519:1: ( RULE_INT )
+            // InternalFire.g:2578:1: ( ( RULE_INT ) )
+            // InternalFire.g:2579:1: ( RULE_INT )
             {
-            // InternalFire.g:2519:1: ( RULE_INT )
-            // InternalFire.g:2520:2: RULE_INT
+            // InternalFire.g:2579:1: ( RULE_INT )
+            // InternalFire.g:2580:2: RULE_INT
             {
              before(grammarAccess.getDoubleAccess().getINTTerminalRuleCall_0()); 
             match(input,RULE_INT,FOLLOW_2); 
@@ -7779,14 +7908,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Double__Group__1"
-    // InternalFire.g:2529:1: rule__Double__Group__1 : rule__Double__Group__1__Impl rule__Double__Group__2 ;
+    // InternalFire.g:2589:1: rule__Double__Group__1 : rule__Double__Group__1__Impl rule__Double__Group__2 ;
     public final void rule__Double__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2533:1: ( rule__Double__Group__1__Impl rule__Double__Group__2 )
-            // InternalFire.g:2534:2: rule__Double__Group__1__Impl rule__Double__Group__2
+            // InternalFire.g:2593:1: ( rule__Double__Group__1__Impl rule__Double__Group__2 )
+            // InternalFire.g:2594:2: rule__Double__Group__1__Impl rule__Double__Group__2
             {
             pushFollow(FOLLOW_31);
             rule__Double__Group__1__Impl();
@@ -7817,17 +7946,17 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Double__Group__1__Impl"
-    // InternalFire.g:2541:1: rule__Double__Group__1__Impl : ( '.' ) ;
+    // InternalFire.g:2601:1: rule__Double__Group__1__Impl : ( '.' ) ;
     public final void rule__Double__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2545:1: ( ( '.' ) )
-            // InternalFire.g:2546:1: ( '.' )
+            // InternalFire.g:2605:1: ( ( '.' ) )
+            // InternalFire.g:2606:1: ( '.' )
             {
-            // InternalFire.g:2546:1: ( '.' )
-            // InternalFire.g:2547:2: '.'
+            // InternalFire.g:2606:1: ( '.' )
+            // InternalFire.g:2607:2: '.'
             {
              before(grammarAccess.getDoubleAccess().getFullStopKeyword_1()); 
             match(input,40,FOLLOW_2); 
@@ -7854,14 +7983,14 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Double__Group__2"
-    // InternalFire.g:2556:1: rule__Double__Group__2 : rule__Double__Group__2__Impl ;
+    // InternalFire.g:2616:1: rule__Double__Group__2 : rule__Double__Group__2__Impl ;
     public final void rule__Double__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2560:1: ( rule__Double__Group__2__Impl )
-            // InternalFire.g:2561:2: rule__Double__Group__2__Impl
+            // InternalFire.g:2620:1: ( rule__Double__Group__2__Impl )
+            // InternalFire.g:2621:2: rule__Double__Group__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Double__Group__2__Impl();
@@ -7887,17 +8016,17 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Double__Group__2__Impl"
-    // InternalFire.g:2567:1: rule__Double__Group__2__Impl : ( RULE_INT ) ;
+    // InternalFire.g:2627:1: rule__Double__Group__2__Impl : ( RULE_INT ) ;
     public final void rule__Double__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2571:1: ( ( RULE_INT ) )
-            // InternalFire.g:2572:1: ( RULE_INT )
+            // InternalFire.g:2631:1: ( ( RULE_INT ) )
+            // InternalFire.g:2632:1: ( RULE_INT )
             {
-            // InternalFire.g:2572:1: ( RULE_INT )
-            // InternalFire.g:2573:2: RULE_INT
+            // InternalFire.g:2632:1: ( RULE_INT )
+            // InternalFire.g:2633:2: RULE_INT
             {
              before(grammarAccess.getDoubleAccess().getINTTerminalRuleCall_2()); 
             match(input,RULE_INT,FOLLOW_2); 
@@ -7924,17 +8053,17 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Program__StatementsAssignment_2"
-    // InternalFire.g:2583:1: rule__Program__StatementsAssignment_2 : ( ruleStatement ) ;
+    // InternalFire.g:2643:1: rule__Program__StatementsAssignment_2 : ( ruleStatement ) ;
     public final void rule__Program__StatementsAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2587:1: ( ( ruleStatement ) )
-            // InternalFire.g:2588:2: ( ruleStatement )
+            // InternalFire.g:2647:1: ( ( ruleStatement ) )
+            // InternalFire.g:2648:2: ( ruleStatement )
             {
-            // InternalFire.g:2588:2: ( ruleStatement )
-            // InternalFire.g:2589:3: ruleStatement
+            // InternalFire.g:2648:2: ( ruleStatement )
+            // InternalFire.g:2649:3: ruleStatement
             {
              before(grammarAccess.getProgramAccess().getStatementsStatementParserRuleCall_2_0()); 
             pushFollow(FOLLOW_2);
@@ -7965,17 +8094,17 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Statement__NameAssignment_0_2"
-    // InternalFire.g:2598:1: rule__Statement__NameAssignment_0_2 : ( RULE_ID ) ;
+    // InternalFire.g:2658:1: rule__Statement__NameAssignment_0_2 : ( RULE_ID ) ;
     public final void rule__Statement__NameAssignment_0_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2602:1: ( ( RULE_ID ) )
-            // InternalFire.g:2603:2: ( RULE_ID )
+            // InternalFire.g:2662:1: ( ( RULE_ID ) )
+            // InternalFire.g:2663:2: ( RULE_ID )
             {
-            // InternalFire.g:2603:2: ( RULE_ID )
-            // InternalFire.g:2604:3: RULE_ID
+            // InternalFire.g:2663:2: ( RULE_ID )
+            // InternalFire.g:2664:3: RULE_ID
             {
              before(grammarAccess.getStatementAccess().getNameIDTerminalRuleCall_0_2_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -8002,17 +8131,17 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Statement__TypeAssignment_0_4"
-    // InternalFire.g:2613:1: rule__Statement__TypeAssignment_0_4 : ( ruleBuiltInType ) ;
+    // InternalFire.g:2673:1: rule__Statement__TypeAssignment_0_4 : ( ruleBuiltInType ) ;
     public final void rule__Statement__TypeAssignment_0_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2617:1: ( ( ruleBuiltInType ) )
-            // InternalFire.g:2618:2: ( ruleBuiltInType )
+            // InternalFire.g:2677:1: ( ( ruleBuiltInType ) )
+            // InternalFire.g:2678:2: ( ruleBuiltInType )
             {
-            // InternalFire.g:2618:2: ( ruleBuiltInType )
-            // InternalFire.g:2619:3: ruleBuiltInType
+            // InternalFire.g:2678:2: ( ruleBuiltInType )
+            // InternalFire.g:2679:3: ruleBuiltInType
             {
              before(grammarAccess.getStatementAccess().getTypeBuiltInTypeEnumRuleCall_0_4_0()); 
             pushFollow(FOLLOW_2);
@@ -8043,17 +8172,17 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Statement__ValueAssignment_0_6"
-    // InternalFire.g:2628:1: rule__Statement__ValueAssignment_0_6 : ( ruleExpression ) ;
+    // InternalFire.g:2688:1: rule__Statement__ValueAssignment_0_6 : ( ruleExpression ) ;
     public final void rule__Statement__ValueAssignment_0_6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2632:1: ( ( ruleExpression ) )
-            // InternalFire.g:2633:2: ( ruleExpression )
+            // InternalFire.g:2692:1: ( ( ruleExpression ) )
+            // InternalFire.g:2693:2: ( ruleExpression )
             {
-            // InternalFire.g:2633:2: ( ruleExpression )
-            // InternalFire.g:2634:3: ruleExpression
+            // InternalFire.g:2693:2: ( ruleExpression )
+            // InternalFire.g:2694:3: ruleExpression
             {
              before(grammarAccess.getStatementAccess().getValueExpressionParserRuleCall_0_6_0()); 
             pushFollow(FOLLOW_2);
@@ -8084,17 +8213,17 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Statement__ArgumentAssignment_1_3"
-    // InternalFire.g:2643:1: rule__Statement__ArgumentAssignment_1_3 : ( ruleExpression ) ;
+    // InternalFire.g:2703:1: rule__Statement__ArgumentAssignment_1_3 : ( ruleExpression ) ;
     public final void rule__Statement__ArgumentAssignment_1_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2647:1: ( ( ruleExpression ) )
-            // InternalFire.g:2648:2: ( ruleExpression )
+            // InternalFire.g:2707:1: ( ( ruleExpression ) )
+            // InternalFire.g:2708:2: ( ruleExpression )
             {
-            // InternalFire.g:2648:2: ( ruleExpression )
-            // InternalFire.g:2649:3: ruleExpression
+            // InternalFire.g:2708:2: ( ruleExpression )
+            // InternalFire.g:2709:3: ruleExpression
             {
              before(grammarAccess.getStatementAccess().getArgumentExpressionParserRuleCall_1_3_0()); 
             pushFollow(FOLLOW_2);
@@ -8125,17 +8254,17 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Expression__RightAssignment_1_2"
-    // InternalFire.g:2658:1: rule__Expression__RightAssignment_1_2 : ( ruleAndExpression ) ;
+    // InternalFire.g:2718:1: rule__Expression__RightAssignment_1_2 : ( ruleAndExpression ) ;
     public final void rule__Expression__RightAssignment_1_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2662:1: ( ( ruleAndExpression ) )
-            // InternalFire.g:2663:2: ( ruleAndExpression )
+            // InternalFire.g:2722:1: ( ( ruleAndExpression ) )
+            // InternalFire.g:2723:2: ( ruleAndExpression )
             {
-            // InternalFire.g:2663:2: ( ruleAndExpression )
-            // InternalFire.g:2664:3: ruleAndExpression
+            // InternalFire.g:2723:2: ( ruleAndExpression )
+            // InternalFire.g:2724:3: ruleAndExpression
             {
              before(grammarAccess.getExpressionAccess().getRightAndExpressionParserRuleCall_1_2_0()); 
             pushFollow(FOLLOW_2);
@@ -8166,17 +8295,17 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__AndExpression__RightAssignment_1_2"
-    // InternalFire.g:2673:1: rule__AndExpression__RightAssignment_1_2 : ( ruleXorExpression ) ;
+    // InternalFire.g:2733:1: rule__AndExpression__RightAssignment_1_2 : ( ruleXorExpression ) ;
     public final void rule__AndExpression__RightAssignment_1_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2677:1: ( ( ruleXorExpression ) )
-            // InternalFire.g:2678:2: ( ruleXorExpression )
+            // InternalFire.g:2737:1: ( ( ruleXorExpression ) )
+            // InternalFire.g:2738:2: ( ruleXorExpression )
             {
-            // InternalFire.g:2678:2: ( ruleXorExpression )
-            // InternalFire.g:2679:3: ruleXorExpression
+            // InternalFire.g:2738:2: ( ruleXorExpression )
+            // InternalFire.g:2739:3: ruleXorExpression
             {
              before(grammarAccess.getAndExpressionAccess().getRightXorExpressionParserRuleCall_1_2_0()); 
             pushFollow(FOLLOW_2);
@@ -8207,17 +8336,17 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__XorExpression__RightAssignment_1_2"
-    // InternalFire.g:2688:1: rule__XorExpression__RightAssignment_1_2 : ( ruleEqualityExpression ) ;
+    // InternalFire.g:2748:1: rule__XorExpression__RightAssignment_1_2 : ( ruleEqualityExpression ) ;
     public final void rule__XorExpression__RightAssignment_1_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2692:1: ( ( ruleEqualityExpression ) )
-            // InternalFire.g:2693:2: ( ruleEqualityExpression )
+            // InternalFire.g:2752:1: ( ( ruleEqualityExpression ) )
+            // InternalFire.g:2753:2: ( ruleEqualityExpression )
             {
-            // InternalFire.g:2693:2: ( ruleEqualityExpression )
-            // InternalFire.g:2694:3: ruleEqualityExpression
+            // InternalFire.g:2753:2: ( ruleEqualityExpression )
+            // InternalFire.g:2754:3: ruleEqualityExpression
             {
              before(grammarAccess.getXorExpressionAccess().getRightEqualityExpressionParserRuleCall_1_2_0()); 
             pushFollow(FOLLOW_2);
@@ -8248,17 +8377,17 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__EqualityExpression__OperatorAssignment_1_1"
-    // InternalFire.g:2703:1: rule__EqualityExpression__OperatorAssignment_1_1 : ( ruleEqualityOperator ) ;
+    // InternalFire.g:2763:1: rule__EqualityExpression__OperatorAssignment_1_1 : ( ruleEqualityOperator ) ;
     public final void rule__EqualityExpression__OperatorAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2707:1: ( ( ruleEqualityOperator ) )
-            // InternalFire.g:2708:2: ( ruleEqualityOperator )
+            // InternalFire.g:2767:1: ( ( ruleEqualityOperator ) )
+            // InternalFire.g:2768:2: ( ruleEqualityOperator )
             {
-            // InternalFire.g:2708:2: ( ruleEqualityOperator )
-            // InternalFire.g:2709:3: ruleEqualityOperator
+            // InternalFire.g:2768:2: ( ruleEqualityOperator )
+            // InternalFire.g:2769:3: ruleEqualityOperator
             {
              before(grammarAccess.getEqualityExpressionAccess().getOperatorEqualityOperatorEnumRuleCall_1_1_0()); 
             pushFollow(FOLLOW_2);
@@ -8289,17 +8418,17 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__EqualityExpression__RightAssignment_1_2"
-    // InternalFire.g:2718:1: rule__EqualityExpression__RightAssignment_1_2 : ( ruleComparisonExpression ) ;
+    // InternalFire.g:2778:1: rule__EqualityExpression__RightAssignment_1_2 : ( ruleComparisonExpression ) ;
     public final void rule__EqualityExpression__RightAssignment_1_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2722:1: ( ( ruleComparisonExpression ) )
-            // InternalFire.g:2723:2: ( ruleComparisonExpression )
+            // InternalFire.g:2782:1: ( ( ruleComparisonExpression ) )
+            // InternalFire.g:2783:2: ( ruleComparisonExpression )
             {
-            // InternalFire.g:2723:2: ( ruleComparisonExpression )
-            // InternalFire.g:2724:3: ruleComparisonExpression
+            // InternalFire.g:2783:2: ( ruleComparisonExpression )
+            // InternalFire.g:2784:3: ruleComparisonExpression
             {
              before(grammarAccess.getEqualityExpressionAccess().getRightComparisonExpressionParserRuleCall_1_2_0()); 
             pushFollow(FOLLOW_2);
@@ -8330,17 +8459,17 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ComparisonExpression__OperatorAssignment_1_1"
-    // InternalFire.g:2733:1: rule__ComparisonExpression__OperatorAssignment_1_1 : ( ruleComparisonOperator ) ;
+    // InternalFire.g:2793:1: rule__ComparisonExpression__OperatorAssignment_1_1 : ( ruleComparisonOperator ) ;
     public final void rule__ComparisonExpression__OperatorAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2737:1: ( ( ruleComparisonOperator ) )
-            // InternalFire.g:2738:2: ( ruleComparisonOperator )
+            // InternalFire.g:2797:1: ( ( ruleComparisonOperator ) )
+            // InternalFire.g:2798:2: ( ruleComparisonOperator )
             {
-            // InternalFire.g:2738:2: ( ruleComparisonOperator )
-            // InternalFire.g:2739:3: ruleComparisonOperator
+            // InternalFire.g:2798:2: ( ruleComparisonOperator )
+            // InternalFire.g:2799:3: ruleComparisonOperator
             {
              before(grammarAccess.getComparisonExpressionAccess().getOperatorComparisonOperatorEnumRuleCall_1_1_0()); 
             pushFollow(FOLLOW_2);
@@ -8371,17 +8500,17 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ComparisonExpression__RightAssignment_1_2"
-    // InternalFire.g:2748:1: rule__ComparisonExpression__RightAssignment_1_2 : ( ruleAdditiveExpression ) ;
+    // InternalFire.g:2808:1: rule__ComparisonExpression__RightAssignment_1_2 : ( ruleAdditiveExpression ) ;
     public final void rule__ComparisonExpression__RightAssignment_1_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2752:1: ( ( ruleAdditiveExpression ) )
-            // InternalFire.g:2753:2: ( ruleAdditiveExpression )
+            // InternalFire.g:2812:1: ( ( ruleAdditiveExpression ) )
+            // InternalFire.g:2813:2: ( ruleAdditiveExpression )
             {
-            // InternalFire.g:2753:2: ( ruleAdditiveExpression )
-            // InternalFire.g:2754:3: ruleAdditiveExpression
+            // InternalFire.g:2813:2: ( ruleAdditiveExpression )
+            // InternalFire.g:2814:3: ruleAdditiveExpression
             {
              before(grammarAccess.getComparisonExpressionAccess().getRightAdditiveExpressionParserRuleCall_1_2_0()); 
             pushFollow(FOLLOW_2);
@@ -8412,17 +8541,17 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__AdditiveExpression__OperatorAssignment_1_1"
-    // InternalFire.g:2763:1: rule__AdditiveExpression__OperatorAssignment_1_1 : ( ruleAdditiveOperator ) ;
+    // InternalFire.g:2823:1: rule__AdditiveExpression__OperatorAssignment_1_1 : ( ruleAdditiveOperator ) ;
     public final void rule__AdditiveExpression__OperatorAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2767:1: ( ( ruleAdditiveOperator ) )
-            // InternalFire.g:2768:2: ( ruleAdditiveOperator )
+            // InternalFire.g:2827:1: ( ( ruleAdditiveOperator ) )
+            // InternalFire.g:2828:2: ( ruleAdditiveOperator )
             {
-            // InternalFire.g:2768:2: ( ruleAdditiveOperator )
-            // InternalFire.g:2769:3: ruleAdditiveOperator
+            // InternalFire.g:2828:2: ( ruleAdditiveOperator )
+            // InternalFire.g:2829:3: ruleAdditiveOperator
             {
              before(grammarAccess.getAdditiveExpressionAccess().getOperatorAdditiveOperatorEnumRuleCall_1_1_0()); 
             pushFollow(FOLLOW_2);
@@ -8453,17 +8582,17 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__AdditiveExpression__RightAssignment_1_2"
-    // InternalFire.g:2778:1: rule__AdditiveExpression__RightAssignment_1_2 : ( ruleMultiplicativeExpression ) ;
+    // InternalFire.g:2838:1: rule__AdditiveExpression__RightAssignment_1_2 : ( ruleMultiplicativeExpression ) ;
     public final void rule__AdditiveExpression__RightAssignment_1_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2782:1: ( ( ruleMultiplicativeExpression ) )
-            // InternalFire.g:2783:2: ( ruleMultiplicativeExpression )
+            // InternalFire.g:2842:1: ( ( ruleMultiplicativeExpression ) )
+            // InternalFire.g:2843:2: ( ruleMultiplicativeExpression )
             {
-            // InternalFire.g:2783:2: ( ruleMultiplicativeExpression )
-            // InternalFire.g:2784:3: ruleMultiplicativeExpression
+            // InternalFire.g:2843:2: ( ruleMultiplicativeExpression )
+            // InternalFire.g:2844:3: ruleMultiplicativeExpression
             {
              before(grammarAccess.getAdditiveExpressionAccess().getRightMultiplicativeExpressionParserRuleCall_1_2_0()); 
             pushFollow(FOLLOW_2);
@@ -8494,17 +8623,17 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MultiplicativeExpression__OperatorAssignment_1_1"
-    // InternalFire.g:2793:1: rule__MultiplicativeExpression__OperatorAssignment_1_1 : ( ruleMultiplicativeOperator ) ;
+    // InternalFire.g:2853:1: rule__MultiplicativeExpression__OperatorAssignment_1_1 : ( ruleMultiplicativeOperator ) ;
     public final void rule__MultiplicativeExpression__OperatorAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2797:1: ( ( ruleMultiplicativeOperator ) )
-            // InternalFire.g:2798:2: ( ruleMultiplicativeOperator )
+            // InternalFire.g:2857:1: ( ( ruleMultiplicativeOperator ) )
+            // InternalFire.g:2858:2: ( ruleMultiplicativeOperator )
             {
-            // InternalFire.g:2798:2: ( ruleMultiplicativeOperator )
-            // InternalFire.g:2799:3: ruleMultiplicativeOperator
+            // InternalFire.g:2858:2: ( ruleMultiplicativeOperator )
+            // InternalFire.g:2859:3: ruleMultiplicativeOperator
             {
              before(grammarAccess.getMultiplicativeExpressionAccess().getOperatorMultiplicativeOperatorEnumRuleCall_1_1_0()); 
             pushFollow(FOLLOW_2);
@@ -8535,17 +8664,17 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MultiplicativeExpression__RightAssignment_1_2"
-    // InternalFire.g:2808:1: rule__MultiplicativeExpression__RightAssignment_1_2 : ( ruleTerminalExpression ) ;
+    // InternalFire.g:2868:1: rule__MultiplicativeExpression__RightAssignment_1_2 : ( ruleTerminalExpression ) ;
     public final void rule__MultiplicativeExpression__RightAssignment_1_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2812:1: ( ( ruleTerminalExpression ) )
-            // InternalFire.g:2813:2: ( ruleTerminalExpression )
+            // InternalFire.g:2872:1: ( ( ruleTerminalExpression ) )
+            // InternalFire.g:2873:2: ( ruleTerminalExpression )
             {
-            // InternalFire.g:2813:2: ( ruleTerminalExpression )
-            // InternalFire.g:2814:3: ruleTerminalExpression
+            // InternalFire.g:2873:2: ( ruleTerminalExpression )
+            // InternalFire.g:2874:3: ruleTerminalExpression
             {
              before(grammarAccess.getMultiplicativeExpressionAccess().getRightTerminalExpressionParserRuleCall_1_2_0()); 
             pushFollow(FOLLOW_2);
@@ -8576,21 +8705,29 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__TerminalExpression__ValueAssignment_0_1"
-    // InternalFire.g:2823:1: rule__TerminalExpression__ValueAssignment_0_1 : ( RULE_STRING ) ;
+    // InternalFire.g:2883:1: rule__TerminalExpression__ValueAssignment_0_1 : ( ( RULE_ID ) ) ;
     public final void rule__TerminalExpression__ValueAssignment_0_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2827:1: ( ( RULE_STRING ) )
-            // InternalFire.g:2828:2: ( RULE_STRING )
+            // InternalFire.g:2887:1: ( ( ( RULE_ID ) ) )
+            // InternalFire.g:2888:2: ( ( RULE_ID ) )
             {
-            // InternalFire.g:2828:2: ( RULE_STRING )
-            // InternalFire.g:2829:3: RULE_STRING
+            // InternalFire.g:2888:2: ( ( RULE_ID ) )
+            // InternalFire.g:2889:3: ( RULE_ID )
             {
-             before(grammarAccess.getTerminalExpressionAccess().getValueSTRINGTerminalRuleCall_0_1_0()); 
-            match(input,RULE_STRING,FOLLOW_2); 
-             after(grammarAccess.getTerminalExpressionAccess().getValueSTRINGTerminalRuleCall_0_1_0()); 
+             before(grammarAccess.getTerminalExpressionAccess().getValueConstantDeclarationCrossReference_0_1_0()); 
+            // InternalFire.g:2890:3: ( RULE_ID )
+            // InternalFire.g:2891:4: RULE_ID
+            {
+             before(grammarAccess.getTerminalExpressionAccess().getValueConstantDeclarationIDTerminalRuleCall_0_1_0_1()); 
+            match(input,RULE_ID,FOLLOW_2); 
+             after(grammarAccess.getTerminalExpressionAccess().getValueConstantDeclarationIDTerminalRuleCall_0_1_0_1()); 
+
+            }
+
+             after(grammarAccess.getTerminalExpressionAccess().getValueConstantDeclarationCrossReference_0_1_0()); 
 
             }
 
@@ -8612,71 +8749,67 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__TerminalExpression__ValueAssignment_0_1"
 
 
-    // $ANTLR start "rule__TerminalExpression__ValueAssignment_1_1_0"
-    // InternalFire.g:2838:1: rule__TerminalExpression__ValueAssignment_1_1_0 : ( ( 'true' ) ) ;
-    public final void rule__TerminalExpression__ValueAssignment_1_1_0() throws RecognitionException {
+    // $ANTLR start "rule__TerminalExpression__ValueAssignment_1_1"
+    // InternalFire.g:2902:1: rule__TerminalExpression__ValueAssignment_1_1 : ( RULE_STRING ) ;
+    public final void rule__TerminalExpression__ValueAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2842:1: ( ( ( 'true' ) ) )
-            // InternalFire.g:2843:2: ( ( 'true' ) )
+            // InternalFire.g:2906:1: ( ( RULE_STRING ) )
+            // InternalFire.g:2907:2: ( RULE_STRING )
             {
-            // InternalFire.g:2843:2: ( ( 'true' ) )
-            // InternalFire.g:2844:3: ( 'true' )
+            // InternalFire.g:2907:2: ( RULE_STRING )
+            // InternalFire.g:2908:3: RULE_STRING
             {
-             before(grammarAccess.getTerminalExpressionAccess().getValueTrueKeyword_1_1_0_0()); 
-            // InternalFire.g:2845:3: ( 'true' )
-            // InternalFire.g:2846:4: 'true'
+             before(grammarAccess.getTerminalExpressionAccess().getValueSTRINGTerminalRuleCall_1_1_0()); 
+            match(input,RULE_STRING,FOLLOW_2); 
+             after(grammarAccess.getTerminalExpressionAccess().getValueSTRINGTerminalRuleCall_1_1_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__TerminalExpression__ValueAssignment_1_1"
+
+
+    // $ANTLR start "rule__TerminalExpression__ValueAssignment_2_1_0"
+    // InternalFire.g:2917:1: rule__TerminalExpression__ValueAssignment_2_1_0 : ( ( 'true' ) ) ;
+    public final void rule__TerminalExpression__ValueAssignment_2_1_0() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalFire.g:2921:1: ( ( ( 'true' ) ) )
+            // InternalFire.g:2922:2: ( ( 'true' ) )
             {
-             before(grammarAccess.getTerminalExpressionAccess().getValueTrueKeyword_1_1_0_0()); 
+            // InternalFire.g:2922:2: ( ( 'true' ) )
+            // InternalFire.g:2923:3: ( 'true' )
+            {
+             before(grammarAccess.getTerminalExpressionAccess().getValueTrueKeyword_2_1_0_0()); 
+            // InternalFire.g:2924:3: ( 'true' )
+            // InternalFire.g:2925:4: 'true'
+            {
+             before(grammarAccess.getTerminalExpressionAccess().getValueTrueKeyword_2_1_0_0()); 
             match(input,41,FOLLOW_2); 
-             after(grammarAccess.getTerminalExpressionAccess().getValueTrueKeyword_1_1_0_0()); 
+             after(grammarAccess.getTerminalExpressionAccess().getValueTrueKeyword_2_1_0_0()); 
 
             }
 
-             after(grammarAccess.getTerminalExpressionAccess().getValueTrueKeyword_1_1_0_0()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__TerminalExpression__ValueAssignment_1_1_0"
-
-
-    // $ANTLR start "rule__TerminalExpression__ValueAssignment_2_1"
-    // InternalFire.g:2857:1: rule__TerminalExpression__ValueAssignment_2_1 : ( ruleLong ) ;
-    public final void rule__TerminalExpression__ValueAssignment_2_1() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalFire.g:2861:1: ( ( ruleLong ) )
-            // InternalFire.g:2862:2: ( ruleLong )
-            {
-            // InternalFire.g:2862:2: ( ruleLong )
-            // InternalFire.g:2863:3: ruleLong
-            {
-             before(grammarAccess.getTerminalExpressionAccess().getValueLongParserRuleCall_2_1_0()); 
-            pushFollow(FOLLOW_2);
-            ruleLong();
-
-            state._fsp--;
-
-             after(grammarAccess.getTerminalExpressionAccess().getValueLongParserRuleCall_2_1_0()); 
+             after(grammarAccess.getTerminalExpressionAccess().getValueTrueKeyword_2_1_0_0()); 
 
             }
 
@@ -8695,29 +8828,29 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__TerminalExpression__ValueAssignment_2_1"
+    // $ANTLR end "rule__TerminalExpression__ValueAssignment_2_1_0"
 
 
     // $ANTLR start "rule__TerminalExpression__ValueAssignment_3_1"
-    // InternalFire.g:2872:1: rule__TerminalExpression__ValueAssignment_3_1 : ( ruleDouble ) ;
+    // InternalFire.g:2936:1: rule__TerminalExpression__ValueAssignment_3_1 : ( ruleLong ) ;
     public final void rule__TerminalExpression__ValueAssignment_3_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2876:1: ( ( ruleDouble ) )
-            // InternalFire.g:2877:2: ( ruleDouble )
+            // InternalFire.g:2940:1: ( ( ruleLong ) )
+            // InternalFire.g:2941:2: ( ruleLong )
             {
-            // InternalFire.g:2877:2: ( ruleDouble )
-            // InternalFire.g:2878:3: ruleDouble
+            // InternalFire.g:2941:2: ( ruleLong )
+            // InternalFire.g:2942:3: ruleLong
             {
-             before(grammarAccess.getTerminalExpressionAccess().getValueDoubleParserRuleCall_3_1_0()); 
+             before(grammarAccess.getTerminalExpressionAccess().getValueLongParserRuleCall_3_1_0()); 
             pushFollow(FOLLOW_2);
-            ruleDouble();
+            ruleLong();
 
             state._fsp--;
 
-             after(grammarAccess.getTerminalExpressionAccess().getValueDoubleParserRuleCall_3_1_0()); 
+             after(grammarAccess.getTerminalExpressionAccess().getValueLongParserRuleCall_3_1_0()); 
 
             }
 
@@ -8739,26 +8872,26 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__TerminalExpression__ValueAssignment_3_1"
 
 
-    // $ANTLR start "rule__TerminalExpression__OperandAssignment_4_2"
-    // InternalFire.g:2887:1: rule__TerminalExpression__OperandAssignment_4_2 : ( ruleTerminalExpression ) ;
-    public final void rule__TerminalExpression__OperandAssignment_4_2() throws RecognitionException {
+    // $ANTLR start "rule__TerminalExpression__ValueAssignment_4_1"
+    // InternalFire.g:2951:1: rule__TerminalExpression__ValueAssignment_4_1 : ( ruleDouble ) ;
+    public final void rule__TerminalExpression__ValueAssignment_4_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2891:1: ( ( ruleTerminalExpression ) )
-            // InternalFire.g:2892:2: ( ruleTerminalExpression )
+            // InternalFire.g:2955:1: ( ( ruleDouble ) )
+            // InternalFire.g:2956:2: ( ruleDouble )
             {
-            // InternalFire.g:2892:2: ( ruleTerminalExpression )
-            // InternalFire.g:2893:3: ruleTerminalExpression
+            // InternalFire.g:2956:2: ( ruleDouble )
+            // InternalFire.g:2957:3: ruleDouble
             {
-             before(grammarAccess.getTerminalExpressionAccess().getOperandTerminalExpressionParserRuleCall_4_2_0()); 
+             before(grammarAccess.getTerminalExpressionAccess().getValueDoubleParserRuleCall_4_1_0()); 
             pushFollow(FOLLOW_2);
-            ruleTerminalExpression();
+            ruleDouble();
 
             state._fsp--;
 
-             after(grammarAccess.getTerminalExpressionAccess().getOperandTerminalExpressionParserRuleCall_4_2_0()); 
+             after(grammarAccess.getTerminalExpressionAccess().getValueDoubleParserRuleCall_4_1_0()); 
 
             }
 
@@ -8777,21 +8910,21 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__TerminalExpression__OperandAssignment_4_2"
+    // $ANTLR end "rule__TerminalExpression__ValueAssignment_4_1"
 
 
     // $ANTLR start "rule__TerminalExpression__OperandAssignment_5_2"
-    // InternalFire.g:2902:1: rule__TerminalExpression__OperandAssignment_5_2 : ( ruleTerminalExpression ) ;
+    // InternalFire.g:2966:1: rule__TerminalExpression__OperandAssignment_5_2 : ( ruleTerminalExpression ) ;
     public final void rule__TerminalExpression__OperandAssignment_5_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalFire.g:2906:1: ( ( ruleTerminalExpression ) )
-            // InternalFire.g:2907:2: ( ruleTerminalExpression )
+            // InternalFire.g:2970:1: ( ( ruleTerminalExpression ) )
+            // InternalFire.g:2971:2: ( ruleTerminalExpression )
             {
-            // InternalFire.g:2907:2: ( ruleTerminalExpression )
-            // InternalFire.g:2908:3: ruleTerminalExpression
+            // InternalFire.g:2971:2: ( ruleTerminalExpression )
+            // InternalFire.g:2972:3: ruleTerminalExpression
             {
              before(grammarAccess.getTerminalExpressionAccess().getOperandTerminalExpressionParserRuleCall_5_2_0()); 
             pushFollow(FOLLOW_2);
@@ -8820,9 +8953,95 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
     }
     // $ANTLR end "rule__TerminalExpression__OperandAssignment_5_2"
 
+
+    // $ANTLR start "rule__TerminalExpression__OperandAssignment_6_2"
+    // InternalFire.g:2981:1: rule__TerminalExpression__OperandAssignment_6_2 : ( ruleTerminalExpression ) ;
+    public final void rule__TerminalExpression__OperandAssignment_6_2() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalFire.g:2985:1: ( ( ruleTerminalExpression ) )
+            // InternalFire.g:2986:2: ( ruleTerminalExpression )
+            {
+            // InternalFire.g:2986:2: ( ruleTerminalExpression )
+            // InternalFire.g:2987:3: ruleTerminalExpression
+            {
+             before(grammarAccess.getTerminalExpressionAccess().getOperandTerminalExpressionParserRuleCall_6_2_0()); 
+            pushFollow(FOLLOW_2);
+            ruleTerminalExpression();
+
+            state._fsp--;
+
+             after(grammarAccess.getTerminalExpressionAccess().getOperandTerminalExpressionParserRuleCall_6_2_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__TerminalExpression__OperandAssignment_6_2"
+
     // Delegated rules
 
 
+    protected DFA2 dfa2 = new DFA2(this);
+    static final String dfa_1s = "\12\uffff";
+    static final String dfa_2s = "\4\uffff\1\11\5\uffff";
+    static final String dfa_3s = "\1\4\3\uffff\1\20\5\uffff";
+    static final String dfa_4s = "\1\51\3\uffff\1\50\5\uffff";
+    static final String dfa_5s = "\1\uffff\1\1\1\2\1\3\1\uffff\1\6\1\7\1\10\1\5\1\4";
+    static final String dfa_6s = "\12\uffff}>";
+    static final String[] dfa_7s = {
+            "\1\4\1\1\1\2\4\uffff\1\3\13\uffff\1\6\12\uffff\1\7\4\uffff\1\5\1\uffff\1\3",
+            "",
+            "",
+            "",
+            "\14\11\1\uffff\2\11\2\uffff\1\11\1\uffff\4\11\1\uffff\1\10",
+            "",
+            "",
+            "",
+            "",
+            ""
+    };
+
+    static final short[] dfa_1 = DFA.unpackEncodedString(dfa_1s);
+    static final short[] dfa_2 = DFA.unpackEncodedString(dfa_2s);
+    static final char[] dfa_3 = DFA.unpackEncodedStringToUnsignedChars(dfa_3s);
+    static final char[] dfa_4 = DFA.unpackEncodedStringToUnsignedChars(dfa_4s);
+    static final short[] dfa_5 = DFA.unpackEncodedString(dfa_5s);
+    static final short[] dfa_6 = DFA.unpackEncodedString(dfa_6s);
+    static final short[][] dfa_7 = unpackEncodedStringArray(dfa_7s);
+
+    class DFA2 extends DFA {
+
+        public DFA2(BaseRecognizer recognizer) {
+            this.recognizer = recognizer;
+            this.decisionNumber = 2;
+            this.eot = dfa_1;
+            this.eof = dfa_2;
+            this.min = dfa_3;
+            this.max = dfa_4;
+            this.accept = dfa_5;
+            this.special = dfa_6;
+            this.transition = dfa_7;
+        }
+        public String getDescription() {
+            return "453:1: rule__TerminalExpression__Alternatives : ( ( ( rule__TerminalExpression__Group_0__0 ) ) | ( ( rule__TerminalExpression__Group_1__0 ) ) | ( ( rule__TerminalExpression__Group_2__0 ) ) | ( ( rule__TerminalExpression__Group_3__0 ) ) | ( ( rule__TerminalExpression__Group_4__0 ) ) | ( ( rule__TerminalExpression__Group_5__0 ) ) | ( ( rule__TerminalExpression__Group_6__0 ) ) | ( ( rule__TerminalExpression__Group_7__0 ) ) );";
+        }
+    }
  
 
     public static final BitSet FOLLOW_1 = new BitSet(new long[]{0x0000000000000000L});
@@ -8835,7 +9054,7 @@ public class InternalFireParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000080000000L});
     public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x000000000000F000L});
     public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000100000000L});
-    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000028400800850L});
+    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000028400800870L});
     public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000240000000L});
     public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000400000000L});
     public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000800000000L});

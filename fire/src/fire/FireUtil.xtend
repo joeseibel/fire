@@ -6,6 +6,7 @@ import fire.fire.BooleanLiteral
 import fire.fire.BuiltInType
 import fire.fire.ComparisonExpression
 import fire.fire.EqualityExpression
+import fire.fire.IdExpression
 import fire.fire.IntegerLiteral
 import fire.fire.MultiplicativeExpression
 import fire.fire.NegationExpression
@@ -61,6 +62,10 @@ class FireUtil {
 			case INTEGER_DIVIDE: BuiltInType.INTEGER
 			case MODULUS: BuiltInType.INTEGER
 		}
+	}
+	
+	def static dispatch BuiltInType getType(IdExpression expression) {
+		expression.value?.type
 	}
 	
 	def static dispatch BuiltInType getType(StringLiteral literal) {

@@ -136,6 +136,11 @@ public class FireAdapterFactory extends AdapterFactoryImpl
         return createMultiplicativeExpressionAdapter();
       }
       @Override
+      public Adapter caseIdExpression(IdExpression object)
+      {
+        return createIdExpressionAdapter();
+      }
+      @Override
       public Adapter caseStringLiteral(StringLiteral object)
       {
         return createStringLiteralAdapter();
@@ -363,6 +368,21 @@ public class FireAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createMultiplicativeExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link fire.fire.IdExpression <em>Id Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see fire.fire.IdExpression
+   * @generated
+   */
+  public Adapter createIdExpressionAdapter()
   {
     return null;
   }

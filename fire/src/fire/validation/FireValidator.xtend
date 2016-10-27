@@ -8,6 +8,7 @@ import fire.fire.ComparisonExpression
 import fire.fire.ConstantDeclaration
 import fire.fire.EqualityExpression
 import fire.fire.FirePackage
+import fire.fire.IdExpression
 import fire.fire.MultiplicativeExpression
 import fire.fire.NegationExpression
 import fire.fire.NotExpression
@@ -18,6 +19,9 @@ import fire.services.FireGrammarAccess
 import org.eclipse.xtext.validation.Check
 
 import static extension fire.FireUtil.getType
+import static extension org.eclipse.emf.ecore.util.EcoreUtil.UsageCrossReferencer.find
+import static extension org.eclipse.emf.ecore.util.EcoreUtil.isAncestor
+import static extension org.eclipse.xtext.EcoreUtil2.getContainerOfType
 import static extension org.eclipse.xtext.nodemodel.util.NodeModelUtils.getNode
 
 class FireValidator extends AbstractFireValidator {
@@ -36,6 +40,13 @@ class FireValidator extends AbstractFireValidator {
 		val valueType = constant.value?.type
 		if (valueType != null && constant.type != null && valueType != constant.type) {
 			error('''Expected «constant.type», found «valueType»''', FirePackage.Literals.CONSTANT_DECLARATION__VALUE)
+		}
+	}
+	
+	@Check
+	def void checkUnusedConstant(ConstantDeclaration constant) {
+		if (constant.find(constant.getContainerOfType(Program)).empty) {
+			warning(constant.name + " is not used", FirePackage.Literals.CONSTANT_DECLARATION__NAME)
 		}
 	}
 	
@@ -130,10 +141,17 @@ class FireValidator extends AbstractFireValidator {
 	}
 	
 	@Check
+	def void checkDeclarationBeforeReference(IdExpression expression) {
+		if (expression.value != null && (expression.node.offset < expression.value.node.offset || expression.value.isAncestor(expression))) {
+			error('''Cannot refer to «expression.value.name» before it is declared''', null)
+		}
+	}
+	
+	@Check
 	def void typeCheckNotExpression(NotExpression expression) {
 		val operandType = expression.operand?.type
 		if (operandType != null && operandType != BuiltInType.BOOLEAN) {
-			val notKeyword = grammarAccess.terminalExpressionAccess.notKeyword_4_1
+			val notKeyword = grammarAccess.terminalExpressionAccess.notKeyword_5_1
 			val message = notKeyword.value + " operator cannot be applied to type " + operandType
 			val notKeywordNode = expression.node.children.findFirst[grammarElement == notKeyword]
 			messageAcceptor.acceptError(message, expression, notKeywordNode.offset, notKeywordNode.length, null)
@@ -144,7 +162,7 @@ class FireValidator extends AbstractFireValidator {
 	def void typeCheckNegationExpression(NegationExpression expression) {
 		val operandType = expression.operand?.type
 		if (operandType != null && operandType != BuiltInType.INTEGER && operandType != BuiltInType.REAL) {
-			val negationKeyword = grammarAccess.terminalExpressionAccess.hyphenMinusKeyword_5_1
+			val negationKeyword = grammarAccess.terminalExpressionAccess.hyphenMinusKeyword_6_1
 			val message = negationKeyword.value + " operator cannot be applied to type " + operandType
 			val negationKeywordNode = expression.node.children.findFirst[grammarElement == negationKeyword]
 			messageAcceptor.acceptError(message, expression, negationKeywordNode.offset, negationKeywordNode.length, null)

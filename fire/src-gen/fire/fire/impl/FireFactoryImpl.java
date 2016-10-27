@@ -78,6 +78,7 @@ public class FireFactoryImpl extends EFactoryImpl implements FireFactory
       case FirePackage.COMPARISON_EXPRESSION: return createComparisonExpression();
       case FirePackage.ADDITIVE_EXPRESSION: return createAdditiveExpression();
       case FirePackage.MULTIPLICATIVE_EXPRESSION: return createMultiplicativeExpression();
+      case FirePackage.ID_EXPRESSION: return createIdExpression();
       case FirePackage.STRING_LITERAL: return createStringLiteral();
       case FirePackage.BOOLEAN_LITERAL: return createBooleanLiteral();
       case FirePackage.INTEGER_LITERAL: return createIntegerLiteral();
@@ -269,6 +270,17 @@ public class FireFactoryImpl extends EFactoryImpl implements FireFactory
   {
     MultiplicativeExpressionImpl multiplicativeExpression = new MultiplicativeExpressionImpl();
     return multiplicativeExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public IdExpression createIdExpression()
+  {
+    IdExpressionImpl idExpression = new IdExpressionImpl();
+    return idExpression;
   }
 
   /**

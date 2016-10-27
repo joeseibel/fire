@@ -1,8 +1,10 @@
 package fire.tests
 
 import com.google.inject.Inject
+import fire.fire.ConstantDeclaration
 import fire.fire.FirePackage
 import fire.fire.Program
+import fire.fire.WritelnStatement
 import fire.validation.FireValidator
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
@@ -33,9 +35,12 @@ class ValidatorTest {
 				const c1: Integer := 3
 			end
 		'''.parse => [
-			2.assertEquals(validate.size)
+			5.assertEquals(validate.size)
+			statements.get(0).assertWarning(FirePackage.Literals.CONSTANT_DECLARATION, null, "c1 is not used")
 			statements.get(1).assertError(FirePackage.Literals.CONSTANT_DECLARATION, null, "c1 is already declared")
+			statements.get(1).assertWarning(FirePackage.Literals.CONSTANT_DECLARATION, null, "c1 is not used")
 			statements.get(2).assertError(FirePackage.Literals.CONSTANT_DECLARATION, null, "c1 is already declared")
+			statements.get(2).assertWarning(FirePackage.Literals.CONSTANT_DECLARATION, null, "c1 is not used")
 		]
 	}
 	
@@ -45,6 +50,10 @@ class ValidatorTest {
 			program
 				const c1: String := "string1"
 				const c2: String := 1
+				const c3: Integer := c1
+				writeln(c1)
+				writeln(c2)
+				writeln(c3)
 			end
 		'''.parse => [
 			tester.validate(statements.get(0)) => [
@@ -53,6 +62,29 @@ class ValidatorTest {
 			tester.validate(statements.get(1)) => [
 				assertDiagnosticsCount(1)
 				assertError(null, "Expected String, found Integer")
+			]
+			tester.validate(statements.get(2)) => [
+				assertDiagnosticsCount(1)
+				assertError(null, "Expected Integer, found String")
+			]
+		]
+	}
+	
+	@Test
+	def void testCheckUnusedConstant() {
+		'''
+			program
+				const c1: Integer := 1
+				writeln(c1)
+				const c2: Integer := 2
+			end
+		'''.parse => [
+			tester.validate(statements.get(0)) => [
+				assertDiagnosticsCount(0)
+			]
+			tester.validate(statements.get(2)) => [
+				assertDiagnosticsCount(1)
+				assertWarning(null, "c2 is not used")
 			]
 		]
 	}
@@ -305,6 +337,31 @@ class ValidatorTest {
 			tester.validate(statements.get(7)) => [
 				assertDiagnosticsCount(1)
 				assertError(null, "mod operator cannot be applied to types Real and Real")
+			]
+		]
+	}
+	
+	@Test
+	def void testCheckDeclarationBeforeReference() {
+		'''
+			program
+				const c1: Integer := 1
+				writeln(c1)
+				writeln(c2)
+				const c2: Integer := 2
+				const c3: Integer := c3
+			end
+		'''.parse => [
+			tester.validate((statements.get(1) as WritelnStatement).argument) => [
+				assertDiagnosticsCount(0)
+			]
+			tester.validate((statements.get(2) as WritelnStatement).argument) => [
+				assertDiagnosticsCount(1)
+				assertError(null, "Cannot refer to c2 before it is declared")
+			]
+			tester.validate((statements.get(4) as ConstantDeclaration).value) => [
+				assertDiagnosticsCount(1)
+				assertError(null, "Cannot refer to c3 before it is declared")
 			]
 		]
 	}

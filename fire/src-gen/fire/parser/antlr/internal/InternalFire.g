@@ -744,15 +744,38 @@ ruleTerminalExpression returns [EObject current=null]
 			(
 				{
 					$current = forceCreateModelElement(
-						grammarAccess.getTerminalExpressionAccess().getStringLiteralAction_0_0(),
+						grammarAccess.getTerminalExpressionAccess().getIdExpressionAction_0_0(),
 						$current);
 				}
 			)
 			(
 				(
-					lv_value_1_0=RULE_STRING
 					{
-						newLeafNode(lv_value_1_0, grammarAccess.getTerminalExpressionAccess().getValueSTRINGTerminalRuleCall_0_1_0());
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getTerminalExpressionRule());
+						}
+					}
+					otherlv_1=RULE_ID
+					{
+						newLeafNode(otherlv_1, grammarAccess.getTerminalExpressionAccess().getValueConstantDeclarationCrossReference_0_1_0());
+					}
+				)
+			)
+		)
+		    |
+		(
+			(
+				{
+					$current = forceCreateModelElement(
+						grammarAccess.getTerminalExpressionAccess().getStringLiteralAction_1_0(),
+						$current);
+				}
+			)
+			(
+				(
+					lv_value_3_0=RULE_STRING
+					{
+						newLeafNode(lv_value_3_0, grammarAccess.getTerminalExpressionAccess().getValueSTRINGTerminalRuleCall_1_1_0());
 					}
 					{
 						if ($current==null) {
@@ -761,7 +784,7 @@ ruleTerminalExpression returns [EObject current=null]
 						setWithLastConsumed(
 							$current,
 							"value",
-							lv_value_1_0,
+							lv_value_3_0,
 							"org.eclipse.xtext.common.Terminals.STRING");
 					}
 				)
@@ -772,16 +795,16 @@ ruleTerminalExpression returns [EObject current=null]
 			(
 				{
 					$current = forceCreateModelElement(
-						grammarAccess.getTerminalExpressionAccess().getBooleanLiteralAction_1_0(),
+						grammarAccess.getTerminalExpressionAccess().getBooleanLiteralAction_2_0(),
 						$current);
 				}
 			)
 			(
 				(
 					(
-						lv_value_3_0='true'
+						lv_value_5_0='true'
 						{
-							newLeafNode(lv_value_3_0, grammarAccess.getTerminalExpressionAccess().getValueTrueKeyword_1_1_0_0());
+							newLeafNode(lv_value_5_0, grammarAccess.getTerminalExpressionAccess().getValueTrueKeyword_2_1_0_0());
 						}
 						{
 							if ($current==null) {
@@ -792,9 +815,9 @@ ruleTerminalExpression returns [EObject current=null]
 					)
 				)
 				    |
-				otherlv_4='false'
+				otherlv_6='false'
 				{
-					newLeafNode(otherlv_4, grammarAccess.getTerminalExpressionAccess().getFalseKeyword_1_1_1());
+					newLeafNode(otherlv_6, grammarAccess.getTerminalExpressionAccess().getFalseKeyword_2_1_1());
 				}
 			)
 		)
@@ -803,16 +826,16 @@ ruleTerminalExpression returns [EObject current=null]
 			(
 				{
 					$current = forceCreateModelElement(
-						grammarAccess.getTerminalExpressionAccess().getIntegerLiteralAction_2_0(),
+						grammarAccess.getTerminalExpressionAccess().getIntegerLiteralAction_3_0(),
 						$current);
 				}
 			)
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getTerminalExpressionAccess().getValueLongParserRuleCall_2_1_0());
+						newCompositeNode(grammarAccess.getTerminalExpressionAccess().getValueLongParserRuleCall_3_1_0());
 					}
-					lv_value_6_0=ruleLong
+					lv_value_8_0=ruleLong
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getTerminalExpressionRule());
@@ -820,7 +843,7 @@ ruleTerminalExpression returns [EObject current=null]
 						set(
 							$current,
 							"value",
-							lv_value_6_0,
+							lv_value_8_0,
 							"fire.Fire.Long");
 						afterParserOrEnumRuleCall();
 					}
@@ -832,16 +855,16 @@ ruleTerminalExpression returns [EObject current=null]
 			(
 				{
 					$current = forceCreateModelElement(
-						grammarAccess.getTerminalExpressionAccess().getRealLiteralAction_3_0(),
+						grammarAccess.getTerminalExpressionAccess().getRealLiteralAction_4_0(),
 						$current);
 				}
 			)
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getTerminalExpressionAccess().getValueDoubleParserRuleCall_3_1_0());
+						newCompositeNode(grammarAccess.getTerminalExpressionAccess().getValueDoubleParserRuleCall_4_1_0());
 					}
-					lv_value_8_0=ruleDouble
+					lv_value_10_0=ruleDouble
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getTerminalExpressionRule());
@@ -849,7 +872,7 @@ ruleTerminalExpression returns [EObject current=null]
 						set(
 							$current,
 							"value",
-							lv_value_8_0,
+							lv_value_10_0,
 							"fire.Fire.Double");
 						afterParserOrEnumRuleCall();
 					}
@@ -861,20 +884,20 @@ ruleTerminalExpression returns [EObject current=null]
 			(
 				{
 					$current = forceCreateModelElement(
-						grammarAccess.getTerminalExpressionAccess().getNotExpressionAction_4_0(),
+						grammarAccess.getTerminalExpressionAccess().getNotExpressionAction_5_0(),
 						$current);
 				}
 			)
-			otherlv_10='not'
+			otherlv_12='not'
 			{
-				newLeafNode(otherlv_10, grammarAccess.getTerminalExpressionAccess().getNotKeyword_4_1());
+				newLeafNode(otherlv_12, grammarAccess.getTerminalExpressionAccess().getNotKeyword_5_1());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getTerminalExpressionAccess().getOperandTerminalExpressionParserRuleCall_4_2_0());
+						newCompositeNode(grammarAccess.getTerminalExpressionAccess().getOperandTerminalExpressionParserRuleCall_5_2_0());
 					}
-					lv_operand_11_0=ruleTerminalExpression
+					lv_operand_13_0=ruleTerminalExpression
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getTerminalExpressionRule());
@@ -882,7 +905,7 @@ ruleTerminalExpression returns [EObject current=null]
 						set(
 							$current,
 							"operand",
-							lv_operand_11_0,
+							lv_operand_13_0,
 							"fire.Fire.TerminalExpression");
 						afterParserOrEnumRuleCall();
 					}
@@ -894,20 +917,20 @@ ruleTerminalExpression returns [EObject current=null]
 			(
 				{
 					$current = forceCreateModelElement(
-						grammarAccess.getTerminalExpressionAccess().getNegationExpressionAction_5_0(),
+						grammarAccess.getTerminalExpressionAccess().getNegationExpressionAction_6_0(),
 						$current);
 				}
 			)
-			otherlv_13='-'
+			otherlv_15='-'
 			{
-				newLeafNode(otherlv_13, grammarAccess.getTerminalExpressionAccess().getHyphenMinusKeyword_5_1());
+				newLeafNode(otherlv_15, grammarAccess.getTerminalExpressionAccess().getHyphenMinusKeyword_6_1());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getTerminalExpressionAccess().getOperandTerminalExpressionParserRuleCall_5_2_0());
+						newCompositeNode(grammarAccess.getTerminalExpressionAccess().getOperandTerminalExpressionParserRuleCall_6_2_0());
 					}
-					lv_operand_14_0=ruleTerminalExpression
+					lv_operand_16_0=ruleTerminalExpression
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getTerminalExpressionRule());
@@ -915,7 +938,7 @@ ruleTerminalExpression returns [EObject current=null]
 						set(
 							$current,
 							"operand",
-							lv_operand_14_0,
+							lv_operand_16_0,
 							"fire.Fire.TerminalExpression");
 						afterParserOrEnumRuleCall();
 					}
@@ -924,21 +947,21 @@ ruleTerminalExpression returns [EObject current=null]
 		)
 		    |
 		(
-			otherlv_15='('
+			otherlv_17='('
 			{
-				newLeafNode(otherlv_15, grammarAccess.getTerminalExpressionAccess().getLeftParenthesisKeyword_6_0());
+				newLeafNode(otherlv_17, grammarAccess.getTerminalExpressionAccess().getLeftParenthesisKeyword_7_0());
 			}
 			{
-				newCompositeNode(grammarAccess.getTerminalExpressionAccess().getExpressionParserRuleCall_6_1());
+				newCompositeNode(grammarAccess.getTerminalExpressionAccess().getExpressionParserRuleCall_7_1());
 			}
-			this_Expression_16=ruleExpression
+			this_Expression_18=ruleExpression
 			{
-				$current = $this_Expression_16.current;
+				$current = $this_Expression_18.current;
 				afterParserOrEnumRuleCall();
 			}
-			otherlv_17=')'
+			otherlv_19=')'
 			{
-				newLeafNode(otherlv_17, grammarAccess.getTerminalExpressionAccess().getRightParenthesisKeyword_6_2());
+				newLeafNode(otherlv_19, grammarAccess.getTerminalExpressionAccess().getRightParenthesisKeyword_7_2());
 			}
 		)
 	)
