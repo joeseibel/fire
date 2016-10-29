@@ -6,11 +6,11 @@ package fire.fire.impl;
 import fire.fire.AdditiveExpression;
 import fire.fire.AdditiveOperator;
 import fire.fire.AndExpression;
+import fire.fire.AssignmentStatement;
 import fire.fire.BooleanLiteral;
 import fire.fire.BuiltInType;
 import fire.fire.ComparisonExpression;
 import fire.fire.ComparisonOperator;
-import fire.fire.ConstantDeclaration;
 import fire.fire.EqualityExpression;
 import fire.fire.EqualityOperator;
 import fire.fire.Expression;
@@ -27,6 +27,7 @@ import fire.fire.Program;
 import fire.fire.RealLiteral;
 import fire.fire.Statement;
 import fire.fire.StringLiteral;
+import fire.fire.VariableDeclaration;
 import fire.fire.WritelnStatement;
 import fire.fire.XorExpression;
 
@@ -72,7 +73,14 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass constantDeclarationEClass = null;
+  private EClass variableDeclarationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass assignmentStatementEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -322,9 +330,9 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getConstantDeclaration()
+  public EClass getVariableDeclaration()
   {
-    return constantDeclarationEClass;
+    return variableDeclarationEClass;
   }
 
   /**
@@ -332,9 +340,9 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getConstantDeclaration_Name()
+  public EAttribute getVariableDeclaration_Constant()
   {
-    return (EAttribute)constantDeclarationEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)variableDeclarationEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -342,9 +350,9 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getConstantDeclaration_Type()
+  public EAttribute getVariableDeclaration_Name()
   {
-    return (EAttribute)constantDeclarationEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)variableDeclarationEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -352,9 +360,49 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getConstantDeclaration_Value()
+  public EAttribute getVariableDeclaration_Type()
   {
-    return (EReference)constantDeclarationEClass.getEStructuralFeatures().get(2);
+    return (EAttribute)variableDeclarationEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getVariableDeclaration_Value()
+  {
+    return (EReference)variableDeclarationEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getAssignmentStatement()
+  {
+    return assignmentStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getAssignmentStatement_Variable()
+  {
+    return (EReference)assignmentStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getAssignmentStatement_Value()
+  {
+    return (EReference)assignmentStatementEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -854,10 +902,15 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
 
     expressionEClass = createEClass(EXPRESSION);
 
-    constantDeclarationEClass = createEClass(CONSTANT_DECLARATION);
-    createEAttribute(constantDeclarationEClass, CONSTANT_DECLARATION__NAME);
-    createEAttribute(constantDeclarationEClass, CONSTANT_DECLARATION__TYPE);
-    createEReference(constantDeclarationEClass, CONSTANT_DECLARATION__VALUE);
+    variableDeclarationEClass = createEClass(VARIABLE_DECLARATION);
+    createEAttribute(variableDeclarationEClass, VARIABLE_DECLARATION__CONSTANT);
+    createEAttribute(variableDeclarationEClass, VARIABLE_DECLARATION__NAME);
+    createEAttribute(variableDeclarationEClass, VARIABLE_DECLARATION__TYPE);
+    createEReference(variableDeclarationEClass, VARIABLE_DECLARATION__VALUE);
+
+    assignmentStatementEClass = createEClass(ASSIGNMENT_STATEMENT);
+    createEReference(assignmentStatementEClass, ASSIGNMENT_STATEMENT__VARIABLE);
+    createEReference(assignmentStatementEClass, ASSIGNMENT_STATEMENT__VALUE);
 
     writelnStatementEClass = createEClass(WRITELN_STATEMENT);
     createEReference(writelnStatementEClass, WRITELN_STATEMENT__ARGUMENT);
@@ -952,7 +1005,8 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
-    constantDeclarationEClass.getESuperTypes().add(this.getStatement());
+    variableDeclarationEClass.getESuperTypes().add(this.getStatement());
+    assignmentStatementEClass.getESuperTypes().add(this.getStatement());
     writelnStatementEClass.getESuperTypes().add(this.getStatement());
     orExpressionEClass.getESuperTypes().add(this.getExpression());
     andExpressionEClass.getESuperTypes().add(this.getExpression());
@@ -977,10 +1031,15 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
 
     initEClass(expressionEClass, Expression.class, "Expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-    initEClass(constantDeclarationEClass, ConstantDeclaration.class, "ConstantDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getConstantDeclaration_Name(), ecorePackage.getEString(), "name", null, 0, 1, ConstantDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getConstantDeclaration_Type(), this.getBuiltInType(), "type", null, 0, 1, ConstantDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getConstantDeclaration_Value(), this.getExpression(), null, "value", null, 0, 1, ConstantDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(variableDeclarationEClass, VariableDeclaration.class, "VariableDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getVariableDeclaration_Constant(), ecorePackage.getEBoolean(), "constant", null, 0, 1, VariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getVariableDeclaration_Name(), ecorePackage.getEString(), "name", null, 0, 1, VariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getVariableDeclaration_Type(), this.getBuiltInType(), "type", null, 0, 1, VariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getVariableDeclaration_Value(), this.getExpression(), null, "value", null, 0, 1, VariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(assignmentStatementEClass, AssignmentStatement.class, "AssignmentStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getAssignmentStatement_Variable(), this.getVariableDeclaration(), null, "variable", null, 0, 1, AssignmentStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAssignmentStatement_Value(), this.getExpression(), null, "value", null, 0, 1, AssignmentStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(writelnStatementEClass, WritelnStatement.class, "WritelnStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getWritelnStatement_Argument(), this.getExpression(), null, "argument", null, 0, 1, WritelnStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1018,7 +1077,7 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
     initEReference(getMultiplicativeExpression_Right(), this.getExpression(), null, "right", null, 0, 1, MultiplicativeExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(idExpressionEClass, IdExpression.class, "IdExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getIdExpression_Value(), this.getConstantDeclaration(), null, "value", null, 0, 1, IdExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getIdExpression_Value(), this.getVariableDeclaration(), null, "value", null, 0, 1, IdExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(stringLiteralEClass, StringLiteral.class, "StringLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getStringLiteral_Value(), ecorePackage.getEString(), "value", null, 0, 1, StringLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

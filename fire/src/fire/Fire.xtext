@@ -11,7 +11,8 @@ Program: {Program}
 ;
 
 Statement:
-	{ConstantDeclaration} 'const' name=ID ':' type=BuiltInType ':=' value=Expression |
+	{VariableDeclaration} (constant?='const' | 'var') name=ID ':' type=BuiltInType ':=' value=Expression |
+	{AssignmentStatement} variable=[VariableDeclaration] ':=' value=Expression |
 	{WritelnStatement} 'writeln' '(' argument=Expression ')'
 ;
 
@@ -75,7 +76,7 @@ enum MultiplicativeOperator:
 ;
 
 TerminalExpression returns Expression:
-	{IdExpression} value=[ConstantDeclaration] |
+	{IdExpression} value=[VariableDeclaration] |
 	{StringLiteral} value=STRING |
 	{BooleanLiteral} (value?='true' | 'false') |
 	{IntegerLiteral} value=Long |

@@ -15,5 +15,6 @@ public class IRBuilderBase extends PointerWrapper {
 	public native IntegerType getInt8Ty();
 	public native IntegerType getInt32Ty();
 	public native IntegerType getInt64Ty();
+	public native Type getDoubleTy();
 	public native Type getVoidTy();
 }

@@ -25,6 +25,8 @@ public class IRBuilder extends IRBuilderBase {
 	public native Value createNeg(Value v);
 	public native Value createFNeg(Value v);
 	public native Value createNot(Value v);
+	public native LoadInst createLoad(Value ptr);
+	public native StoreInst createStore(Value val, Value ptr);
 	public native Value createGlobalStringPtr(String str);
 	public native Value createICmpEQ(Value lhs, Value rhs);
 	public native Value createICmpNE(Value lhs, Value rhs);
@@ -46,8 +48,11 @@ public class IRBuilder extends IRBuilderBase {
 		return createPHINative(ty, numReservedValues);
 	}
 	
-	public native PHINode createPHINative(Type ty, int numReservedValues);
+	private native PHINode createPHINative(Type ty, int numReservedValues);
 	public native CallInst createCall(Function callee, Value[] args);
 	public native Value createSelect(Value c, Value trueValue, Value falseValue);
 	public native Value createExtractValue(Value agg, int idx);
+	
+	//Custom method which does not correspond directly to a method in the LLVM api.
+	public native AllocaInst createEntryBlockAlloca(Type ty);
 }

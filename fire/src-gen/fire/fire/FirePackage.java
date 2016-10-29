@@ -125,14 +125,23 @@ public interface FirePackage extends EPackage
   int EXPRESSION_FEATURE_COUNT = 0;
 
   /**
-   * The meta object id for the '{@link fire.fire.impl.ConstantDeclarationImpl <em>Constant Declaration</em>}' class.
+   * The meta object id for the '{@link fire.fire.impl.VariableDeclarationImpl <em>Variable Declaration</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see fire.fire.impl.ConstantDeclarationImpl
-   * @see fire.fire.impl.FirePackageImpl#getConstantDeclaration()
+   * @see fire.fire.impl.VariableDeclarationImpl
+   * @see fire.fire.impl.FirePackageImpl#getVariableDeclaration()
    * @generated
    */
-  int CONSTANT_DECLARATION = 3;
+  int VARIABLE_DECLARATION = 3;
+
+  /**
+   * The feature id for the '<em><b>Constant</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARIABLE_DECLARATION__CONSTANT = STATEMENT_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -141,7 +150,7 @@ public interface FirePackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONSTANT_DECLARATION__NAME = STATEMENT_FEATURE_COUNT + 0;
+  int VARIABLE_DECLARATION__NAME = STATEMENT_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -150,7 +159,7 @@ public interface FirePackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONSTANT_DECLARATION__TYPE = STATEMENT_FEATURE_COUNT + 1;
+  int VARIABLE_DECLARATION__TYPE = STATEMENT_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -159,16 +168,53 @@ public interface FirePackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONSTANT_DECLARATION__VALUE = STATEMENT_FEATURE_COUNT + 2;
+  int VARIABLE_DECLARATION__VALUE = STATEMENT_FEATURE_COUNT + 3;
 
   /**
-   * The number of structural features of the '<em>Constant Declaration</em>' class.
+   * The number of structural features of the '<em>Variable Declaration</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CONSTANT_DECLARATION_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 3;
+  int VARIABLE_DECLARATION_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 4;
+
+  /**
+   * The meta object id for the '{@link fire.fire.impl.AssignmentStatementImpl <em>Assignment Statement</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see fire.fire.impl.AssignmentStatementImpl
+   * @see fire.fire.impl.FirePackageImpl#getAssignmentStatement()
+   * @generated
+   */
+  int ASSIGNMENT_STATEMENT = 4;
+
+  /**
+   * The feature id for the '<em><b>Variable</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ASSIGNMENT_STATEMENT__VARIABLE = STATEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ASSIGNMENT_STATEMENT__VALUE = STATEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Assignment Statement</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ASSIGNMENT_STATEMENT_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link fire.fire.impl.WritelnStatementImpl <em>Writeln Statement</em>}' class.
@@ -178,7 +224,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getWritelnStatement()
    * @generated
    */
-  int WRITELN_STATEMENT = 4;
+  int WRITELN_STATEMENT = 5;
 
   /**
    * The feature id for the '<em><b>Argument</b></em>' containment reference.
@@ -206,7 +252,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getOrExpression()
    * @generated
    */
-  int OR_EXPRESSION = 5;
+  int OR_EXPRESSION = 6;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -243,7 +289,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getAndExpression()
    * @generated
    */
-  int AND_EXPRESSION = 6;
+  int AND_EXPRESSION = 7;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -280,7 +326,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getXorExpression()
    * @generated
    */
-  int XOR_EXPRESSION = 7;
+  int XOR_EXPRESSION = 8;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -317,7 +363,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getEqualityExpression()
    * @generated
    */
-  int EQUALITY_EXPRESSION = 8;
+  int EQUALITY_EXPRESSION = 9;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -363,7 +409,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getComparisonExpression()
    * @generated
    */
-  int COMPARISON_EXPRESSION = 9;
+  int COMPARISON_EXPRESSION = 10;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -409,7 +455,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getAdditiveExpression()
    * @generated
    */
-  int ADDITIVE_EXPRESSION = 10;
+  int ADDITIVE_EXPRESSION = 11;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -455,7 +501,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getMultiplicativeExpression()
    * @generated
    */
-  int MULTIPLICATIVE_EXPRESSION = 11;
+  int MULTIPLICATIVE_EXPRESSION = 12;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -501,7 +547,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getIdExpression()
    * @generated
    */
-  int ID_EXPRESSION = 12;
+  int ID_EXPRESSION = 13;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' reference.
@@ -529,7 +575,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getStringLiteral()
    * @generated
    */
-  int STRING_LITERAL = 13;
+  int STRING_LITERAL = 14;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -557,7 +603,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getBooleanLiteral()
    * @generated
    */
-  int BOOLEAN_LITERAL = 14;
+  int BOOLEAN_LITERAL = 15;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -585,7 +631,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getIntegerLiteral()
    * @generated
    */
-  int INTEGER_LITERAL = 15;
+  int INTEGER_LITERAL = 16;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -613,7 +659,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getRealLiteral()
    * @generated
    */
-  int REAL_LITERAL = 16;
+  int REAL_LITERAL = 17;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -641,7 +687,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getNotExpression()
    * @generated
    */
-  int NOT_EXPRESSION = 17;
+  int NOT_EXPRESSION = 18;
 
   /**
    * The feature id for the '<em><b>Operand</b></em>' containment reference.
@@ -669,7 +715,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getNegationExpression()
    * @generated
    */
-  int NEGATION_EXPRESSION = 18;
+  int NEGATION_EXPRESSION = 19;
 
   /**
    * The feature id for the '<em><b>Operand</b></em>' containment reference.
@@ -697,7 +743,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getBuiltInType()
    * @generated
    */
-  int BUILT_IN_TYPE = 19;
+  int BUILT_IN_TYPE = 20;
 
   /**
    * The meta object id for the '{@link fire.fire.EqualityOperator <em>Equality Operator</em>}' enum.
@@ -707,7 +753,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getEqualityOperator()
    * @generated
    */
-  int EQUALITY_OPERATOR = 20;
+  int EQUALITY_OPERATOR = 21;
 
   /**
    * The meta object id for the '{@link fire.fire.ComparisonOperator <em>Comparison Operator</em>}' enum.
@@ -717,7 +763,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getComparisonOperator()
    * @generated
    */
-  int COMPARISON_OPERATOR = 21;
+  int COMPARISON_OPERATOR = 22;
 
   /**
    * The meta object id for the '{@link fire.fire.AdditiveOperator <em>Additive Operator</em>}' enum.
@@ -727,7 +773,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getAdditiveOperator()
    * @generated
    */
-  int ADDITIVE_OPERATOR = 22;
+  int ADDITIVE_OPERATOR = 23;
 
   /**
    * The meta object id for the '{@link fire.fire.MultiplicativeOperator <em>Multiplicative Operator</em>}' enum.
@@ -737,7 +783,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getMultiplicativeOperator()
    * @generated
    */
-  int MULTIPLICATIVE_OPERATOR = 23;
+  int MULTIPLICATIVE_OPERATOR = 24;
 
 
   /**
@@ -782,47 +828,90 @@ public interface FirePackage extends EPackage
   EClass getExpression();
 
   /**
-   * Returns the meta object for class '{@link fire.fire.ConstantDeclaration <em>Constant Declaration</em>}'.
+   * Returns the meta object for class '{@link fire.fire.VariableDeclaration <em>Variable Declaration</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Constant Declaration</em>'.
-   * @see fire.fire.ConstantDeclaration
+   * @return the meta object for class '<em>Variable Declaration</em>'.
+   * @see fire.fire.VariableDeclaration
    * @generated
    */
-  EClass getConstantDeclaration();
+  EClass getVariableDeclaration();
 
   /**
-   * Returns the meta object for the attribute '{@link fire.fire.ConstantDeclaration#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link fire.fire.VariableDeclaration#isConstant <em>Constant</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Constant</em>'.
+   * @see fire.fire.VariableDeclaration#isConstant()
+   * @see #getVariableDeclaration()
+   * @generated
+   */
+  EAttribute getVariableDeclaration_Constant();
+
+  /**
+   * Returns the meta object for the attribute '{@link fire.fire.VariableDeclaration#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see fire.fire.ConstantDeclaration#getName()
-   * @see #getConstantDeclaration()
+   * @see fire.fire.VariableDeclaration#getName()
+   * @see #getVariableDeclaration()
    * @generated
    */
-  EAttribute getConstantDeclaration_Name();
+  EAttribute getVariableDeclaration_Name();
 
   /**
-   * Returns the meta object for the attribute '{@link fire.fire.ConstantDeclaration#getType <em>Type</em>}'.
+   * Returns the meta object for the attribute '{@link fire.fire.VariableDeclaration#getType <em>Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Type</em>'.
-   * @see fire.fire.ConstantDeclaration#getType()
-   * @see #getConstantDeclaration()
+   * @see fire.fire.VariableDeclaration#getType()
+   * @see #getVariableDeclaration()
    * @generated
    */
-  EAttribute getConstantDeclaration_Type();
+  EAttribute getVariableDeclaration_Type();
 
   /**
-   * Returns the meta object for the containment reference '{@link fire.fire.ConstantDeclaration#getValue <em>Value</em>}'.
+   * Returns the meta object for the containment reference '{@link fire.fire.VariableDeclaration#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Value</em>'.
-   * @see fire.fire.ConstantDeclaration#getValue()
-   * @see #getConstantDeclaration()
+   * @see fire.fire.VariableDeclaration#getValue()
+   * @see #getVariableDeclaration()
    * @generated
    */
-  EReference getConstantDeclaration_Value();
+  EReference getVariableDeclaration_Value();
+
+  /**
+   * Returns the meta object for class '{@link fire.fire.AssignmentStatement <em>Assignment Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Assignment Statement</em>'.
+   * @see fire.fire.AssignmentStatement
+   * @generated
+   */
+  EClass getAssignmentStatement();
+
+  /**
+   * Returns the meta object for the reference '{@link fire.fire.AssignmentStatement#getVariable <em>Variable</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Variable</em>'.
+   * @see fire.fire.AssignmentStatement#getVariable()
+   * @see #getAssignmentStatement()
+   * @generated
+   */
+  EReference getAssignmentStatement_Variable();
+
+  /**
+   * Returns the meta object for the containment reference '{@link fire.fire.AssignmentStatement#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Value</em>'.
+   * @see fire.fire.AssignmentStatement#getValue()
+   * @see #getAssignmentStatement()
+   * @generated
+   */
+  EReference getAssignmentStatement_Value();
 
   /**
    * Returns the meta object for class '{@link fire.fire.WritelnStatement <em>Writeln Statement</em>}'.
@@ -1372,14 +1461,22 @@ public interface FirePackage extends EPackage
     EClass EXPRESSION = eINSTANCE.getExpression();
 
     /**
-     * The meta object literal for the '{@link fire.fire.impl.ConstantDeclarationImpl <em>Constant Declaration</em>}' class.
+     * The meta object literal for the '{@link fire.fire.impl.VariableDeclarationImpl <em>Variable Declaration</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see fire.fire.impl.ConstantDeclarationImpl
-     * @see fire.fire.impl.FirePackageImpl#getConstantDeclaration()
+     * @see fire.fire.impl.VariableDeclarationImpl
+     * @see fire.fire.impl.FirePackageImpl#getVariableDeclaration()
      * @generated
      */
-    EClass CONSTANT_DECLARATION = eINSTANCE.getConstantDeclaration();
+    EClass VARIABLE_DECLARATION = eINSTANCE.getVariableDeclaration();
+
+    /**
+     * The meta object literal for the '<em><b>Constant</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute VARIABLE_DECLARATION__CONSTANT = eINSTANCE.getVariableDeclaration_Constant();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -1387,7 +1484,7 @@ public interface FirePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute CONSTANT_DECLARATION__NAME = eINSTANCE.getConstantDeclaration_Name();
+    EAttribute VARIABLE_DECLARATION__NAME = eINSTANCE.getVariableDeclaration_Name();
 
     /**
      * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
@@ -1395,7 +1492,7 @@ public interface FirePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute CONSTANT_DECLARATION__TYPE = eINSTANCE.getConstantDeclaration_Type();
+    EAttribute VARIABLE_DECLARATION__TYPE = eINSTANCE.getVariableDeclaration_Type();
 
     /**
      * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
@@ -1403,7 +1500,33 @@ public interface FirePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference CONSTANT_DECLARATION__VALUE = eINSTANCE.getConstantDeclaration_Value();
+    EReference VARIABLE_DECLARATION__VALUE = eINSTANCE.getVariableDeclaration_Value();
+
+    /**
+     * The meta object literal for the '{@link fire.fire.impl.AssignmentStatementImpl <em>Assignment Statement</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see fire.fire.impl.AssignmentStatementImpl
+     * @see fire.fire.impl.FirePackageImpl#getAssignmentStatement()
+     * @generated
+     */
+    EClass ASSIGNMENT_STATEMENT = eINSTANCE.getAssignmentStatement();
+
+    /**
+     * The meta object literal for the '<em><b>Variable</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ASSIGNMENT_STATEMENT__VARIABLE = eINSTANCE.getAssignmentStatement_Variable();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ASSIGNMENT_STATEMENT__VALUE = eINSTANCE.getAssignmentStatement_Value();
 
     /**
      * The meta object literal for the '{@link fire.fire.impl.WritelnStatementImpl <em>Writeln Statement</em>}' class.

@@ -7,11 +7,11 @@ import com.google.inject.Inject
 import fire.fire.AdditiveExpression
 import fire.fire.AdditiveOperator
 import fire.fire.AndExpression
+import fire.fire.AssignmentStatement
 import fire.fire.BooleanLiteral
 import fire.fire.BuiltInType
 import fire.fire.ComparisonExpression
 import fire.fire.ComparisonOperator
-import fire.fire.ConstantDeclaration
 import fire.fire.EqualityExpression
 import fire.fire.EqualityOperator
 import fire.fire.IdExpression
@@ -24,6 +24,7 @@ import fire.fire.OrExpression
 import fire.fire.Program
 import fire.fire.RealLiteral
 import fire.fire.StringLiteral
+import fire.fire.VariableDeclaration
 import fire.fire.WritelnStatement
 import fire.fire.XorExpression
 import org.eclipse.xtext.junit4.InjectWith
@@ -60,19 +61,35 @@ class FireParsingTest{
 		'''
 			program
 				const c1: Integer := 1
+				var v1: Integer := 2
+				v1 := 3
 				writeln("string1")
-				writeln(c1)
+				writeln(c1 + v1)
 			end
 		'''.parse => [
 			assertNoIssues
-			3.assertEquals(statements.size)
-			statements.get(0) as ConstantDeclaration => [
+			5.assertEquals(statements.size)
+			statements.get(0) as VariableDeclaration => [
+				constant.assertTrue
 				"c1".assertEquals(name)
 				BuiltInType.INTEGER.assertEquals(type)
 				1.assertEquals((value as IntegerLiteral).value)
 			]
-			"string1".assertEquals(((statements.get(1) as WritelnStatement).argument as StringLiteral).value)
-			statements.get(0).assertEquals(((statements.get(2) as WritelnStatement).argument as IdExpression).value)
+			statements.get(1) as VariableDeclaration => [
+				constant.assertFalse
+				"v1".assertEquals(name)
+				BuiltInType.INTEGER.assertEquals(type)
+				2.assertEquals((value as IntegerLiteral).value)
+			]
+			statements.get(2) as AssignmentStatement => [
+				"v1".assertEquals(variable.name)
+				3.assertEquals((value as IntegerLiteral).value)
+			]
+			"string1".assertEquals(((statements.get(3) as WritelnStatement).argument as StringLiteral).value)
+			(statements.get(4) as WritelnStatement).argument as AdditiveExpression => [
+				"c1".assertEquals((left as IdExpression).value.name)
+				"v1".assertEquals((right as IdExpression).value.name)
+			]
 		]
 	}
 	

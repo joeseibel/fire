@@ -4,9 +4,9 @@
 package fire.fire.impl;
 
 import fire.fire.BuiltInType;
-import fire.fire.ConstantDeclaration;
 import fire.fire.Expression;
 import fire.fire.FirePackage;
+import fire.fire.VariableDeclaration;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -18,21 +18,42 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Constant Declaration</b></em>'.
+ * An implementation of the model object '<em><b>Variable Declaration</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link fire.fire.impl.ConstantDeclarationImpl#getName <em>Name</em>}</li>
- *   <li>{@link fire.fire.impl.ConstantDeclarationImpl#getType <em>Type</em>}</li>
- *   <li>{@link fire.fire.impl.ConstantDeclarationImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link fire.fire.impl.VariableDeclarationImpl#isConstant <em>Constant</em>}</li>
+ *   <li>{@link fire.fire.impl.VariableDeclarationImpl#getName <em>Name</em>}</li>
+ *   <li>{@link fire.fire.impl.VariableDeclarationImpl#getType <em>Type</em>}</li>
+ *   <li>{@link fire.fire.impl.VariableDeclarationImpl#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ConstantDeclarationImpl extends StatementImpl implements ConstantDeclaration
+public class VariableDeclarationImpl extends StatementImpl implements VariableDeclaration
 {
+  /**
+   * The default value of the '{@link #isConstant() <em>Constant</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isConstant()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean CONSTANT_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isConstant() <em>Constant</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isConstant()
+   * @generated
+   * @ordered
+   */
+  protected boolean constant = CONSTANT_EDEFAULT;
+
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -88,7 +109,7 @@ public class ConstantDeclarationImpl extends StatementImpl implements ConstantDe
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ConstantDeclarationImpl()
+  protected VariableDeclarationImpl()
   {
     super();
   }
@@ -101,7 +122,30 @@ public class ConstantDeclarationImpl extends StatementImpl implements ConstantDe
   @Override
   protected EClass eStaticClass()
   {
-    return FirePackage.Literals.CONSTANT_DECLARATION;
+    return FirePackage.Literals.VARIABLE_DECLARATION;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public boolean isConstant()
+  {
+    return constant;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setConstant(boolean newConstant)
+  {
+    boolean oldConstant = constant;
+    constant = newConstant;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, FirePackage.VARIABLE_DECLARATION__CONSTANT, oldConstant, constant));
   }
 
   /**
@@ -124,7 +168,7 @@ public class ConstantDeclarationImpl extends StatementImpl implements ConstantDe
     String oldName = name;
     name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, FirePackage.CONSTANT_DECLARATION__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, FirePackage.VARIABLE_DECLARATION__NAME, oldName, name));
   }
 
   /**
@@ -147,7 +191,7 @@ public class ConstantDeclarationImpl extends StatementImpl implements ConstantDe
     BuiltInType oldType = type;
     type = newType == null ? TYPE_EDEFAULT : newType;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, FirePackage.CONSTANT_DECLARATION__TYPE, oldType, type));
+      eNotify(new ENotificationImpl(this, Notification.SET, FirePackage.VARIABLE_DECLARATION__TYPE, oldType, type));
   }
 
   /**
@@ -171,7 +215,7 @@ public class ConstantDeclarationImpl extends StatementImpl implements ConstantDe
     value = newValue;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FirePackage.CONSTANT_DECLARATION__VALUE, oldValue, newValue);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FirePackage.VARIABLE_DECLARATION__VALUE, oldValue, newValue);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -188,14 +232,14 @@ public class ConstantDeclarationImpl extends StatementImpl implements ConstantDe
     {
       NotificationChain msgs = null;
       if (value != null)
-        msgs = ((InternalEObject)value).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FirePackage.CONSTANT_DECLARATION__VALUE, null, msgs);
+        msgs = ((InternalEObject)value).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FirePackage.VARIABLE_DECLARATION__VALUE, null, msgs);
       if (newValue != null)
-        msgs = ((InternalEObject)newValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FirePackage.CONSTANT_DECLARATION__VALUE, null, msgs);
+        msgs = ((InternalEObject)newValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FirePackage.VARIABLE_DECLARATION__VALUE, null, msgs);
       msgs = basicSetValue(newValue, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, FirePackage.CONSTANT_DECLARATION__VALUE, newValue, newValue));
+      eNotify(new ENotificationImpl(this, Notification.SET, FirePackage.VARIABLE_DECLARATION__VALUE, newValue, newValue));
   }
 
   /**
@@ -208,7 +252,7 @@ public class ConstantDeclarationImpl extends StatementImpl implements ConstantDe
   {
     switch (featureID)
     {
-      case FirePackage.CONSTANT_DECLARATION__VALUE:
+      case FirePackage.VARIABLE_DECLARATION__VALUE:
         return basicSetValue(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -224,11 +268,13 @@ public class ConstantDeclarationImpl extends StatementImpl implements ConstantDe
   {
     switch (featureID)
     {
-      case FirePackage.CONSTANT_DECLARATION__NAME:
+      case FirePackage.VARIABLE_DECLARATION__CONSTANT:
+        return isConstant();
+      case FirePackage.VARIABLE_DECLARATION__NAME:
         return getName();
-      case FirePackage.CONSTANT_DECLARATION__TYPE:
+      case FirePackage.VARIABLE_DECLARATION__TYPE:
         return getType();
-      case FirePackage.CONSTANT_DECLARATION__VALUE:
+      case FirePackage.VARIABLE_DECLARATION__VALUE:
         return getValue();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -244,13 +290,16 @@ public class ConstantDeclarationImpl extends StatementImpl implements ConstantDe
   {
     switch (featureID)
     {
-      case FirePackage.CONSTANT_DECLARATION__NAME:
+      case FirePackage.VARIABLE_DECLARATION__CONSTANT:
+        setConstant((Boolean)newValue);
+        return;
+      case FirePackage.VARIABLE_DECLARATION__NAME:
         setName((String)newValue);
         return;
-      case FirePackage.CONSTANT_DECLARATION__TYPE:
+      case FirePackage.VARIABLE_DECLARATION__TYPE:
         setType((BuiltInType)newValue);
         return;
-      case FirePackage.CONSTANT_DECLARATION__VALUE:
+      case FirePackage.VARIABLE_DECLARATION__VALUE:
         setValue((Expression)newValue);
         return;
     }
@@ -267,13 +316,16 @@ public class ConstantDeclarationImpl extends StatementImpl implements ConstantDe
   {
     switch (featureID)
     {
-      case FirePackage.CONSTANT_DECLARATION__NAME:
+      case FirePackage.VARIABLE_DECLARATION__CONSTANT:
+        setConstant(CONSTANT_EDEFAULT);
+        return;
+      case FirePackage.VARIABLE_DECLARATION__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case FirePackage.CONSTANT_DECLARATION__TYPE:
+      case FirePackage.VARIABLE_DECLARATION__TYPE:
         setType(TYPE_EDEFAULT);
         return;
-      case FirePackage.CONSTANT_DECLARATION__VALUE:
+      case FirePackage.VARIABLE_DECLARATION__VALUE:
         setValue((Expression)null);
         return;
     }
@@ -290,11 +342,13 @@ public class ConstantDeclarationImpl extends StatementImpl implements ConstantDe
   {
     switch (featureID)
     {
-      case FirePackage.CONSTANT_DECLARATION__NAME:
+      case FirePackage.VARIABLE_DECLARATION__CONSTANT:
+        return constant != CONSTANT_EDEFAULT;
+      case FirePackage.VARIABLE_DECLARATION__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case FirePackage.CONSTANT_DECLARATION__TYPE:
+      case FirePackage.VARIABLE_DECLARATION__TYPE:
         return type != TYPE_EDEFAULT;
-      case FirePackage.CONSTANT_DECLARATION__VALUE:
+      case FirePackage.VARIABLE_DECLARATION__VALUE:
         return value != null;
     }
     return super.eIsSet(featureID);
@@ -311,7 +365,9 @@ public class ConstantDeclarationImpl extends StatementImpl implements ConstantDe
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
+    result.append(" (constant: ");
+    result.append(constant);
+    result.append(", name: ");
     result.append(name);
     result.append(", type: ");
     result.append(type);
@@ -319,4 +375,4 @@ public class ConstantDeclarationImpl extends StatementImpl implements ConstantDe
     return result.toString();
   }
 
-} //ConstantDeclarationImpl
+} //VariableDeclarationImpl

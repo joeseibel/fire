@@ -94,11 +94,19 @@ public class FireSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case FirePackage.CONSTANT_DECLARATION:
+      case FirePackage.VARIABLE_DECLARATION:
       {
-        ConstantDeclaration constantDeclaration = (ConstantDeclaration)theEObject;
-        T result = caseConstantDeclaration(constantDeclaration);
-        if (result == null) result = caseStatement(constantDeclaration);
+        VariableDeclaration variableDeclaration = (VariableDeclaration)theEObject;
+        T result = caseVariableDeclaration(variableDeclaration);
+        if (result == null) result = caseStatement(variableDeclaration);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case FirePackage.ASSIGNMENT_STATEMENT:
+      {
+        AssignmentStatement assignmentStatement = (AssignmentStatement)theEObject;
+        T result = caseAssignmentStatement(assignmentStatement);
+        if (result == null) result = caseStatement(assignmentStatement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -275,17 +283,33 @@ public class FireSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Constant Declaration</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Variable Declaration</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Constant Declaration</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Variable Declaration</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseConstantDeclaration(ConstantDeclaration object)
+  public T caseVariableDeclaration(VariableDeclaration object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Assignment Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Assignment Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAssignmentStatement(AssignmentStatement object)
   {
     return null;
   }

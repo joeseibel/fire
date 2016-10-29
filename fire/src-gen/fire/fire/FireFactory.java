@@ -51,13 +51,22 @@ public interface FireFactory extends EFactory
   Expression createExpression();
 
   /**
-   * Returns a new object of class '<em>Constant Declaration</em>'.
+   * Returns a new object of class '<em>Variable Declaration</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Constant Declaration</em>'.
+   * @return a new object of class '<em>Variable Declaration</em>'.
    * @generated
    */
-  ConstantDeclaration createConstantDeclaration();
+  VariableDeclaration createVariableDeclaration();
+
+  /**
+   * Returns a new object of class '<em>Assignment Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Assignment Statement</em>'.
+   * @generated
+   */
+  AssignmentStatement createAssignmentStatement();
 
   /**
    * Returns a new object of class '<em>Writeln Statement</em>'.

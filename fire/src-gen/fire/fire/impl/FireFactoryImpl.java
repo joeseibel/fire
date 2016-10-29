@@ -69,7 +69,8 @@ public class FireFactoryImpl extends EFactoryImpl implements FireFactory
       case FirePackage.PROGRAM: return createProgram();
       case FirePackage.STATEMENT: return createStatement();
       case FirePackage.EXPRESSION: return createExpression();
-      case FirePackage.CONSTANT_DECLARATION: return createConstantDeclaration();
+      case FirePackage.VARIABLE_DECLARATION: return createVariableDeclaration();
+      case FirePackage.ASSIGNMENT_STATEMENT: return createAssignmentStatement();
       case FirePackage.WRITELN_STATEMENT: return createWritelnStatement();
       case FirePackage.OR_EXPRESSION: return createOrExpression();
       case FirePackage.AND_EXPRESSION: return createAndExpression();
@@ -178,10 +179,21 @@ public class FireFactoryImpl extends EFactoryImpl implements FireFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public ConstantDeclaration createConstantDeclaration()
+  public VariableDeclaration createVariableDeclaration()
   {
-    ConstantDeclarationImpl constantDeclaration = new ConstantDeclarationImpl();
-    return constantDeclaration;
+    VariableDeclarationImpl variableDeclaration = new VariableDeclarationImpl();
+    return variableDeclaration;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AssignmentStatement createAssignmentStatement()
+  {
+    AssignmentStatementImpl assignmentStatement = new AssignmentStatementImpl();
+    return assignmentStatement;
   }
 
   /**

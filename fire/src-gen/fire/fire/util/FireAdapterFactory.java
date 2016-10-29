@@ -91,9 +91,14 @@ public class FireAdapterFactory extends AdapterFactoryImpl
         return createExpressionAdapter();
       }
       @Override
-      public Adapter caseConstantDeclaration(ConstantDeclaration object)
+      public Adapter caseVariableDeclaration(VariableDeclaration object)
       {
-        return createConstantDeclarationAdapter();
+        return createVariableDeclarationAdapter();
+      }
+      @Override
+      public Adapter caseAssignmentStatement(AssignmentStatement object)
+      {
+        return createAssignmentStatementAdapter();
       }
       @Override
       public Adapter caseWritelnStatement(WritelnStatement object)
@@ -238,16 +243,31 @@ public class FireAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link fire.fire.ConstantDeclaration <em>Constant Declaration</em>}'.
+   * Creates a new adapter for an object of class '{@link fire.fire.VariableDeclaration <em>Variable Declaration</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see fire.fire.ConstantDeclaration
+   * @see fire.fire.VariableDeclaration
    * @generated
    */
-  public Adapter createConstantDeclarationAdapter()
+  public Adapter createVariableDeclarationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link fire.fire.AssignmentStatement <em>Assignment Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see fire.fire.AssignmentStatement
+   * @generated
+   */
+  public Adapter createAssignmentStatementAdapter()
   {
     return null;
   }

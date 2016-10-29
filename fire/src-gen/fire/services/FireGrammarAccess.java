@@ -65,8 +65,11 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fire.Fire.Statement");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
-		private final Action cConstantDeclarationAction_0_0 = (Action)cGroup_0.eContents().get(0);
-		private final Keyword cConstKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
+		private final Action cVariableDeclarationAction_0_0 = (Action)cGroup_0.eContents().get(0);
+		private final Alternatives cAlternatives_0_1 = (Alternatives)cGroup_0.eContents().get(1);
+		private final Assignment cConstantAssignment_0_1_0 = (Assignment)cAlternatives_0_1.eContents().get(0);
+		private final Keyword cConstantConstKeyword_0_1_0_0 = (Keyword)cConstantAssignment_0_1_0.eContents().get(0);
+		private final Keyword cVarKeyword_0_1_1 = (Keyword)cAlternatives_0_1.eContents().get(1);
 		private final Assignment cNameAssignment_0_2 = (Assignment)cGroup_0.eContents().get(2);
 		private final RuleCall cNameIDTerminalRuleCall_0_2_0 = (RuleCall)cNameAssignment_0_2.eContents().get(0);
 		private final Keyword cColonKeyword_0_3 = (Keyword)cGroup_0.eContents().get(3);
@@ -76,30 +79,49 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cValueAssignment_0_6 = (Assignment)cGroup_0.eContents().get(6);
 		private final RuleCall cValueExpressionParserRuleCall_0_6_0 = (RuleCall)cValueAssignment_0_6.eContents().get(0);
 		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
-		private final Action cWritelnStatementAction_1_0 = (Action)cGroup_1.eContents().get(0);
-		private final Keyword cWritelnKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
-		private final Keyword cLeftParenthesisKeyword_1_2 = (Keyword)cGroup_1.eContents().get(2);
-		private final Assignment cArgumentAssignment_1_3 = (Assignment)cGroup_1.eContents().get(3);
-		private final RuleCall cArgumentExpressionParserRuleCall_1_3_0 = (RuleCall)cArgumentAssignment_1_3.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_1_4 = (Keyword)cGroup_1.eContents().get(4);
+		private final Action cAssignmentStatementAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Assignment cVariableAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final CrossReference cVariableVariableDeclarationCrossReference_1_1_0 = (CrossReference)cVariableAssignment_1_1.eContents().get(0);
+		private final RuleCall cVariableVariableDeclarationIDTerminalRuleCall_1_1_0_1 = (RuleCall)cVariableVariableDeclarationCrossReference_1_1_0.eContents().get(1);
+		private final Keyword cColonEqualsSignKeyword_1_2 = (Keyword)cGroup_1.eContents().get(2);
+		private final Assignment cValueAssignment_1_3 = (Assignment)cGroup_1.eContents().get(3);
+		private final RuleCall cValueExpressionParserRuleCall_1_3_0 = (RuleCall)cValueAssignment_1_3.eContents().get(0);
+		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
+		private final Action cWritelnStatementAction_2_0 = (Action)cGroup_2.eContents().get(0);
+		private final Keyword cWritelnKeyword_2_1 = (Keyword)cGroup_2.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_2_2 = (Keyword)cGroup_2.eContents().get(2);
+		private final Assignment cArgumentAssignment_2_3 = (Assignment)cGroup_2.eContents().get(3);
+		private final RuleCall cArgumentExpressionParserRuleCall_2_3_0 = (RuleCall)cArgumentAssignment_2_3.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_2_4 = (Keyword)cGroup_2.eContents().get(4);
 		
 		//Statement:
-		//	{ConstantDeclaration} 'const' name=ID ':' type=BuiltInType ':=' value=Expression | {WritelnStatement} 'writeln' '('
+		//	{VariableDeclaration} (constant?='const' | 'var') name=ID ':' type=BuiltInType ':=' value=Expression |
+		//	{AssignmentStatement} variable=[VariableDeclaration] ':=' value=Expression | {WritelnStatement} 'writeln' '('
 		//	argument=Expression ')';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{ConstantDeclaration} 'const' name=ID ':' type=BuiltInType ':=' value=Expression | {WritelnStatement} 'writeln' '('
+		//{VariableDeclaration} (constant?='const' | 'var') name=ID ':' type=BuiltInType ':=' value=Expression |
+		//{AssignmentStatement} variable=[VariableDeclaration] ':=' value=Expression | {WritelnStatement} 'writeln' '('
 		//argument=Expression ')'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//{ConstantDeclaration} 'const' name=ID ':' type=BuiltInType ':=' value=Expression
+		//{VariableDeclaration} (constant?='const' | 'var') name=ID ':' type=BuiltInType ':=' value=Expression
 		public Group getGroup_0() { return cGroup_0; }
 		
-		//{ConstantDeclaration}
-		public Action getConstantDeclarationAction_0_0() { return cConstantDeclarationAction_0_0; }
+		//{VariableDeclaration}
+		public Action getVariableDeclarationAction_0_0() { return cVariableDeclarationAction_0_0; }
+		
+		//(constant?='const' | 'var')
+		public Alternatives getAlternatives_0_1() { return cAlternatives_0_1; }
+		
+		//constant?='const'
+		public Assignment getConstantAssignment_0_1_0() { return cConstantAssignment_0_1_0; }
 		
 		//'const'
-		public Keyword getConstKeyword_0_1() { return cConstKeyword_0_1; }
+		public Keyword getConstantConstKeyword_0_1_0_0() { return cConstantConstKeyword_0_1_0_0; }
+		
+		//'var'
+		public Keyword getVarKeyword_0_1_1() { return cVarKeyword_0_1_1; }
 		
 		//name=ID
 		public Assignment getNameAssignment_0_2() { return cNameAssignment_0_2; }
@@ -125,26 +147,50 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 		//Expression
 		public RuleCall getValueExpressionParserRuleCall_0_6_0() { return cValueExpressionParserRuleCall_0_6_0; }
 		
-		//{WritelnStatement} 'writeln' '(' argument=Expression ')'
+		//{AssignmentStatement} variable=[VariableDeclaration] ':=' value=Expression
 		public Group getGroup_1() { return cGroup_1; }
 		
-		//{WritelnStatement}
-		public Action getWritelnStatementAction_1_0() { return cWritelnStatementAction_1_0; }
+		//{AssignmentStatement}
+		public Action getAssignmentStatementAction_1_0() { return cAssignmentStatementAction_1_0; }
 		
-		//'writeln'
-		public Keyword getWritelnKeyword_1_1() { return cWritelnKeyword_1_1; }
+		//variable=[VariableDeclaration]
+		public Assignment getVariableAssignment_1_1() { return cVariableAssignment_1_1; }
 		
-		//'('
-		public Keyword getLeftParenthesisKeyword_1_2() { return cLeftParenthesisKeyword_1_2; }
+		//[VariableDeclaration]
+		public CrossReference getVariableVariableDeclarationCrossReference_1_1_0() { return cVariableVariableDeclarationCrossReference_1_1_0; }
 		
-		//argument=Expression
-		public Assignment getArgumentAssignment_1_3() { return cArgumentAssignment_1_3; }
+		//ID
+		public RuleCall getVariableVariableDeclarationIDTerminalRuleCall_1_1_0_1() { return cVariableVariableDeclarationIDTerminalRuleCall_1_1_0_1; }
+		
+		//':='
+		public Keyword getColonEqualsSignKeyword_1_2() { return cColonEqualsSignKeyword_1_2; }
+		
+		//value=Expression
+		public Assignment getValueAssignment_1_3() { return cValueAssignment_1_3; }
 		
 		//Expression
-		public RuleCall getArgumentExpressionParserRuleCall_1_3_0() { return cArgumentExpressionParserRuleCall_1_3_0; }
+		public RuleCall getValueExpressionParserRuleCall_1_3_0() { return cValueExpressionParserRuleCall_1_3_0; }
+		
+		//{WritelnStatement} 'writeln' '(' argument=Expression ')'
+		public Group getGroup_2() { return cGroup_2; }
+		
+		//{WritelnStatement}
+		public Action getWritelnStatementAction_2_0() { return cWritelnStatementAction_2_0; }
+		
+		//'writeln'
+		public Keyword getWritelnKeyword_2_1() { return cWritelnKeyword_2_1; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_2_2() { return cLeftParenthesisKeyword_2_2; }
+		
+		//argument=Expression
+		public Assignment getArgumentAssignment_2_3() { return cArgumentAssignment_2_3; }
+		
+		//Expression
+		public RuleCall getArgumentExpressionParserRuleCall_2_3_0() { return cArgumentExpressionParserRuleCall_2_3_0; }
 		
 		//')'
-		public Keyword getRightParenthesisKeyword_1_4() { return cRightParenthesisKeyword_1_4; }
+		public Keyword getRightParenthesisKeyword_2_4() { return cRightParenthesisKeyword_2_4; }
 	}
 	public class ExpressionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fire.Fire.Expression");
@@ -413,8 +459,8 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
 		private final Action cIdExpressionAction_0_0 = (Action)cGroup_0.eContents().get(0);
 		private final Assignment cValueAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
-		private final CrossReference cValueConstantDeclarationCrossReference_0_1_0 = (CrossReference)cValueAssignment_0_1.eContents().get(0);
-		private final RuleCall cValueConstantDeclarationIDTerminalRuleCall_0_1_0_1 = (RuleCall)cValueConstantDeclarationCrossReference_0_1_0.eContents().get(1);
+		private final CrossReference cValueVariableDeclarationCrossReference_0_1_0 = (CrossReference)cValueAssignment_0_1.eContents().get(0);
+		private final RuleCall cValueVariableDeclarationIDTerminalRuleCall_0_1_0_1 = (RuleCall)cValueVariableDeclarationCrossReference_0_1_0.eContents().get(1);
 		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
 		private final Action cStringLiteralAction_1_0 = (Action)cGroup_1.eContents().get(0);
 		private final Assignment cValueAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
@@ -449,31 +495,31 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightParenthesisKeyword_7_2 = (Keyword)cGroup_7.eContents().get(2);
 		
 		//TerminalExpression Expression:
-		//	{IdExpression} value=[ConstantDeclaration] | {StringLiteral} value=STRING | {BooleanLiteral} (value?='true' | 'false')
+		//	{IdExpression} value=[VariableDeclaration] | {StringLiteral} value=STRING | {BooleanLiteral} (value?='true' | 'false')
 		//	| {IntegerLiteral} value=Long | {RealLiteral} value=Double | {NotExpression} 'not' operand=TerminalExpression |
 		//	{NegationExpression} '-' operand=TerminalExpression |
 		//	'(' Expression ')'
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{IdExpression} value=[ConstantDeclaration] | {StringLiteral} value=STRING | {BooleanLiteral} (value?='true' | 'false') |
+		//{IdExpression} value=[VariableDeclaration] | {StringLiteral} value=STRING | {BooleanLiteral} (value?='true' | 'false') |
 		//{IntegerLiteral} value=Long | {RealLiteral} value=Double | {NotExpression} 'not' operand=TerminalExpression |
 		//{NegationExpression} '-' operand=TerminalExpression | '(' Expression ')'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//{IdExpression} value=[ConstantDeclaration]
+		//{IdExpression} value=[VariableDeclaration]
 		public Group getGroup_0() { return cGroup_0; }
 		
 		//{IdExpression}
 		public Action getIdExpressionAction_0_0() { return cIdExpressionAction_0_0; }
 		
-		//value=[ConstantDeclaration]
+		//value=[VariableDeclaration]
 		public Assignment getValueAssignment_0_1() { return cValueAssignment_0_1; }
 		
-		//[ConstantDeclaration]
-		public CrossReference getValueConstantDeclarationCrossReference_0_1_0() { return cValueConstantDeclarationCrossReference_0_1_0; }
+		//[VariableDeclaration]
+		public CrossReference getValueVariableDeclarationCrossReference_0_1_0() { return cValueVariableDeclarationCrossReference_0_1_0; }
 		
 		//ID
-		public RuleCall getValueConstantDeclarationIDTerminalRuleCall_0_1_0_1() { return cValueConstantDeclarationIDTerminalRuleCall_0_1_0_1; }
+		public RuleCall getValueVariableDeclarationIDTerminalRuleCall_0_1_0_1() { return cValueVariableDeclarationIDTerminalRuleCall_0_1_0_1; }
 		
 		//{StringLiteral} value=STRING
 		public Group getGroup_1() { return cGroup_1; }
@@ -888,7 +934,8 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Statement:
-	//	{ConstantDeclaration} 'const' name=ID ':' type=BuiltInType ':=' value=Expression | {WritelnStatement} 'writeln' '('
+	//	{VariableDeclaration} (constant?='const' | 'var') name=ID ':' type=BuiltInType ':=' value=Expression |
+	//	{AssignmentStatement} variable=[VariableDeclaration] ':=' value=Expression | {WritelnStatement} 'writeln' '('
 	//	argument=Expression ')';
 	public StatementElements getStatementAccess() {
 		return pStatement;
@@ -1030,7 +1077,7 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//TerminalExpression Expression:
-	//	{IdExpression} value=[ConstantDeclaration] | {StringLiteral} value=STRING | {BooleanLiteral} (value?='true' | 'false')
+	//	{IdExpression} value=[VariableDeclaration] | {StringLiteral} value=STRING | {BooleanLiteral} (value?='true' | 'false')
 	//	| {IntegerLiteral} value=Long | {RealLiteral} value=Double | {NotExpression} 'not' operand=TerminalExpression |
 	//	{NegationExpression} '-' operand=TerminalExpression |
 	//	'(' Expression ')'

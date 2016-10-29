@@ -1,9 +1,9 @@
 package fire.tests
 
 import com.google.inject.Inject
-import fire.fire.ConstantDeclaration
 import fire.fire.FirePackage
 import fire.fire.Program
+import fire.fire.VariableDeclaration
 import fire.fire.WritelnStatement
 import fire.validation.FireValidator
 import org.eclipse.xtext.junit4.InjectWith
@@ -32,28 +32,28 @@ class ValidatorTest {
 			program
 				const c1: Integer := 1
 				const c1: Integer := 2
-				const c1: Integer := 3
+				var c1: Integer := 3
 			end
 		'''.parse => [
 			5.assertEquals(validate.size)
-			statements.get(0).assertWarning(FirePackage.Literals.CONSTANT_DECLARATION, null, "c1 is not used")
-			statements.get(1).assertError(FirePackage.Literals.CONSTANT_DECLARATION, null, "c1 is already declared")
-			statements.get(1).assertWarning(FirePackage.Literals.CONSTANT_DECLARATION, null, "c1 is not used")
-			statements.get(2).assertError(FirePackage.Literals.CONSTANT_DECLARATION, null, "c1 is already declared")
-			statements.get(2).assertWarning(FirePackage.Literals.CONSTANT_DECLARATION, null, "c1 is not used")
+			statements.get(0).assertWarning(FirePackage.Literals.VARIABLE_DECLARATION, null, "c1 is not used")
+			statements.get(1).assertError(FirePackage.Literals.VARIABLE_DECLARATION, null, "c1 is already declared")
+			statements.get(1).assertWarning(FirePackage.Literals.VARIABLE_DECLARATION, null, "c1 is not used")
+			statements.get(2).assertError(FirePackage.Literals.VARIABLE_DECLARATION, null, "c1 is already declared")
+			statements.get(2).assertWarning(FirePackage.Literals.VARIABLE_DECLARATION, null, "c1 is not used")
 		]
 	}
 	
 	@Test
-	def void testTypeCheckConstantDeclaration() {
+	def void testTypeCheckVariableDeclaration() {
 		'''
 			program
 				const c1: String := "string1"
-				const c2: String := 1
-				const c3: Integer := c1
+				var v1: String := 1
+				const c2: Integer := c1
 				writeln(c1)
+				writeln(v1)
 				writeln(c2)
-				writeln(c3)
 			end
 		'''.parse => [
 			tester.validate(statements.get(0)) => [
@@ -71,12 +71,15 @@ class ValidatorTest {
 	}
 	
 	@Test
-	def void testCheckUnusedConstant() {
+	def void testCheckUnusedVariable() {
 		'''
 			program
 				const c1: Integer := 1
 				writeln(c1)
 				const c2: Integer := 2
+				var v1: Integer := 3
+				var v2: Integer := 4
+				v2 := 5
 			end
 		'''.parse => [
 			tester.validate(statements.get(0)) => [
@@ -85,6 +88,73 @@ class ValidatorTest {
 			tester.validate(statements.get(2)) => [
 				assertDiagnosticsCount(1)
 				assertWarning(null, "c2 is not used")
+			]
+			tester.validate(statements.get(3)) => [
+				assertDiagnosticsCount(1)
+				assertWarning(null, "v1 is not read")
+			]
+			tester.validate(statements.get(4)) => [
+				assertDiagnosticsCount(1)
+				assertWarning(null, "v2 is not read")
+			]
+		]
+	}
+	
+	@Test
+	def void testCheckAssignmentToConstant() {
+		'''
+			program
+				var v1: Integer := 1
+				const c1: Integer := 2
+				v1 := 3
+				c1 := 4
+			end
+		'''.parse => [
+			tester.validate(statements.get(2)) => [
+				assertDiagnosticsCount(0)
+			]
+			tester.validate(statements.get(3)) => [
+				assertDiagnosticsCount(1)
+				assertError(null, "Cannot assign a value to a constant")
+			]
+		]
+	}
+	
+	@Test
+	def void testTypeCheckAssignmentStatement() {
+		'''
+			program
+				var v1: Integer := 1
+				v1 := 2
+				v1 := true
+			end
+		'''.parse => [
+			tester.validate(statements.get(1)) => [
+				assertDiagnosticsCount(0)
+			]
+			tester.validate(statements.get(2)) => [
+				assertDiagnosticsCount(1)
+				assertError(null, "Expected Integer, found Boolean")
+			]
+		]
+	}
+	
+	@Test
+	def void testCheckDeclarationBeforeAssignmentStatement() {
+		'''
+			program
+				var v1: Integer := 1
+				v1 := 2
+				v2 := 3
+				var v2: Integer := 4
+			end
+		'''.parse => [
+			tester.validate(statements.get(1)) => [
+				assertDiagnosticsCount(0)
+			]
+			tester.validate(statements.get(2)) => [
+				assertDiagnosticsCount(1)
+				assertError(null, "Cannot refer to v2 before it is declared")
 			]
 		]
 	}
@@ -342,7 +412,7 @@ class ValidatorTest {
 	}
 	
 	@Test
-	def void testCheckDeclarationBeforeReference() {
+	def void testCheckDeclarationBeforeIdExpression() {
 		'''
 			program
 				const c1: Integer := 1
@@ -359,7 +429,7 @@ class ValidatorTest {
 				assertDiagnosticsCount(1)
 				assertError(null, "Cannot refer to c2 before it is declared")
 			]
-			tester.validate((statements.get(4) as ConstantDeclaration).value) => [
+			tester.validate((statements.get(4) as VariableDeclaration).value) => [
 				assertDiagnosticsCount(1)
 				assertError(null, "Cannot refer to c3 before it is declared")
 			]

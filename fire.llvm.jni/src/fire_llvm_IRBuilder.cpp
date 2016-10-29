@@ -124,6 +124,19 @@ JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilder_createNot(JNIEnv *env, jobjec
 	return toJava(env, "fire/llvm/Value", toNative<llvm::IRBuilder<>>(env, obj)->CreateNot(vNative));
 }
 
+//Java method: public native LoadInst createLoad(Value ptr);
+JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilder_createLoad(JNIEnv *env, jobject obj, jobject ptr) {
+	llvm::Value *ptrNative = toNative<llvm::Value>(env, ptr);
+	return toJava(env, "fire/llvm/LoadInst", toNative<llvm::IRBuilder<>>(env, obj)->CreateLoad(ptrNative));
+}
+
+//Java method: public native StoreInst createStore(Value val, Value ptr);
+JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilder_createStore(JNIEnv *env, jobject obj, jobject val, jobject ptr) {
+	llvm::Value *valNative = toNative<llvm::Value>(env, val);
+	llvm::Value *ptrNative = toNative<llvm::Value>(env, ptr);
+	return toJava(env, "fire/llvm/StoreInst", toNative<llvm::IRBuilder<>>(env, obj)->CreateStore(valNative, ptrNative));
+}
+
 //Java method: public native Value createGlobalStringPtr(String str);
 JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilder_createGlobalStringPtr(JNIEnv *env, jobject obj, jstring str) {
 	const char *strNative = env->GetStringUTFChars(str, nullptr);
@@ -240,4 +253,11 @@ JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilder_createSelect(JNIEnv *env, job
 JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilder_createExtractValue(JNIEnv *env, jobject obj, jobject agg, jint idx) {
 	llvm::Value *aggNative = toNative<llvm::Value>(env, agg);
 	return toJava(env, "fire/llvm/Value", toNative<llvm::IRBuilder<>>(env, obj)->CreateExtractValue(aggNative, idx));
+}
+
+//Java method: public native AllocaInst createEntryBlockAlloca(Type ty);
+JNIEXPORT jobject JNICALL Java_fire_llvm_IRBuilder_createEntryBlockAlloca(JNIEnv *env, jobject obj, jobject ty) {
+	llvm::Type *tyNative = toNative<llvm::Type>(env, ty);
+	llvm::BasicBlock &entryBlock = toNative<llvm::IRBuilder<>>(env, obj)->GetInsertBlock()->getParent()->getEntryBlock();
+	return toJava(env, "fire/llvm/AllocaInst", llvm::IRBuilder<>(&entryBlock, entryBlock.begin()).CreateAlloca(tyNative));
 }

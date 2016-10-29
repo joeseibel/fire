@@ -61,7 +61,7 @@ public class FireSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     (rule start) (ambiguity) value=Double
 	 *     (rule start) (ambiguity) value=Long
 	 *     (rule start) (ambiguity) value=STRING
-	 *     (rule start) (ambiguity) value=[ConstantDeclaration|ID]
+	 *     (rule start) (ambiguity) value=[VariableDeclaration|ID]
 	 *     (rule start) (ambiguity) value?='true'
 	 *     (rule start) (ambiguity) {AdditiveExpression.left=}
 	 *     (rule start) (ambiguity) {AndExpression.left=}

@@ -2,6 +2,7 @@ package fire.tests
 
 import com.google.inject.Inject
 import fire.fire.AdditiveExpression
+import fire.fire.AssignmentStatement
 import fire.fire.FirePackage
 import fire.fire.Program
 import fire.fire.WritelnStatement
@@ -26,6 +27,22 @@ class ScopingTest {
 	extension ValidationTestHelper
 	@Inject
 	extension IScopeProvider
+	
+	@Test
+	def void testAssignmentStatementValueReference() {
+		'''
+			program
+				const c1: Integer := 1
+				var v1: Integer := 2
+				v1 := 3
+				var v2: Integer := 4
+				writeln(c1 + v1 + v2)
+			end
+		'''.parse => [
+			assertNoIssues;
+			(statements.get(2) as AssignmentStatement).assertScope(FirePackage.Literals.ASSIGNMENT_STATEMENT__VARIABLE, #["c1", "v1", "v2"])
+		]
+	}
 	
 	@Test
 	def void testIdExpressionValueReference() {

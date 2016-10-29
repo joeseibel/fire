@@ -3,9 +3,9 @@ package fire.validation
 import com.google.inject.Inject
 import fire.fire.AdditiveExpression
 import fire.fire.AndExpression
+import fire.fire.AssignmentStatement
 import fire.fire.BuiltInType
 import fire.fire.ComparisonExpression
-import fire.fire.ConstantDeclaration
 import fire.fire.EqualityExpression
 import fire.fire.FirePackage
 import fire.fire.IdExpression
@@ -14,6 +14,7 @@ import fire.fire.NegationExpression
 import fire.fire.NotExpression
 import fire.fire.OrExpression
 import fire.fire.Program
+import fire.fire.VariableDeclaration
 import fire.fire.XorExpression
 import fire.services.FireGrammarAccess
 import org.eclipse.xtext.validation.Check
@@ -30,23 +31,53 @@ class FireValidator extends AbstractFireValidator {
 	
 	@Check
 	def void checkDuplicateNames(Program program) {
-		program.statements.filter(ConstantDeclaration).groupBy[name].filter[name, constants | constants.size > 1].forEach[name, constants | constants.tail.forEach[constant |
-			error(name + " is already declared", constant, FirePackage.Literals.CONSTANT_DECLARATION__NAME)
+		program.statements.filter(VariableDeclaration).groupBy[name].filter[name, variables | variables.size > 1].forEach[name, variables | variables.tail.forEach[variable |
+			error(name + " is already declared", variable, FirePackage.Literals.VARIABLE_DECLARATION__NAME)
 		]]
 	}
 	
 	@Check
-	def void typeCheckConstantDeclaration(ConstantDeclaration constant) {
-		val valueType = constant.value?.type
-		if (valueType != null && constant.type != null && valueType != constant.type) {
-			error('''Expected «constant.type», found «valueType»''', FirePackage.Literals.CONSTANT_DECLARATION__VALUE)
+	def void typeCheckVariableDeclaration(VariableDeclaration variable) {
+		val valueType = variable.value?.type
+		if (valueType != null && variable.type != null && valueType != variable.type) {
+			error('''Expected «variable.type», found «valueType»''', FirePackage.Literals.VARIABLE_DECLARATION__VALUE)
 		}
 	}
 	
 	@Check
-	def void checkUnusedConstant(ConstantDeclaration constant) {
-		if (constant.find(constant.getContainerOfType(Program)).empty) {
-			warning(constant.name + " is not used", FirePackage.Literals.CONSTANT_DECLARATION__NAME)
+	def void checkUnusedVariable(VariableDeclaration variable) {
+		val referencingObjects = variable.find(variable.getContainerOfType(Program)).map[EObject]
+		if (variable.constant) {
+			if (referencingObjects.empty) {
+				warning(variable.name + " is not used", FirePackage.Literals.VARIABLE_DECLARATION__NAME)
+			}
+		} else {
+			if (referencingObjects.filter(IdExpression).empty) {
+				warning(variable.name + " is not read", FirePackage.Literals.VARIABLE_DECLARATION__NAME)
+			}
+		}
+	}
+	
+	@Check
+	def void checkAssignmentToConstant(AssignmentStatement assignment) {
+		if (assignment.variable != null && assignment.variable.constant) {
+			error("Cannot assign a value to a constant", FirePackage.Literals.ASSIGNMENT_STATEMENT__VARIABLE)
+		}
+	}
+	
+	@Check
+	def void typeCheckAssignmentStatement(AssignmentStatement assignment) {
+		val variableType = assignment.variable?.type
+		val valueType = assignment.value?.type
+		if (variableType != null && valueType != null && !assignment.variable.constant && variableType != valueType) {
+			error('''Expected «variableType», found «valueType»''', FirePackage.Literals.ASSIGNMENT_STATEMENT__VALUE)
+		}
+	}
+	
+	@Check
+	def void checkDeclarationBeforeAssignmentStatement(AssignmentStatement assignment) {
+		if (assignment.variable != null && assignment.node.offset < assignment.variable.node.offset) {
+			error('''Cannot refer to «assignment.variable.name» before it is declared''', FirePackage.Literals.ASSIGNMENT_STATEMENT__VARIABLE)
 		}
 	}
 	
@@ -141,7 +172,7 @@ class FireValidator extends AbstractFireValidator {
 	}
 	
 	@Check
-	def void checkDeclarationBeforeReference(IdExpression expression) {
+	def void checkDeclarationBeforeIdExpression(IdExpression expression) {
 		if (expression.value != null && (expression.node.offset < expression.value.node.offset || expression.value.isAncestor(expression))) {
 			error('''Cannot refer to «expression.value.name» before it is declared''', null)
 		}

@@ -31,12 +31,12 @@ public interface IdExpression extends Expression
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Value</em>' reference.
-   * @see #setValue(ConstantDeclaration)
+   * @see #setValue(VariableDeclaration)
    * @see fire.fire.FirePackage#getIdExpression_Value()
    * @model
    * @generated
    */
-  ConstantDeclaration getValue();
+  VariableDeclaration getValue();
 
   /**
    * Sets the value of the '{@link fire.fire.IdExpression#getValue <em>Value</em>}' reference.
@@ -46,6 +46,6 @@ public interface IdExpression extends Expression
    * @see #getValue()
    * @generated
    */
-  void setValue(ConstantDeclaration value);
+  void setValue(VariableDeclaration value);
 
 } // IdExpression

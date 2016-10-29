@@ -3,9 +3,9 @@ package fire.generator
 import com.google.inject.Inject
 import fire.fire.AdditiveExpression
 import fire.fire.AndExpression
+import fire.fire.AssignmentStatement
 import fire.fire.BooleanLiteral
 import fire.fire.ComparisonExpression
-import fire.fire.ConstantDeclaration
 import fire.fire.EqualityExpression
 import fire.fire.Expression
 import fire.fire.IdExpression
@@ -17,6 +17,7 @@ import fire.fire.OrExpression
 import fire.fire.Program
 import fire.fire.RealLiteral
 import fire.fire.StringLiteral
+import fire.fire.VariableDeclaration
 import fire.fire.WritelnStatement
 import fire.fire.XorExpression
 import fire.llvm.BasicBlock
@@ -49,7 +50,7 @@ class FireGenerator extends AbstractGenerator {
 	Module module
 	IRBuilder builder
 	
-	val generatedConstantDeclarations = <ConstantDeclaration, Value>newHashMap
+	val generatedVariableDeclarations = <VariableDeclaration, Value>newHashMap
 	
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		llvmContext = new LLVMContext
@@ -67,7 +68,7 @@ class FireGenerator extends AbstractGenerator {
 			llvmContext.delete
 			llvmContext = null
 			
-			generatedConstantDeclarations.clear
+			generatedVariableDeclarations.clear
 		}
 	}
 	
@@ -79,8 +80,23 @@ class FireGenerator extends AbstractGenerator {
 		builder.createRetVoid
 	}
 	
-	def private dispatch void generateStatement(ConstantDeclaration constant) {
-		generatedConstantDeclarations.put(constant, constant.value.generateExpression)
+	def private dispatch void generateStatement(VariableDeclaration variable) {
+		if (variable.constant) {
+			generatedVariableDeclarations.put(variable, variable.value.generateExpression)
+		} else {
+			val alloca = builder.createEntryBlockAlloca(switch variable.type {
+				case STRING: builder.int8Ty.pointerTo
+				case BOOLEAN: builder.int1Ty
+				case INTEGER: builder.int64Ty
+				case REAL: builder.doubleTy
+			})
+			generatedVariableDeclarations.put(variable, alloca)
+			builder.createStore(variable.value.generateExpression, alloca)
+		}
+	}
+	
+	def private dispatch void generateStatement(AssignmentStatement assignment) {
+		builder.createStore(assignment.value.generateExpression, generatedVariableDeclarations.get(assignment.variable))
 	}
 	
 	def private dispatch void generateStatement(WritelnStatement statement) {
@@ -260,7 +276,11 @@ class FireGenerator extends AbstractGenerator {
 	}
 	
 	def private dispatch Value generateExpression(IdExpression literal) {
-		generatedConstantDeclarations.get(literal.value)
+		if (literal.value.constant) {
+			generatedVariableDeclarations.get(literal.value)
+		} else {
+			builder.createLoad(generatedVariableDeclarations.get(literal.value))
+		}
 	}
 	
 	def private dispatch Value generateExpression(StringLiteral literal) {

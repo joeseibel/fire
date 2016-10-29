@@ -6,9 +6,9 @@ package fire.serializer;
 import com.google.inject.Inject;
 import fire.fire.AdditiveExpression;
 import fire.fire.AndExpression;
+import fire.fire.AssignmentStatement;
 import fire.fire.BooleanLiteral;
 import fire.fire.ComparisonExpression;
-import fire.fire.ConstantDeclaration;
 import fire.fire.EqualityExpression;
 import fire.fire.FirePackage;
 import fire.fire.IdExpression;
@@ -20,6 +20,7 @@ import fire.fire.OrExpression;
 import fire.fire.Program;
 import fire.fire.RealLiteral;
 import fire.fire.StringLiteral;
+import fire.fire.VariableDeclaration;
 import fire.fire.WritelnStatement;
 import fire.fire.XorExpression;
 import fire.services.FireGrammarAccess;
@@ -54,14 +55,14 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case FirePackage.AND_EXPRESSION:
 				sequence_AndExpression(context, (AndExpression) semanticObject); 
 				return; 
+			case FirePackage.ASSIGNMENT_STATEMENT:
+				sequence_Statement(context, (AssignmentStatement) semanticObject); 
+				return; 
 			case FirePackage.BOOLEAN_LITERAL:
 				sequence_TerminalExpression(context, (BooleanLiteral) semanticObject); 
 				return; 
 			case FirePackage.COMPARISON_EXPRESSION:
 				sequence_ComparisonExpression(context, (ComparisonExpression) semanticObject); 
-				return; 
-			case FirePackage.CONSTANT_DECLARATION:
-				sequence_Statement(context, (ConstantDeclaration) semanticObject); 
 				return; 
 			case FirePackage.EQUALITY_EXPRESSION:
 				sequence_EqualityExpression(context, (EqualityExpression) semanticObject); 
@@ -92,6 +93,9 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				return; 
 			case FirePackage.STRING_LITERAL:
 				sequence_TerminalExpression(context, (StringLiteral) semanticObject); 
+				return; 
+			case FirePackage.VARIABLE_DECLARATION:
+				sequence_Statement(context, (VariableDeclaration) semanticObject); 
 				return; 
 			case FirePackage.WRITELN_STATEMENT:
 				sequence_Statement(context, (WritelnStatement) semanticObject); 
@@ -340,25 +344,34 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
-	 *     Statement returns ConstantDeclaration
+	 *     Statement returns AssignmentStatement
 	 *
 	 * Constraint:
-	 *     (name=ID type=BuiltInType value=Expression)
+	 *     (variable=[VariableDeclaration|ID] value=Expression)
 	 */
-	protected void sequence_Statement(ISerializationContext context, ConstantDeclaration semanticObject) {
+	protected void sequence_Statement(ISerializationContext context, AssignmentStatement semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, FirePackage.Literals.CONSTANT_DECLARATION__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FirePackage.Literals.CONSTANT_DECLARATION__NAME));
-			if (transientValues.isValueTransient(semanticObject, FirePackage.Literals.CONSTANT_DECLARATION__TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FirePackage.Literals.CONSTANT_DECLARATION__TYPE));
-			if (transientValues.isValueTransient(semanticObject, FirePackage.Literals.CONSTANT_DECLARATION__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FirePackage.Literals.CONSTANT_DECLARATION__VALUE));
+			if (transientValues.isValueTransient(semanticObject, FirePackage.Literals.ASSIGNMENT_STATEMENT__VARIABLE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FirePackage.Literals.ASSIGNMENT_STATEMENT__VARIABLE));
+			if (transientValues.isValueTransient(semanticObject, FirePackage.Literals.ASSIGNMENT_STATEMENT__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FirePackage.Literals.ASSIGNMENT_STATEMENT__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getStatementAccess().getNameIDTerminalRuleCall_0_2_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getStatementAccess().getTypeBuiltInTypeEnumRuleCall_0_4_0(), semanticObject.getType());
-		feeder.accept(grammarAccess.getStatementAccess().getValueExpressionParserRuleCall_0_6_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getStatementAccess().getVariableVariableDeclarationIDTerminalRuleCall_1_1_0_1(), semanticObject.getVariable());
+		feeder.accept(grammarAccess.getStatementAccess().getValueExpressionParserRuleCall_1_3_0(), semanticObject.getValue());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Statement returns VariableDeclaration
+	 *
+	 * Constraint:
+	 *     (constant?='const'? name=ID type=BuiltInType value=Expression)
+	 */
+	protected void sequence_Statement(ISerializationContext context, VariableDeclaration semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -375,7 +388,7 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FirePackage.Literals.WRITELN_STATEMENT__ARGUMENT));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getStatementAccess().getArgumentExpressionParserRuleCall_1_3_0(), semanticObject.getArgument());
+		feeder.accept(grammarAccess.getStatementAccess().getArgumentExpressionParserRuleCall_2_3_0(), semanticObject.getArgument());
 		feeder.finish();
 	}
 	
@@ -425,7 +438,7 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     TerminalExpression returns IdExpression
 	 *
 	 * Constraint:
-	 *     value=[ConstantDeclaration|ID]
+	 *     value=[VariableDeclaration|ID]
 	 */
 	protected void sequence_TerminalExpression(ISerializationContext context, IdExpression semanticObject) {
 		if (errorAcceptor != null) {
@@ -433,7 +446,7 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FirePackage.Literals.ID_EXPRESSION__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getTerminalExpressionAccess().getValueConstantDeclarationIDTerminalRuleCall_0_1_0_1(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getTerminalExpressionAccess().getValueVariableDeclarationIDTerminalRuleCall_0_1_0_1(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
