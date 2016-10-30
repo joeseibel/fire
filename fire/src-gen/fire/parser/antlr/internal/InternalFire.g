@@ -275,24 +275,84 @@ ruleStatement returns [EObject current=null]
 			(
 				{
 					$current = forceCreateModelElement(
-						grammarAccess.getStatementAccess().getWritelnStatementAction_2_0(),
+						grammarAccess.getStatementAccess().getWhileLoopAction_2_0(),
 						$current);
 				}
 			)
-			otherlv_13='writeln'
+			otherlv_13='while'
 			{
-				newLeafNode(otherlv_13, grammarAccess.getStatementAccess().getWritelnKeyword_2_1());
-			}
-			otherlv_14='('
-			{
-				newLeafNode(otherlv_14, grammarAccess.getStatementAccess().getLeftParenthesisKeyword_2_2());
+				newLeafNode(otherlv_13, grammarAccess.getStatementAccess().getWhileKeyword_2_1());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getStatementAccess().getArgumentExpressionParserRuleCall_2_3_0());
+						newCompositeNode(grammarAccess.getStatementAccess().getConditionExpressionParserRuleCall_2_2_0());
 					}
-					lv_argument_15_0=ruleExpression
+					lv_condition_14_0=ruleExpression
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getStatementRule());
+						}
+						set(
+							$current,
+							"condition",
+							lv_condition_14_0,
+							"fire.Fire.Expression");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+			otherlv_15='do'
+			{
+				newLeafNode(otherlv_15, grammarAccess.getStatementAccess().getDoKeyword_2_3());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getStatementAccess().getStatementsStatementParserRuleCall_2_4_0());
+					}
+					lv_statements_16_0=ruleStatement
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getStatementRule());
+						}
+						add(
+							$current,
+							"statements",
+							lv_statements_16_0,
+							"fire.Fire.Statement");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)*
+			otherlv_17='end'
+			{
+				newLeafNode(otherlv_17, grammarAccess.getStatementAccess().getEndKeyword_2_5());
+			}
+		)
+		    |
+		(
+			(
+				{
+					$current = forceCreateModelElement(
+						grammarAccess.getStatementAccess().getWritelnStatementAction_3_0(),
+						$current);
+				}
+			)
+			otherlv_19='writeln'
+			{
+				newLeafNode(otherlv_19, grammarAccess.getStatementAccess().getWritelnKeyword_3_1());
+			}
+			otherlv_20='('
+			{
+				newLeafNode(otherlv_20, grammarAccess.getStatementAccess().getLeftParenthesisKeyword_3_2());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getStatementAccess().getArgumentExpressionParserRuleCall_3_3_0());
+					}
+					lv_argument_21_0=ruleExpression
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getStatementRule());
@@ -300,15 +360,15 @@ ruleStatement returns [EObject current=null]
 						set(
 							$current,
 							"argument",
-							lv_argument_15_0,
+							lv_argument_21_0,
 							"fire.Fire.Expression");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)
-			otherlv_16=')'
+			otherlv_22=')'
 			{
-				newLeafNode(otherlv_16, grammarAccess.getStatementAccess().getRightParenthesisKeyword_2_4());
+				newLeafNode(otherlv_22, grammarAccess.getStatementAccess().getRightParenthesisKeyword_3_4());
 			}
 		)
 	)

@@ -69,6 +69,15 @@ public interface FireFactory extends EFactory
   AssignmentStatement createAssignmentStatement();
 
   /**
+   * Returns a new object of class '<em>While Loop</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>While Loop</em>'.
+   * @generated
+   */
+  WhileLoop createWhileLoop();
+
+  /**
    * Returns a new object of class '<em>Writeln Statement</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

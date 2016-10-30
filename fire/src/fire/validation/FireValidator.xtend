@@ -15,6 +15,7 @@ import fire.fire.NotExpression
 import fire.fire.OrExpression
 import fire.fire.Program
 import fire.fire.VariableDeclaration
+import fire.fire.WhileLoop
 import fire.fire.XorExpression
 import fire.services.FireGrammarAccess
 import org.eclipse.xtext.validation.Check
@@ -22,7 +23,6 @@ import org.eclipse.xtext.validation.Check
 import static extension fire.FireUtil.getType
 import static extension org.eclipse.emf.ecore.util.EcoreUtil.UsageCrossReferencer.find
 import static extension org.eclipse.emf.ecore.util.EcoreUtil.isAncestor
-import static extension org.eclipse.xtext.EcoreUtil2.getContainerOfType
 import static extension org.eclipse.xtext.nodemodel.util.NodeModelUtils.getNode
 
 class FireValidator extends AbstractFireValidator {
@@ -30,10 +30,19 @@ class FireValidator extends AbstractFireValidator {
 	FireGrammarAccess grammarAccess
 	
 	@Check
-	def void checkDuplicateNames(Program program) {
-		program.statements.filter(VariableDeclaration).groupBy[name].filter[name, variables | variables.size > 1].forEach[name, variables | variables.tail.forEach[variable |
-			error(name + " is already declared", variable, FirePackage.Literals.VARIABLE_DECLARATION__NAME)
-		]]
+	def void checkDuplicateNames(VariableDeclaration variable) {
+		if (isDuplicateDeclaration(variable.eContainer, variable)) {
+			error(variable.name + " is already declared", variable, FirePackage.Literals.VARIABLE_DECLARATION__NAME)
+		}
+	}
+	
+	def private static dispatch boolean isDuplicateDeclaration(Program parent, VariableDeclaration variable) {
+		parent.statements.takeWhile[!isAncestor(variable)].filter(VariableDeclaration).exists[name == variable.name]
+	}
+	
+	def private static dispatch boolean isDuplicateDeclaration(WhileLoop whileLoop, VariableDeclaration variable) {
+		val localDuplicate = whileLoop.statements.takeWhile[!isAncestor(variable)].filter(VariableDeclaration).exists[name == variable.name]
+		localDuplicate || isDuplicateDeclaration(whileLoop.eContainer, variable)
 	}
 	
 	@Check
@@ -46,7 +55,7 @@ class FireValidator extends AbstractFireValidator {
 	
 	@Check
 	def void checkUnusedVariable(VariableDeclaration variable) {
-		val referencingObjects = variable.find(variable.getContainerOfType(Program)).map[EObject]
+		val referencingObjects = variable.find(variable.eContainer).map[EObject]
 		if (variable.constant) {
 			if (referencingObjects.empty) {
 				warning(variable.name + " is not used", FirePackage.Literals.VARIABLE_DECLARATION__NAME)
@@ -60,14 +69,16 @@ class FireValidator extends AbstractFireValidator {
 	
 	@Check
 	def void checkAssignmentToConstant(AssignmentStatement assignment) {
-		if (assignment.variable != null && assignment.variable.constant) {
+		if (!assignment.eIsProxy && assignment.variable.constant) {
 			error("Cannot assign a value to a constant", FirePackage.Literals.ASSIGNMENT_STATEMENT__VARIABLE)
 		}
 	}
 	
 	@Check
 	def void typeCheckAssignmentStatement(AssignmentStatement assignment) {
-		val variableType = assignment.variable?.type
+		val variableType = if (!assignment.variable.eIsProxy) {
+			assignment.variable.type
+		}
 		val valueType = assignment.value?.type
 		if (variableType != null && valueType != null && !assignment.variable.constant && variableType != valueType) {
 			error('''Expected «variableType», found «valueType»''', FirePackage.Literals.ASSIGNMENT_STATEMENT__VALUE)
@@ -76,8 +87,16 @@ class FireValidator extends AbstractFireValidator {
 	
 	@Check
 	def void checkDeclarationBeforeAssignmentStatement(AssignmentStatement assignment) {
-		if (assignment.variable != null && assignment.node.offset < assignment.variable.node.offset) {
+		if (!assignment.variable.eIsProxy && assignment.node.offset < assignment.variable.node.offset) {
 			error('''Cannot refer to «assignment.variable.name» before it is declared''', FirePackage.Literals.ASSIGNMENT_STATEMENT__VARIABLE)
+		}
+	}
+	
+	@Check
+	def void typeCheckWhileLoop(WhileLoop whileLoop) {
+		val conditionType = whileLoop.condition?.type
+		if (conditionType != null && conditionType != BuiltInType.BOOLEAN) {
+			error("Expected Boolean, found " + conditionType, FirePackage.Literals.WHILE_LOOP__CONDITION)
 		}
 	}
 	
@@ -173,7 +192,7 @@ class FireValidator extends AbstractFireValidator {
 	
 	@Check
 	def void checkDeclarationBeforeIdExpression(IdExpression expression) {
-		if (expression.value != null && (expression.node.offset < expression.value.node.offset || expression.value.isAncestor(expression))) {
+		if (!expression.eIsProxy && (expression.node.offset < expression.value.node.offset || expression.value.isAncestor(expression))) {
 			error('''Cannot refer to «expression.value.name» before it is declared''', null)
 		}
 	}

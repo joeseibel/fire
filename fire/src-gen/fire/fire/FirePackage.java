@@ -217,6 +217,43 @@ public interface FirePackage extends EPackage
   int ASSIGNMENT_STATEMENT_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 2;
 
   /**
+   * The meta object id for the '{@link fire.fire.impl.WhileLoopImpl <em>While Loop</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see fire.fire.impl.WhileLoopImpl
+   * @see fire.fire.impl.FirePackageImpl#getWhileLoop()
+   * @generated
+   */
+  int WHILE_LOOP = 5;
+
+  /**
+   * The feature id for the '<em><b>Condition</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WHILE_LOOP__CONDITION = STATEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Statements</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WHILE_LOOP__STATEMENTS = STATEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>While Loop</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WHILE_LOOP_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 2;
+
+  /**
    * The meta object id for the '{@link fire.fire.impl.WritelnStatementImpl <em>Writeln Statement</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -224,7 +261,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getWritelnStatement()
    * @generated
    */
-  int WRITELN_STATEMENT = 5;
+  int WRITELN_STATEMENT = 6;
 
   /**
    * The feature id for the '<em><b>Argument</b></em>' containment reference.
@@ -252,7 +289,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getOrExpression()
    * @generated
    */
-  int OR_EXPRESSION = 6;
+  int OR_EXPRESSION = 7;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -289,7 +326,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getAndExpression()
    * @generated
    */
-  int AND_EXPRESSION = 7;
+  int AND_EXPRESSION = 8;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -326,7 +363,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getXorExpression()
    * @generated
    */
-  int XOR_EXPRESSION = 8;
+  int XOR_EXPRESSION = 9;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -363,7 +400,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getEqualityExpression()
    * @generated
    */
-  int EQUALITY_EXPRESSION = 9;
+  int EQUALITY_EXPRESSION = 10;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -409,7 +446,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getComparisonExpression()
    * @generated
    */
-  int COMPARISON_EXPRESSION = 10;
+  int COMPARISON_EXPRESSION = 11;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -455,7 +492,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getAdditiveExpression()
    * @generated
    */
-  int ADDITIVE_EXPRESSION = 11;
+  int ADDITIVE_EXPRESSION = 12;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -501,7 +538,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getMultiplicativeExpression()
    * @generated
    */
-  int MULTIPLICATIVE_EXPRESSION = 12;
+  int MULTIPLICATIVE_EXPRESSION = 13;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -547,7 +584,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getIdExpression()
    * @generated
    */
-  int ID_EXPRESSION = 13;
+  int ID_EXPRESSION = 14;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' reference.
@@ -575,7 +612,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getStringLiteral()
    * @generated
    */
-  int STRING_LITERAL = 14;
+  int STRING_LITERAL = 15;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -603,7 +640,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getBooleanLiteral()
    * @generated
    */
-  int BOOLEAN_LITERAL = 15;
+  int BOOLEAN_LITERAL = 16;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -631,7 +668,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getIntegerLiteral()
    * @generated
    */
-  int INTEGER_LITERAL = 16;
+  int INTEGER_LITERAL = 17;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -659,7 +696,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getRealLiteral()
    * @generated
    */
-  int REAL_LITERAL = 17;
+  int REAL_LITERAL = 18;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -687,7 +724,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getNotExpression()
    * @generated
    */
-  int NOT_EXPRESSION = 18;
+  int NOT_EXPRESSION = 19;
 
   /**
    * The feature id for the '<em><b>Operand</b></em>' containment reference.
@@ -715,7 +752,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getNegationExpression()
    * @generated
    */
-  int NEGATION_EXPRESSION = 19;
+  int NEGATION_EXPRESSION = 20;
 
   /**
    * The feature id for the '<em><b>Operand</b></em>' containment reference.
@@ -743,7 +780,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getBuiltInType()
    * @generated
    */
-  int BUILT_IN_TYPE = 20;
+  int BUILT_IN_TYPE = 21;
 
   /**
    * The meta object id for the '{@link fire.fire.EqualityOperator <em>Equality Operator</em>}' enum.
@@ -753,7 +790,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getEqualityOperator()
    * @generated
    */
-  int EQUALITY_OPERATOR = 21;
+  int EQUALITY_OPERATOR = 22;
 
   /**
    * The meta object id for the '{@link fire.fire.ComparisonOperator <em>Comparison Operator</em>}' enum.
@@ -763,7 +800,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getComparisonOperator()
    * @generated
    */
-  int COMPARISON_OPERATOR = 22;
+  int COMPARISON_OPERATOR = 23;
 
   /**
    * The meta object id for the '{@link fire.fire.AdditiveOperator <em>Additive Operator</em>}' enum.
@@ -773,7 +810,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getAdditiveOperator()
    * @generated
    */
-  int ADDITIVE_OPERATOR = 23;
+  int ADDITIVE_OPERATOR = 24;
 
   /**
    * The meta object id for the '{@link fire.fire.MultiplicativeOperator <em>Multiplicative Operator</em>}' enum.
@@ -783,7 +820,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getMultiplicativeOperator()
    * @generated
    */
-  int MULTIPLICATIVE_OPERATOR = 24;
+  int MULTIPLICATIVE_OPERATOR = 25;
 
 
   /**
@@ -912,6 +949,38 @@ public interface FirePackage extends EPackage
    * @generated
    */
   EReference getAssignmentStatement_Value();
+
+  /**
+   * Returns the meta object for class '{@link fire.fire.WhileLoop <em>While Loop</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>While Loop</em>'.
+   * @see fire.fire.WhileLoop
+   * @generated
+   */
+  EClass getWhileLoop();
+
+  /**
+   * Returns the meta object for the containment reference '{@link fire.fire.WhileLoop#getCondition <em>Condition</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Condition</em>'.
+   * @see fire.fire.WhileLoop#getCondition()
+   * @see #getWhileLoop()
+   * @generated
+   */
+  EReference getWhileLoop_Condition();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link fire.fire.WhileLoop#getStatements <em>Statements</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Statements</em>'.
+   * @see fire.fire.WhileLoop#getStatements()
+   * @see #getWhileLoop()
+   * @generated
+   */
+  EReference getWhileLoop_Statements();
 
   /**
    * Returns the meta object for class '{@link fire.fire.WritelnStatement <em>Writeln Statement</em>}'.
@@ -1527,6 +1596,32 @@ public interface FirePackage extends EPackage
      * @generated
      */
     EReference ASSIGNMENT_STATEMENT__VALUE = eINSTANCE.getAssignmentStatement_Value();
+
+    /**
+     * The meta object literal for the '{@link fire.fire.impl.WhileLoopImpl <em>While Loop</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see fire.fire.impl.WhileLoopImpl
+     * @see fire.fire.impl.FirePackageImpl#getWhileLoop()
+     * @generated
+     */
+    EClass WHILE_LOOP = eINSTANCE.getWhileLoop();
+
+    /**
+     * The meta object literal for the '<em><b>Condition</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference WHILE_LOOP__CONDITION = eINSTANCE.getWhileLoop_Condition();
+
+    /**
+     * The meta object literal for the '<em><b>Statements</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference WHILE_LOOP__STATEMENTS = eINSTANCE.getWhileLoop_Statements();
 
     /**
      * The meta object literal for the '{@link fire.fire.impl.WritelnStatementImpl <em>Writeln Statement</em>}' class.

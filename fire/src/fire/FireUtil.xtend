@@ -65,7 +65,9 @@ class FireUtil {
 	}
 	
 	def static dispatch BuiltInType getType(IdExpression expression) {
-		expression.value?.type
+		if (!expression.value.eIsProxy) {
+			expression.value.type
+		}
 	}
 	
 	def static dispatch BuiltInType getType(StringLiteral literal) {

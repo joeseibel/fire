@@ -1,28 +1,25 @@
 package fire.tests
 
 import com.google.inject.Inject
-import fire.fire.FirePackage
 import fire.fire.Program
 import fire.fire.VariableDeclaration
+import fire.fire.WhileLoop
 import fire.fire.WritelnStatement
 import fire.validation.FireValidator
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
 import org.eclipse.xtext.junit4.util.ParseHelper
-import org.eclipse.xtext.junit4.validation.ValidationTestHelper
 import org.eclipse.xtext.junit4.validation.ValidatorTester
 import org.junit.Test
 import org.junit.runner.RunWith
 
-import static extension org.junit.Assert.assertEquals
+import static org.eclipse.xtext.junit4.validation.AssertableDiagnostics.*
 
 @RunWith(XtextRunner)
 @InjectWith(FireInjectorProvider)
 class ValidatorTest {
 	@Inject
 	extension ParseHelper<Program>
-	@Inject
-	extension ValidationTestHelper
 	@Inject
 	ValidatorTester<FireValidator> tester
 	
@@ -31,16 +28,44 @@ class ValidatorTest {
 		'''
 			program
 				const c1: Integer := 1
+				writeln(c1)
 				const c1: Integer := 2
-				var c1: Integer := 3
+				while true do
+					const c1: Integer := 3
+					writeln(c1)
+					const c2: Integer := 4
+					writeln(c2)
+					const c2: Integer := 5
+					const c3: Integer := 6
+					writeln(c3)
+				end
+				const c3: Integer := 7
+				writeln(c3)
 			end
 		'''.parse => [
-			5.assertEquals(validate.size)
-			statements.get(0).assertWarning(FirePackage.Literals.VARIABLE_DECLARATION, null, "c1 is not used")
-			statements.get(1).assertError(FirePackage.Literals.VARIABLE_DECLARATION, null, "c1 is already declared")
-			statements.get(1).assertWarning(FirePackage.Literals.VARIABLE_DECLARATION, null, "c1 is not used")
-			statements.get(2).assertError(FirePackage.Literals.VARIABLE_DECLARATION, null, "c1 is already declared")
-			statements.get(2).assertWarning(FirePackage.Literals.VARIABLE_DECLARATION, null, "c1 is not used")
+			tester.validate(statements.get(0)) => [
+				assertOK
+			]
+			tester.validate(statements.get(2)) => [
+				assertAll(error(null, "c1 is already declared"), warning(null, "c1 is not used"))
+			]
+			statements.get(3) as WhileLoop => [
+				tester.validate(statements.get(0)) => [
+					assertAll(error(null, "c1 is already declared"))
+				]
+				tester.validate(statements.get(2)) => [
+					assertOK
+				]
+				tester.validate(statements.get(4)) => [
+					assertAll(error(null, "c2 is already declared"), warning(null, "c2 is not used"))
+				]
+				tester.validate(statements.get(5)) => [
+					assertOK
+				]
+			]
+			tester.validate(statements.get(4)) => [
+				assertOK
+			]
 		]
 	}
 	
@@ -57,15 +82,13 @@ class ValidatorTest {
 			end
 		'''.parse => [
 			tester.validate(statements.get(0)) => [
-				assertDiagnosticsCount(0)
+				assertOK
 			]
 			tester.validate(statements.get(1)) => [
-				assertDiagnosticsCount(1)
-				assertError(null, "Expected String, found Integer")
+				assertAll(error(null, "Expected String, found Integer"))
 			]
 			tester.validate(statements.get(2)) => [
-				assertDiagnosticsCount(1)
-				assertError(null, "Expected Integer, found String")
+				assertAll(error(null, "Expected Integer, found String"))
 			]
 		]
 	}
@@ -80,22 +103,27 @@ class ValidatorTest {
 				var v1: Integer := 3
 				var v2: Integer := 4
 				v2 := 5
+				while true do
+					const c3: Integer := 6
+				end
 			end
 		'''.parse => [
 			tester.validate(statements.get(0)) => [
-				assertDiagnosticsCount(0)
+				assertOK
 			]
 			tester.validate(statements.get(2)) => [
-				assertDiagnosticsCount(1)
-				assertWarning(null, "c2 is not used")
+				assertAll(warning(null, "c2 is not used"))
 			]
 			tester.validate(statements.get(3)) => [
-				assertDiagnosticsCount(1)
-				assertWarning(null, "v1 is not read")
+				assertAll(warning(null, "v1 is not read"))
 			]
 			tester.validate(statements.get(4)) => [
-				assertDiagnosticsCount(1)
-				assertWarning(null, "v2 is not read")
+				assertAll(warning(null, "v2 is not read"))
+			]
+			statements.get(6) as WhileLoop => [
+				tester.validate(statements.head) => [
+					assertAll(warning(null, "c3 is not used"))
+				]
 			]
 		]
 	}
@@ -111,11 +139,10 @@ class ValidatorTest {
 			end
 		'''.parse => [
 			tester.validate(statements.get(2)) => [
-				assertDiagnosticsCount(0)
+				assertOK
 			]
 			tester.validate(statements.get(3)) => [
-				assertDiagnosticsCount(1)
-				assertError(null, "Cannot assign a value to a constant")
+				assertAll(error(null, "Cannot assign a value to a constant"))
 			]
 		]
 	}
@@ -130,11 +157,10 @@ class ValidatorTest {
 			end
 		'''.parse => [
 			tester.validate(statements.get(1)) => [
-				assertDiagnosticsCount(0)
+				assertOK
 			]
 			tester.validate(statements.get(2)) => [
-				assertDiagnosticsCount(1)
-				assertError(null, "Expected Integer, found Boolean")
+				assertAll(error(null, "Expected Integer, found Boolean"))
 			]
 		]
 	}
@@ -147,14 +173,51 @@ class ValidatorTest {
 				v1 := 2
 				v2 := 3
 				var v2: Integer := 4
+				while true do
+					var v3: Integer := 5
+					v3 := 6
+					v4 := 7
+					var v4: Integer := 8
+					v5 := 9
+				end
+				var v5: Integer := 10
 			end
 		'''.parse => [
 			tester.validate(statements.get(1)) => [
-				assertDiagnosticsCount(0)
+				assertOK
 			]
 			tester.validate(statements.get(2)) => [
-				assertDiagnosticsCount(1)
-				assertError(null, "Cannot refer to v2 before it is declared")
+				assertAll(error(null, "Cannot refer to v2 before it is declared"))
+			]
+			statements.get(4) as WhileLoop => [
+				tester.validate(statements.get(1)) => [
+					assertOK
+				]
+				tester.validate(statements.get(2)) => [
+					assertAll(error(null, "Cannot refer to v4 before it is declared"))
+				]
+				tester.validate(statements.get(4)) => [
+					assertAll(error(null, "Cannot refer to v5 before it is declared"))
+				]
+			]
+		]
+	}
+	
+	@Test
+	def void testTypeCheckWhileLoop() {
+		'''
+			program
+				while true do
+				end
+				while 1 do
+				end
+			end
+		'''.parse => [
+			tester.validate(statements.get(0)) => [
+				assertOK
+			]
+			tester.validate(statements.get(1)) => [
+				assertAll(error(null, "Expected Boolean, found Integer"))
 			]
 		]
 	}
@@ -169,15 +232,13 @@ class ValidatorTest {
 			end
 		'''.parse => [
 			tester.validate(statements.get(0)) => [
-				assertDiagnosticsCount(0)
+				assertOK
 			]
 			tester.validate(statements.get(1)) => [
-				assertDiagnosticsCount(1)
-				assertError(null, "or operator cannot be applied to types String and Real")
+				assertAll(error(null, "or operator cannot be applied to types String and Real"))
 			]
 			tester.validate(statements.get(2)) => [
-				assertDiagnosticsCount(1)
-				assertError(null, "or operator cannot be applied to types Integer and Integer")
+				assertAll(error(null, "or operator cannot be applied to types Integer and Integer"))
 			]
 		]
 	}
@@ -192,15 +253,13 @@ class ValidatorTest {
 			end
 		'''.parse => [
 			tester.validate(statements.get(0)) => [
-				assertDiagnosticsCount(0)
+				assertOK
 			]
 			tester.validate(statements.get(1)) => [
-				assertDiagnosticsCount(1)
-				assertError(null, "and operator cannot be applied to types String and Real")
+				assertAll(error(null, "and operator cannot be applied to types String and Real"))
 			]
 			tester.validate(statements.get(2)) => [
-				assertDiagnosticsCount(1)
-				assertError(null, "and operator cannot be applied to types Integer and Integer")
+				assertAll(error(null, "and operator cannot be applied to types Integer and Integer"))
 			]
 		]
 	}
@@ -215,15 +274,13 @@ class ValidatorTest {
 			end
 		'''.parse => [
 			tester.validate(statements.get(0)) => [
-				assertDiagnosticsCount(0)
+				assertOK
 			]
 			tester.validate(statements.get(1)) => [
-				assertDiagnosticsCount(1)
-				assertError(null, "xor operator cannot be applied to types String and Real")
+				assertAll(error(null, "xor operator cannot be applied to types String and Real"))
 			]
 			tester.validate(statements.get(2)) => [
-				assertDiagnosticsCount(1)
-				assertError(null, "xor operator cannot be applied to types Integer and Integer")
+				assertAll(error(null, "xor operator cannot be applied to types Integer and Integer"))
 			]
 		]
 	}
@@ -243,30 +300,28 @@ class ValidatorTest {
 			end
 		'''.parse => [
 			tester.validate(statements.get(0)) => [
-				assertDiagnosticsCount(0)
+				assertOK
 			]
 			tester.validate(statements.get(1)) => [
-				assertDiagnosticsCount(0)
+				assertOK
 			]
 			tester.validate(statements.get(2)) => [
-				assertDiagnosticsCount(0)
+				assertOK
 			]
 			tester.validate(statements.get(3)) => [
-				assertDiagnosticsCount(0)
+				assertOK
 			]
 			tester.validate(statements.get(4)) => [
-				assertDiagnosticsCount(0)
+				assertOK
 			]
 			tester.validate(statements.get(5)) => [
-				assertDiagnosticsCount(0)
+				assertOK
 			]
 			tester.validate(statements.get(6)) => [
-				assertDiagnosticsCount(1)
-				assertError(null, "= operator cannot be applied to types Real and Integer")
+				assertAll(error(null, "= operator cannot be applied to types Real and Integer"))
 			]
 			tester.validate(statements.get(7)) => [
-				assertDiagnosticsCount(1)
-				assertError(null, "<> operator cannot be applied to types Real and Integer")
+				assertAll(error(null, "<> operator cannot be applied to types Real and Integer"))
 			]
 		]
 	}
@@ -290,44 +345,40 @@ class ValidatorTest {
 			end
 		'''.parse => [
 			tester.validate(statements.get(0)) => [
-				assertDiagnosticsCount(0)
+				assertOK
 			]
 			tester.validate(statements.get(1)) => [
-				assertDiagnosticsCount(0)
+				assertOK
 			]
 			tester.validate(statements.get(2)) => [
-				assertDiagnosticsCount(0)
+				assertOK
 			]
 			tester.validate(statements.get(3)) => [
-				assertDiagnosticsCount(0)
+				assertOK
 			]
 			tester.validate(statements.get(4)) => [
-				assertDiagnosticsCount(0)
+				assertOK
 			]
 			tester.validate(statements.get(5)) => [
-				assertDiagnosticsCount(0)
+				assertOK
 			]
 			tester.validate(statements.get(6)) => [
-				assertDiagnosticsCount(0)
+				assertOK
 			]
 			tester.validate(statements.get(7)) => [
-				assertDiagnosticsCount(0)
+				assertOK
 			]
 			tester.validate(statements.get(8)) => [
-				assertDiagnosticsCount(1)
-				assertError(null, "< operator cannot be applied to types String and Integer")
+				assertAll(error(null, "< operator cannot be applied to types String and Integer"))
 			]
 			tester.validate(statements.get(9)) => [
-				assertDiagnosticsCount(1)
-				assertError(null, "<= operator cannot be applied to types String and Integer")
+				assertAll(error(null, "<= operator cannot be applied to types String and Integer"))
 			]
 			tester.validate(statements.get(10)) => [
-				assertDiagnosticsCount(1)
-				assertError(null, "> operator cannot be applied to types String and Integer")
+				assertAll(error(null, "> operator cannot be applied to types String and Integer"))
 			]
 			tester.validate(statements.get(11)) => [
-				assertDiagnosticsCount(1)
-				assertError(null, ">= operator cannot be applied to types String and Integer")
+				assertAll(error(null, ">= operator cannot be applied to types String and Integer"))
 			]
 		]
 	}
@@ -345,24 +396,22 @@ class ValidatorTest {
 			end
 		'''.parse => [
 			tester.validate(statements.get(0)) => [
-				assertDiagnosticsCount(0)
+				assertOK
 			]
 			tester.validate(statements.get(1)) => [
-				assertDiagnosticsCount(0)
+				assertOK
 			]
 			tester.validate(statements.get(2)) => [
-				assertDiagnosticsCount(0)
+				assertOK
 			]
 			tester.validate(statements.get(3)) => [
-				assertDiagnosticsCount(0)
+				assertOK
 			]
 			tester.validate(statements.get(4)) => [
-				assertDiagnosticsCount(1)
-				assertError(null, "+ operator cannot be applied to types String and Boolean")
+				assertAll(error(null, "+ operator cannot be applied to types String and Boolean"))
 			]
 			tester.validate(statements.get(5)) => [
-				assertDiagnosticsCount(1)
-				assertError(null, "- operator cannot be applied to types Real and Integer")
+				assertAll(error(null, "- operator cannot be applied to types Real and Integer"))
 			]
 		]
 	}
@@ -382,31 +431,28 @@ class ValidatorTest {
 			end
 		'''.parse => [
 			tester.validate(statements.get(0)) => [
-				assertDiagnosticsCount(0)
+				assertOK
 			]
 			tester.validate(statements.get(1)) => [
-				assertDiagnosticsCount(0)
+				assertOK
 			]
 			tester.validate(statements.get(2)) => [
-				assertDiagnosticsCount(0)
+				assertOK
 			]
 			tester.validate(statements.get(3)) => [
-				assertDiagnosticsCount(0)
+				assertOK
 			]
 			tester.validate(statements.get(4)) => [
-				assertDiagnosticsCount(0)
+				assertOK
 			]
 			tester.validate(statements.get(5)) => [
-				assertDiagnosticsCount(1)
-				assertError(null, "* operator cannot be applied to types Integer and Real")
+				assertAll(error(null, "* operator cannot be applied to types Integer and Real"))
 			]
 			tester.validate(statements.get(6)) => [
-				assertDiagnosticsCount(1)
-				assertError(null, "div operator cannot be applied to types String and Boolean")
+				assertAll(error(null, "div operator cannot be applied to types String and Boolean"))
 			]
 			tester.validate(statements.get(7)) => [
-				assertDiagnosticsCount(1)
-				assertError(null, "mod operator cannot be applied to types Real and Real")
+				assertAll(error(null, "mod operator cannot be applied to types Real and Real"))
 			]
 		]
 	}
@@ -420,18 +466,29 @@ class ValidatorTest {
 				writeln(c2)
 				const c2: Integer := 2
 				const c3: Integer := c3
+				while true do
+					writeln(c3)
+					writeln(c4)
+					const c4: Integer := 3
+				end
 			end
 		'''.parse => [
 			tester.validate((statements.get(1) as WritelnStatement).argument) => [
-				assertDiagnosticsCount(0)
+				assertOK
 			]
 			tester.validate((statements.get(2) as WritelnStatement).argument) => [
-				assertDiagnosticsCount(1)
-				assertError(null, "Cannot refer to c2 before it is declared")
+				assertAll(error(null, "Cannot refer to c2 before it is declared"))
 			]
 			tester.validate((statements.get(4) as VariableDeclaration).value) => [
-				assertDiagnosticsCount(1)
-				assertError(null, "Cannot refer to c3 before it is declared")
+				assertAll(error(null, "Cannot refer to c3 before it is declared"))
+			]
+			statements.get(5) as WhileLoop => [
+				tester.validate((statements.get(0) as WritelnStatement).argument) => [
+					assertOK
+				]
+				tester.validate((statements.get(1) as WritelnStatement).argument) => [
+					assertAll(error(null, "Cannot refer to c4 before it is declared"))
+				]
 			]
 		]
 	}
@@ -445,11 +502,10 @@ class ValidatorTest {
 			end
 		'''.parse => [
 			tester.validate(statements.get(0)) => [
-				assertDiagnosticsCount(0)
+				assertOK
 			]
 			tester.validate(statements.get(1)) => [
-				assertDiagnosticsCount(1)
-				assertError(null, "not operator cannot be applied to type Integer")
+				assertAll(error(null, "not operator cannot be applied to type Integer"))
 			]
 		]
 	}
@@ -464,14 +520,13 @@ class ValidatorTest {
 			end
 		'''.parse => [
 			tester.validate(statements.get(0)) => [
-				assertDiagnosticsCount(0)
+				assertOK
 			]
 			tester.validate(statements.get(1)) => [
-				assertDiagnosticsCount(0)
+				assertOK
 			]
 			tester.validate(statements.get(2)) => [
-				assertDiagnosticsCount(1)
-				assertError(null, "- operator cannot be applied to type Boolean")
+				assertAll(error(null, "- operator cannot be applied to type Boolean"))
 			]
 		]
 	}

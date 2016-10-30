@@ -21,6 +21,7 @@ import fire.fire.Program;
 import fire.fire.RealLiteral;
 import fire.fire.StringLiteral;
 import fire.fire.VariableDeclaration;
+import fire.fire.WhileLoop;
 import fire.fire.WritelnStatement;
 import fire.fire.XorExpression;
 import fire.services.FireGrammarAccess;
@@ -96,6 +97,9 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				return; 
 			case FirePackage.VARIABLE_DECLARATION:
 				sequence_Statement(context, (VariableDeclaration) semanticObject); 
+				return; 
+			case FirePackage.WHILE_LOOP:
+				sequence_Statement(context, (WhileLoop) semanticObject); 
 				return; 
 			case FirePackage.WRITELN_STATEMENT:
 				sequence_Statement(context, (WritelnStatement) semanticObject); 
@@ -377,6 +381,18 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
+	 *     Statement returns WhileLoop
+	 *
+	 * Constraint:
+	 *     (condition=Expression statements+=Statement*)
+	 */
+	protected void sequence_Statement(ISerializationContext context, WhileLoop semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     Statement returns WritelnStatement
 	 *
 	 * Constraint:
@@ -388,7 +404,7 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FirePackage.Literals.WRITELN_STATEMENT__ARGUMENT));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getStatementAccess().getArgumentExpressionParserRuleCall_2_3_0(), semanticObject.getArgument());
+		feeder.accept(grammarAccess.getStatementAccess().getArgumentExpressionParserRuleCall_3_3_0(), semanticObject.getArgument());
 		feeder.finish();
 	}
 	

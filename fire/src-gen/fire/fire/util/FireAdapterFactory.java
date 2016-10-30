@@ -101,6 +101,11 @@ public class FireAdapterFactory extends AdapterFactoryImpl
         return createAssignmentStatementAdapter();
       }
       @Override
+      public Adapter caseWhileLoop(WhileLoop object)
+      {
+        return createWhileLoopAdapter();
+      }
+      @Override
       public Adapter caseWritelnStatement(WritelnStatement object)
       {
         return createWritelnStatementAdapter();
@@ -268,6 +273,21 @@ public class FireAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createAssignmentStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link fire.fire.WhileLoop <em>While Loop</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see fire.fire.WhileLoop
+   * @generated
+   */
+  public Adapter createWhileLoopAdapter()
   {
     return null;
   }

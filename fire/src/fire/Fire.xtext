@@ -13,6 +13,7 @@ Program: {Program}
 Statement:
 	{VariableDeclaration} (constant?='const' | 'var') name=ID ':' type=BuiltInType ':=' value=Expression |
 	{AssignmentStatement} variable=[VariableDeclaration] ':=' value=Expression |
+	{WhileLoop} 'while' condition=Expression 'do' statements+=Statement* 'end' |
 	{WritelnStatement} 'writeln' '(' argument=Expression ')'
 ;
 

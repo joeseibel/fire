@@ -25,6 +25,7 @@ import fire.fire.Program
 import fire.fire.RealLiteral
 import fire.fire.StringLiteral
 import fire.fire.VariableDeclaration
+import fire.fire.WhileLoop
 import fire.fire.WritelnStatement
 import fire.fire.XorExpression
 import org.eclipse.xtext.junit4.InjectWith
@@ -89,6 +90,55 @@ class FireParsingTest{
 			(statements.get(4) as WritelnStatement).argument as AdditiveExpression => [
 				"c1".assertEquals((left as IdExpression).value.name)
 				"v1".assertEquals((right as IdExpression).value.name)
+			]
+		]
+	}
+	
+	@Test
+	def void testWhileLoop() {
+		'''
+			program
+				while true do
+				end
+				while true do
+					writeln(1)
+					writeln(2)
+					writeln(3)
+				end
+				while true do
+					while true do
+						while true do
+							writeln(4)
+						end
+					end
+				end
+			end
+		'''.parse => [
+			assertNoIssues
+			3.assertEquals(statements.size)
+			statements.get(0) as WhileLoop => [
+				(condition as BooleanLiteral).value.assertTrue
+				statements.empty.assertTrue
+			]
+			statements.get(1) as WhileLoop => [
+				(condition as BooleanLiteral).value.assertTrue
+				3.assertEquals(statements.size)
+				1.assertEquals(((statements.get(0) as WritelnStatement).argument as IntegerLiteral).value)
+				2.assertEquals(((statements.get(1) as WritelnStatement).argument as IntegerLiteral).value)
+				3.assertEquals(((statements.get(2) as WritelnStatement).argument as IntegerLiteral).value)
+			]
+			statements.get(2) as WhileLoop => [
+				(condition as BooleanLiteral).value.assertTrue
+				1.assertEquals(statements.size)
+				statements.head as WhileLoop => [
+					(condition as BooleanLiteral).value.assertTrue
+					1.assertEquals(statements.size)
+					statements.head as WhileLoop => [
+						(condition as BooleanLiteral).value.assertTrue
+						1.assertEquals(statements.size)
+						4.assertEquals(((statements.head as WritelnStatement).argument as IntegerLiteral).value)
+					]
+				]
 			]
 		]
 	}

@@ -18,6 +18,7 @@ import fire.fire.Program
 import fire.fire.RealLiteral
 import fire.fire.StringLiteral
 import fire.fire.VariableDeclaration
+import fire.fire.WhileLoop
 import fire.fire.WritelnStatement
 import fire.fire.XorExpression
 import fire.llvm.BasicBlock
@@ -99,6 +100,20 @@ class FireGenerator extends AbstractGenerator {
 		builder.createStore(assignment.value.generateExpression, generatedVariableDeclarations.get(assignment.variable))
 	}
 	
+	def private dispatch void generateStatement(WhileLoop whileLoop) {
+		val function = builder.insertBlock.parent
+		val conditionBlock = BasicBlock.create(llvmContext, "condition", function)
+		val bodyBlock = BasicBlock.create(llvmContext, "body", function)
+		val afterLoopBlock = BasicBlock.create(llvmContext, "afterLoop", function)
+		builder.createBr(conditionBlock)
+		builder.insertPoint = conditionBlock
+		builder.createCondBr(whileLoop.condition.generateExpression, bodyBlock, afterLoopBlock)
+		builder.insertPoint = bodyBlock
+		whileLoop.statements.forEach[generateStatement]
+		builder.createBr(conditionBlock)
+		builder.insertPoint = afterLoopBlock
+	}
+	
 	def private dispatch void generateStatement(WritelnStatement statement) {
 		val argumentValue = statement.argument.generateExpression
 		switch statement.argument.type {
@@ -119,12 +134,11 @@ class FireGenerator extends AbstractGenerator {
 		val startingBlock = builder.insertBlock
 		val function = startingBlock.parent
 		val elseBlock = BasicBlock.create(llvmContext, "else", function)
-		val afterIfBlock = BasicBlock.create(llvmContext, "afterIf")
+		val afterIfBlock = BasicBlock.create(llvmContext, "afterIf", function)
 		builder.createCondBr(leftValue, afterIfBlock, elseBlock)
 		builder.insertPoint = elseBlock
 		val rightValue = expression.right.generateExpression
 		builder.createBr(afterIfBlock)
-		function.addBasicBlock(afterIfBlock)
 		builder.insertPoint = afterIfBlock
 		builder.createPHI(builder.int1Ty, 2) => [
 			addIncoming(builder.^true, startingBlock)
@@ -137,12 +151,11 @@ class FireGenerator extends AbstractGenerator {
 		val startingBlock = builder.insertBlock
 		val function = startingBlock.parent
 		val thenBlock = BasicBlock.create(llvmContext, "then", function)
-		val afterIfBlock = BasicBlock.create(llvmContext, "afterIf")
+		val afterIfBlock = BasicBlock.create(llvmContext, "afterIf", function)
 		builder.createCondBr(leftValue, thenBlock, afterIfBlock)
 		builder.insertPoint = thenBlock
 		val rightValue = expression.right.generateExpression
 		builder.createBr(afterIfBlock)
-		function.addBasicBlock(afterIfBlock)
 		builder.insertPoint = afterIfBlock
 		builder.createPHI(builder.int1Ty, 2) => [
 			addIncoming(rightValue, thenBlock)
@@ -222,7 +235,7 @@ class FireGenerator extends AbstractGenerator {
 		val isOverflow = builder.createExtractValue(result, 1)
 		val function = builder.insertBlock.parent
 		val thenBlock = BasicBlock.create(llvmContext, "then", function)
-		val afterIfBlock = BasicBlock.create(llvmContext, "afterIf")
+		val afterIfBlock = BasicBlock.create(llvmContext, "afterIf", function)
 		builder.createCondBr(isOverflow, thenBlock, afterIfBlock)
 		builder.insertPoint = thenBlock
 		val line = expression.node.leafNodes.findFirst[grammarElement == operator].startLine
@@ -230,7 +243,6 @@ class FireGenerator extends AbstractGenerator {
 		builder.createCall(printfFunction, #[builder.createGlobalStringPtr(message)])
 		builder.createCall(exitFunction, #[builder.getInt32(1)])
 		builder.createUnreachable
-		function.addBasicBlock(afterIfBlock)
 		builder.insertPoint = afterIfBlock
 		builder.createExtractValue(result, 0)
 	}
@@ -261,7 +273,7 @@ class FireGenerator extends AbstractGenerator {
 		val rightValue = expression.right.generateExpression
 		val function = builder.insertBlock.parent
 		val thenBlock = BasicBlock.create(llvmContext, "then", function)
-		val afterIfBlock = BasicBlock.create(llvmContext, "afterIf")
+		val afterIfBlock = BasicBlock.create(llvmContext, "afterIf", function)
 		val isZero = builder.createICmpEQ(rightValue, builder.getInt64(0))
 		builder.createCondBr(isZero, thenBlock, afterIfBlock)
 		builder.insertPoint = thenBlock
@@ -270,7 +282,6 @@ class FireGenerator extends AbstractGenerator {
 		builder.createCall(printfFunction, #[builder.createGlobalStringPtr(message)])
 		builder.createCall(exitFunction, #[builder.getInt32(1)])
 		builder.createUnreachable
-		function.addBasicBlock(afterIfBlock)
 		builder.insertPoint = afterIfBlock
 		operation.apply(expression.left.generateExpression, rightValue)
 	}

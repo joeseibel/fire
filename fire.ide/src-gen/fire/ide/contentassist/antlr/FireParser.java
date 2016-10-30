@@ -48,6 +48,7 @@ public class FireParser extends AbstractContentAssistParser {
 					put(grammarAccess.getStatementAccess().getGroup_0(), "rule__Statement__Group_0__0");
 					put(grammarAccess.getStatementAccess().getGroup_1(), "rule__Statement__Group_1__0");
 					put(grammarAccess.getStatementAccess().getGroup_2(), "rule__Statement__Group_2__0");
+					put(grammarAccess.getStatementAccess().getGroup_3(), "rule__Statement__Group_3__0");
 					put(grammarAccess.getExpressionAccess().getGroup(), "rule__Expression__Group__0");
 					put(grammarAccess.getExpressionAccess().getGroup_1(), "rule__Expression__Group_1__0");
 					put(grammarAccess.getAndExpressionAccess().getGroup(), "rule__AndExpression__Group__0");
@@ -78,7 +79,9 @@ public class FireParser extends AbstractContentAssistParser {
 					put(grammarAccess.getStatementAccess().getValueAssignment_0_6(), "rule__Statement__ValueAssignment_0_6");
 					put(grammarAccess.getStatementAccess().getVariableAssignment_1_1(), "rule__Statement__VariableAssignment_1_1");
 					put(grammarAccess.getStatementAccess().getValueAssignment_1_3(), "rule__Statement__ValueAssignment_1_3");
-					put(grammarAccess.getStatementAccess().getArgumentAssignment_2_3(), "rule__Statement__ArgumentAssignment_2_3");
+					put(grammarAccess.getStatementAccess().getConditionAssignment_2_2(), "rule__Statement__ConditionAssignment_2_2");
+					put(grammarAccess.getStatementAccess().getStatementsAssignment_2_4(), "rule__Statement__StatementsAssignment_2_4");
+					put(grammarAccess.getStatementAccess().getArgumentAssignment_3_3(), "rule__Statement__ArgumentAssignment_3_3");
 					put(grammarAccess.getExpressionAccess().getRightAssignment_1_2(), "rule__Expression__RightAssignment_1_2");
 					put(grammarAccess.getAndExpressionAccess().getRightAssignment_1_2(), "rule__AndExpression__RightAssignment_1_2");
 					put(grammarAccess.getXorExpressionAccess().getRightAssignment_1_2(), "rule__XorExpression__RightAssignment_1_2");
