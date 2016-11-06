@@ -6,9 +6,11 @@ import fire.fire.AndExpression
 import fire.fire.AssignmentStatement
 import fire.fire.BooleanLiteral
 import fire.fire.ComparisonExpression
+import fire.fire.ElseIfStatement
 import fire.fire.EqualityExpression
 import fire.fire.Expression
 import fire.fire.IdExpression
+import fire.fire.IfStatement
 import fire.fire.IntegerLiteral
 import fire.fire.MultiplicativeExpression
 import fire.fire.NegationExpression
@@ -35,6 +37,7 @@ import fire.llvm.Value
 import fire.services.FireGrammarAccess
 import java.io.ByteArrayInputStream
 import org.eclipse.emf.ecore.resource.Resource
+import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor
 import org.eclipse.xtext.EnumLiteralDeclaration
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
@@ -112,6 +115,46 @@ class FireGenerator extends AbstractGenerator {
 		whileLoop.statements.forEach[generateStatement]
 		builder.createBr(conditionBlock)
 		builder.insertPoint = afterLoopBlock
+	}
+	
+	def private dispatch void generateStatement(IfStatement ifStatement) {
+		val function = builder.insertBlock.parent
+		val thenBlock = BasicBlock.create(llvmContext, "then", function)
+		val elseIfStatementAndBlocks = ifStatement.elseIfs.indexed.map[
+			val conditionBlock = BasicBlock.create(llvmContext, "elseIfCondition_" + key, function)
+			val statementBlock = BasicBlock.create(llvmContext, "elseIfThen_" + key, function)
+			new ElseIfStatementAndBlock(value, conditionBlock, statementBlock)
+		].toList
+		val elseBlock = if (ifStatement.^else != null) {
+			BasicBlock.create(llvmContext, "else", function)
+		}
+		val afterIfBlock = BasicBlock.create(llvmContext, "afterIf", function)
+		val conditionFalseBlock = elseIfStatementAndBlocks.head?.conditionBlock ?: elseBlock ?: afterIfBlock
+		builder.createCondBr(ifStatement.condition.generateExpression, thenBlock, conditionFalseBlock)
+		elseIfStatementAndBlocks.forEach[statementAndBlock, index |
+			builder.insertPoint = statementAndBlock.conditionBlock
+			val conditionValue = statementAndBlock.elseIfStatement.condition.generateExpression
+			val falseBlock = if (index < elseIfStatementAndBlocks.size - 1) {
+				elseIfStatementAndBlocks.get(index + 1).conditionBlock
+			} else {
+				elseBlock ?: afterIfBlock
+			}
+			builder.createCondBr(conditionValue, statementAndBlock.statementBlock, falseBlock)
+		]
+		builder.insertPoint = thenBlock
+		ifStatement.thenStatements.forEach[generateStatement]
+		builder.createBr(afterIfBlock)
+		elseIfStatementAndBlocks.forEach[statementAndBlock |
+			builder.insertPoint = statementAndBlock.statementBlock
+			statementAndBlock.elseIfStatement.thenStatements.forEach[generateStatement]
+			builder.createBr(afterIfBlock)
+		]
+		if (elseBlock != null) {
+			builder.insertPoint = elseBlock
+			ifStatement.^else.elseStatements.forEach[generateStatement]
+			builder.createBr(afterIfBlock)
+		}
+		builder.insertPoint = afterIfBlock
 	}
 	
 	def private dispatch void generateStatement(WritelnStatement statement) {
@@ -351,5 +394,12 @@ class FireGenerator extends AbstractGenerator {
 			val functionType = FunctionType.get(result, params, isVarArg)
 			Function.create(functionType, LinkageTypes.EXTERNAL_LINKAGE, name, module)
 		}
+	}
+	
+	@FinalFieldsConstructor
+	private static class ElseIfStatementAndBlock {
+		val ElseIfStatement elseIfStatement
+		val BasicBlock conditionBlock
+		val BasicBlock statementBlock
 	}
 }

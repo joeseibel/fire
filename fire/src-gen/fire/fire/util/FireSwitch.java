@@ -87,6 +87,36 @@ public class FireSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case FirePackage.WHILE_LOOP:
+      {
+        WhileLoop whileLoop = (WhileLoop)theEObject;
+        T result = caseWhileLoop(whileLoop);
+        if (result == null) result = caseStatement(whileLoop);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case FirePackage.IF_STATEMENT:
+      {
+        IfStatement ifStatement = (IfStatement)theEObject;
+        T result = caseIfStatement(ifStatement);
+        if (result == null) result = caseStatement(ifStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case FirePackage.ELSE_IF_STATEMENT:
+      {
+        ElseIfStatement elseIfStatement = (ElseIfStatement)theEObject;
+        T result = caseElseIfStatement(elseIfStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case FirePackage.ELSE_STATEMENT:
+      {
+        ElseStatement elseStatement = (ElseStatement)theEObject;
+        T result = caseElseStatement(elseStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case FirePackage.EXPRESSION:
       {
         Expression expression = (Expression)theEObject;
@@ -107,14 +137,6 @@ public class FireSwitch<T> extends Switch<T>
         AssignmentStatement assignmentStatement = (AssignmentStatement)theEObject;
         T result = caseAssignmentStatement(assignmentStatement);
         if (result == null) result = caseStatement(assignmentStatement);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case FirePackage.WHILE_LOOP:
-      {
-        WhileLoop whileLoop = (WhileLoop)theEObject;
-        T result = caseWhileLoop(whileLoop);
-        if (result == null) result = caseStatement(whileLoop);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -275,6 +297,70 @@ public class FireSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>While Loop</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>While Loop</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseWhileLoop(WhileLoop object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>If Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>If Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseIfStatement(IfStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Else If Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Else If Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseElseIfStatement(ElseIfStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Else Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Else Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseElseStatement(ElseStatement object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Expression</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -318,22 +404,6 @@ public class FireSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseAssignmentStatement(AssignmentStatement object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>While Loop</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>While Loop</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseWhileLoop(WhileLoop object)
   {
     return null;
   }

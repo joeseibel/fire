@@ -9,9 +9,12 @@ import fire.fire.AndExpression;
 import fire.fire.AssignmentStatement;
 import fire.fire.BooleanLiteral;
 import fire.fire.ComparisonExpression;
+import fire.fire.ElseIfStatement;
+import fire.fire.ElseStatement;
 import fire.fire.EqualityExpression;
 import fire.fire.FirePackage;
 import fire.fire.IdExpression;
+import fire.fire.IfStatement;
 import fire.fire.IntegerLiteral;
 import fire.fire.MultiplicativeExpression;
 import fire.fire.NegationExpression;
@@ -65,11 +68,20 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case FirePackage.COMPARISON_EXPRESSION:
 				sequence_ComparisonExpression(context, (ComparisonExpression) semanticObject); 
 				return; 
+			case FirePackage.ELSE_IF_STATEMENT:
+				sequence_ElseIfStatement(context, (ElseIfStatement) semanticObject); 
+				return; 
+			case FirePackage.ELSE_STATEMENT:
+				sequence_ElseStatement(context, (ElseStatement) semanticObject); 
+				return; 
 			case FirePackage.EQUALITY_EXPRESSION:
 				sequence_EqualityExpression(context, (EqualityExpression) semanticObject); 
 				return; 
 			case FirePackage.ID_EXPRESSION:
 				sequence_TerminalExpression(context, (IdExpression) semanticObject); 
+				return; 
+			case FirePackage.IF_STATEMENT:
+				sequence_IfStatement(context, (IfStatement) semanticObject); 
 				return; 
 			case FirePackage.INTEGER_LITERAL:
 				sequence_TerminalExpression(context, (IntegerLiteral) semanticObject); 
@@ -99,7 +111,7 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				sequence_Statement(context, (VariableDeclaration) semanticObject); 
 				return; 
 			case FirePackage.WHILE_LOOP:
-				sequence_Statement(context, (WhileLoop) semanticObject); 
+				sequence_WhileLoop(context, (WhileLoop) semanticObject); 
 				return; 
 			case FirePackage.WRITELN_STATEMENT:
 				sequence_Statement(context, (WritelnStatement) semanticObject); 
@@ -225,6 +237,30 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
+	 *     ElseIfStatement returns ElseIfStatement
+	 *
+	 * Constraint:
+	 *     (condition=Expression thenStatements+=Statement*)
+	 */
+	protected void sequence_ElseIfStatement(ISerializationContext context, ElseIfStatement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     ElseStatement returns ElseStatement
+	 *
+	 * Constraint:
+	 *     elseStatements+=Statement*
+	 */
+	protected void sequence_ElseStatement(ISerializationContext context, ElseStatement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     Expression returns EqualityExpression
 	 *     Expression.OrExpression_1_0 returns EqualityExpression
 	 *     AndExpression returns EqualityExpression
@@ -293,6 +329,19 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		feeder.accept(grammarAccess.getExpressionAccess().getOrExpressionLeftAction_1_0(), semanticObject.getLeft());
 		feeder.accept(grammarAccess.getExpressionAccess().getRightAndExpressionParserRuleCall_1_2_0(), semanticObject.getRight());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Statement returns IfStatement
+	 *     IfStatement returns IfStatement
+	 *
+	 * Constraint:
+	 *     (condition=Expression thenStatements+=Statement* elseIfs+=ElseIfStatement* else=ElseStatement?)
+	 */
+	protected void sequence_IfStatement(ISerializationContext context, IfStatement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -381,18 +430,6 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
-	 *     Statement returns WhileLoop
-	 *
-	 * Constraint:
-	 *     (condition=Expression statements+=Statement*)
-	 */
-	protected void sequence_Statement(ISerializationContext context, WhileLoop semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
 	 *     Statement returns WritelnStatement
 	 *
 	 * Constraint:
@@ -404,7 +441,7 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FirePackage.Literals.WRITELN_STATEMENT__ARGUMENT));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getStatementAccess().getArgumentExpressionParserRuleCall_3_3_0(), semanticObject.getArgument());
+		feeder.accept(grammarAccess.getStatementAccess().getArgumentExpressionParserRuleCall_4_3_0(), semanticObject.getArgument());
 		feeder.finish();
 	}
 	
@@ -624,6 +661,19 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getTerminalExpressionAccess().getValueSTRINGTerminalRuleCall_1_1_0(), semanticObject.getValue());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Statement returns WhileLoop
+	 *     WhileLoop returns WhileLoop
+	 *
+	 * Constraint:
+	 *     (condition=Expression statements+=Statement*)
+	 */
+	protected void sequence_WhileLoop(ISerializationContext context, WhileLoop semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

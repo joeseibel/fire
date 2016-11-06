@@ -11,12 +11,15 @@ import fire.fire.BooleanLiteral;
 import fire.fire.BuiltInType;
 import fire.fire.ComparisonExpression;
 import fire.fire.ComparisonOperator;
+import fire.fire.ElseIfStatement;
+import fire.fire.ElseStatement;
 import fire.fire.EqualityExpression;
 import fire.fire.EqualityOperator;
 import fire.fire.Expression;
 import fire.fire.FireFactory;
 import fire.fire.FirePackage;
 import fire.fire.IdExpression;
+import fire.fire.IfStatement;
 import fire.fire.IntegerLiteral;
 import fire.fire.MultiplicativeExpression;
 import fire.fire.MultiplicativeOperator;
@@ -67,6 +70,34 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass whileLoopEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass ifStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass elseIfStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass elseStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass expressionEClass = null;
 
   /**
@@ -82,13 +113,6 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
    * @generated
    */
   private EClass assignmentStatementEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass whileLoopEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -328,6 +352,136 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getWhileLoop()
+  {
+    return whileLoopEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getWhileLoop_Condition()
+  {
+    return (EReference)whileLoopEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getWhileLoop_Statements()
+  {
+    return (EReference)whileLoopEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getIfStatement()
+  {
+    return ifStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getIfStatement_Condition()
+  {
+    return (EReference)ifStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getIfStatement_ThenStatements()
+  {
+    return (EReference)ifStatementEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getIfStatement_ElseIfs()
+  {
+    return (EReference)ifStatementEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getIfStatement_Else()
+  {
+    return (EReference)ifStatementEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getElseIfStatement()
+  {
+    return elseIfStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getElseIfStatement_Condition()
+  {
+    return (EReference)elseIfStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getElseIfStatement_ThenStatements()
+  {
+    return (EReference)elseIfStatementEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getElseStatement()
+  {
+    return elseStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getElseStatement_ElseStatements()
+  {
+    return (EReference)elseStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getExpression()
   {
     return expressionEClass;
@@ -411,36 +565,6 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
   public EReference getAssignmentStatement_Value()
   {
     return (EReference)assignmentStatementEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getWhileLoop()
-  {
-    return whileLoopEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getWhileLoop_Condition()
-  {
-    return (EReference)whileLoopEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getWhileLoop_Statements()
-  {
-    return (EReference)whileLoopEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -938,6 +1062,23 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
 
     statementEClass = createEClass(STATEMENT);
 
+    whileLoopEClass = createEClass(WHILE_LOOP);
+    createEReference(whileLoopEClass, WHILE_LOOP__CONDITION);
+    createEReference(whileLoopEClass, WHILE_LOOP__STATEMENTS);
+
+    ifStatementEClass = createEClass(IF_STATEMENT);
+    createEReference(ifStatementEClass, IF_STATEMENT__CONDITION);
+    createEReference(ifStatementEClass, IF_STATEMENT__THEN_STATEMENTS);
+    createEReference(ifStatementEClass, IF_STATEMENT__ELSE_IFS);
+    createEReference(ifStatementEClass, IF_STATEMENT__ELSE);
+
+    elseIfStatementEClass = createEClass(ELSE_IF_STATEMENT);
+    createEReference(elseIfStatementEClass, ELSE_IF_STATEMENT__CONDITION);
+    createEReference(elseIfStatementEClass, ELSE_IF_STATEMENT__THEN_STATEMENTS);
+
+    elseStatementEClass = createEClass(ELSE_STATEMENT);
+    createEReference(elseStatementEClass, ELSE_STATEMENT__ELSE_STATEMENTS);
+
     expressionEClass = createEClass(EXPRESSION);
 
     variableDeclarationEClass = createEClass(VARIABLE_DECLARATION);
@@ -949,10 +1090,6 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
     assignmentStatementEClass = createEClass(ASSIGNMENT_STATEMENT);
     createEReference(assignmentStatementEClass, ASSIGNMENT_STATEMENT__VARIABLE);
     createEReference(assignmentStatementEClass, ASSIGNMENT_STATEMENT__VALUE);
-
-    whileLoopEClass = createEClass(WHILE_LOOP);
-    createEReference(whileLoopEClass, WHILE_LOOP__CONDITION);
-    createEReference(whileLoopEClass, WHILE_LOOP__STATEMENTS);
 
     writelnStatementEClass = createEClass(WRITELN_STATEMENT);
     createEReference(writelnStatementEClass, WRITELN_STATEMENT__ARGUMENT);
@@ -1047,9 +1184,10 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
+    whileLoopEClass.getESuperTypes().add(this.getStatement());
+    ifStatementEClass.getESuperTypes().add(this.getStatement());
     variableDeclarationEClass.getESuperTypes().add(this.getStatement());
     assignmentStatementEClass.getESuperTypes().add(this.getStatement());
-    whileLoopEClass.getESuperTypes().add(this.getStatement());
     writelnStatementEClass.getESuperTypes().add(this.getStatement());
     orExpressionEClass.getESuperTypes().add(this.getExpression());
     andExpressionEClass.getESuperTypes().add(this.getExpression());
@@ -1072,6 +1210,23 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
 
     initEClass(statementEClass, Statement.class, "Statement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+    initEClass(whileLoopEClass, WhileLoop.class, "WhileLoop", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getWhileLoop_Condition(), this.getExpression(), null, "condition", null, 0, 1, WhileLoop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getWhileLoop_Statements(), this.getStatement(), null, "statements", null, 0, -1, WhileLoop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(ifStatementEClass, IfStatement.class, "IfStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getIfStatement_Condition(), this.getExpression(), null, "condition", null, 0, 1, IfStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getIfStatement_ThenStatements(), this.getStatement(), null, "thenStatements", null, 0, -1, IfStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getIfStatement_ElseIfs(), this.getElseIfStatement(), null, "elseIfs", null, 0, -1, IfStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getIfStatement_Else(), this.getElseStatement(), null, "else", null, 0, 1, IfStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(elseIfStatementEClass, ElseIfStatement.class, "ElseIfStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getElseIfStatement_Condition(), this.getExpression(), null, "condition", null, 0, 1, ElseIfStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getElseIfStatement_ThenStatements(), this.getStatement(), null, "thenStatements", null, 0, -1, ElseIfStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(elseStatementEClass, ElseStatement.class, "ElseStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getElseStatement_ElseStatements(), this.getStatement(), null, "elseStatements", null, 0, -1, ElseStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     initEClass(expressionEClass, Expression.class, "Expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(variableDeclarationEClass, VariableDeclaration.class, "VariableDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1083,10 +1238,6 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
     initEClass(assignmentStatementEClass, AssignmentStatement.class, "AssignmentStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getAssignmentStatement_Variable(), this.getVariableDeclaration(), null, "variable", null, 0, 1, AssignmentStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getAssignmentStatement_Value(), this.getExpression(), null, "value", null, 0, 1, AssignmentStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(whileLoopEClass, WhileLoop.class, "WhileLoop", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getWhileLoop_Condition(), this.getExpression(), null, "condition", null, 0, 1, WhileLoop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getWhileLoop_Statements(), this.getStatement(), null, "statements", null, 0, -1, WhileLoop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(writelnStatementEClass, WritelnStatement.class, "WritelnStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getWritelnStatement_Argument(), this.getExpression(), null, "argument", null, 0, 1, WritelnStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

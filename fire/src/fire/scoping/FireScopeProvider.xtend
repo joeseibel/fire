@@ -1,6 +1,9 @@
 package fire.scoping
 
+import fire.fire.ElseIfStatement
+import fire.fire.ElseStatement
 import fire.fire.FirePackage
+import fire.fire.IfStatement
 import fire.fire.Program
 import fire.fire.WhileLoop
 import org.eclipse.emf.ecore.EObject
@@ -13,30 +16,18 @@ import static extension org.eclipse.xtext.scoping.Scopes.scopeFor
 class FireScopeProvider extends AbstractFireScopeProvider {
 	override getScope(EObject context, EReference reference) {
 		switch reference {
-			case FirePackage.Literals.ASSIGNMENT_STATEMENT__VARIABLE: scope_AssignmentStatement_variable(context)
-			case FirePackage.Literals.ID_EXPRESSION__VALUE: scope_IdExpression_value(context, context)
+			case FirePackage.Literals.ASSIGNMENT_STATEMENT__VARIABLE,
+			case FirePackage.Literals.ID_EXPRESSION__VALUE: scope_VariableDeclaration(context, context)
 			default: super.getScope(context, reference)
 		}
 	}
 	
-	def private static dispatch IScope scope_AssignmentStatement_variable(Program program) {
+	def private static dispatch IScope scope_VariableDeclaration(Program program, EObject originalContext) {
 		program.statements.scopeFor
 	}
 	
-	def private static dispatch IScope scope_AssignmentStatement_variable(WhileLoop whileLoop) {
-		whileLoop.statements.scopeFor(scope_AssignmentStatement_variable(whileLoop.eContainer))
-	}
-	
-	def private static dispatch IScope scope_AssignmentStatement_variable(EObject context) {
-		scope_AssignmentStatement_variable(context.eContainer)
-	}
-	
-	def private static dispatch IScope scope_IdExpression_value(Program program, EObject originalContext) {
-		program.statements.scopeFor
-	}
-	
-	def private static dispatch IScope scope_IdExpression_value(WhileLoop whileLoop, EObject originalContext) {
-		val outer = scope_IdExpression_value(whileLoop.eContainer, originalContext)
+	def private static dispatch IScope scope_VariableDeclaration(WhileLoop whileLoop, EObject originalContext) {
+		val outer = scope_VariableDeclaration(whileLoop.eContainer, originalContext)
 		if (whileLoop.condition.isAncestor(originalContext)) {
 			outer
 		} else {
@@ -44,7 +35,29 @@ class FireScopeProvider extends AbstractFireScopeProvider {
 		}
 	}
 	
-	def private static dispatch IScope scope_IdExpression_value(EObject context, EObject originalContext) {
-		scope_IdExpression_value(context.eContainer, originalContext)
+	def private static dispatch IScope scope_VariableDeclaration(IfStatement ifStatement, EObject originalContext) {
+		val outer = scope_VariableDeclaration(ifStatement.eContainer, originalContext)
+		if (ifStatement.thenStatements.exists[isAncestor(originalContext)]) {
+			ifStatement.thenStatements.scopeFor(outer)
+		} else {
+			outer
+		}
+	}
+	
+	def private static dispatch IScope scope_VariableDeclaration(ElseIfStatement elseIfStatement, EObject originalContext) {
+		val outer = scope_VariableDeclaration(elseIfStatement.eContainer, originalContext)
+		if (elseIfStatement.condition.isAncestor(originalContext)) {
+			outer
+		} else {
+			elseIfStatement.thenStatements.scopeFor(outer)
+		}
+	}
+	
+	def private static dispatch IScope scope_VariableDeclaration(ElseStatement elseStatement, EObject originalContext) {
+		elseStatement.elseStatements.scopeFor(scope_VariableDeclaration(elseStatement.eContainer, originalContext))
+	}
+	
+	def private static dispatch IScope scope_VariableDeclaration(EObject context, EObject originalContext) {
+		scope_VariableDeclaration(context.eContainer, originalContext)
 	}
 }

@@ -68,10 +68,13 @@ public class FireFactoryImpl extends EFactoryImpl implements FireFactory
     {
       case FirePackage.PROGRAM: return createProgram();
       case FirePackage.STATEMENT: return createStatement();
+      case FirePackage.WHILE_LOOP: return createWhileLoop();
+      case FirePackage.IF_STATEMENT: return createIfStatement();
+      case FirePackage.ELSE_IF_STATEMENT: return createElseIfStatement();
+      case FirePackage.ELSE_STATEMENT: return createElseStatement();
       case FirePackage.EXPRESSION: return createExpression();
       case FirePackage.VARIABLE_DECLARATION: return createVariableDeclaration();
       case FirePackage.ASSIGNMENT_STATEMENT: return createAssignmentStatement();
-      case FirePackage.WHILE_LOOP: return createWhileLoop();
       case FirePackage.WRITELN_STATEMENT: return createWritelnStatement();
       case FirePackage.OR_EXPRESSION: return createOrExpression();
       case FirePackage.AND_EXPRESSION: return createAndExpression();
@@ -169,6 +172,50 @@ public class FireFactoryImpl extends EFactoryImpl implements FireFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public WhileLoop createWhileLoop()
+  {
+    WhileLoopImpl whileLoop = new WhileLoopImpl();
+    return whileLoop;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public IfStatement createIfStatement()
+  {
+    IfStatementImpl ifStatement = new IfStatementImpl();
+    return ifStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ElseIfStatement createElseIfStatement()
+  {
+    ElseIfStatementImpl elseIfStatement = new ElseIfStatementImpl();
+    return elseIfStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ElseStatement createElseStatement()
+  {
+    ElseStatementImpl elseStatement = new ElseStatementImpl();
+    return elseStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public Expression createExpression()
   {
     ExpressionImpl expression = new ExpressionImpl();
@@ -195,17 +242,6 @@ public class FireFactoryImpl extends EFactoryImpl implements FireFactory
   {
     AssignmentStatementImpl assignmentStatement = new AssignmentStatementImpl();
     return assignmentStatement;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public WhileLoop createWhileLoop()
-  {
-    WhileLoopImpl whileLoop = new WhileLoopImpl();
-    return whileLoop;
   }
 
   /**

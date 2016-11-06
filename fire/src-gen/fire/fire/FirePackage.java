@@ -106,6 +106,163 @@ public interface FirePackage extends EPackage
   int STATEMENT_FEATURE_COUNT = 0;
 
   /**
+   * The meta object id for the '{@link fire.fire.impl.WhileLoopImpl <em>While Loop</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see fire.fire.impl.WhileLoopImpl
+   * @see fire.fire.impl.FirePackageImpl#getWhileLoop()
+   * @generated
+   */
+  int WHILE_LOOP = 2;
+
+  /**
+   * The feature id for the '<em><b>Condition</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WHILE_LOOP__CONDITION = STATEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Statements</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WHILE_LOOP__STATEMENTS = STATEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>While Loop</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WHILE_LOOP_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link fire.fire.impl.IfStatementImpl <em>If Statement</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see fire.fire.impl.IfStatementImpl
+   * @see fire.fire.impl.FirePackageImpl#getIfStatement()
+   * @generated
+   */
+  int IF_STATEMENT = 3;
+
+  /**
+   * The feature id for the '<em><b>Condition</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int IF_STATEMENT__CONDITION = STATEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Then Statements</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int IF_STATEMENT__THEN_STATEMENTS = STATEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Else Ifs</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int IF_STATEMENT__ELSE_IFS = STATEMENT_FEATURE_COUNT + 2;
+
+  /**
+   * The feature id for the '<em><b>Else</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int IF_STATEMENT__ELSE = STATEMENT_FEATURE_COUNT + 3;
+
+  /**
+   * The number of structural features of the '<em>If Statement</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int IF_STATEMENT_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 4;
+
+  /**
+   * The meta object id for the '{@link fire.fire.impl.ElseIfStatementImpl <em>Else If Statement</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see fire.fire.impl.ElseIfStatementImpl
+   * @see fire.fire.impl.FirePackageImpl#getElseIfStatement()
+   * @generated
+   */
+  int ELSE_IF_STATEMENT = 4;
+
+  /**
+   * The feature id for the '<em><b>Condition</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ELSE_IF_STATEMENT__CONDITION = 0;
+
+  /**
+   * The feature id for the '<em><b>Then Statements</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ELSE_IF_STATEMENT__THEN_STATEMENTS = 1;
+
+  /**
+   * The number of structural features of the '<em>Else If Statement</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ELSE_IF_STATEMENT_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link fire.fire.impl.ElseStatementImpl <em>Else Statement</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see fire.fire.impl.ElseStatementImpl
+   * @see fire.fire.impl.FirePackageImpl#getElseStatement()
+   * @generated
+   */
+  int ELSE_STATEMENT = 5;
+
+  /**
+   * The feature id for the '<em><b>Else Statements</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ELSE_STATEMENT__ELSE_STATEMENTS = 0;
+
+  /**
+   * The number of structural features of the '<em>Else Statement</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ELSE_STATEMENT_FEATURE_COUNT = 1;
+
+  /**
    * The meta object id for the '{@link fire.fire.impl.ExpressionImpl <em>Expression</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -113,7 +270,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getExpression()
    * @generated
    */
-  int EXPRESSION = 2;
+  int EXPRESSION = 6;
 
   /**
    * The number of structural features of the '<em>Expression</em>' class.
@@ -132,7 +289,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getVariableDeclaration()
    * @generated
    */
-  int VARIABLE_DECLARATION = 3;
+  int VARIABLE_DECLARATION = 7;
 
   /**
    * The feature id for the '<em><b>Constant</b></em>' attribute.
@@ -187,7 +344,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getAssignmentStatement()
    * @generated
    */
-  int ASSIGNMENT_STATEMENT = 4;
+  int ASSIGNMENT_STATEMENT = 8;
 
   /**
    * The feature id for the '<em><b>Variable</b></em>' reference.
@@ -217,43 +374,6 @@ public interface FirePackage extends EPackage
   int ASSIGNMENT_STATEMENT_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 2;
 
   /**
-   * The meta object id for the '{@link fire.fire.impl.WhileLoopImpl <em>While Loop</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see fire.fire.impl.WhileLoopImpl
-   * @see fire.fire.impl.FirePackageImpl#getWhileLoop()
-   * @generated
-   */
-  int WHILE_LOOP = 5;
-
-  /**
-   * The feature id for the '<em><b>Condition</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int WHILE_LOOP__CONDITION = STATEMENT_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Statements</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int WHILE_LOOP__STATEMENTS = STATEMENT_FEATURE_COUNT + 1;
-
-  /**
-   * The number of structural features of the '<em>While Loop</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int WHILE_LOOP_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 2;
-
-  /**
    * The meta object id for the '{@link fire.fire.impl.WritelnStatementImpl <em>Writeln Statement</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -261,7 +381,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getWritelnStatement()
    * @generated
    */
-  int WRITELN_STATEMENT = 6;
+  int WRITELN_STATEMENT = 9;
 
   /**
    * The feature id for the '<em><b>Argument</b></em>' containment reference.
@@ -289,7 +409,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getOrExpression()
    * @generated
    */
-  int OR_EXPRESSION = 7;
+  int OR_EXPRESSION = 10;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -326,7 +446,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getAndExpression()
    * @generated
    */
-  int AND_EXPRESSION = 8;
+  int AND_EXPRESSION = 11;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -363,7 +483,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getXorExpression()
    * @generated
    */
-  int XOR_EXPRESSION = 9;
+  int XOR_EXPRESSION = 12;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -400,7 +520,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getEqualityExpression()
    * @generated
    */
-  int EQUALITY_EXPRESSION = 10;
+  int EQUALITY_EXPRESSION = 13;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -446,7 +566,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getComparisonExpression()
    * @generated
    */
-  int COMPARISON_EXPRESSION = 11;
+  int COMPARISON_EXPRESSION = 14;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -492,7 +612,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getAdditiveExpression()
    * @generated
    */
-  int ADDITIVE_EXPRESSION = 12;
+  int ADDITIVE_EXPRESSION = 15;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -538,7 +658,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getMultiplicativeExpression()
    * @generated
    */
-  int MULTIPLICATIVE_EXPRESSION = 13;
+  int MULTIPLICATIVE_EXPRESSION = 16;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -584,7 +704,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getIdExpression()
    * @generated
    */
-  int ID_EXPRESSION = 14;
+  int ID_EXPRESSION = 17;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' reference.
@@ -612,7 +732,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getStringLiteral()
    * @generated
    */
-  int STRING_LITERAL = 15;
+  int STRING_LITERAL = 18;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -640,7 +760,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getBooleanLiteral()
    * @generated
    */
-  int BOOLEAN_LITERAL = 16;
+  int BOOLEAN_LITERAL = 19;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -668,7 +788,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getIntegerLiteral()
    * @generated
    */
-  int INTEGER_LITERAL = 17;
+  int INTEGER_LITERAL = 20;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -696,7 +816,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getRealLiteral()
    * @generated
    */
-  int REAL_LITERAL = 18;
+  int REAL_LITERAL = 21;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -724,7 +844,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getNotExpression()
    * @generated
    */
-  int NOT_EXPRESSION = 19;
+  int NOT_EXPRESSION = 22;
 
   /**
    * The feature id for the '<em><b>Operand</b></em>' containment reference.
@@ -752,7 +872,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getNegationExpression()
    * @generated
    */
-  int NEGATION_EXPRESSION = 20;
+  int NEGATION_EXPRESSION = 23;
 
   /**
    * The feature id for the '<em><b>Operand</b></em>' containment reference.
@@ -780,7 +900,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getBuiltInType()
    * @generated
    */
-  int BUILT_IN_TYPE = 21;
+  int BUILT_IN_TYPE = 24;
 
   /**
    * The meta object id for the '{@link fire.fire.EqualityOperator <em>Equality Operator</em>}' enum.
@@ -790,7 +910,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getEqualityOperator()
    * @generated
    */
-  int EQUALITY_OPERATOR = 22;
+  int EQUALITY_OPERATOR = 25;
 
   /**
    * The meta object id for the '{@link fire.fire.ComparisonOperator <em>Comparison Operator</em>}' enum.
@@ -800,7 +920,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getComparisonOperator()
    * @generated
    */
-  int COMPARISON_OPERATOR = 23;
+  int COMPARISON_OPERATOR = 26;
 
   /**
    * The meta object id for the '{@link fire.fire.AdditiveOperator <em>Additive Operator</em>}' enum.
@@ -810,7 +930,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getAdditiveOperator()
    * @generated
    */
-  int ADDITIVE_OPERATOR = 24;
+  int ADDITIVE_OPERATOR = 27;
 
   /**
    * The meta object id for the '{@link fire.fire.MultiplicativeOperator <em>Multiplicative Operator</em>}' enum.
@@ -820,7 +940,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getMultiplicativeOperator()
    * @generated
    */
-  int MULTIPLICATIVE_OPERATOR = 25;
+  int MULTIPLICATIVE_OPERATOR = 28;
 
 
   /**
@@ -853,6 +973,145 @@ public interface FirePackage extends EPackage
    * @generated
    */
   EClass getStatement();
+
+  /**
+   * Returns the meta object for class '{@link fire.fire.WhileLoop <em>While Loop</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>While Loop</em>'.
+   * @see fire.fire.WhileLoop
+   * @generated
+   */
+  EClass getWhileLoop();
+
+  /**
+   * Returns the meta object for the containment reference '{@link fire.fire.WhileLoop#getCondition <em>Condition</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Condition</em>'.
+   * @see fire.fire.WhileLoop#getCondition()
+   * @see #getWhileLoop()
+   * @generated
+   */
+  EReference getWhileLoop_Condition();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link fire.fire.WhileLoop#getStatements <em>Statements</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Statements</em>'.
+   * @see fire.fire.WhileLoop#getStatements()
+   * @see #getWhileLoop()
+   * @generated
+   */
+  EReference getWhileLoop_Statements();
+
+  /**
+   * Returns the meta object for class '{@link fire.fire.IfStatement <em>If Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>If Statement</em>'.
+   * @see fire.fire.IfStatement
+   * @generated
+   */
+  EClass getIfStatement();
+
+  /**
+   * Returns the meta object for the containment reference '{@link fire.fire.IfStatement#getCondition <em>Condition</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Condition</em>'.
+   * @see fire.fire.IfStatement#getCondition()
+   * @see #getIfStatement()
+   * @generated
+   */
+  EReference getIfStatement_Condition();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link fire.fire.IfStatement#getThenStatements <em>Then Statements</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Then Statements</em>'.
+   * @see fire.fire.IfStatement#getThenStatements()
+   * @see #getIfStatement()
+   * @generated
+   */
+  EReference getIfStatement_ThenStatements();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link fire.fire.IfStatement#getElseIfs <em>Else Ifs</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Else Ifs</em>'.
+   * @see fire.fire.IfStatement#getElseIfs()
+   * @see #getIfStatement()
+   * @generated
+   */
+  EReference getIfStatement_ElseIfs();
+
+  /**
+   * Returns the meta object for the containment reference '{@link fire.fire.IfStatement#getElse <em>Else</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Else</em>'.
+   * @see fire.fire.IfStatement#getElse()
+   * @see #getIfStatement()
+   * @generated
+   */
+  EReference getIfStatement_Else();
+
+  /**
+   * Returns the meta object for class '{@link fire.fire.ElseIfStatement <em>Else If Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Else If Statement</em>'.
+   * @see fire.fire.ElseIfStatement
+   * @generated
+   */
+  EClass getElseIfStatement();
+
+  /**
+   * Returns the meta object for the containment reference '{@link fire.fire.ElseIfStatement#getCondition <em>Condition</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Condition</em>'.
+   * @see fire.fire.ElseIfStatement#getCondition()
+   * @see #getElseIfStatement()
+   * @generated
+   */
+  EReference getElseIfStatement_Condition();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link fire.fire.ElseIfStatement#getThenStatements <em>Then Statements</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Then Statements</em>'.
+   * @see fire.fire.ElseIfStatement#getThenStatements()
+   * @see #getElseIfStatement()
+   * @generated
+   */
+  EReference getElseIfStatement_ThenStatements();
+
+  /**
+   * Returns the meta object for class '{@link fire.fire.ElseStatement <em>Else Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Else Statement</em>'.
+   * @see fire.fire.ElseStatement
+   * @generated
+   */
+  EClass getElseStatement();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link fire.fire.ElseStatement#getElseStatements <em>Else Statements</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Else Statements</em>'.
+   * @see fire.fire.ElseStatement#getElseStatements()
+   * @see #getElseStatement()
+   * @generated
+   */
+  EReference getElseStatement_ElseStatements();
 
   /**
    * Returns the meta object for class '{@link fire.fire.Expression <em>Expression</em>}'.
@@ -949,38 +1208,6 @@ public interface FirePackage extends EPackage
    * @generated
    */
   EReference getAssignmentStatement_Value();
-
-  /**
-   * Returns the meta object for class '{@link fire.fire.WhileLoop <em>While Loop</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>While Loop</em>'.
-   * @see fire.fire.WhileLoop
-   * @generated
-   */
-  EClass getWhileLoop();
-
-  /**
-   * Returns the meta object for the containment reference '{@link fire.fire.WhileLoop#getCondition <em>Condition</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Condition</em>'.
-   * @see fire.fire.WhileLoop#getCondition()
-   * @see #getWhileLoop()
-   * @generated
-   */
-  EReference getWhileLoop_Condition();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link fire.fire.WhileLoop#getStatements <em>Statements</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Statements</em>'.
-   * @see fire.fire.WhileLoop#getStatements()
-   * @see #getWhileLoop()
-   * @generated
-   */
-  EReference getWhileLoop_Statements();
 
   /**
    * Returns the meta object for class '{@link fire.fire.WritelnStatement <em>Writeln Statement</em>}'.
@@ -1520,6 +1747,118 @@ public interface FirePackage extends EPackage
     EClass STATEMENT = eINSTANCE.getStatement();
 
     /**
+     * The meta object literal for the '{@link fire.fire.impl.WhileLoopImpl <em>While Loop</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see fire.fire.impl.WhileLoopImpl
+     * @see fire.fire.impl.FirePackageImpl#getWhileLoop()
+     * @generated
+     */
+    EClass WHILE_LOOP = eINSTANCE.getWhileLoop();
+
+    /**
+     * The meta object literal for the '<em><b>Condition</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference WHILE_LOOP__CONDITION = eINSTANCE.getWhileLoop_Condition();
+
+    /**
+     * The meta object literal for the '<em><b>Statements</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference WHILE_LOOP__STATEMENTS = eINSTANCE.getWhileLoop_Statements();
+
+    /**
+     * The meta object literal for the '{@link fire.fire.impl.IfStatementImpl <em>If Statement</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see fire.fire.impl.IfStatementImpl
+     * @see fire.fire.impl.FirePackageImpl#getIfStatement()
+     * @generated
+     */
+    EClass IF_STATEMENT = eINSTANCE.getIfStatement();
+
+    /**
+     * The meta object literal for the '<em><b>Condition</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference IF_STATEMENT__CONDITION = eINSTANCE.getIfStatement_Condition();
+
+    /**
+     * The meta object literal for the '<em><b>Then Statements</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference IF_STATEMENT__THEN_STATEMENTS = eINSTANCE.getIfStatement_ThenStatements();
+
+    /**
+     * The meta object literal for the '<em><b>Else Ifs</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference IF_STATEMENT__ELSE_IFS = eINSTANCE.getIfStatement_ElseIfs();
+
+    /**
+     * The meta object literal for the '<em><b>Else</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference IF_STATEMENT__ELSE = eINSTANCE.getIfStatement_Else();
+
+    /**
+     * The meta object literal for the '{@link fire.fire.impl.ElseIfStatementImpl <em>Else If Statement</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see fire.fire.impl.ElseIfStatementImpl
+     * @see fire.fire.impl.FirePackageImpl#getElseIfStatement()
+     * @generated
+     */
+    EClass ELSE_IF_STATEMENT = eINSTANCE.getElseIfStatement();
+
+    /**
+     * The meta object literal for the '<em><b>Condition</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ELSE_IF_STATEMENT__CONDITION = eINSTANCE.getElseIfStatement_Condition();
+
+    /**
+     * The meta object literal for the '<em><b>Then Statements</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ELSE_IF_STATEMENT__THEN_STATEMENTS = eINSTANCE.getElseIfStatement_ThenStatements();
+
+    /**
+     * The meta object literal for the '{@link fire.fire.impl.ElseStatementImpl <em>Else Statement</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see fire.fire.impl.ElseStatementImpl
+     * @see fire.fire.impl.FirePackageImpl#getElseStatement()
+     * @generated
+     */
+    EClass ELSE_STATEMENT = eINSTANCE.getElseStatement();
+
+    /**
+     * The meta object literal for the '<em><b>Else Statements</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ELSE_STATEMENT__ELSE_STATEMENTS = eINSTANCE.getElseStatement_ElseStatements();
+
+    /**
      * The meta object literal for the '{@link fire.fire.impl.ExpressionImpl <em>Expression</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1596,32 +1935,6 @@ public interface FirePackage extends EPackage
      * @generated
      */
     EReference ASSIGNMENT_STATEMENT__VALUE = eINSTANCE.getAssignmentStatement_Value();
-
-    /**
-     * The meta object literal for the '{@link fire.fire.impl.WhileLoopImpl <em>While Loop</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see fire.fire.impl.WhileLoopImpl
-     * @see fire.fire.impl.FirePackageImpl#getWhileLoop()
-     * @generated
-     */
-    EClass WHILE_LOOP = eINSTANCE.getWhileLoop();
-
-    /**
-     * The meta object literal for the '<em><b>Condition</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference WHILE_LOOP__CONDITION = eINSTANCE.getWhileLoop_Condition();
-
-    /**
-     * The meta object literal for the '<em><b>Statements</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference WHILE_LOOP__STATEMENTS = eINSTANCE.getWhileLoop_Statements();
 
     /**
      * The meta object literal for the '{@link fire.fire.impl.WritelnStatementImpl <em>Writeln Statement</em>}' class.

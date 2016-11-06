@@ -42,6 +42,42 @@ public interface FireFactory extends EFactory
   Statement createStatement();
 
   /**
+   * Returns a new object of class '<em>While Loop</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>While Loop</em>'.
+   * @generated
+   */
+  WhileLoop createWhileLoop();
+
+  /**
+   * Returns a new object of class '<em>If Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>If Statement</em>'.
+   * @generated
+   */
+  IfStatement createIfStatement();
+
+  /**
+   * Returns a new object of class '<em>Else If Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Else If Statement</em>'.
+   * @generated
+   */
+  ElseIfStatement createElseIfStatement();
+
+  /**
+   * Returns a new object of class '<em>Else Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Else Statement</em>'.
+   * @generated
+   */
+  ElseStatement createElseStatement();
+
+  /**
    * Returns a new object of class '<em>Expression</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -67,15 +103,6 @@ public interface FireFactory extends EFactory
    * @generated
    */
   AssignmentStatement createAssignmentStatement();
-
-  /**
-   * Returns a new object of class '<em>While Loop</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>While Loop</em>'.
-   * @generated
-   */
-  WhileLoop createWhileLoop();
 
   /**
    * Returns a new object of class '<em>Writeln Statement</em>'.

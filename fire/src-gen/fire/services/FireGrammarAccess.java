@@ -86,32 +86,25 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cColonEqualsSignKeyword_1_2 = (Keyword)cGroup_1.eContents().get(2);
 		private final Assignment cValueAssignment_1_3 = (Assignment)cGroup_1.eContents().get(3);
 		private final RuleCall cValueExpressionParserRuleCall_1_3_0 = (RuleCall)cValueAssignment_1_3.eContents().get(0);
-		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
-		private final Action cWhileLoopAction_2_0 = (Action)cGroup_2.eContents().get(0);
-		private final Keyword cWhileKeyword_2_1 = (Keyword)cGroup_2.eContents().get(1);
-		private final Assignment cConditionAssignment_2_2 = (Assignment)cGroup_2.eContents().get(2);
-		private final RuleCall cConditionExpressionParserRuleCall_2_2_0 = (RuleCall)cConditionAssignment_2_2.eContents().get(0);
-		private final Keyword cDoKeyword_2_3 = (Keyword)cGroup_2.eContents().get(3);
-		private final Assignment cStatementsAssignment_2_4 = (Assignment)cGroup_2.eContents().get(4);
-		private final RuleCall cStatementsStatementParserRuleCall_2_4_0 = (RuleCall)cStatementsAssignment_2_4.eContents().get(0);
-		private final Keyword cEndKeyword_2_5 = (Keyword)cGroup_2.eContents().get(5);
-		private final Group cGroup_3 = (Group)cAlternatives.eContents().get(3);
-		private final Action cWritelnStatementAction_3_0 = (Action)cGroup_3.eContents().get(0);
-		private final Keyword cWritelnKeyword_3_1 = (Keyword)cGroup_3.eContents().get(1);
-		private final Keyword cLeftParenthesisKeyword_3_2 = (Keyword)cGroup_3.eContents().get(2);
-		private final Assignment cArgumentAssignment_3_3 = (Assignment)cGroup_3.eContents().get(3);
-		private final RuleCall cArgumentExpressionParserRuleCall_3_3_0 = (RuleCall)cArgumentAssignment_3_3.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_3_4 = (Keyword)cGroup_3.eContents().get(4);
+		private final RuleCall cWhileLoopParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cIfStatementParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		private final Group cGroup_4 = (Group)cAlternatives.eContents().get(4);
+		private final Action cWritelnStatementAction_4_0 = (Action)cGroup_4.eContents().get(0);
+		private final Keyword cWritelnKeyword_4_1 = (Keyword)cGroup_4.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_4_2 = (Keyword)cGroup_4.eContents().get(2);
+		private final Assignment cArgumentAssignment_4_3 = (Assignment)cGroup_4.eContents().get(3);
+		private final RuleCall cArgumentExpressionParserRuleCall_4_3_0 = (RuleCall)cArgumentAssignment_4_3.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_4_4 = (Keyword)cGroup_4.eContents().get(4);
 		
 		//Statement:
 		//	{VariableDeclaration} (constant?='const' | 'var') name=ID ':' type=BuiltInType ':=' value=Expression |
-		//	{AssignmentStatement} variable=[VariableDeclaration] ':=' value=Expression | {WhileLoop} 'while' condition=Expression
-		//	'do' statements+=Statement* 'end' | {WritelnStatement} 'writeln' '(' argument=Expression ')';
+		//	{AssignmentStatement} variable=[VariableDeclaration] ':=' value=Expression | WhileLoop | IfStatement |
+		//	{WritelnStatement} 'writeln' '(' argument=Expression ')';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//{VariableDeclaration} (constant?='const' | 'var') name=ID ':' type=BuiltInType ':=' value=Expression |
-		//{AssignmentStatement} variable=[VariableDeclaration] ':=' value=Expression | {WhileLoop} 'while' condition=Expression
-		//'do' statements+=Statement* 'end' | {WritelnStatement} 'writeln' '(' argument=Expression ')'
+		//{AssignmentStatement} variable=[VariableDeclaration] ':=' value=Expression | WhileLoop | IfStatement |
+		//{WritelnStatement} 'writeln' '(' argument=Expression ')'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//{VariableDeclaration} (constant?='const' | 'var') name=ID ':' type=BuiltInType ':=' value=Expression
@@ -180,53 +173,204 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 		//Expression
 		public RuleCall getValueExpressionParserRuleCall_1_3_0() { return cValueExpressionParserRuleCall_1_3_0; }
 		
-		//{WhileLoop} 'while' condition=Expression 'do' statements+=Statement* 'end'
-		public Group getGroup_2() { return cGroup_2; }
+		//WhileLoop
+		public RuleCall getWhileLoopParserRuleCall_2() { return cWhileLoopParserRuleCall_2; }
 		
-		//{WhileLoop}
-		public Action getWhileLoopAction_2_0() { return cWhileLoopAction_2_0; }
-		
-		//'while'
-		public Keyword getWhileKeyword_2_1() { return cWhileKeyword_2_1; }
-		
-		//condition=Expression
-		public Assignment getConditionAssignment_2_2() { return cConditionAssignment_2_2; }
-		
-		//Expression
-		public RuleCall getConditionExpressionParserRuleCall_2_2_0() { return cConditionExpressionParserRuleCall_2_2_0; }
-		
-		//'do'
-		public Keyword getDoKeyword_2_3() { return cDoKeyword_2_3; }
-		
-		//statements+=Statement*
-		public Assignment getStatementsAssignment_2_4() { return cStatementsAssignment_2_4; }
-		
-		//Statement
-		public RuleCall getStatementsStatementParserRuleCall_2_4_0() { return cStatementsStatementParserRuleCall_2_4_0; }
-		
-		//'end'
-		public Keyword getEndKeyword_2_5() { return cEndKeyword_2_5; }
+		//IfStatement
+		public RuleCall getIfStatementParserRuleCall_3() { return cIfStatementParserRuleCall_3; }
 		
 		//{WritelnStatement} 'writeln' '(' argument=Expression ')'
-		public Group getGroup_3() { return cGroup_3; }
+		public Group getGroup_4() { return cGroup_4; }
 		
 		//{WritelnStatement}
-		public Action getWritelnStatementAction_3_0() { return cWritelnStatementAction_3_0; }
+		public Action getWritelnStatementAction_4_0() { return cWritelnStatementAction_4_0; }
 		
 		//'writeln'
-		public Keyword getWritelnKeyword_3_1() { return cWritelnKeyword_3_1; }
+		public Keyword getWritelnKeyword_4_1() { return cWritelnKeyword_4_1; }
 		
 		//'('
-		public Keyword getLeftParenthesisKeyword_3_2() { return cLeftParenthesisKeyword_3_2; }
+		public Keyword getLeftParenthesisKeyword_4_2() { return cLeftParenthesisKeyword_4_2; }
 		
 		//argument=Expression
-		public Assignment getArgumentAssignment_3_3() { return cArgumentAssignment_3_3; }
+		public Assignment getArgumentAssignment_4_3() { return cArgumentAssignment_4_3; }
 		
 		//Expression
-		public RuleCall getArgumentExpressionParserRuleCall_3_3_0() { return cArgumentExpressionParserRuleCall_3_3_0; }
+		public RuleCall getArgumentExpressionParserRuleCall_4_3_0() { return cArgumentExpressionParserRuleCall_4_3_0; }
 		
 		//')'
-		public Keyword getRightParenthesisKeyword_3_4() { return cRightParenthesisKeyword_3_4; }
+		public Keyword getRightParenthesisKeyword_4_4() { return cRightParenthesisKeyword_4_4; }
+	}
+	public class WhileLoopElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fire.Fire.WhileLoop");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cWhileKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cConditionAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cConditionExpressionParserRuleCall_1_0 = (RuleCall)cConditionAssignment_1.eContents().get(0);
+		private final Keyword cDoKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cStatementsAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cStatementsStatementParserRuleCall_3_0 = (RuleCall)cStatementsAssignment_3.eContents().get(0);
+		private final Keyword cEndKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		
+		//WhileLoop:
+		//	'while' condition=Expression 'do'
+		//	statements+=Statement*
+		//	'end';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'while' condition=Expression 'do' statements+=Statement* 'end'
+		public Group getGroup() { return cGroup; }
+		
+		//'while'
+		public Keyword getWhileKeyword_0() { return cWhileKeyword_0; }
+		
+		//condition=Expression
+		public Assignment getConditionAssignment_1() { return cConditionAssignment_1; }
+		
+		//Expression
+		public RuleCall getConditionExpressionParserRuleCall_1_0() { return cConditionExpressionParserRuleCall_1_0; }
+		
+		//'do'
+		public Keyword getDoKeyword_2() { return cDoKeyword_2; }
+		
+		//statements+=Statement*
+		public Assignment getStatementsAssignment_3() { return cStatementsAssignment_3; }
+		
+		//Statement
+		public RuleCall getStatementsStatementParserRuleCall_3_0() { return cStatementsStatementParserRuleCall_3_0; }
+		
+		//'end'
+		public Keyword getEndKeyword_4() { return cEndKeyword_4; }
+	}
+	public class IfStatementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fire.Fire.IfStatement");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cIfKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cConditionAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cConditionExpressionParserRuleCall_1_0 = (RuleCall)cConditionAssignment_1.eContents().get(0);
+		private final Keyword cThenKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cThenStatementsAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cThenStatementsStatementParserRuleCall_3_0 = (RuleCall)cThenStatementsAssignment_3.eContents().get(0);
+		private final Assignment cElseIfsAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cElseIfsElseIfStatementParserRuleCall_4_0 = (RuleCall)cElseIfsAssignment_4.eContents().get(0);
+		private final Assignment cElseAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cElseElseStatementParserRuleCall_5_0 = (RuleCall)cElseAssignment_5.eContents().get(0);
+		private final Keyword cEndKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		
+		//IfStatement:
+		//	'if' condition=Expression 'then'
+		//	thenStatements+=Statement*
+		//	elseIfs+=ElseIfStatement*
+		//	else=ElseStatement?
+		//	'end';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'if' condition=Expression 'then' thenStatements+=Statement* elseIfs+=ElseIfStatement* else=ElseStatement? 'end'
+		public Group getGroup() { return cGroup; }
+		
+		//'if'
+		public Keyword getIfKeyword_0() { return cIfKeyword_0; }
+		
+		//condition=Expression
+		public Assignment getConditionAssignment_1() { return cConditionAssignment_1; }
+		
+		//Expression
+		public RuleCall getConditionExpressionParserRuleCall_1_0() { return cConditionExpressionParserRuleCall_1_0; }
+		
+		//'then'
+		public Keyword getThenKeyword_2() { return cThenKeyword_2; }
+		
+		//thenStatements+=Statement*
+		public Assignment getThenStatementsAssignment_3() { return cThenStatementsAssignment_3; }
+		
+		//Statement
+		public RuleCall getThenStatementsStatementParserRuleCall_3_0() { return cThenStatementsStatementParserRuleCall_3_0; }
+		
+		//elseIfs+=ElseIfStatement*
+		public Assignment getElseIfsAssignment_4() { return cElseIfsAssignment_4; }
+		
+		//ElseIfStatement
+		public RuleCall getElseIfsElseIfStatementParserRuleCall_4_0() { return cElseIfsElseIfStatementParserRuleCall_4_0; }
+		
+		//else=ElseStatement?
+		public Assignment getElseAssignment_5() { return cElseAssignment_5; }
+		
+		//ElseStatement
+		public RuleCall getElseElseStatementParserRuleCall_5_0() { return cElseElseStatementParserRuleCall_5_0; }
+		
+		//'end'
+		public Keyword getEndKeyword_6() { return cEndKeyword_6; }
+	}
+	public class ElseIfStatementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fire.Fire.ElseIfStatement");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cElseKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cIfKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cConditionAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cConditionExpressionParserRuleCall_2_0 = (RuleCall)cConditionAssignment_2.eContents().get(0);
+		private final Keyword cThenKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cThenStatementsAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cThenStatementsStatementParserRuleCall_4_0 = (RuleCall)cThenStatementsAssignment_4.eContents().get(0);
+		
+		//ElseIfStatement:
+		//	'else' 'if' condition=Expression 'then'
+		//	thenStatements+=Statement*;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'else' 'if' condition=Expression 'then' thenStatements+=Statement*
+		public Group getGroup() { return cGroup; }
+		
+		//'else'
+		public Keyword getElseKeyword_0() { return cElseKeyword_0; }
+		
+		//'if'
+		public Keyword getIfKeyword_1() { return cIfKeyword_1; }
+		
+		//condition=Expression
+		public Assignment getConditionAssignment_2() { return cConditionAssignment_2; }
+		
+		//Expression
+		public RuleCall getConditionExpressionParserRuleCall_2_0() { return cConditionExpressionParserRuleCall_2_0; }
+		
+		//'then'
+		public Keyword getThenKeyword_3() { return cThenKeyword_3; }
+		
+		//thenStatements+=Statement*
+		public Assignment getThenStatementsAssignment_4() { return cThenStatementsAssignment_4; }
+		
+		//Statement
+		public RuleCall getThenStatementsStatementParserRuleCall_4_0() { return cThenStatementsStatementParserRuleCall_4_0; }
+	}
+	public class ElseStatementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fire.Fire.ElseStatement");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cElseStatementAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cElseKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cBeginKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cElseStatementsAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cElseStatementsStatementParserRuleCall_3_0 = (RuleCall)cElseStatementsAssignment_3.eContents().get(0);
+		
+		//ElseStatement:
+		//	{ElseStatement} 'else' 'begin'
+		//	elseStatements+=Statement*;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{ElseStatement} 'else' 'begin' elseStatements+=Statement*
+		public Group getGroup() { return cGroup; }
+		
+		//{ElseStatement}
+		public Action getElseStatementAction_0() { return cElseStatementAction_0; }
+		
+		//'else'
+		public Keyword getElseKeyword_1() { return cElseKeyword_1; }
+		
+		//'begin'
+		public Keyword getBeginKeyword_2() { return cBeginKeyword_2; }
+		
+		//elseStatements+=Statement*
+		public Assignment getElseStatementsAssignment_3() { return cElseStatementsAssignment_3; }
+		
+		//Statement
+		public RuleCall getElseStatementsStatementParserRuleCall_3_0() { return cElseStatementsStatementParserRuleCall_3_0; }
 	}
 	public class ExpressionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fire.Fire.Expression");
@@ -886,6 +1030,10 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 	private final ProgramElements pProgram;
 	private final StatementElements pStatement;
 	private final BuiltInTypeElements eBuiltInType;
+	private final WhileLoopElements pWhileLoop;
+	private final IfStatementElements pIfStatement;
+	private final ElseIfStatementElements pElseIfStatement;
+	private final ElseStatementElements pElseStatement;
 	private final ExpressionElements pExpression;
 	private final AndExpressionElements pAndExpression;
 	private final XorExpressionElements pXorExpression;
@@ -913,6 +1061,10 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 		this.pProgram = new ProgramElements();
 		this.pStatement = new StatementElements();
 		this.eBuiltInType = new BuiltInTypeElements();
+		this.pWhileLoop = new WhileLoopElements();
+		this.pIfStatement = new IfStatementElements();
+		this.pElseIfStatement = new ElseIfStatementElements();
+		this.pElseStatement = new ElseStatementElements();
 		this.pExpression = new ExpressionElements();
 		this.pAndExpression = new AndExpressionElements();
 		this.pXorExpression = new XorExpressionElements();
@@ -971,8 +1123,8 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 	
 	//Statement:
 	//	{VariableDeclaration} (constant?='const' | 'var') name=ID ':' type=BuiltInType ':=' value=Expression |
-	//	{AssignmentStatement} variable=[VariableDeclaration] ':=' value=Expression | {WhileLoop} 'while' condition=Expression
-	//	'do' statements+=Statement* 'end' | {WritelnStatement} 'writeln' '(' argument=Expression ')';
+	//	{AssignmentStatement} variable=[VariableDeclaration] ':=' value=Expression | WhileLoop | IfStatement |
+	//	{WritelnStatement} 'writeln' '(' argument=Expression ')';
 	public StatementElements getStatementAccess() {
 		return pStatement;
 	}
@@ -992,6 +1144,54 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public EnumRule getBuiltInTypeRule() {
 		return getBuiltInTypeAccess().getRule();
+	}
+	
+	//WhileLoop:
+	//	'while' condition=Expression 'do'
+	//	statements+=Statement*
+	//	'end';
+	public WhileLoopElements getWhileLoopAccess() {
+		return pWhileLoop;
+	}
+	
+	public ParserRule getWhileLoopRule() {
+		return getWhileLoopAccess().getRule();
+	}
+	
+	//IfStatement:
+	//	'if' condition=Expression 'then'
+	//	thenStatements+=Statement*
+	//	elseIfs+=ElseIfStatement*
+	//	else=ElseStatement?
+	//	'end';
+	public IfStatementElements getIfStatementAccess() {
+		return pIfStatement;
+	}
+	
+	public ParserRule getIfStatementRule() {
+		return getIfStatementAccess().getRule();
+	}
+	
+	//ElseIfStatement:
+	//	'else' 'if' condition=Expression 'then'
+	//	thenStatements+=Statement*;
+	public ElseIfStatementElements getElseIfStatementAccess() {
+		return pElseIfStatement;
+	}
+	
+	public ParserRule getElseIfStatementRule() {
+		return getElseIfStatementAccess().getRule();
+	}
+	
+	//ElseStatement:
+	//	{ElseStatement} 'else' 'begin'
+	//	elseStatements+=Statement*;
+	public ElseStatementElements getElseStatementAccess() {
+		return pElseStatement;
+	}
+	
+	public ParserRule getElseStatementRule() {
+		return getElseStatementAccess().getRule();
 	}
 	
 	//Expression:

@@ -86,6 +86,26 @@ public class FireAdapterFactory extends AdapterFactoryImpl
         return createStatementAdapter();
       }
       @Override
+      public Adapter caseWhileLoop(WhileLoop object)
+      {
+        return createWhileLoopAdapter();
+      }
+      @Override
+      public Adapter caseIfStatement(IfStatement object)
+      {
+        return createIfStatementAdapter();
+      }
+      @Override
+      public Adapter caseElseIfStatement(ElseIfStatement object)
+      {
+        return createElseIfStatementAdapter();
+      }
+      @Override
+      public Adapter caseElseStatement(ElseStatement object)
+      {
+        return createElseStatementAdapter();
+      }
+      @Override
       public Adapter caseExpression(Expression object)
       {
         return createExpressionAdapter();
@@ -99,11 +119,6 @@ public class FireAdapterFactory extends AdapterFactoryImpl
       public Adapter caseAssignmentStatement(AssignmentStatement object)
       {
         return createAssignmentStatementAdapter();
-      }
-      @Override
-      public Adapter caseWhileLoop(WhileLoop object)
-      {
-        return createWhileLoopAdapter();
       }
       @Override
       public Adapter caseWritelnStatement(WritelnStatement object)
@@ -233,6 +248,66 @@ public class FireAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link fire.fire.WhileLoop <em>While Loop</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see fire.fire.WhileLoop
+   * @generated
+   */
+  public Adapter createWhileLoopAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link fire.fire.IfStatement <em>If Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see fire.fire.IfStatement
+   * @generated
+   */
+  public Adapter createIfStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link fire.fire.ElseIfStatement <em>Else If Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see fire.fire.ElseIfStatement
+   * @generated
+   */
+  public Adapter createElseIfStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link fire.fire.ElseStatement <em>Else Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see fire.fire.ElseStatement
+   * @generated
+   */
+  public Adapter createElseStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link fire.fire.Expression <em>Expression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -273,21 +348,6 @@ public class FireAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createAssignmentStatementAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link fire.fire.WhileLoop <em>While Loop</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see fire.fire.WhileLoop
-   * @generated
-   */
-  public Adapter createWhileLoopAdapter()
   {
     return null;
   }

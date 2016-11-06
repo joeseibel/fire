@@ -6,9 +6,12 @@ import fire.fire.AndExpression
 import fire.fire.AssignmentStatement
 import fire.fire.BuiltInType
 import fire.fire.ComparisonExpression
+import fire.fire.ElseIfStatement
+import fire.fire.ElseStatement
 import fire.fire.EqualityExpression
 import fire.fire.FirePackage
 import fire.fire.IdExpression
+import fire.fire.IfStatement
 import fire.fire.MultiplicativeExpression
 import fire.fire.NegationExpression
 import fire.fire.NotExpression
@@ -43,6 +46,25 @@ class FireValidator extends AbstractFireValidator {
 	def private static dispatch boolean isDuplicateDeclaration(WhileLoop whileLoop, VariableDeclaration variable) {
 		val localDuplicate = whileLoop.statements.takeWhile[!isAncestor(variable)].filter(VariableDeclaration).exists[name == variable.name]
 		localDuplicate || isDuplicateDeclaration(whileLoop.eContainer, variable)
+	}
+	
+	def private static dispatch boolean isDuplicateDeclaration(IfStatement ifStatement, VariableDeclaration variable) {
+		if (ifStatement.thenStatements.exists[isAncestor(variable)]) {
+			val localDuplicate = ifStatement.thenStatements.takeWhile[!isAncestor(variable)].filter(VariableDeclaration).exists[name == variable.name]
+			localDuplicate || isDuplicateDeclaration(ifStatement.eContainer, variable)
+		} else {
+			isDuplicateDeclaration(ifStatement.eContainer, variable)
+		}
+	}
+	
+	def private static dispatch boolean isDuplicateDeclaration(ElseIfStatement elseIfStatement, VariableDeclaration variable) {
+		val localDuplicate = elseIfStatement.thenStatements.takeWhile[!isAncestor(variable)].filter(VariableDeclaration).exists[name == variable.name]
+		localDuplicate || isDuplicateDeclaration(elseIfStatement.eContainer, variable)
+	}
+	
+	def private static dispatch boolean isDuplicateDeclaration(ElseStatement elseStatement, VariableDeclaration variable) {
+		val localDuplicate = elseStatement.elseStatements.takeWhile[!isAncestor(variable)].filter(VariableDeclaration).exists[name == variable.name]
+		localDuplicate || isDuplicateDeclaration(elseStatement.eContainer, variable)
 	}
 	
 	@Check
@@ -97,6 +119,22 @@ class FireValidator extends AbstractFireValidator {
 		val conditionType = whileLoop.condition?.type
 		if (conditionType != null && conditionType != BuiltInType.BOOLEAN) {
 			error("Expected Boolean, found " + conditionType, FirePackage.Literals.WHILE_LOOP__CONDITION)
+		}
+	}
+	
+	@Check
+	def void typeCheckIfStatement(IfStatement ifStatement) {
+		val conditionType = ifStatement.condition?.type
+		if (conditionType != null && conditionType != BuiltInType.BOOLEAN) {
+			error("Expected Boolean, found " + conditionType, FirePackage.Literals.IF_STATEMENT__CONDITION)
+		}
+	}
+	
+	@Check
+	def void typeCheckElseIfStatement(ElseIfStatement elseIfStatement) {
+		val conditionType = elseIfStatement.condition?.type
+		if (conditionType != null && conditionType != BuiltInType.BOOLEAN) {
+			error("Expected Boolean, found " + conditionType, FirePackage.Literals.ELSE_IF_STATEMENT__CONDITION)
 		}
 	}
 	

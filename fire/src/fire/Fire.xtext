@@ -13,7 +13,8 @@ Program: {Program}
 Statement:
 	{VariableDeclaration} (constant?='const' | 'var') name=ID ':' type=BuiltInType ':=' value=Expression |
 	{AssignmentStatement} variable=[VariableDeclaration] ':=' value=Expression |
-	{WhileLoop} 'while' condition=Expression 'do' statements+=Statement* 'end' |
+	WhileLoop |
+	IfStatement |
 	{WritelnStatement} 'writeln' '(' argument=Expression ')'
 ;
 
@@ -22,6 +23,30 @@ enum BuiltInType:
 	BOOLEAN='Boolean' |
 	INTEGER='Integer' |
 	REAL='Real'
+;
+
+WhileLoop:
+	'while' condition=Expression 'do'
+		statements+=Statement*
+	'end'
+;
+
+IfStatement:
+	'if' condition=Expression 'then'
+		thenStatements+=Statement*
+	elseIfs+=ElseIfStatement*
+	else=ElseStatement?
+	'end'
+;
+
+ElseIfStatement:
+	'else' 'if' condition=Expression 'then'
+		thenStatements+=Statement*
+;
+
+ElseStatement:
+	{ElseStatement} 'else' 'begin'
+		elseStatements+=Statement*
 ;
 
 Expression:

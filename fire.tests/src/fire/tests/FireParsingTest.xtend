@@ -15,6 +15,7 @@ import fire.fire.ComparisonOperator
 import fire.fire.EqualityExpression
 import fire.fire.EqualityOperator
 import fire.fire.IdExpression
+import fire.fire.IfStatement
 import fire.fire.IntegerLiteral
 import fire.fire.MultiplicativeExpression
 import fire.fire.MultiplicativeOperator
@@ -37,6 +38,8 @@ import org.junit.runner.RunWith
 
 import static extension org.junit.Assert.assertEquals
 import static extension org.junit.Assert.assertFalse
+import static extension org.junit.Assert.assertNotNull
+import static extension org.junit.Assert.assertNull
 import static extension org.junit.Assert.assertTrue
 
 @RunWith(XtextRunner)
@@ -138,6 +141,301 @@ class FireParsingTest{
 						1.assertEquals(statements.size)
 						4.assertEquals(((statements.head as WritelnStatement).argument as IntegerLiteral).value)
 					]
+				]
+			]
+		]
+	}
+	
+	@Test
+	def void testIfStatement() {
+		'''
+			program
+				if true then
+				end
+				if true then
+				else begin
+				end
+			end
+		'''.parse => [
+			assertNoIssues
+			2.assertEquals(statements.size)
+			statements.get(0) as IfStatement => [
+				(condition as BooleanLiteral).value.assertTrue
+				thenStatements.empty.assertTrue
+				elseIfs.empty.assertTrue
+				^else.assertNull
+			]
+			statements.get(1) as IfStatement => [
+				(condition as BooleanLiteral).value.assertTrue
+				thenStatements.empty.assertTrue
+				elseIfs.empty.assertTrue
+				^else.elseStatements.empty.assertTrue
+			]
+		]
+		
+		'''
+			program
+				if true then
+					writeln(1)
+					writeln(2)
+					writeln(3)
+				end
+				if true then
+					writeln(4)
+					writeln(5)
+					writeln(6)
+				else begin
+					writeln(7)
+					writeln(8)
+					writeln(9)
+				end
+			end
+		'''.parse => [
+			assertNoIssues
+			2.assertEquals(statements.size)
+			statements.get(0) as IfStatement => [
+				(condition as BooleanLiteral).value.assertTrue
+				3.assertEquals(thenStatements.size)
+				1.assertEquals(((thenStatements.get(0) as WritelnStatement).argument as IntegerLiteral).value)
+				2.assertEquals(((thenStatements.get(1) as WritelnStatement).argument as IntegerLiteral).value)
+				3.assertEquals(((thenStatements.get(2) as WritelnStatement).argument as IntegerLiteral).value)
+				elseIfs.empty.assertTrue
+				^else.assertNull
+			]
+			statements.get(1) as IfStatement => [
+				(condition as BooleanLiteral).value.assertTrue
+				3.assertEquals(thenStatements.size)
+				4.assertEquals(((thenStatements.get(0) as WritelnStatement).argument as IntegerLiteral).value)
+				5.assertEquals(((thenStatements.get(1) as WritelnStatement).argument as IntegerLiteral).value)
+				6.assertEquals(((thenStatements.get(2) as WritelnStatement).argument as IntegerLiteral).value)
+				elseIfs.empty.assertTrue
+				^else => [
+					3.assertEquals(elseStatements.size)
+					7.assertEquals(((elseStatements.get(0) as WritelnStatement).argument as IntegerLiteral).value)
+					8.assertEquals(((elseStatements.get(1) as WritelnStatement).argument as IntegerLiteral).value)
+					9.assertEquals(((elseStatements.get(2) as WritelnStatement).argument as IntegerLiteral).value)
+				]
+			]
+		]
+		
+		'''
+			program
+				if true then
+					if true then
+						if true then
+							writeln(10)
+						end
+					end
+				end
+				if true then
+					if true then
+						if true then
+							writeln(11)
+						else begin
+							writeln(12)
+						end
+					else begin
+						if true then
+							writeln(13)
+						else begin
+							writeln(14)
+						end
+					end
+				else begin
+					if true then
+						if true then
+							writeln(15)
+						else begin
+							writeln(16)
+						end
+					else begin
+						if true then
+							writeln(17)
+						else begin
+							writeln(18)
+						end
+					end
+				end
+			end
+		'''.parse => [
+			assertNoIssues
+			2.assertEquals(statements.size)
+			statements.get(0) as IfStatement => [
+				(condition as BooleanLiteral).value.assertTrue
+				1.assertEquals(thenStatements.size)
+				thenStatements.head as IfStatement => [
+					(condition as BooleanLiteral).value.assertTrue
+					1.assertEquals(thenStatements.size)
+					thenStatements.head as IfStatement => [
+						(condition as BooleanLiteral).value.assertTrue
+						1.assertEquals(thenStatements.size)
+						10.assertEquals(((thenStatements.head as WritelnStatement).argument as IntegerLiteral).value)
+						elseIfs.empty.assertTrue
+						^else.assertNull
+					]
+					elseIfs.empty.assertTrue
+					^else.assertNull
+				]
+				elseIfs.empty.assertTrue
+				^else.assertNull
+			]
+			statements.get(1) as IfStatement => [
+				(condition as BooleanLiteral).value.assertTrue
+				1.assertEquals(thenStatements.size)
+				thenStatements.head as IfStatement => [
+					(condition as BooleanLiteral).value.assertTrue
+					1.assertEquals(thenStatements.size)
+					thenStatements.head as IfStatement => [
+						(condition as BooleanLiteral).value.assertTrue
+						1.assertEquals(thenStatements.size)
+						11.assertEquals(((thenStatements.head as WritelnStatement).argument as IntegerLiteral).value)
+						elseIfs.empty.assertTrue
+						^else => [
+							1.assertEquals(elseStatements.size)
+							12.assertEquals(((elseStatements.head as WritelnStatement).argument as IntegerLiteral).value)
+						]
+					]
+					elseIfs.empty.assertTrue
+					^else => [
+						1.assertEquals(elseStatements.size)
+						elseStatements.head as IfStatement => [
+							(condition as BooleanLiteral).value.assertTrue
+							1.assertEquals(thenStatements.size)
+							13.assertEquals(((thenStatements.head as WritelnStatement).argument as IntegerLiteral).value)
+							elseIfs.empty.assertTrue
+							^else => [
+								1.assertEquals(elseStatements.size)
+								14.assertEquals(((elseStatements.head as WritelnStatement).argument as IntegerLiteral).value)
+							]
+						]
+					]
+				]
+				elseIfs.empty.assertTrue
+				^else => [
+					1.assertEquals(elseStatements.size)
+					elseStatements.head as IfStatement => [
+						(condition as BooleanLiteral).value.assertTrue
+						1.assertEquals(thenStatements.size)
+						thenStatements.head as IfStatement => [
+							(condition as BooleanLiteral).value.assertTrue
+							1.assertEquals(thenStatements.size)
+							15.assertEquals(((thenStatements.head as WritelnStatement).argument as IntegerLiteral).value)
+							elseIfs.empty.assertTrue
+							^else => [
+								1.assertEquals(elseStatements.size)
+								16.assertEquals(((elseStatements.head as WritelnStatement).argument as IntegerLiteral).value)
+							]
+						]
+						elseIfs.empty.assertTrue
+						^else => [
+							1.assertEquals(elseStatements.size)
+							elseStatements.head as IfStatement => [
+								(condition as BooleanLiteral).value.assertTrue
+								1.assertEquals(thenStatements.size)
+								17.assertEquals(((thenStatements.head as WritelnStatement).argument as IntegerLiteral).value)
+								elseIfs.empty.assertTrue
+								^else => [
+									1.assertEquals(elseStatements.size)
+									18.assertEquals(((elseStatements.head as WritelnStatement).argument as IntegerLiteral).value)
+								]
+							]
+						]
+					]
+				]
+			]
+		]
+		
+		'''
+			program
+				if true then
+				else if true then
+				else if true then
+				else begin
+				end
+				if true then
+					writeln(19)
+				else if true then
+					writeln(20)
+				else if true then
+					writeln(21)
+				else begin
+					writeln(22)
+				end
+				if true then
+					writeln(23)
+					writeln(24)
+					writeln(25)
+				else if true then
+					writeln(26)
+					writeln(27)
+					writeln(28)
+				else if true then
+					writeln(29)
+					writeln(30)
+					writeln(31)
+				else begin
+					writeln(32)
+					writeln(33)
+					writeln(34)
+				end
+			end
+		'''.parse => [
+			assertNoIssues
+			3.assertEquals(statements.size)
+			statements.get(0) as IfStatement => [
+				(condition as BooleanLiteral).value.assertTrue
+				thenStatements.empty.assertTrue
+				2.assertEquals(elseIfs.size)
+				elseIfs.get(0).thenStatements.empty.assertTrue
+				elseIfs.get(1).thenStatements.empty.assertTrue
+				^else.elseStatements.empty.assertTrue
+			]
+			statements.get(1) as IfStatement => [
+				(condition as BooleanLiteral).value.assertTrue
+				1.assertEquals(thenStatements.size)
+				19.assertEquals(((thenStatements.head as WritelnStatement).argument as IntegerLiteral).value)
+				2.assertEquals(elseIfs.size)
+				elseIfs.get(0) => [
+					(condition as BooleanLiteral).value.assertTrue
+					1.assertEquals(thenStatements.size)
+					20.assertEquals(((thenStatements.head as WritelnStatement).argument as IntegerLiteral).value)
+				]
+				elseIfs.get(1) => [
+					(condition as BooleanLiteral).value.assertTrue
+					1.assertEquals(thenStatements.size)
+					21.assertEquals(((thenStatements.head as WritelnStatement).argument as IntegerLiteral).value)
+				]
+				^else => [
+					1.assertEquals(elseStatements.size)
+					22.assertEquals(((elseStatements.head as WritelnStatement).argument as IntegerLiteral).value)
+				]
+			]
+			statements.get(2) as IfStatement => [
+				(condition as BooleanLiteral).value.assertTrue
+				3.assertEquals(thenStatements.size)
+				23.assertEquals(((thenStatements.get(0) as WritelnStatement).argument as IntegerLiteral).value)
+				24.assertEquals(((thenStatements.get(1) as WritelnStatement).argument as IntegerLiteral).value)
+				25.assertEquals(((thenStatements.get(2) as WritelnStatement).argument as IntegerLiteral).value)
+				2.assertEquals(elseIfs.size)
+				elseIfs.get(0) => [
+					(condition as BooleanLiteral).value.assertTrue
+					3.assertEquals(thenStatements.size)
+					26.assertEquals(((thenStatements.get(0) as WritelnStatement).argument as IntegerLiteral).value)
+					27.assertEquals(((thenStatements.get(1) as WritelnStatement).argument as IntegerLiteral).value)
+					28.assertEquals(((thenStatements.get(2) as WritelnStatement).argument as IntegerLiteral).value)
+				]
+				elseIfs.get(1) => [
+					(condition as BooleanLiteral).value.assertTrue
+					3.assertEquals(thenStatements.size)
+					29.assertEquals(((thenStatements.get(0) as WritelnStatement).argument as IntegerLiteral).value)
+					30.assertEquals(((thenStatements.get(1) as WritelnStatement).argument as IntegerLiteral).value)
+					31.assertEquals(((thenStatements.get(2) as WritelnStatement).argument as IntegerLiteral).value)
+				]
+				^else => [
+					3.assertEquals(elseStatements.size)
+					32.assertEquals(((elseStatements.get(0) as WritelnStatement).argument as IntegerLiteral).value)
+					33.assertEquals(((elseStatements.get(1) as WritelnStatement).argument as IntegerLiteral).value)
+					34.assertEquals(((elseStatements.get(2) as WritelnStatement).argument as IntegerLiteral).value)
 				]
 			]
 		]
