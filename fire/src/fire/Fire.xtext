@@ -11,11 +11,11 @@ Program: {Program}
 ;
 
 Statement:
-	{VariableDeclaration} (constant?='const' | 'var') name=ID ':' type=BuiltInType ':=' value=Expression |
-	{AssignmentStatement} variable=[VariableDeclaration] ':=' value=Expression |
+	{VariableDeclaration} (constant?='const' | 'var') name=ID ':' type=BuiltInType ':=' value=Expression ';'? |
+	{AssignmentStatement} variable=[VariableDeclaration] ':=' value=Expression ';'? |
 	WhileLoop |
 	IfStatement |
-	{WritelnStatement} 'writeln' '(' argument=Expression ')'
+	{WritelnStatement} 'writeln' '(' argument=Expression ')' ';'?
 ;
 
 enum BuiltInType:
@@ -82,7 +82,7 @@ enum ComparisonOperator:
 ;
 
 AdditiveExpression returns Expression:
-	MultiplicativeExpression ({AdditiveExpression.left=current} operator=AdditiveOperator right=MultiplicativeExpression)*
+	MultiplicativeExpression (=>({AdditiveExpression.left=current} operator=AdditiveOperator) right=MultiplicativeExpression)*
 ;
 
 enum AdditiveOperator:
@@ -109,7 +109,25 @@ TerminalExpression returns Expression:
 	{RealLiteral} value=Double |
 	{NotExpression} 'not' operand=TerminalExpression |
 	{NegationExpression} '-' operand=TerminalExpression |
+	IfExpression |
 	'(' Expression ')'
+;
+
+IfExpression:
+	'if' condition=Expression 'then'
+		=>thenStatements+=Statement*
+		thenValue=Expression
+	elseIfs+=ElseIfExpression*
+	'else' 'begin'
+		=>elseStatements+=Statement*
+		elseValue=Expression
+	'end'
+;
+
+ElseIfExpression:
+	'else' 'if' condition=Expression 'then'
+		=>thenStatements+=Statement*
+		thenValue=Expression
 ;
 
 Long returns ecore::ELong:

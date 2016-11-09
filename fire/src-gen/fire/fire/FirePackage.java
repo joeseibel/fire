@@ -282,6 +282,125 @@ public interface FirePackage extends EPackage
   int EXPRESSION_FEATURE_COUNT = 0;
 
   /**
+   * The meta object id for the '{@link fire.fire.impl.IfExpressionImpl <em>If Expression</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see fire.fire.impl.IfExpressionImpl
+   * @see fire.fire.impl.FirePackageImpl#getIfExpression()
+   * @generated
+   */
+  int IF_EXPRESSION = 7;
+
+  /**
+   * The feature id for the '<em><b>Condition</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int IF_EXPRESSION__CONDITION = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Then Statements</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int IF_EXPRESSION__THEN_STATEMENTS = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Then Value</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int IF_EXPRESSION__THEN_VALUE = EXPRESSION_FEATURE_COUNT + 2;
+
+  /**
+   * The feature id for the '<em><b>Else Ifs</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int IF_EXPRESSION__ELSE_IFS = EXPRESSION_FEATURE_COUNT + 3;
+
+  /**
+   * The feature id for the '<em><b>Else Statements</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int IF_EXPRESSION__ELSE_STATEMENTS = EXPRESSION_FEATURE_COUNT + 4;
+
+  /**
+   * The feature id for the '<em><b>Else Value</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int IF_EXPRESSION__ELSE_VALUE = EXPRESSION_FEATURE_COUNT + 5;
+
+  /**
+   * The number of structural features of the '<em>If Expression</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int IF_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 6;
+
+  /**
+   * The meta object id for the '{@link fire.fire.impl.ElseIfExpressionImpl <em>Else If Expression</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see fire.fire.impl.ElseIfExpressionImpl
+   * @see fire.fire.impl.FirePackageImpl#getElseIfExpression()
+   * @generated
+   */
+  int ELSE_IF_EXPRESSION = 8;
+
+  /**
+   * The feature id for the '<em><b>Condition</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ELSE_IF_EXPRESSION__CONDITION = 0;
+
+  /**
+   * The feature id for the '<em><b>Then Statements</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ELSE_IF_EXPRESSION__THEN_STATEMENTS = 1;
+
+  /**
+   * The feature id for the '<em><b>Then Value</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ELSE_IF_EXPRESSION__THEN_VALUE = 2;
+
+  /**
+   * The number of structural features of the '<em>Else If Expression</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ELSE_IF_EXPRESSION_FEATURE_COUNT = 3;
+
+  /**
    * The meta object id for the '{@link fire.fire.impl.VariableDeclarationImpl <em>Variable Declaration</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -289,7 +408,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getVariableDeclaration()
    * @generated
    */
-  int VARIABLE_DECLARATION = 7;
+  int VARIABLE_DECLARATION = 9;
 
   /**
    * The feature id for the '<em><b>Constant</b></em>' attribute.
@@ -344,7 +463,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getAssignmentStatement()
    * @generated
    */
-  int ASSIGNMENT_STATEMENT = 8;
+  int ASSIGNMENT_STATEMENT = 10;
 
   /**
    * The feature id for the '<em><b>Variable</b></em>' reference.
@@ -381,7 +500,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getWritelnStatement()
    * @generated
    */
-  int WRITELN_STATEMENT = 9;
+  int WRITELN_STATEMENT = 11;
 
   /**
    * The feature id for the '<em><b>Argument</b></em>' containment reference.
@@ -409,7 +528,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getOrExpression()
    * @generated
    */
-  int OR_EXPRESSION = 10;
+  int OR_EXPRESSION = 12;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -446,7 +565,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getAndExpression()
    * @generated
    */
-  int AND_EXPRESSION = 11;
+  int AND_EXPRESSION = 13;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -483,7 +602,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getXorExpression()
    * @generated
    */
-  int XOR_EXPRESSION = 12;
+  int XOR_EXPRESSION = 14;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -520,7 +639,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getEqualityExpression()
    * @generated
    */
-  int EQUALITY_EXPRESSION = 13;
+  int EQUALITY_EXPRESSION = 15;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -566,7 +685,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getComparisonExpression()
    * @generated
    */
-  int COMPARISON_EXPRESSION = 14;
+  int COMPARISON_EXPRESSION = 16;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -612,7 +731,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getAdditiveExpression()
    * @generated
    */
-  int ADDITIVE_EXPRESSION = 15;
+  int ADDITIVE_EXPRESSION = 17;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -658,7 +777,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getMultiplicativeExpression()
    * @generated
    */
-  int MULTIPLICATIVE_EXPRESSION = 16;
+  int MULTIPLICATIVE_EXPRESSION = 18;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -704,7 +823,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getIdExpression()
    * @generated
    */
-  int ID_EXPRESSION = 17;
+  int ID_EXPRESSION = 19;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' reference.
@@ -732,7 +851,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getStringLiteral()
    * @generated
    */
-  int STRING_LITERAL = 18;
+  int STRING_LITERAL = 20;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -760,7 +879,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getBooleanLiteral()
    * @generated
    */
-  int BOOLEAN_LITERAL = 19;
+  int BOOLEAN_LITERAL = 21;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -788,7 +907,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getIntegerLiteral()
    * @generated
    */
-  int INTEGER_LITERAL = 20;
+  int INTEGER_LITERAL = 22;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -816,7 +935,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getRealLiteral()
    * @generated
    */
-  int REAL_LITERAL = 21;
+  int REAL_LITERAL = 23;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -844,7 +963,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getNotExpression()
    * @generated
    */
-  int NOT_EXPRESSION = 22;
+  int NOT_EXPRESSION = 24;
 
   /**
    * The feature id for the '<em><b>Operand</b></em>' containment reference.
@@ -872,7 +991,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getNegationExpression()
    * @generated
    */
-  int NEGATION_EXPRESSION = 23;
+  int NEGATION_EXPRESSION = 25;
 
   /**
    * The feature id for the '<em><b>Operand</b></em>' containment reference.
@@ -900,7 +1019,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getBuiltInType()
    * @generated
    */
-  int BUILT_IN_TYPE = 24;
+  int BUILT_IN_TYPE = 26;
 
   /**
    * The meta object id for the '{@link fire.fire.EqualityOperator <em>Equality Operator</em>}' enum.
@@ -910,7 +1029,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getEqualityOperator()
    * @generated
    */
-  int EQUALITY_OPERATOR = 25;
+  int EQUALITY_OPERATOR = 27;
 
   /**
    * The meta object id for the '{@link fire.fire.ComparisonOperator <em>Comparison Operator</em>}' enum.
@@ -920,7 +1039,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getComparisonOperator()
    * @generated
    */
-  int COMPARISON_OPERATOR = 26;
+  int COMPARISON_OPERATOR = 28;
 
   /**
    * The meta object id for the '{@link fire.fire.AdditiveOperator <em>Additive Operator</em>}' enum.
@@ -930,7 +1049,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getAdditiveOperator()
    * @generated
    */
-  int ADDITIVE_OPERATOR = 27;
+  int ADDITIVE_OPERATOR = 29;
 
   /**
    * The meta object id for the '{@link fire.fire.MultiplicativeOperator <em>Multiplicative Operator</em>}' enum.
@@ -940,7 +1059,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getMultiplicativeOperator()
    * @generated
    */
-  int MULTIPLICATIVE_OPERATOR = 28;
+  int MULTIPLICATIVE_OPERATOR = 30;
 
 
   /**
@@ -1122,6 +1241,125 @@ public interface FirePackage extends EPackage
    * @generated
    */
   EClass getExpression();
+
+  /**
+   * Returns the meta object for class '{@link fire.fire.IfExpression <em>If Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>If Expression</em>'.
+   * @see fire.fire.IfExpression
+   * @generated
+   */
+  EClass getIfExpression();
+
+  /**
+   * Returns the meta object for the containment reference '{@link fire.fire.IfExpression#getCondition <em>Condition</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Condition</em>'.
+   * @see fire.fire.IfExpression#getCondition()
+   * @see #getIfExpression()
+   * @generated
+   */
+  EReference getIfExpression_Condition();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link fire.fire.IfExpression#getThenStatements <em>Then Statements</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Then Statements</em>'.
+   * @see fire.fire.IfExpression#getThenStatements()
+   * @see #getIfExpression()
+   * @generated
+   */
+  EReference getIfExpression_ThenStatements();
+
+  /**
+   * Returns the meta object for the containment reference '{@link fire.fire.IfExpression#getThenValue <em>Then Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Then Value</em>'.
+   * @see fire.fire.IfExpression#getThenValue()
+   * @see #getIfExpression()
+   * @generated
+   */
+  EReference getIfExpression_ThenValue();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link fire.fire.IfExpression#getElseIfs <em>Else Ifs</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Else Ifs</em>'.
+   * @see fire.fire.IfExpression#getElseIfs()
+   * @see #getIfExpression()
+   * @generated
+   */
+  EReference getIfExpression_ElseIfs();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link fire.fire.IfExpression#getElseStatements <em>Else Statements</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Else Statements</em>'.
+   * @see fire.fire.IfExpression#getElseStatements()
+   * @see #getIfExpression()
+   * @generated
+   */
+  EReference getIfExpression_ElseStatements();
+
+  /**
+   * Returns the meta object for the containment reference '{@link fire.fire.IfExpression#getElseValue <em>Else Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Else Value</em>'.
+   * @see fire.fire.IfExpression#getElseValue()
+   * @see #getIfExpression()
+   * @generated
+   */
+  EReference getIfExpression_ElseValue();
+
+  /**
+   * Returns the meta object for class '{@link fire.fire.ElseIfExpression <em>Else If Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Else If Expression</em>'.
+   * @see fire.fire.ElseIfExpression
+   * @generated
+   */
+  EClass getElseIfExpression();
+
+  /**
+   * Returns the meta object for the containment reference '{@link fire.fire.ElseIfExpression#getCondition <em>Condition</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Condition</em>'.
+   * @see fire.fire.ElseIfExpression#getCondition()
+   * @see #getElseIfExpression()
+   * @generated
+   */
+  EReference getElseIfExpression_Condition();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link fire.fire.ElseIfExpression#getThenStatements <em>Then Statements</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Then Statements</em>'.
+   * @see fire.fire.ElseIfExpression#getThenStatements()
+   * @see #getElseIfExpression()
+   * @generated
+   */
+  EReference getElseIfExpression_ThenStatements();
+
+  /**
+   * Returns the meta object for the containment reference '{@link fire.fire.ElseIfExpression#getThenValue <em>Then Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Then Value</em>'.
+   * @see fire.fire.ElseIfExpression#getThenValue()
+   * @see #getElseIfExpression()
+   * @generated
+   */
+  EReference getElseIfExpression_ThenValue();
 
   /**
    * Returns the meta object for class '{@link fire.fire.VariableDeclaration <em>Variable Declaration</em>}'.
@@ -1867,6 +2105,98 @@ public interface FirePackage extends EPackage
      * @generated
      */
     EClass EXPRESSION = eINSTANCE.getExpression();
+
+    /**
+     * The meta object literal for the '{@link fire.fire.impl.IfExpressionImpl <em>If Expression</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see fire.fire.impl.IfExpressionImpl
+     * @see fire.fire.impl.FirePackageImpl#getIfExpression()
+     * @generated
+     */
+    EClass IF_EXPRESSION = eINSTANCE.getIfExpression();
+
+    /**
+     * The meta object literal for the '<em><b>Condition</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference IF_EXPRESSION__CONDITION = eINSTANCE.getIfExpression_Condition();
+
+    /**
+     * The meta object literal for the '<em><b>Then Statements</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference IF_EXPRESSION__THEN_STATEMENTS = eINSTANCE.getIfExpression_ThenStatements();
+
+    /**
+     * The meta object literal for the '<em><b>Then Value</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference IF_EXPRESSION__THEN_VALUE = eINSTANCE.getIfExpression_ThenValue();
+
+    /**
+     * The meta object literal for the '<em><b>Else Ifs</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference IF_EXPRESSION__ELSE_IFS = eINSTANCE.getIfExpression_ElseIfs();
+
+    /**
+     * The meta object literal for the '<em><b>Else Statements</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference IF_EXPRESSION__ELSE_STATEMENTS = eINSTANCE.getIfExpression_ElseStatements();
+
+    /**
+     * The meta object literal for the '<em><b>Else Value</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference IF_EXPRESSION__ELSE_VALUE = eINSTANCE.getIfExpression_ElseValue();
+
+    /**
+     * The meta object literal for the '{@link fire.fire.impl.ElseIfExpressionImpl <em>Else If Expression</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see fire.fire.impl.ElseIfExpressionImpl
+     * @see fire.fire.impl.FirePackageImpl#getElseIfExpression()
+     * @generated
+     */
+    EClass ELSE_IF_EXPRESSION = eINSTANCE.getElseIfExpression();
+
+    /**
+     * The meta object literal for the '<em><b>Condition</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ELSE_IF_EXPRESSION__CONDITION = eINSTANCE.getElseIfExpression_Condition();
+
+    /**
+     * The meta object literal for the '<em><b>Then Statements</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ELSE_IF_EXPRESSION__THEN_STATEMENTS = eINSTANCE.getElseIfExpression_ThenStatements();
+
+    /**
+     * The meta object literal for the '<em><b>Then Value</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ELSE_IF_EXPRESSION__THEN_VALUE = eINSTANCE.getElseIfExpression_ThenValue();
 
     /**
      * The meta object literal for the '{@link fire.fire.impl.VariableDeclarationImpl <em>Variable Declaration</em>}' class.

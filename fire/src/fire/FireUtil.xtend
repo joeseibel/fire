@@ -7,6 +7,7 @@ import fire.fire.BuiltInType
 import fire.fire.ComparisonExpression
 import fire.fire.EqualityExpression
 import fire.fire.IdExpression
+import fire.fire.IfExpression
 import fire.fire.IntegerLiteral
 import fire.fire.MultiplicativeExpression
 import fire.fire.NegationExpression
@@ -94,6 +95,21 @@ class FireUtil {
 		val operandType = expression.operand?.type
 		if (operandType == BuiltInType.INTEGER || operandType == BuiltInType.REAL) {
 			operandType
+		}
+	}
+	
+	def static dispatch BuiltInType getType(IfExpression expression) {
+		val thenType = expression.thenValue?.type
+		val elseType = expression.elseValue?.type
+		if (expression.elseIfs.empty) {
+			if (thenType != null && thenType == elseType) {
+				thenType
+			}
+		} else {
+			val elseIfsTypes = expression.elseIfs.map[thenValue?.type].toSet
+			if (thenType != null && elseIfsTypes.size == 1 && thenType == elseIfsTypes.head && thenType == elseType) {
+				thenType
+			}
 		}
 	}
 }

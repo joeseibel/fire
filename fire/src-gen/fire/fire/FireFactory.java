@@ -87,6 +87,24 @@ public interface FireFactory extends EFactory
   Expression createExpression();
 
   /**
+   * Returns a new object of class '<em>If Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>If Expression</em>'.
+   * @generated
+   */
+  IfExpression createIfExpression();
+
+  /**
+   * Returns a new object of class '<em>Else If Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Else If Expression</em>'.
+   * @generated
+   */
+  ElseIfExpression createElseIfExpression();
+
+  /**
    * Returns a new object of class '<em>Variable Declaration</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

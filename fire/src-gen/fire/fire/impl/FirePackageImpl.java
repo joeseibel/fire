@@ -11,6 +11,7 @@ import fire.fire.BooleanLiteral;
 import fire.fire.BuiltInType;
 import fire.fire.ComparisonExpression;
 import fire.fire.ComparisonOperator;
+import fire.fire.ElseIfExpression;
 import fire.fire.ElseIfStatement;
 import fire.fire.ElseStatement;
 import fire.fire.EqualityExpression;
@@ -19,6 +20,7 @@ import fire.fire.Expression;
 import fire.fire.FireFactory;
 import fire.fire.FirePackage;
 import fire.fire.IdExpression;
+import fire.fire.IfExpression;
 import fire.fire.IfStatement;
 import fire.fire.IntegerLiteral;
 import fire.fire.MultiplicativeExpression;
@@ -99,6 +101,20 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
    * @generated
    */
   private EClass expressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass ifExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass elseIfExpressionEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -485,6 +501,116 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
   public EClass getExpression()
   {
     return expressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getIfExpression()
+  {
+    return ifExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getIfExpression_Condition()
+  {
+    return (EReference)ifExpressionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getIfExpression_ThenStatements()
+  {
+    return (EReference)ifExpressionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getIfExpression_ThenValue()
+  {
+    return (EReference)ifExpressionEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getIfExpression_ElseIfs()
+  {
+    return (EReference)ifExpressionEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getIfExpression_ElseStatements()
+  {
+    return (EReference)ifExpressionEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getIfExpression_ElseValue()
+  {
+    return (EReference)ifExpressionEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getElseIfExpression()
+  {
+    return elseIfExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getElseIfExpression_Condition()
+  {
+    return (EReference)elseIfExpressionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getElseIfExpression_ThenStatements()
+  {
+    return (EReference)elseIfExpressionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getElseIfExpression_ThenValue()
+  {
+    return (EReference)elseIfExpressionEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -1081,6 +1207,19 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
 
     expressionEClass = createEClass(EXPRESSION);
 
+    ifExpressionEClass = createEClass(IF_EXPRESSION);
+    createEReference(ifExpressionEClass, IF_EXPRESSION__CONDITION);
+    createEReference(ifExpressionEClass, IF_EXPRESSION__THEN_STATEMENTS);
+    createEReference(ifExpressionEClass, IF_EXPRESSION__THEN_VALUE);
+    createEReference(ifExpressionEClass, IF_EXPRESSION__ELSE_IFS);
+    createEReference(ifExpressionEClass, IF_EXPRESSION__ELSE_STATEMENTS);
+    createEReference(ifExpressionEClass, IF_EXPRESSION__ELSE_VALUE);
+
+    elseIfExpressionEClass = createEClass(ELSE_IF_EXPRESSION);
+    createEReference(elseIfExpressionEClass, ELSE_IF_EXPRESSION__CONDITION);
+    createEReference(elseIfExpressionEClass, ELSE_IF_EXPRESSION__THEN_STATEMENTS);
+    createEReference(elseIfExpressionEClass, ELSE_IF_EXPRESSION__THEN_VALUE);
+
     variableDeclarationEClass = createEClass(VARIABLE_DECLARATION);
     createEAttribute(variableDeclarationEClass, VARIABLE_DECLARATION__CONSTANT);
     createEAttribute(variableDeclarationEClass, VARIABLE_DECLARATION__NAME);
@@ -1186,6 +1325,7 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
     // Add supertypes to classes
     whileLoopEClass.getESuperTypes().add(this.getStatement());
     ifStatementEClass.getESuperTypes().add(this.getStatement());
+    ifExpressionEClass.getESuperTypes().add(this.getExpression());
     variableDeclarationEClass.getESuperTypes().add(this.getStatement());
     assignmentStatementEClass.getESuperTypes().add(this.getStatement());
     writelnStatementEClass.getESuperTypes().add(this.getStatement());
@@ -1228,6 +1368,19 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
     initEReference(getElseStatement_ElseStatements(), this.getStatement(), null, "elseStatements", null, 0, -1, ElseStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(expressionEClass, Expression.class, "Expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(ifExpressionEClass, IfExpression.class, "IfExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getIfExpression_Condition(), this.getExpression(), null, "condition", null, 0, 1, IfExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getIfExpression_ThenStatements(), this.getStatement(), null, "thenStatements", null, 0, -1, IfExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getIfExpression_ThenValue(), this.getExpression(), null, "thenValue", null, 0, 1, IfExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getIfExpression_ElseIfs(), this.getElseIfExpression(), null, "elseIfs", null, 0, -1, IfExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getIfExpression_ElseStatements(), this.getStatement(), null, "elseStatements", null, 0, -1, IfExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getIfExpression_ElseValue(), this.getExpression(), null, "elseValue", null, 0, 1, IfExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(elseIfExpressionEClass, ElseIfExpression.class, "ElseIfExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getElseIfExpression_Condition(), this.getExpression(), null, "condition", null, 0, 1, ElseIfExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getElseIfExpression_ThenStatements(), this.getStatement(), null, "thenStatements", null, 0, -1, ElseIfExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getElseIfExpression_ThenValue(), this.getExpression(), null, "thenValue", null, 0, 1, ElseIfExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(variableDeclarationEClass, VariableDeclaration.class, "VariableDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getVariableDeclaration_Constant(), ecorePackage.getEBoolean(), "constant", null, 0, 1, VariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

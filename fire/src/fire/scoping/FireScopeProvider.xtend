@@ -1,8 +1,10 @@
 package fire.scoping
 
+import fire.fire.ElseIfExpression
 import fire.fire.ElseIfStatement
 import fire.fire.ElseStatement
 import fire.fire.FirePackage
+import fire.fire.IfExpression
 import fire.fire.IfStatement
 import fire.fire.Program
 import fire.fire.WhileLoop
@@ -55,6 +57,26 @@ class FireScopeProvider extends AbstractFireScopeProvider {
 	
 	def private static dispatch IScope scope_VariableDeclaration(ElseStatement elseStatement, EObject originalContext) {
 		elseStatement.elseStatements.scopeFor(scope_VariableDeclaration(elseStatement.eContainer, originalContext))
+	}
+	
+	def private static dispatch IScope scope_VariableDeclaration(IfExpression ifExpression, EObject originalContext) {
+		val outer = scope_VariableDeclaration(ifExpression.eContainer, originalContext)
+		if (ifExpression.thenStatements.exists[isAncestor(originalContext)] || ifExpression.thenValue.isAncestor(originalContext)) {
+			ifExpression.thenStatements.scopeFor(outer)
+		} else if (ifExpression.elseStatements.exists[isAncestor(originalContext)] || ifExpression.elseValue.isAncestor(originalContext)) {
+			ifExpression.elseStatements.scopeFor(outer)
+		} else {
+			outer
+		}
+	}
+	
+	def private static dispatch IScope scope_VariableDeclaration(ElseIfExpression elseIfExpression, EObject originalContext) {
+		val outer = scope_VariableDeclaration(elseIfExpression.eContainer, originalContext)
+		if (elseIfExpression.condition.isAncestor(originalContext)) {
+			outer
+		} else {
+			elseIfExpression.thenStatements.scopeFor(outer)
+		}
 	}
 	
 	def private static dispatch IScope scope_VariableDeclaration(EObject context, EObject originalContext) {

@@ -1,6 +1,8 @@
 package fire.tests
 
 import com.google.inject.Inject
+import fire.fire.FirePackage
+import fire.fire.IfExpression
 import fire.fire.IfStatement
 import fire.fire.Program
 import fire.fire.VariableDeclaration
@@ -10,17 +12,22 @@ import fire.validation.FireValidator
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
 import org.eclipse.xtext.junit4.util.ParseHelper
+import org.eclipse.xtext.junit4.validation.ValidationTestHelper
 import org.eclipse.xtext.junit4.validation.ValidatorTester
 import org.junit.Test
 import org.junit.runner.RunWith
 
 import static org.eclipse.xtext.junit4.validation.AssertableDiagnostics.*
 
+import static extension org.junit.Assert.assertEquals
+
 @RunWith(XtextRunner)
 @InjectWith(FireInjectorProvider)
 class ValidatorTest {
 	@Inject
 	extension ParseHelper<Program>
+	@Inject
+	extension ValidationTestHelper
 	@Inject
 	ValidatorTester<FireValidator> tester
 	
@@ -52,7 +59,26 @@ class ValidatorTest {
 					const c2: Integer := 16
 					const c3: Integer := 17
 				end
-				const c3: Integer := 18
+				writeln(if true then
+					const c1: Integer := 18
+					const c2: Integer := 19
+					const c2: Integer := 20
+					const c3: Integer := 21
+					22
+				else if true then
+					const c1: Integer := 22
+					const c2: Integer := 23
+					const c2: Integer := 24
+					const c3: Integer := 25
+					26
+				else begin
+					const c1: Integer := 26
+					const c2: Integer := 27
+					const c2: Integer := 28
+					const c3: Integer := 29
+					30
+				end)
+				const c3: Integer := 30
 			end
 		'''.parse => [
 			tester.validate(statements.get(0)).assertAll(warning(null, "c1 is not used"))
@@ -81,7 +107,23 @@ class ValidatorTest {
 					tester.validate(elseStatements.get(3)).assertAll(warning(null, "c3 is not used"))
 				]
 			]
-			tester.validate(statements.get(4)).assertAll(warning(null, "c3 is not used"))
+			(statements.get(4) as WritelnStatement).argument as IfExpression => [
+				tester.validate(thenStatements.get(0)).assertAll(error(null, "c1 is already declared"), warning(null, "c1 is not used"))
+				tester.validate(thenStatements.get(1)).assertAll(warning(null, "c2 is not used"))
+				tester.validate(thenStatements.get(2)).assertAll(error(null, "c2 is already declared"), warning(null, "c2 is not used"))
+				tester.validate(thenStatements.get(3)).assertAll(warning(null, "c3 is not used"))
+				elseIfs.head => [
+					tester.validate(thenStatements.get(0)).assertAll(error(null, "c1 is already declared"), warning(null, "c1 is not used"))
+					tester.validate(thenStatements.get(1)).assertAll(warning(null, "c2 is not used"))
+					tester.validate(thenStatements.get(2)).assertAll(error(null, "c2 is already declared"), warning(null, "c2 is not used"))
+					tester.validate(thenStatements.get(3)).assertAll(warning(null, "c3 is not used"))
+				]
+				tester.validate(elseStatements.get(0)).assertAll(error(null, "c1 is already declared"), warning(null, "c1 is not used"))
+				tester.validate(elseStatements.get(1)).assertAll(warning(null, "c2 is not used"))
+				tester.validate(elseStatements.get(2)).assertAll(error(null, "c2 is already declared"), warning(null, "c2 is not used"))
+				tester.validate(elseStatements.get(3)).assertAll(warning(null, "c3 is not used"))
+			]
+			tester.validate(statements.get(5)).assertAll(warning(null, "c3 is not used"))
 		]
 	}
 	
@@ -430,6 +472,81 @@ class ValidatorTest {
 			tester.validate(statements.get(0)).assertOK
 			tester.validate(statements.get(1)).assertOK
 			tester.validate(statements.get(2)).assertAll(error(null, "- operator cannot be applied to type Boolean"))
+		]
+	}
+	
+	@Test
+	def void testTypeCheckIfExpressionCondition() {
+		'''
+			program
+				writeln(if true then
+					0
+				else begin
+					1
+				end)
+				writeln(if 2 then
+					3
+				else begin
+					4
+				end)
+			end
+		'''.parse => [
+			tester.validate((statements.get(0) as WritelnStatement).argument as IfExpression).assertOK
+			tester.validate((statements.get(1) as WritelnStatement).argument as IfExpression).assertAll(error(null, "Expected Boolean, found Integer"))
+		]
+	}
+	
+	@Test
+	def void testTypeCheckIfExpressionValues() {
+		'''
+			program
+				writeln(if true then
+					0
+				else if true then
+					1
+				else begin
+					2
+				end)
+				writeln(if true then
+					3
+				else if true then
+					true or false
+				else if true then
+					4.4 + 5.5
+				else begin
+					"6"
+				end)
+			end
+		'''.parse => [
+			tester.validate((statements.get(0) as WritelnStatement).argument).assertOK;
+			(statements.get(1) as WritelnStatement).argument as IfExpression => [
+				3.assertEquals(validate.size)
+				elseIfs.get(0).thenValue.assertError(FirePackage.Literals.OR_EXPRESSION, null, "Expected Integer, found Boolean")
+				elseIfs.get(1).thenValue.assertError(FirePackage.Literals.ADDITIVE_EXPRESSION, null, "Expected Integer, found Real")
+				elseValue.assertError(FirePackage.Literals.STRING_LITERAL, null, "Expected Integer, found String")
+			]
+		]
+	}
+	
+	@Test
+	def void testTypeCheckElseIfExpressionCondition() {
+		'''
+			program
+				writeln(if true then
+					0
+				else if true then
+					1
+				else if 2 then
+					3
+				else begin
+					4
+				end)
+			end
+		'''.parse => [
+			(statements.get(0) as WritelnStatement).argument as IfExpression => [
+				tester.validate(elseIfs.get(0)).assertOK
+				tester.validate(elseIfs.get(1)).assertAll(error(null, "Expected Boolean, found Integer"))
+			]
 		]
 	}
 }

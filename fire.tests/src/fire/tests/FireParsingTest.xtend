@@ -15,6 +15,7 @@ import fire.fire.ComparisonOperator
 import fire.fire.EqualityExpression
 import fire.fire.EqualityOperator
 import fire.fire.IdExpression
+import fire.fire.IfExpression
 import fire.fire.IfStatement
 import fire.fire.IntegerLiteral
 import fire.fire.MultiplicativeExpression
@@ -38,7 +39,6 @@ import org.junit.runner.RunWith
 
 import static extension org.junit.Assert.assertEquals
 import static extension org.junit.Assert.assertFalse
-import static extension org.junit.Assert.assertNotNull
 import static extension org.junit.Assert.assertNull
 import static extension org.junit.Assert.assertTrue
 
@@ -838,6 +838,201 @@ class FireParsingTest{
 				]
 				MultiplicativeOperator.REAL_DIVIDE.assertEquals(operator)
 				46.46.assertEquals(((right as NegationExpression).operand as RealLiteral).value, 0)
+			]
+		]
+	}
+	
+	@Test
+	def void testIfExpression() {
+		'''
+			program
+				writeln(if true then
+					"if value"
+				else begin
+					"else value"
+				end)
+			end
+		'''.parse => [
+			assertNoIssues
+			1.assertEquals(statements.size)
+			(statements.head as WritelnStatement).argument as IfExpression => [
+				(condition as BooleanLiteral).value.assertTrue
+				thenStatements.empty.assertTrue
+				"if value".assertEquals((thenValue as StringLiteral).value)
+				elseIfs.empty.assertTrue
+				elseStatements.empty.assertTrue
+				"else value".assertEquals((elseValue as StringLiteral).value)
+			]
+		]
+		
+		'''
+			program
+				writeln(if true then
+					"if value"
+				else if true then
+					"else if value 0"
+				else if true then
+					"else if value 1"
+				else if true then
+					"else if value 2"
+				else begin
+					"else value"
+				end)
+			end
+		'''.parse => [
+			assertNoIssues
+			1.assertEquals(statements.size)
+			(statements.head as WritelnStatement).argument as IfExpression => [
+				(condition as BooleanLiteral).value.assertTrue
+				thenStatements.empty.assertTrue
+				"if value".assertEquals((thenValue as StringLiteral).value)
+				3.assertEquals(elseIfs.size)
+				elseIfs.get(0) => [
+					(condition as BooleanLiteral).value.assertTrue
+					thenStatements.empty.assertTrue
+					"else if value 0".assertEquals((thenValue as StringLiteral).value)
+				]
+				elseIfs.get(1) => [
+					(condition as BooleanLiteral).value.assertTrue
+					thenStatements.empty.assertTrue
+					"else if value 1".assertEquals((thenValue as StringLiteral).value)
+				]
+				elseIfs.get(2) => [
+					(condition as BooleanLiteral).value.assertTrue
+					thenStatements.empty.assertTrue
+					"else if value 2".assertEquals((thenValue as StringLiteral).value)
+				]
+				elseStatements.empty.assertTrue
+				"else value".assertEquals((elseValue as StringLiteral).value)
+			]
+		]
+		
+		'''
+			program
+				writeln(if true then
+					writeln("if statement 0")
+					writeln("if statement 1")
+					writeln("if statement 2")
+					"if value"
+				else if true then
+					writeln("else if statement 0")
+					writeln("else if statement 1")
+					writeln("else if statement 2")
+					"else if value"
+				else begin
+					writeln("else statement 0")
+					writeln("else statement 1")
+					writeln("else statement 2")
+					"else value"
+				end)
+			end
+		'''.parse => [
+			assertNoIssues
+			1.assertEquals(statements.size)
+			(statements.head as WritelnStatement).argument as IfExpression => [
+				(condition as BooleanLiteral).value.assertTrue
+				3.assertEquals(thenStatements.size)
+				"if statement 0".assertEquals(((thenStatements.get(0) as WritelnStatement).argument as StringLiteral).value)
+				"if statement 1".assertEquals(((thenStatements.get(1) as WritelnStatement).argument as StringLiteral).value)
+				"if statement 2".assertEquals(((thenStatements.get(2) as WritelnStatement).argument as StringLiteral).value)
+				"if value".assertEquals((thenValue as StringLiteral).value)
+				1.assertEquals(elseIfs.size)
+				elseIfs.head => [
+					(condition as BooleanLiteral).value.assertTrue
+					3.assertEquals(thenStatements.size)
+					"else if statement 0".assertEquals(((thenStatements.get(0) as WritelnStatement).argument as StringLiteral).value)
+					"else if statement 1".assertEquals(((thenStatements.get(1) as WritelnStatement).argument as StringLiteral).value)
+					"else if statement 2".assertEquals(((thenStatements.get(2) as WritelnStatement).argument as StringLiteral).value)
+					"else if value".assertEquals((thenValue as StringLiteral).value)
+				]
+				3.assertEquals(elseStatements.size)
+				"else statement 0".assertEquals(((elseStatements.get(0) as WritelnStatement).argument as StringLiteral).value)
+				"else statement 1".assertEquals(((elseStatements.get(1) as WritelnStatement).argument as StringLiteral).value)
+				"else statement 2".assertEquals(((elseStatements.get(2) as WritelnStatement).argument as StringLiteral).value)
+				"else value".assertEquals((elseValue as StringLiteral).value)
+			]
+		]
+		
+		'''
+			program
+				writeln(if true then
+					if true then
+						"then -> then"
+					else begin
+						"then -> else"
+					end
+				else begin
+					if true then
+						"else -> then"
+					else begin
+						"else -> else"
+					end
+				end)
+			end
+		'''.parse => [
+			assertNoIssues
+			1.assertEquals(statements.size)
+			(statements.head as WritelnStatement).argument as IfExpression => [
+				(condition as BooleanLiteral).value.assertTrue
+				thenStatements.empty.assertTrue
+				thenValue as IfExpression => [
+					(condition as BooleanLiteral).value.assertTrue
+					thenStatements.empty.assertTrue
+					"then -> then".assertEquals((thenValue as StringLiteral).value)
+					elseIfs.empty.assertTrue
+					elseStatements.empty.assertTrue
+					"then -> else".assertEquals((elseValue as StringLiteral).value)
+				]
+				elseIfs.empty.assertTrue
+				elseStatements.empty.assertTrue
+				elseValue as IfExpression => [
+					(condition as BooleanLiteral).value.assertTrue
+					thenStatements.empty.assertTrue
+					"else -> then".assertEquals((thenValue as StringLiteral).value)
+					elseIfs.empty.assertTrue
+					elseStatements.empty.assertTrue
+					"else -> else".assertEquals((elseValue as StringLiteral).value)
+				]
+			]
+		]
+		
+		'''
+			program
+				writeln(if true then
+					const c1: Integer := 0;
+					-c1
+				else begin
+					var v1: Integer := 1
+					v1 := 2;
+					-v1
+				end)
+			end
+		'''.parse => [
+			assertNoIssues
+			1.assertEquals(statements.size)
+			(statements.head as WritelnStatement).argument as IfExpression => [
+				(condition as BooleanLiteral).value.assertTrue
+				1.assertEquals(thenStatements.size)
+				thenStatements.head as VariableDeclaration => [
+					constant.assertTrue
+					"c1".assertEquals(name)
+					BuiltInType.INTEGER.assertEquals(type)
+					0.assertEquals((value as IntegerLiteral).value)
+				]
+				"c1".assertEquals(((thenValue as NegationExpression).operand as IdExpression).value.name)
+				elseIfs.empty.assertTrue
+				2.assertEquals(elseStatements.size)
+				elseStatements.get(0) as VariableDeclaration => [
+					constant.assertFalse
+					"v1".assertEquals(name)
+					BuiltInType.INTEGER.assertEquals(type)
+					1.assertEquals((value as IntegerLiteral).value)
+				]
+				elseStatements.get(1) as AssignmentStatement => [
+					"v1".assertEquals(variable.name)
+					2.assertEquals((value as IntegerLiteral).value)
+				]
+				"v1".assertEquals(((elseValue as NegationExpression).operand as IdExpression).value.name)
 			]
 		]
 	}

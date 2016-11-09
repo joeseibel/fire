@@ -124,6 +124,21 @@ public class FireSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case FirePackage.IF_EXPRESSION:
+      {
+        IfExpression ifExpression = (IfExpression)theEObject;
+        T result = caseIfExpression(ifExpression);
+        if (result == null) result = caseExpression(ifExpression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case FirePackage.ELSE_IF_EXPRESSION:
+      {
+        ElseIfExpression elseIfExpression = (ElseIfExpression)theEObject;
+        T result = caseElseIfExpression(elseIfExpression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case FirePackage.VARIABLE_DECLARATION:
       {
         VariableDeclaration variableDeclaration = (VariableDeclaration)theEObject;
@@ -372,6 +387,38 @@ public class FireSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseExpression(Expression object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>If Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>If Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseIfExpression(IfExpression object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Else If Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Else If Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseElseIfExpression(ElseIfExpression object)
   {
     return null;
   }

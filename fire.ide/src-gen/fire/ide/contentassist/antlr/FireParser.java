@@ -64,6 +64,8 @@ public class FireParser extends AbstractContentAssistParser {
 					put(grammarAccess.getComparisonExpressionAccess().getGroup_1(), "rule__ComparisonExpression__Group_1__0");
 					put(grammarAccess.getAdditiveExpressionAccess().getGroup(), "rule__AdditiveExpression__Group__0");
 					put(grammarAccess.getAdditiveExpressionAccess().getGroup_1(), "rule__AdditiveExpression__Group_1__0");
+					put(grammarAccess.getAdditiveExpressionAccess().getGroup_1_0(), "rule__AdditiveExpression__Group_1_0__0");
+					put(grammarAccess.getAdditiveExpressionAccess().getGroup_1_0_0(), "rule__AdditiveExpression__Group_1_0_0__0");
 					put(grammarAccess.getMultiplicativeExpressionAccess().getGroup(), "rule__MultiplicativeExpression__Group__0");
 					put(grammarAccess.getMultiplicativeExpressionAccess().getGroup_1(), "rule__MultiplicativeExpression__Group_1__0");
 					put(grammarAccess.getTerminalExpressionAccess().getGroup_0(), "rule__TerminalExpression__Group_0__0");
@@ -73,7 +75,9 @@ public class FireParser extends AbstractContentAssistParser {
 					put(grammarAccess.getTerminalExpressionAccess().getGroup_4(), "rule__TerminalExpression__Group_4__0");
 					put(grammarAccess.getTerminalExpressionAccess().getGroup_5(), "rule__TerminalExpression__Group_5__0");
 					put(grammarAccess.getTerminalExpressionAccess().getGroup_6(), "rule__TerminalExpression__Group_6__0");
-					put(grammarAccess.getTerminalExpressionAccess().getGroup_7(), "rule__TerminalExpression__Group_7__0");
+					put(grammarAccess.getTerminalExpressionAccess().getGroup_8(), "rule__TerminalExpression__Group_8__0");
+					put(grammarAccess.getIfExpressionAccess().getGroup(), "rule__IfExpression__Group__0");
+					put(grammarAccess.getElseIfExpressionAccess().getGroup(), "rule__ElseIfExpression__Group__0");
 					put(grammarAccess.getDoubleAccess().getGroup(), "rule__Double__Group__0");
 					put(grammarAccess.getProgramAccess().getStatementsAssignment_2(), "rule__Program__StatementsAssignment_2");
 					put(grammarAccess.getStatementAccess().getConstantAssignment_0_1_0(), "rule__Statement__ConstantAssignment_0_1_0");
@@ -99,8 +103,8 @@ public class FireParser extends AbstractContentAssistParser {
 					put(grammarAccess.getEqualityExpressionAccess().getRightAssignment_1_2(), "rule__EqualityExpression__RightAssignment_1_2");
 					put(grammarAccess.getComparisonExpressionAccess().getOperatorAssignment_1_1(), "rule__ComparisonExpression__OperatorAssignment_1_1");
 					put(grammarAccess.getComparisonExpressionAccess().getRightAssignment_1_2(), "rule__ComparisonExpression__RightAssignment_1_2");
-					put(grammarAccess.getAdditiveExpressionAccess().getOperatorAssignment_1_1(), "rule__AdditiveExpression__OperatorAssignment_1_1");
-					put(grammarAccess.getAdditiveExpressionAccess().getRightAssignment_1_2(), "rule__AdditiveExpression__RightAssignment_1_2");
+					put(grammarAccess.getAdditiveExpressionAccess().getOperatorAssignment_1_0_0_1(), "rule__AdditiveExpression__OperatorAssignment_1_0_0_1");
+					put(grammarAccess.getAdditiveExpressionAccess().getRightAssignment_1_1(), "rule__AdditiveExpression__RightAssignment_1_1");
 					put(grammarAccess.getMultiplicativeExpressionAccess().getOperatorAssignment_1_1(), "rule__MultiplicativeExpression__OperatorAssignment_1_1");
 					put(grammarAccess.getMultiplicativeExpressionAccess().getRightAssignment_1_2(), "rule__MultiplicativeExpression__RightAssignment_1_2");
 					put(grammarAccess.getTerminalExpressionAccess().getValueAssignment_0_1(), "rule__TerminalExpression__ValueAssignment_0_1");
@@ -110,6 +114,15 @@ public class FireParser extends AbstractContentAssistParser {
 					put(grammarAccess.getTerminalExpressionAccess().getValueAssignment_4_1(), "rule__TerminalExpression__ValueAssignment_4_1");
 					put(grammarAccess.getTerminalExpressionAccess().getOperandAssignment_5_2(), "rule__TerminalExpression__OperandAssignment_5_2");
 					put(grammarAccess.getTerminalExpressionAccess().getOperandAssignment_6_2(), "rule__TerminalExpression__OperandAssignment_6_2");
+					put(grammarAccess.getIfExpressionAccess().getConditionAssignment_1(), "rule__IfExpression__ConditionAssignment_1");
+					put(grammarAccess.getIfExpressionAccess().getThenStatementsAssignment_3(), "rule__IfExpression__ThenStatementsAssignment_3");
+					put(grammarAccess.getIfExpressionAccess().getThenValueAssignment_4(), "rule__IfExpression__ThenValueAssignment_4");
+					put(grammarAccess.getIfExpressionAccess().getElseIfsAssignment_5(), "rule__IfExpression__ElseIfsAssignment_5");
+					put(grammarAccess.getIfExpressionAccess().getElseStatementsAssignment_8(), "rule__IfExpression__ElseStatementsAssignment_8");
+					put(grammarAccess.getIfExpressionAccess().getElseValueAssignment_9(), "rule__IfExpression__ElseValueAssignment_9");
+					put(grammarAccess.getElseIfExpressionAccess().getConditionAssignment_2(), "rule__ElseIfExpression__ConditionAssignment_2");
+					put(grammarAccess.getElseIfExpressionAccess().getThenStatementsAssignment_4(), "rule__ElseIfExpression__ThenStatementsAssignment_4");
+					put(grammarAccess.getElseIfExpressionAccess().getThenValueAssignment_5(), "rule__ElseIfExpression__ThenValueAssignment_5");
 				}
 			};
 		}

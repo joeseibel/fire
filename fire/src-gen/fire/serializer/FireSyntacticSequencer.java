@@ -20,14 +20,20 @@ import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 public class FireSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected FireGrammarAccess grammarAccess;
-	protected AbstractElementAlias match_TerminalExpression_LeftParenthesisKeyword_7_0_a;
-	protected AbstractElementAlias match_TerminalExpression_LeftParenthesisKeyword_7_0_p;
+	protected AbstractElementAlias match_Statement_SemicolonKeyword_0_7_q;
+	protected AbstractElementAlias match_Statement_SemicolonKeyword_1_4_q;
+	protected AbstractElementAlias match_Statement_SemicolonKeyword_4_5_q;
+	protected AbstractElementAlias match_TerminalExpression_LeftParenthesisKeyword_8_0_a;
+	protected AbstractElementAlias match_TerminalExpression_LeftParenthesisKeyword_8_0_p;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (FireGrammarAccess) access;
-		match_TerminalExpression_LeftParenthesisKeyword_7_0_a = new TokenAlias(true, true, grammarAccess.getTerminalExpressionAccess().getLeftParenthesisKeyword_7_0());
-		match_TerminalExpression_LeftParenthesisKeyword_7_0_p = new TokenAlias(true, false, grammarAccess.getTerminalExpressionAccess().getLeftParenthesisKeyword_7_0());
+		match_Statement_SemicolonKeyword_0_7_q = new TokenAlias(false, true, grammarAccess.getStatementAccess().getSemicolonKeyword_0_7());
+		match_Statement_SemicolonKeyword_1_4_q = new TokenAlias(false, true, grammarAccess.getStatementAccess().getSemicolonKeyword_1_4());
+		match_Statement_SemicolonKeyword_4_5_q = new TokenAlias(false, true, grammarAccess.getStatementAccess().getSemicolonKeyword_4_5());
+		match_TerminalExpression_LeftParenthesisKeyword_8_0_a = new TokenAlias(true, true, grammarAccess.getTerminalExpressionAccess().getLeftParenthesisKeyword_8_0());
+		match_TerminalExpression_LeftParenthesisKeyword_8_0_p = new TokenAlias(true, false, grammarAccess.getTerminalExpressionAccess().getLeftParenthesisKeyword_8_0());
 	}
 	
 	@Override
@@ -42,14 +48,53 @@ public class FireSyntacticSequencer extends AbstractSyntacticSequencer {
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if (match_TerminalExpression_LeftParenthesisKeyword_7_0_a.equals(syntax))
-				emit_TerminalExpression_LeftParenthesisKeyword_7_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_TerminalExpression_LeftParenthesisKeyword_7_0_p.equals(syntax))
-				emit_TerminalExpression_LeftParenthesisKeyword_7_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
+			if (match_Statement_SemicolonKeyword_0_7_q.equals(syntax))
+				emit_Statement_SemicolonKeyword_0_7_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Statement_SemicolonKeyword_1_4_q.equals(syntax))
+				emit_Statement_SemicolonKeyword_1_4_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Statement_SemicolonKeyword_4_5_q.equals(syntax))
+				emit_Statement_SemicolonKeyword_4_5_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_TerminalExpression_LeftParenthesisKeyword_8_0_a.equals(syntax))
+				emit_TerminalExpression_LeftParenthesisKeyword_8_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_TerminalExpression_LeftParenthesisKeyword_8_0_p.equals(syntax))
+				emit_TerminalExpression_LeftParenthesisKeyword_8_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
 
+	/**
+	 * Ambiguous syntax:
+	 *     ';'?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     value=Expression (ambiguity) (rule end)
+	 */
+	protected void emit_Statement_SemicolonKeyword_0_7_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     ';'?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     value=Expression (ambiguity) (rule end)
+	 */
+	protected void emit_Statement_SemicolonKeyword_1_4_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     ';'?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     argument=Expression ')' (ambiguity) (rule end)
+	 */
+	protected void emit_Statement_SemicolonKeyword_4_5_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
 	/**
 	 * Ambiguous syntax:
 	 *     '('*
@@ -57,6 +102,7 @@ public class FireSyntacticSequencer extends AbstractSyntacticSequencer {
 	 * This ambiguous syntax occurs at:
 	 *     (rule start) (ambiguity) '-' operand=TerminalExpression
 	 *     (rule start) (ambiguity) 'false' (rule start)
+	 *     (rule start) (ambiguity) 'if' condition=Expression
 	 *     (rule start) (ambiguity) 'not' operand=TerminalExpression
 	 *     (rule start) (ambiguity) value=Double
 	 *     (rule start) (ambiguity) value=Long
@@ -71,7 +117,7 @@ public class FireSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     (rule start) (ambiguity) {OrExpression.left=}
 	 *     (rule start) (ambiguity) {XorExpression.left=}
 	 */
-	protected void emit_TerminalExpression_LeftParenthesisKeyword_7_0_a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_TerminalExpression_LeftParenthesisKeyword_8_0_a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
@@ -88,7 +134,7 @@ public class FireSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     (rule start) (ambiguity) {OrExpression.left=}
 	 *     (rule start) (ambiguity) {XorExpression.left=}
 	 */
-	protected void emit_TerminalExpression_LeftParenthesisKeyword_7_0_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_TerminalExpression_LeftParenthesisKeyword_8_0_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

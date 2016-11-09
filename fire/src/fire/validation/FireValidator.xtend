@@ -6,11 +6,13 @@ import fire.fire.AndExpression
 import fire.fire.AssignmentStatement
 import fire.fire.BuiltInType
 import fire.fire.ComparisonExpression
+import fire.fire.ElseIfExpression
 import fire.fire.ElseIfStatement
 import fire.fire.ElseStatement
 import fire.fire.EqualityExpression
 import fire.fire.FirePackage
 import fire.fire.IdExpression
+import fire.fire.IfExpression
 import fire.fire.IfStatement
 import fire.fire.MultiplicativeExpression
 import fire.fire.NegationExpression
@@ -21,6 +23,7 @@ import fire.fire.VariableDeclaration
 import fire.fire.WhileLoop
 import fire.fire.XorExpression
 import fire.services.FireGrammarAccess
+import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.validation.Check
 
 import static extension fire.FireUtil.getType
@@ -65,6 +68,27 @@ class FireValidator extends AbstractFireValidator {
 	def private static dispatch boolean isDuplicateDeclaration(ElseStatement elseStatement, VariableDeclaration variable) {
 		val localDuplicate = elseStatement.elseStatements.takeWhile[!isAncestor(variable)].filter(VariableDeclaration).exists[name == variable.name]
 		localDuplicate || isDuplicateDeclaration(elseStatement.eContainer, variable)
+	}
+	
+	def private static dispatch boolean isDuplicateDeclaration(IfExpression ifExpression, VariableDeclaration variable) {
+		if (ifExpression.thenStatements.exists[isAncestor(variable)]) {
+			val localDuplicate = ifExpression.thenStatements.takeWhile[!isAncestor(variable)].filter(VariableDeclaration).exists[name == variable.name]
+			localDuplicate || isDuplicateDeclaration(ifExpression.eContainer, variable)
+		} else if (ifExpression.elseStatements.exists[isAncestor(variable)]) {
+			val localDuplicate = ifExpression.elseStatements.takeWhile[!isAncestor(variable)].filter(VariableDeclaration).exists[name == variable.name]
+			localDuplicate || isDuplicateDeclaration(ifExpression.eContainer, variable)
+		} else {
+			isDuplicateDeclaration(ifExpression.eContainer, variable)
+		}
+	}
+	
+	def private static dispatch boolean isDuplicateDeclaration(ElseIfExpression elseIfExpression, VariableDeclaration variable) {
+		val localDuplicate = elseIfExpression.thenStatements.takeWhile[!isAncestor(variable)].filter(VariableDeclaration).exists[name == variable.name]
+		localDuplicate || isDuplicateDeclaration(elseIfExpression.eContainer, variable)
+	}
+	
+	def private static dispatch boolean isDuplicateDeclaration(EObject eObject, VariableDeclaration variable) {
+		isDuplicateDeclaration(eObject.eContainer, variable)
 	}
 	
 	@Check
@@ -254,6 +278,39 @@ class FireValidator extends AbstractFireValidator {
 			val message = negationKeyword.value + " operator cannot be applied to type " + operandType
 			val negationKeywordNode = expression.node.children.findFirst[grammarElement == negationKeyword]
 			messageAcceptor.acceptError(message, expression, negationKeywordNode.offset, negationKeywordNode.length, null)
+		}
+	}
+	
+	@Check
+	def void typeCheckIfExpressionCondition(IfExpression expression) {
+		val conditionType = expression.condition?.type
+		if (conditionType != null && conditionType != BuiltInType.BOOLEAN) {
+			error("Expected Boolean, found " + conditionType, FirePackage.Literals.IF_EXPRESSION__CONDITION)
+		}
+	}
+	
+	@Check
+	def void typeCheckIfExpressionValues(IfExpression expression) {
+		val thenType = expression.thenValue?.type
+		if (thenType != null) {
+			expression.elseIfs.forEach[
+				val elseIfThenType = thenValue?.type
+				if (elseIfThenType != null && thenType != elseIfThenType) {
+					error('''Expected «thenType», found «elseIfThenType»''', thenValue, null)
+				}
+			]
+			val elseType = expression.elseValue?.type
+			if (elseType != null && thenType != elseType) {
+				error('''Expected «thenType», found «elseType»''', expression.elseValue, null)
+			}
+		}
+	}
+	
+	@Check
+	def void typeCheckElseIfExpressionCondition(ElseIfExpression expression) {
+		val conditionType = expression.condition?.type
+		if (conditionType != null && conditionType != BuiltInType.BOOLEAN) {
+			error("Expected Boolean, found " + conditionType, FirePackage.Literals.ELSE_IF_EXPRESSION__CONDITION)
 		}
 	}
 }

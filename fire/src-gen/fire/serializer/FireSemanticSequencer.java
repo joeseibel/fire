@@ -9,11 +9,13 @@ import fire.fire.AndExpression;
 import fire.fire.AssignmentStatement;
 import fire.fire.BooleanLiteral;
 import fire.fire.ComparisonExpression;
+import fire.fire.ElseIfExpression;
 import fire.fire.ElseIfStatement;
 import fire.fire.ElseStatement;
 import fire.fire.EqualityExpression;
 import fire.fire.FirePackage;
 import fire.fire.IdExpression;
+import fire.fire.IfExpression;
 import fire.fire.IfStatement;
 import fire.fire.IntegerLiteral;
 import fire.fire.MultiplicativeExpression;
@@ -68,6 +70,9 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case FirePackage.COMPARISON_EXPRESSION:
 				sequence_ComparisonExpression(context, (ComparisonExpression) semanticObject); 
 				return; 
+			case FirePackage.ELSE_IF_EXPRESSION:
+				sequence_ElseIfExpression(context, (ElseIfExpression) semanticObject); 
+				return; 
 			case FirePackage.ELSE_IF_STATEMENT:
 				sequence_ElseIfStatement(context, (ElseIfStatement) semanticObject); 
 				return; 
@@ -79,6 +84,9 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				return; 
 			case FirePackage.ID_EXPRESSION:
 				sequence_TerminalExpression(context, (IdExpression) semanticObject); 
+				return; 
+			case FirePackage.IF_EXPRESSION:
+				sequence_IfExpression(context, (IfExpression) semanticObject); 
 				return; 
 			case FirePackage.IF_STATEMENT:
 				sequence_IfStatement(context, (IfStatement) semanticObject); 
@@ -137,13 +145,13 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     ComparisonExpression returns AdditiveExpression
 	 *     ComparisonExpression.ComparisonExpression_1_0 returns AdditiveExpression
 	 *     AdditiveExpression returns AdditiveExpression
-	 *     AdditiveExpression.AdditiveExpression_1_0 returns AdditiveExpression
+	 *     AdditiveExpression.AdditiveExpression_1_0_0_0 returns AdditiveExpression
 	 *     MultiplicativeExpression returns AdditiveExpression
 	 *     MultiplicativeExpression.MultiplicativeExpression_1_0 returns AdditiveExpression
 	 *     TerminalExpression returns AdditiveExpression
 	 *
 	 * Constraint:
-	 *     (left=AdditiveExpression_AdditiveExpression_1_0 operator=AdditiveOperator right=MultiplicativeExpression)
+	 *     (left=AdditiveExpression_AdditiveExpression_1_0_0_0 operator=AdditiveOperator right=MultiplicativeExpression)
 	 */
 	protected void sequence_AdditiveExpression(ISerializationContext context, AdditiveExpression semanticObject) {
 		if (errorAcceptor != null) {
@@ -155,9 +163,9 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FirePackage.Literals.ADDITIVE_EXPRESSION__RIGHT));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getAdditiveExpressionAccess().getAdditiveExpressionLeftAction_1_0(), semanticObject.getLeft());
-		feeder.accept(grammarAccess.getAdditiveExpressionAccess().getOperatorAdditiveOperatorEnumRuleCall_1_1_0(), semanticObject.getOperator());
-		feeder.accept(grammarAccess.getAdditiveExpressionAccess().getRightMultiplicativeExpressionParserRuleCall_1_2_0(), semanticObject.getRight());
+		feeder.accept(grammarAccess.getAdditiveExpressionAccess().getAdditiveExpressionLeftAction_1_0_0_0(), semanticObject.getLeft());
+		feeder.accept(grammarAccess.getAdditiveExpressionAccess().getOperatorAdditiveOperatorEnumRuleCall_1_0_0_1_0(), semanticObject.getOperator());
+		feeder.accept(grammarAccess.getAdditiveExpressionAccess().getRightMultiplicativeExpressionParserRuleCall_1_1_0(), semanticObject.getRight());
 		feeder.finish();
 	}
 	
@@ -175,7 +183,7 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     ComparisonExpression returns AndExpression
 	 *     ComparisonExpression.ComparisonExpression_1_0 returns AndExpression
 	 *     AdditiveExpression returns AndExpression
-	 *     AdditiveExpression.AdditiveExpression_1_0 returns AndExpression
+	 *     AdditiveExpression.AdditiveExpression_1_0_0_0 returns AndExpression
 	 *     MultiplicativeExpression returns AndExpression
 	 *     MultiplicativeExpression.MultiplicativeExpression_1_0 returns AndExpression
 	 *     TerminalExpression returns AndExpression
@@ -210,7 +218,7 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     ComparisonExpression returns ComparisonExpression
 	 *     ComparisonExpression.ComparisonExpression_1_0 returns ComparisonExpression
 	 *     AdditiveExpression returns ComparisonExpression
-	 *     AdditiveExpression.AdditiveExpression_1_0 returns ComparisonExpression
+	 *     AdditiveExpression.AdditiveExpression_1_0_0_0 returns ComparisonExpression
 	 *     MultiplicativeExpression returns ComparisonExpression
 	 *     MultiplicativeExpression.MultiplicativeExpression_1_0 returns ComparisonExpression
 	 *     TerminalExpression returns ComparisonExpression
@@ -232,6 +240,18 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		feeder.accept(grammarAccess.getComparisonExpressionAccess().getOperatorComparisonOperatorEnumRuleCall_1_1_0(), semanticObject.getOperator());
 		feeder.accept(grammarAccess.getComparisonExpressionAccess().getRightAdditiveExpressionParserRuleCall_1_2_0(), semanticObject.getRight());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     ElseIfExpression returns ElseIfExpression
+	 *
+	 * Constraint:
+	 *     (condition=Expression thenStatements+=Statement* thenValue=Expression)
+	 */
+	protected void sequence_ElseIfExpression(ISerializationContext context, ElseIfExpression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -272,7 +292,7 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     ComparisonExpression returns EqualityExpression
 	 *     ComparisonExpression.ComparisonExpression_1_0 returns EqualityExpression
 	 *     AdditiveExpression returns EqualityExpression
-	 *     AdditiveExpression.AdditiveExpression_1_0 returns EqualityExpression
+	 *     AdditiveExpression.AdditiveExpression_1_0_0_0 returns EqualityExpression
 	 *     MultiplicativeExpression returns EqualityExpression
 	 *     MultiplicativeExpression.MultiplicativeExpression_1_0 returns EqualityExpression
 	 *     TerminalExpression returns EqualityExpression
@@ -310,7 +330,7 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     ComparisonExpression returns OrExpression
 	 *     ComparisonExpression.ComparisonExpression_1_0 returns OrExpression
 	 *     AdditiveExpression returns OrExpression
-	 *     AdditiveExpression.AdditiveExpression_1_0 returns OrExpression
+	 *     AdditiveExpression.AdditiveExpression_1_0_0_0 returns OrExpression
 	 *     MultiplicativeExpression returns OrExpression
 	 *     MultiplicativeExpression.MultiplicativeExpression_1_0 returns OrExpression
 	 *     TerminalExpression returns OrExpression
@@ -329,6 +349,40 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		feeder.accept(grammarAccess.getExpressionAccess().getOrExpressionLeftAction_1_0(), semanticObject.getLeft());
 		feeder.accept(grammarAccess.getExpressionAccess().getRightAndExpressionParserRuleCall_1_2_0(), semanticObject.getRight());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Expression returns IfExpression
+	 *     Expression.OrExpression_1_0 returns IfExpression
+	 *     AndExpression returns IfExpression
+	 *     AndExpression.AndExpression_1_0 returns IfExpression
+	 *     XorExpression returns IfExpression
+	 *     XorExpression.XorExpression_1_0 returns IfExpression
+	 *     EqualityExpression returns IfExpression
+	 *     EqualityExpression.EqualityExpression_1_0 returns IfExpression
+	 *     ComparisonExpression returns IfExpression
+	 *     ComparisonExpression.ComparisonExpression_1_0 returns IfExpression
+	 *     AdditiveExpression returns IfExpression
+	 *     AdditiveExpression.AdditiveExpression_1_0_0_0 returns IfExpression
+	 *     MultiplicativeExpression returns IfExpression
+	 *     MultiplicativeExpression.MultiplicativeExpression_1_0 returns IfExpression
+	 *     TerminalExpression returns IfExpression
+	 *     IfExpression returns IfExpression
+	 *
+	 * Constraint:
+	 *     (
+	 *         condition=Expression 
+	 *         thenStatements+=Statement* 
+	 *         thenValue=Expression 
+	 *         elseIfs+=ElseIfExpression* 
+	 *         elseStatements+=Statement* 
+	 *         elseValue=Expression
+	 *     )
+	 */
+	protected void sequence_IfExpression(ISerializationContext context, IfExpression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -358,7 +412,7 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     ComparisonExpression returns MultiplicativeExpression
 	 *     ComparisonExpression.ComparisonExpression_1_0 returns MultiplicativeExpression
 	 *     AdditiveExpression returns MultiplicativeExpression
-	 *     AdditiveExpression.AdditiveExpression_1_0 returns MultiplicativeExpression
+	 *     AdditiveExpression.AdditiveExpression_1_0_0_0 returns MultiplicativeExpression
 	 *     MultiplicativeExpression returns MultiplicativeExpression
 	 *     MultiplicativeExpression.MultiplicativeExpression_1_0 returns MultiplicativeExpression
 	 *     TerminalExpression returns MultiplicativeExpression
@@ -459,7 +513,7 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     ComparisonExpression returns BooleanLiteral
 	 *     ComparisonExpression.ComparisonExpression_1_0 returns BooleanLiteral
 	 *     AdditiveExpression returns BooleanLiteral
-	 *     AdditiveExpression.AdditiveExpression_1_0 returns BooleanLiteral
+	 *     AdditiveExpression.AdditiveExpression_1_0_0_0 returns BooleanLiteral
 	 *     MultiplicativeExpression returns BooleanLiteral
 	 *     MultiplicativeExpression.MultiplicativeExpression_1_0 returns BooleanLiteral
 	 *     TerminalExpression returns BooleanLiteral
@@ -485,7 +539,7 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     ComparisonExpression returns IdExpression
 	 *     ComparisonExpression.ComparisonExpression_1_0 returns IdExpression
 	 *     AdditiveExpression returns IdExpression
-	 *     AdditiveExpression.AdditiveExpression_1_0 returns IdExpression
+	 *     AdditiveExpression.AdditiveExpression_1_0_0_0 returns IdExpression
 	 *     MultiplicativeExpression returns IdExpression
 	 *     MultiplicativeExpression.MultiplicativeExpression_1_0 returns IdExpression
 	 *     TerminalExpression returns IdExpression
@@ -517,7 +571,7 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     ComparisonExpression returns IntegerLiteral
 	 *     ComparisonExpression.ComparisonExpression_1_0 returns IntegerLiteral
 	 *     AdditiveExpression returns IntegerLiteral
-	 *     AdditiveExpression.AdditiveExpression_1_0 returns IntegerLiteral
+	 *     AdditiveExpression.AdditiveExpression_1_0_0_0 returns IntegerLiteral
 	 *     MultiplicativeExpression returns IntegerLiteral
 	 *     MultiplicativeExpression.MultiplicativeExpression_1_0 returns IntegerLiteral
 	 *     TerminalExpression returns IntegerLiteral
@@ -549,7 +603,7 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     ComparisonExpression returns NegationExpression
 	 *     ComparisonExpression.ComparisonExpression_1_0 returns NegationExpression
 	 *     AdditiveExpression returns NegationExpression
-	 *     AdditiveExpression.AdditiveExpression_1_0 returns NegationExpression
+	 *     AdditiveExpression.AdditiveExpression_1_0_0_0 returns NegationExpression
 	 *     MultiplicativeExpression returns NegationExpression
 	 *     MultiplicativeExpression.MultiplicativeExpression_1_0 returns NegationExpression
 	 *     TerminalExpression returns NegationExpression
@@ -581,7 +635,7 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     ComparisonExpression returns NotExpression
 	 *     ComparisonExpression.ComparisonExpression_1_0 returns NotExpression
 	 *     AdditiveExpression returns NotExpression
-	 *     AdditiveExpression.AdditiveExpression_1_0 returns NotExpression
+	 *     AdditiveExpression.AdditiveExpression_1_0_0_0 returns NotExpression
 	 *     MultiplicativeExpression returns NotExpression
 	 *     MultiplicativeExpression.MultiplicativeExpression_1_0 returns NotExpression
 	 *     TerminalExpression returns NotExpression
@@ -613,7 +667,7 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     ComparisonExpression returns RealLiteral
 	 *     ComparisonExpression.ComparisonExpression_1_0 returns RealLiteral
 	 *     AdditiveExpression returns RealLiteral
-	 *     AdditiveExpression.AdditiveExpression_1_0 returns RealLiteral
+	 *     AdditiveExpression.AdditiveExpression_1_0_0_0 returns RealLiteral
 	 *     MultiplicativeExpression returns RealLiteral
 	 *     MultiplicativeExpression.MultiplicativeExpression_1_0 returns RealLiteral
 	 *     TerminalExpression returns RealLiteral
@@ -645,7 +699,7 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     ComparisonExpression returns StringLiteral
 	 *     ComparisonExpression.ComparisonExpression_1_0 returns StringLiteral
 	 *     AdditiveExpression returns StringLiteral
-	 *     AdditiveExpression.AdditiveExpression_1_0 returns StringLiteral
+	 *     AdditiveExpression.AdditiveExpression_1_0_0_0 returns StringLiteral
 	 *     MultiplicativeExpression returns StringLiteral
 	 *     MultiplicativeExpression.MultiplicativeExpression_1_0 returns StringLiteral
 	 *     TerminalExpression returns StringLiteral
@@ -690,7 +744,7 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     ComparisonExpression returns XorExpression
 	 *     ComparisonExpression.ComparisonExpression_1_0 returns XorExpression
 	 *     AdditiveExpression returns XorExpression
-	 *     AdditiveExpression.AdditiveExpression_1_0 returns XorExpression
+	 *     AdditiveExpression.AdditiveExpression_1_0_0_0 returns XorExpression
 	 *     MultiplicativeExpression returns XorExpression
 	 *     MultiplicativeExpression.MultiplicativeExpression_1_0 returns XorExpression
 	 *     TerminalExpression returns XorExpression

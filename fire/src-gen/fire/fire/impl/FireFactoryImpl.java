@@ -73,6 +73,8 @@ public class FireFactoryImpl extends EFactoryImpl implements FireFactory
       case FirePackage.ELSE_IF_STATEMENT: return createElseIfStatement();
       case FirePackage.ELSE_STATEMENT: return createElseStatement();
       case FirePackage.EXPRESSION: return createExpression();
+      case FirePackage.IF_EXPRESSION: return createIfExpression();
+      case FirePackage.ELSE_IF_EXPRESSION: return createElseIfExpression();
       case FirePackage.VARIABLE_DECLARATION: return createVariableDeclaration();
       case FirePackage.ASSIGNMENT_STATEMENT: return createAssignmentStatement();
       case FirePackage.WRITELN_STATEMENT: return createWritelnStatement();
@@ -220,6 +222,28 @@ public class FireFactoryImpl extends EFactoryImpl implements FireFactory
   {
     ExpressionImpl expression = new ExpressionImpl();
     return expression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public IfExpression createIfExpression()
+  {
+    IfExpressionImpl ifExpression = new IfExpressionImpl();
+    return ifExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ElseIfExpression createElseIfExpression()
+  {
+    ElseIfExpressionImpl elseIfExpression = new ElseIfExpressionImpl();
+    return elseIfExpression;
   }
 
   /**

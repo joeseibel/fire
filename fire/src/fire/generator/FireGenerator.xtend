@@ -5,11 +5,14 @@ import fire.fire.AdditiveExpression
 import fire.fire.AndExpression
 import fire.fire.AssignmentStatement
 import fire.fire.BooleanLiteral
+import fire.fire.BuiltInType
 import fire.fire.ComparisonExpression
+import fire.fire.ElseIfExpression
 import fire.fire.ElseIfStatement
 import fire.fire.EqualityExpression
 import fire.fire.Expression
 import fire.fire.IdExpression
+import fire.fire.IfExpression
 import fire.fire.IfStatement
 import fire.fire.IntegerLiteral
 import fire.fire.MultiplicativeExpression
@@ -36,6 +39,7 @@ import fire.llvm.Type
 import fire.llvm.Value
 import fire.services.FireGrammarAccess
 import java.io.ByteArrayInputStream
+import java.util.ArrayList
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor
 import org.eclipse.xtext.EnumLiteralDeclaration
@@ -88,12 +92,7 @@ class FireGenerator extends AbstractGenerator {
 		if (variable.constant) {
 			generatedVariableDeclarations.put(variable, variable.value.generateExpression)
 		} else {
-			val alloca = builder.createEntryBlockAlloca(switch variable.type {
-				case STRING: builder.int8Ty.pointerTo
-				case BOOLEAN: builder.int1Ty
-				case INTEGER: builder.int64Ty
-				case REAL: builder.doubleTy
-			})
+			val alloca = builder.createEntryBlockAlloca(variable.type.toLLVMType)
 			generatedVariableDeclarations.put(variable, alloca)
 			builder.createStore(variable.value.generateExpression, alloca)
 		}
@@ -369,6 +368,53 @@ class FireGenerator extends AbstractGenerator {
 		}
 	}
 	
+	def private dispatch Value generateExpression(IfExpression expression) {
+		val function = builder.insertBlock.parent
+		val thenBlock = BasicBlock.create(llvmContext, "then", function)
+		val elseIfExpressionAndBlocks = expression.elseIfs.indexed.map[
+			val conditionBlock = BasicBlock.create(llvmContext, "elseIfCondition_" + key, function)
+			val statementBlock = BasicBlock.create(llvmContext, "elseIfThen_" + key, function)
+			new ElseIfExpressionAndBlock(value, conditionBlock, statementBlock)
+		].toList
+		val elseBlock = BasicBlock.create(llvmContext, "else", function)
+		val afterIfBlock = BasicBlock.create(llvmContext, "afterIf", function)
+		val conditionFalseBlock = elseIfExpressionAndBlocks.head?.conditionBlock ?: elseBlock
+		builder.createCondBr(expression.condition.generateExpression, thenBlock, conditionFalseBlock)
+		elseIfExpressionAndBlocks.forEach[expressionAndBlock, index |
+			builder.insertPoint = expressionAndBlock.conditionBlock
+			val conditionValue = expressionAndBlock.elseIfExpression.condition.generateExpression
+			val falseBlock = if (index < elseIfExpressionAndBlocks.size - 1) {
+				elseIfExpressionAndBlocks.get(index + 1).conditionBlock
+			} else {
+				elseBlock
+			}
+			builder.createCondBr(conditionValue, expressionAndBlock.statementBlock, falseBlock)
+		]
+		builder.insertPoint = thenBlock
+		expression.thenStatements.forEach[generateStatement]
+		val thenValue = expression.thenValue.generateExpression
+		builder.createBr(afterIfBlock)
+		val finalThenBlock = builder.insertBlock
+		val finalElseIfBlockAndValues = new ArrayList(elseIfExpressionAndBlocks.map[expressionAndBlock |
+			builder.insertPoint = expressionAndBlock.statementBlock
+			expressionAndBlock.elseIfExpression.thenStatements.forEach[generateStatement]
+			val elseIfThenValue = expressionAndBlock.elseIfExpression.thenValue.generateExpression
+			builder.createBr(afterIfBlock)
+			new BlockAndValue(builder.insertBlock, elseIfThenValue)
+		])
+		builder.insertPoint = elseBlock
+		expression.elseStatements.forEach[generateStatement]
+		val elseValue = expression.elseValue.generateExpression
+		builder.createBr(afterIfBlock)
+		val finalElseBlock = builder.insertBlock
+		builder.insertPoint = afterIfBlock
+		builder.createPHI(expression.type.toLLVMType, 2 + expression.elseIfs.size) => [
+			addIncoming(thenValue, finalThenBlock)
+			finalElseIfBlockAndValues.forEach[blockAndValue | addIncoming(blockAndValue.value, blockAndValue.block)]
+			addIncoming(elseValue, finalElseBlock)
+		]
+	}
+	
 	def private Function getPrintfFunction() {
 		getFunction("printf", builder.int32Ty, #[builder.int8Ty.pointerTo], true)
 	}
@@ -396,10 +442,32 @@ class FireGenerator extends AbstractGenerator {
 		}
 	}
 	
+	def private Type toLLVMType(BuiltInType fireType) {
+		switch fireType {
+			case STRING: builder.int8Ty.pointerTo
+			case BOOLEAN: builder.int1Ty
+			case INTEGER: builder.int64Ty
+			case REAL: builder.doubleTy
+		}
+	}
+	
 	@FinalFieldsConstructor
 	private static class ElseIfStatementAndBlock {
 		val ElseIfStatement elseIfStatement
 		val BasicBlock conditionBlock
 		val BasicBlock statementBlock
+	}
+	
+	@FinalFieldsConstructor
+	private static class ElseIfExpressionAndBlock {
+		val ElseIfExpression elseIfExpression
+		val BasicBlock conditionBlock
+		val BasicBlock statementBlock
+	}
+	
+	@FinalFieldsConstructor
+	private static class BlockAndValue {
+		val BasicBlock block
+		val Value value
 	}
 }
