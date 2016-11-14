@@ -3,6 +3,7 @@
  */
 package fire.fire.impl;
 
+import fire.fire.Callable;
 import fire.fire.FirePackage;
 import fire.fire.Program;
 import fire.fire.Statement;
@@ -29,6 +30,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link fire.fire.impl.ProgramImpl#getCallables <em>Callables</em>}</li>
  *   <li>{@link fire.fire.impl.ProgramImpl#getStatements <em>Statements</em>}</li>
  * </ul>
  *
@@ -36,6 +38,16 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
 {
+  /**
+   * The cached value of the '{@link #getCallables() <em>Callables</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getCallables()
+   * @generated
+   * @ordered
+   */
+  protected EList<Callable> callables;
+
   /**
    * The cached value of the '{@link #getStatements() <em>Statements</em>}' containment reference list.
    * <!-- begin-user-doc -->
@@ -72,6 +84,20 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<Callable> getCallables()
+  {
+    if (callables == null)
+    {
+      callables = new EObjectContainmentEList<Callable>(Callable.class, this, FirePackage.PROGRAM__CALLABLES);
+    }
+    return callables;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EList<Statement> getStatements()
   {
     if (statements == null)
@@ -91,6 +117,8 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
   {
     switch (featureID)
     {
+      case FirePackage.PROGRAM__CALLABLES:
+        return ((InternalEList<?>)getCallables()).basicRemove(otherEnd, msgs);
       case FirePackage.PROGRAM__STATEMENTS:
         return ((InternalEList<?>)getStatements()).basicRemove(otherEnd, msgs);
     }
@@ -107,6 +135,8 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
   {
     switch (featureID)
     {
+      case FirePackage.PROGRAM__CALLABLES:
+        return getCallables();
       case FirePackage.PROGRAM__STATEMENTS:
         return getStatements();
     }
@@ -124,6 +154,10 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
   {
     switch (featureID)
     {
+      case FirePackage.PROGRAM__CALLABLES:
+        getCallables().clear();
+        getCallables().addAll((Collection<? extends Callable>)newValue);
+        return;
       case FirePackage.PROGRAM__STATEMENTS:
         getStatements().clear();
         getStatements().addAll((Collection<? extends Statement>)newValue);
@@ -142,6 +176,9 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
   {
     switch (featureID)
     {
+      case FirePackage.PROGRAM__CALLABLES:
+        getCallables().clear();
+        return;
       case FirePackage.PROGRAM__STATEMENTS:
         getStatements().clear();
         return;
@@ -159,6 +196,8 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
   {
     switch (featureID)
     {
+      case FirePackage.PROGRAM__CALLABLES:
+        return callables != null && !callables.isEmpty();
       case FirePackage.PROGRAM__STATEMENTS:
         return statements != null && !statements.isEmpty();
     }

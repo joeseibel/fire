@@ -329,10 +329,9 @@ class FireGenerator extends AbstractGenerator {
 	}
 	
 	def private dispatch Value generateExpression(IdExpression literal) {
-		if (literal.value.constant) {
-			generatedVariableDeclarations.get(literal.value)
-		} else {
-			builder.createLoad(generatedVariableDeclarations.get(literal.value))
+		switch idElement : literal.value {
+			VariableDeclaration case idElement.constant: generatedVariableDeclarations.get(literal.value)
+			VariableDeclaration: builder.createLoad(generatedVariableDeclarations.get(literal.value))
 		}
 	}
 	

@@ -20,20 +20,20 @@ import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 public class FireSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected FireGrammarAccess grammarAccess;
-	protected AbstractElementAlias match_Statement_SemicolonKeyword_0_7_q;
 	protected AbstractElementAlias match_Statement_SemicolonKeyword_1_4_q;
 	protected AbstractElementAlias match_Statement_SemicolonKeyword_4_5_q;
 	protected AbstractElementAlias match_TerminalExpression_LeftParenthesisKeyword_8_0_a;
 	protected AbstractElementAlias match_TerminalExpression_LeftParenthesisKeyword_8_0_p;
+	protected AbstractElementAlias match_VariableDeclaration_SemicolonKeyword_6_q;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (FireGrammarAccess) access;
-		match_Statement_SemicolonKeyword_0_7_q = new TokenAlias(false, true, grammarAccess.getStatementAccess().getSemicolonKeyword_0_7());
 		match_Statement_SemicolonKeyword_1_4_q = new TokenAlias(false, true, grammarAccess.getStatementAccess().getSemicolonKeyword_1_4());
 		match_Statement_SemicolonKeyword_4_5_q = new TokenAlias(false, true, grammarAccess.getStatementAccess().getSemicolonKeyword_4_5());
 		match_TerminalExpression_LeftParenthesisKeyword_8_0_a = new TokenAlias(true, true, grammarAccess.getTerminalExpressionAccess().getLeftParenthesisKeyword_8_0());
 		match_TerminalExpression_LeftParenthesisKeyword_8_0_p = new TokenAlias(true, false, grammarAccess.getTerminalExpressionAccess().getLeftParenthesisKeyword_8_0());
+		match_VariableDeclaration_SemicolonKeyword_6_q = new TokenAlias(false, true, grammarAccess.getVariableDeclarationAccess().getSemicolonKeyword_6());
 	}
 	
 	@Override
@@ -48,9 +48,7 @@ public class FireSyntacticSequencer extends AbstractSyntacticSequencer {
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if (match_Statement_SemicolonKeyword_0_7_q.equals(syntax))
-				emit_Statement_SemicolonKeyword_0_7_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_Statement_SemicolonKeyword_1_4_q.equals(syntax))
+			if (match_Statement_SemicolonKeyword_1_4_q.equals(syntax))
 				emit_Statement_SemicolonKeyword_1_4_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_Statement_SemicolonKeyword_4_5_q.equals(syntax))
 				emit_Statement_SemicolonKeyword_4_5_q(semanticObject, getLastNavigableState(), syntaxNodes);
@@ -58,21 +56,12 @@ public class FireSyntacticSequencer extends AbstractSyntacticSequencer {
 				emit_TerminalExpression_LeftParenthesisKeyword_8_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_TerminalExpression_LeftParenthesisKeyword_8_0_p.equals(syntax))
 				emit_TerminalExpression_LeftParenthesisKeyword_8_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_VariableDeclaration_SemicolonKeyword_6_q.equals(syntax))
+				emit_VariableDeclaration_SemicolonKeyword_6_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
 
-	/**
-	 * Ambiguous syntax:
-	 *     ';'?
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     value=Expression (ambiguity) (rule end)
-	 */
-	protected void emit_Statement_SemicolonKeyword_0_7_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
 	/**
 	 * Ambiguous syntax:
 	 *     ';'?
@@ -107,7 +96,7 @@ public class FireSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     (rule start) (ambiguity) value=Double
 	 *     (rule start) (ambiguity) value=Long
 	 *     (rule start) (ambiguity) value=STRING
-	 *     (rule start) (ambiguity) value=[VariableDeclaration|ID]
+	 *     (rule start) (ambiguity) value=[IdElement|ID]
 	 *     (rule start) (ambiguity) value?='true'
 	 *     (rule start) (ambiguity) {AdditiveExpression.left=}
 	 *     (rule start) (ambiguity) {AndExpression.left=}
@@ -135,6 +124,17 @@ public class FireSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     (rule start) (ambiguity) {XorExpression.left=}
 	 */
 	protected void emit_TerminalExpression_LeftParenthesisKeyword_8_0_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     ';'?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     value=Expression (ambiguity) (rule end)
+	 */
+	protected void emit_VariableDeclaration_SemicolonKeyword_6_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

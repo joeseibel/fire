@@ -5,11 +5,13 @@ import fire.fire.AdditiveExpression
 import fire.fire.AssignmentStatement
 import fire.fire.ComparisonExpression
 import fire.fire.FirePackage
+import fire.fire.Function
 import fire.fire.IfExpression
 import fire.fire.IfStatement
 import fire.fire.Program
 import fire.fire.VariableDeclaration
 import fire.fire.WhileLoop
+import fire.fire.WritelnStatement
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EReference
 import org.eclipse.xtext.junit4.InjectWith
@@ -33,9 +35,21 @@ class ScopingTest {
 	extension IScopeProvider
 	
 	@Test
-	def void testScope_VariableDeclaration() {
+	def void testScope_IdElement() {
 		'''
 			program
+				procedure proc1(param1: Integer, param2: Integer, param3: Integer)
+					var procVar1: Integer := param1
+					procVar1 := param2 + param3
+					writeln(procVar1)
+				end
+				
+				function func1(param4: Integer, param5: Integer, param6: Integer): Integer
+					var funcVar1: Integer := param4
+					funcVar1 := param5 + param6
+					funcVar1
+				end
+				
 				var v1: Integer := 1
 				while v1 < 2 do
 					const c1: Integer := 3
@@ -66,6 +80,30 @@ class ScopingTest {
 			end
 		'''.parse => [
 			assertNoIssues
+			callables.get(0) => [
+				"proc1".assertEquals(name)
+				(statements.get(0) as VariableDeclaration).value.assertScope(FirePackage.Literals.ID_EXPRESSION__VALUE, #["param1", "param2", "param3", "procVar1"])
+				statements.get(1) as AssignmentStatement => [
+					assertScope(FirePackage.Literals.ASSIGNMENT_STATEMENT__VARIABLE, #["param1", "param2", "param3", "procVar1"])
+					value as AdditiveExpression => [
+						left.assertScope(FirePackage.Literals.ID_EXPRESSION__VALUE, #["param1", "param2", "param3", "procVar1"])
+						right.assertScope(FirePackage.Literals.ID_EXPRESSION__VALUE, #["param1", "param2", "param3", "procVar1"])
+					]
+				]
+				(statements.get(2) as WritelnStatement).argument.assertScope(FirePackage.Literals.ID_EXPRESSION__VALUE, #["param1", "param2", "param3", "procVar1"])
+			]
+			callables.get(1) as Function => [
+				"func1".assertEquals(name)
+				(statements.get(0) as VariableDeclaration).value.assertScope(FirePackage.Literals.ID_EXPRESSION__VALUE, #["param4", "param5", "param6", "funcVar1"])
+				statements.get(1) as AssignmentStatement => [
+					assertScope(FirePackage.Literals.ASSIGNMENT_STATEMENT__VARIABLE, #["param4", "param5", "param6", "funcVar1"])
+					value as AdditiveExpression => [
+						left.assertScope(FirePackage.Literals.ID_EXPRESSION__VALUE, #["param4", "param5", "param6", "funcVar1"])
+						right.assertScope(FirePackage.Literals.ID_EXPRESSION__VALUE, #["param4", "param5", "param6", "funcVar1"])
+					]
+				]
+				value.assertScope(FirePackage.Literals.ID_EXPRESSION__VALUE, #["param4", "param5", "param6", "funcVar1"])
+			]
 			statements.get(1) as WhileLoop => [
 				(condition as ComparisonExpression).left.assertScope(FirePackage.Literals.ID_EXPRESSION__VALUE, #["v1", "c8"])
 				statements.get(1) as AssignmentStatement => [

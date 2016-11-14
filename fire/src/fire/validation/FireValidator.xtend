@@ -5,12 +5,14 @@ import fire.fire.AdditiveExpression
 import fire.fire.AndExpression
 import fire.fire.AssignmentStatement
 import fire.fire.BuiltInType
+import fire.fire.Callable
 import fire.fire.ComparisonExpression
 import fire.fire.ElseIfExpression
 import fire.fire.ElseIfStatement
 import fire.fire.ElseStatement
 import fire.fire.EqualityExpression
 import fire.fire.FirePackage
+import fire.fire.Function
 import fire.fire.IdExpression
 import fire.fire.IfExpression
 import fire.fire.IfStatement
@@ -18,6 +20,7 @@ import fire.fire.MultiplicativeExpression
 import fire.fire.NegationExpression
 import fire.fire.NotExpression
 import fire.fire.OrExpression
+import fire.fire.Parameter
 import fire.fire.Program
 import fire.fire.VariableDeclaration
 import fire.fire.WhileLoop
@@ -29,6 +32,7 @@ import org.eclipse.xtext.validation.Check
 import static extension fire.FireUtil.getType
 import static extension org.eclipse.emf.ecore.util.EcoreUtil.UsageCrossReferencer.find
 import static extension org.eclipse.emf.ecore.util.EcoreUtil.isAncestor
+import static extension org.eclipse.xtext.EcoreUtil2.getContainerOfType
 import static extension org.eclipse.xtext.nodemodel.util.NodeModelUtils.getNode
 
 class FireValidator extends AbstractFireValidator {
@@ -36,14 +40,47 @@ class FireValidator extends AbstractFireValidator {
 	FireGrammarAccess grammarAccess
 	
 	@Check
-	def void checkDuplicateNames(VariableDeclaration variable) {
+	def void checkDuplicateCallable(Callable callable) {
+		if (callable.getContainerOfType(Program).callables.takeWhile[it != callable].exists[name == callable.name]) {
+			error(callable.name + " is already declared", FirePackage.Literals.CALLABLE__NAME)
+		}
+	}
+	
+	@Check
+	def void typeCheckFunction(Function function) {
+		val valueType = function.value?.type
+		if (valueType != null && function.returnType != null && valueType != function.returnType) {
+			error('''Expected «function.returnType», found «valueType»''', FirePackage.Literals.FUNCTION__VALUE)
+		}
+	}
+	
+	@Check
+	def void checkDuplicateParameter(Parameter parameter) {
+		if (parameter.getContainerOfType(Callable).parameters.takeWhile[it != parameter].exists[name == parameter.name]) {
+			error(parameter.name + " is already declared", FirePackage.Literals.ID_ELEMENT__NAME)
+		}
+	}
+	
+	@Check
+	def void checkUnusedParameter(Parameter parameter) {
+		if (parameter.find(parameter.eContainer).empty) {
+			warning(parameter.name + " is not used", FirePackage.Literals.ID_ELEMENT__NAME)
+		}
+	}
+	
+	@Check
+	def void checkDuplicateVaraibleDeclaration(VariableDeclaration variable) {
 		if (isDuplicateDeclaration(variable.eContainer, variable)) {
-			error(variable.name + " is already declared", variable, FirePackage.Literals.VARIABLE_DECLARATION__NAME)
+			error(variable.name + " is already declared", FirePackage.Literals.ID_ELEMENT__NAME)
 		}
 	}
 	
 	def private static dispatch boolean isDuplicateDeclaration(Program parent, VariableDeclaration variable) {
-		parent.statements.takeWhile[!isAncestor(variable)].filter(VariableDeclaration).exists[name == variable.name]
+		parent.statements.exists[isAncestor(variable)] && parent.statements.takeWhile[!isAncestor(variable)].filter(VariableDeclaration).exists[name == variable.name]
+	}
+	
+	def private static dispatch boolean isDuplicateDeclaration(Callable callable, VariableDeclaration variable) {
+		callable.parameters.exists[name == variable.name] || callable.statements.takeWhile[!isAncestor(variable)].filter(VariableDeclaration).exists[name == variable.name]
 	}
 	
 	def private static dispatch boolean isDuplicateDeclaration(WhileLoop whileLoop, VariableDeclaration variable) {
@@ -104,19 +141,22 @@ class FireValidator extends AbstractFireValidator {
 		val referencingObjects = variable.find(variable.eContainer).map[EObject]
 		if (variable.constant) {
 			if (referencingObjects.empty) {
-				warning(variable.name + " is not used", FirePackage.Literals.VARIABLE_DECLARATION__NAME)
+				warning(variable.name + " is not used", FirePackage.Literals.ID_ELEMENT__NAME)
 			}
 		} else {
 			if (referencingObjects.filter(IdExpression).empty) {
-				warning(variable.name + " is not read", FirePackage.Literals.VARIABLE_DECLARATION__NAME)
+				warning(variable.name + " is not read", FirePackage.Literals.ID_ELEMENT__NAME)
 			}
 		}
 	}
 	
 	@Check
 	def void checkAssignmentToConstant(AssignmentStatement assignment) {
-		if (!assignment.eIsProxy && assignment.variable.constant) {
-			error("Cannot assign a value to a constant", FirePackage.Literals.ASSIGNMENT_STATEMENT__VARIABLE)
+		if (!assignment.eIsProxy) {
+			switch variable : assignment.variable {
+				Parameter: error("Cannot assign a value to a parameter", FirePackage.Literals.ASSIGNMENT_STATEMENT__VARIABLE)
+				VariableDeclaration case variable.constant: error("Cannot assign a value to a constant", FirePackage.Literals.ASSIGNMENT_STATEMENT__VARIABLE)
+			}
 		}
 	}
 	
@@ -126,7 +166,11 @@ class FireValidator extends AbstractFireValidator {
 			assignment.variable.type
 		}
 		val valueType = assignment.value?.type
-		if (variableType != null && valueType != null && !assignment.variable.constant && variableType != valueType) {
+		val assignable = switch variable : assignment.variable {
+			Parameter: false
+			VariableDeclaration: !variable.constant
+		}
+		if (variableType != null && valueType != null && assignable && variableType != valueType) {
 			error('''Expected «variableType», found «valueType»''', FirePackage.Literals.ASSIGNMENT_STATEMENT__VALUE)
 		}
 	}

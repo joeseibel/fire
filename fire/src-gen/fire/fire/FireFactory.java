@@ -33,6 +33,51 @@ public interface FireFactory extends EFactory
   Program createProgram();
 
   /**
+   * Returns a new object of class '<em>Callable</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Callable</em>'.
+   * @generated
+   */
+  Callable createCallable();
+
+  /**
+   * Returns a new object of class '<em>Procedure</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Procedure</em>'.
+   * @generated
+   */
+  Procedure createProcedure();
+
+  /**
+   * Returns a new object of class '<em>Function</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Function</em>'.
+   * @generated
+   */
+  Function createFunction();
+
+  /**
+   * Returns a new object of class '<em>Id Element</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Id Element</em>'.
+   * @generated
+   */
+  IdElement createIdElement();
+
+  /**
+   * Returns a new object of class '<em>Parameter</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Parameter</em>'.
+   * @generated
+   */
+  Parameter createParameter();
+
+  /**
    * Returns a new object of class '<em>Statement</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -40,6 +85,15 @@ public interface FireFactory extends EFactory
    * @generated
    */
   Statement createStatement();
+
+  /**
+   * Returns a new object of class '<em>Variable Declaration</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Variable Declaration</em>'.
+   * @generated
+   */
+  VariableDeclaration createVariableDeclaration();
 
   /**
    * Returns a new object of class '<em>While Loop</em>'.
@@ -103,15 +157,6 @@ public interface FireFactory extends EFactory
    * @generated
    */
   ElseIfExpression createElseIfExpression();
-
-  /**
-   * Returns a new object of class '<em>Variable Declaration</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Variable Declaration</em>'.
-   * @generated
-   */
-  VariableDeclaration createVariableDeclaration();
 
   /**
    * Returns a new object of class '<em>Assignment Statement</em>'.

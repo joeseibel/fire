@@ -4,8 +4,8 @@
 package fire.fire.impl;
 
 import fire.fire.FirePackage;
+import fire.fire.IdElement;
 import fire.fire.IdExpression;
-import fire.fire.VariableDeclaration;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -37,7 +37,7 @@ public class IdExpressionImpl extends ExpressionImpl implements IdExpression
    * @generated
    * @ordered
    */
-  protected VariableDeclaration value;
+  protected IdElement value;
 
   /**
    * <!-- begin-user-doc -->
@@ -65,12 +65,12 @@ public class IdExpressionImpl extends ExpressionImpl implements IdExpression
    * <!-- end-user-doc -->
    * @generated
    */
-  public VariableDeclaration getValue()
+  public IdElement getValue()
   {
     if (value != null && value.eIsProxy())
     {
       InternalEObject oldValue = (InternalEObject)value;
-      value = (VariableDeclaration)eResolveProxy(oldValue);
+      value = (IdElement)eResolveProxy(oldValue);
       if (value != oldValue)
       {
         if (eNotificationRequired())
@@ -85,7 +85,7 @@ public class IdExpressionImpl extends ExpressionImpl implements IdExpression
    * <!-- end-user-doc -->
    * @generated
    */
-  public VariableDeclaration basicGetValue()
+  public IdElement basicGetValue()
   {
     return value;
   }
@@ -95,9 +95,9 @@ public class IdExpressionImpl extends ExpressionImpl implements IdExpression
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setValue(VariableDeclaration newValue)
+  public void setValue(IdElement newValue)
   {
-    VariableDeclaration oldValue = value;
+    IdElement oldValue = value;
     value = newValue;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, FirePackage.ID_EXPRESSION__VALUE, oldValue, value));
@@ -131,7 +131,7 @@ public class IdExpressionImpl extends ExpressionImpl implements IdExpression
     switch (featureID)
     {
       case FirePackage.ID_EXPRESSION__VALUE:
-        setValue((VariableDeclaration)newValue);
+        setValue((IdElement)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -148,7 +148,7 @@ public class IdExpressionImpl extends ExpressionImpl implements IdExpression
     switch (featureID)
     {
       case FirePackage.ID_EXPRESSION__VALUE:
-        setValue((VariableDeclaration)null);
+        setValue((IdElement)null);
         return;
     }
     super.eUnset(featureID);

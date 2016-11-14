@@ -14,8 +14,6 @@ package fire.fire;
  * </p>
  * <ul>
  *   <li>{@link fire.fire.VariableDeclaration#isConstant <em>Constant</em>}</li>
- *   <li>{@link fire.fire.VariableDeclaration#getName <em>Name</em>}</li>
- *   <li>{@link fire.fire.VariableDeclaration#getType <em>Type</em>}</li>
  *   <li>{@link fire.fire.VariableDeclaration#getValue <em>Value</em>}</li>
  * </ul>
  *
@@ -23,7 +21,7 @@ package fire.fire;
  * @model
  * @generated
  */
-public interface VariableDeclaration extends Statement
+public interface VariableDeclaration extends IdElement, Statement
 {
   /**
    * Returns the value of the '<em><b>Constant</b></em>' attribute.
@@ -50,61 +48,6 @@ public interface VariableDeclaration extends Statement
    * @generated
    */
   void setConstant(boolean value);
-
-  /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Name</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Name</em>' attribute.
-   * @see #setName(String)
-   * @see fire.fire.FirePackage#getVariableDeclaration_Name()
-   * @model
-   * @generated
-   */
-  String getName();
-
-  /**
-   * Sets the value of the '{@link fire.fire.VariableDeclaration#getName <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name</em>' attribute.
-   * @see #getName()
-   * @generated
-   */
-  void setName(String value);
-
-  /**
-   * Returns the value of the '<em><b>Type</b></em>' attribute.
-   * The literals are from the enumeration {@link fire.fire.BuiltInType}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Type</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Type</em>' attribute.
-   * @see fire.fire.BuiltInType
-   * @see #setType(BuiltInType)
-   * @see fire.fire.FirePackage#getVariableDeclaration_Type()
-   * @model
-   * @generated
-   */
-  BuiltInType getType();
-
-  /**
-   * Sets the value of the '{@link fire.fire.VariableDeclaration#getType <em>Type</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Type</em>' attribute.
-   * @see fire.fire.BuiltInType
-   * @see #getType()
-   * @generated
-   */
-  void setType(BuiltInType value);
 
   /**
    * Returns the value of the '<em><b>Value</b></em>' containment reference.

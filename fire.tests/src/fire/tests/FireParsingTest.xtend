@@ -14,6 +14,7 @@ import fire.fire.ComparisonExpression
 import fire.fire.ComparisonOperator
 import fire.fire.EqualityExpression
 import fire.fire.EqualityOperator
+import fire.fire.Function
 import fire.fire.IdExpression
 import fire.fire.IfExpression
 import fire.fire.IfStatement
@@ -23,6 +24,7 @@ import fire.fire.MultiplicativeOperator
 import fire.fire.NegationExpression
 import fire.fire.NotExpression
 import fire.fire.OrExpression
+import fire.fire.Procedure
 import fire.fire.Program
 import fire.fire.RealLiteral
 import fire.fire.StringLiteral
@@ -57,6 +59,131 @@ class FireParsingTest{
 			end
 		'''.parse => [
 			assertNoIssues
+		]
+	}
+	
+	@Test
+	def void testProcedure() {
+		'''
+			program
+				procedure proc1()
+				end
+				
+				procedure proc2(param1: Boolean)
+					writeln(param1)
+				end
+				
+				procedure proc3(param2: Integer, param3: String, param4: Real)
+					writeln(param2)
+					writeln(param3)
+					writeln(param4)
+				end
+			end
+		'''.parse => [
+			assertNoIssues
+			3.assertEquals(callables.size)
+			callables.get(0) as Procedure => [
+				"proc1".assertEquals(name)
+				parameters.empty.assertTrue
+				statements.empty.assertTrue
+			]
+			callables.get(1) as Procedure => [
+				"proc2".assertEquals(name)
+				1.assertEquals(parameters.size)
+				parameters.head => [
+					"param1".assertEquals(name)
+					BuiltInType.BOOLEAN.assertEquals(type)
+				]
+				1.assertEquals(statements.size)
+				"param1".assertEquals(((statements.head as WritelnStatement).argument as IdExpression).value.name)
+			]
+			callables.get(2) as Procedure => [
+				"proc3".assertEquals(name)
+				3.assertEquals(parameters.size)
+				parameters.get(0) => [
+					"param2".assertEquals(name)
+					BuiltInType.INTEGER.assertEquals(type)
+				]
+				parameters.get(1) => [
+					"param3".assertEquals(name)
+					BuiltInType.STRING.assertEquals(type)
+				]
+				parameters.get(2) => [
+					"param4".assertEquals(name)
+					BuiltInType.REAL.assertEquals(type)
+				]
+				3.assertEquals(statements.size)
+				"param2".assertEquals(((statements.get(0) as WritelnStatement).argument as IdExpression).value.name)
+				"param3".assertEquals(((statements.get(1) as WritelnStatement).argument as IdExpression).value.name)
+				"param4".assertEquals(((statements.get(2) as WritelnStatement).argument as IdExpression).value.name)
+			]
+		]
+	}
+	
+	@Test
+	def void testFunction() {
+		'''
+			program
+				function func1(): Integer
+					1
+				end
+				
+				function func2(param1: Real): Real
+					writeln(param1)
+					param1
+				end
+				
+				function func3(param2: String, param3: Boolean, param4: Integer): Integer
+					writeln(param2)
+					writeln(param3)
+					writeln(param4)
+					param4
+				end
+			end
+		'''.parse => [
+			assertNoIssues
+			3.assertEquals(callables.size)
+			callables.get(0) as Function => [
+				"func1".assertEquals(name)
+				parameters.empty.assertTrue
+				BuiltInType.INTEGER.assertEquals(returnType)
+				statements.empty.assertTrue
+				1.assertEquals((value as IntegerLiteral).value)
+			]
+			callables.get(1) as Function => [
+				"func2".assertEquals(name)
+				1.assertEquals(parameters.size)
+				parameters.head => [
+					"param1".assertEquals(name)
+					BuiltInType.REAL.assertEquals(type)
+				]
+				BuiltInType.REAL.assertEquals(returnType)
+				1.assertEquals(statements.size)
+				"param1".assertEquals(((statements.head as WritelnStatement).argument as IdExpression).value.name)
+				"param1".assertEquals((value as IdExpression).value.name)
+			]
+			callables.get(2) as Function => [
+				"func3".assertEquals(name)
+				3.assertEquals(parameters.size)
+				parameters.get(0) => [
+					"param2".assertEquals(name)
+					BuiltInType.STRING.assertEquals(type)
+				]
+				parameters.get(1) => [
+					"param3".assertEquals(name)
+					BuiltInType.BOOLEAN.assertEquals(type)
+				]
+				parameters.get(2) => [
+					"param4".assertEquals(name)
+					BuiltInType.INTEGER.assertEquals(type)
+				]
+				BuiltInType.INTEGER.assertEquals(returnType)
+				3.assertEquals(statements.size)
+				"param2".assertEquals(((statements.get(0) as WritelnStatement).argument as IdExpression).value.name)
+				"param3".assertEquals(((statements.get(1) as WritelnStatement).argument as IdExpression).value.name)
+				"param4".assertEquals(((statements.get(2) as WritelnStatement).argument as IdExpression).value.name)
+				"param4".assertEquals((value as IdExpression).value.name)
+			]
 		]
 	}
 	

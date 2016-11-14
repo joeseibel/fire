@@ -69,13 +69,22 @@ public interface FirePackage extends EPackage
   int PROGRAM = 0;
 
   /**
+   * The feature id for the '<em><b>Callables</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROGRAM__CALLABLES = 0;
+
+  /**
    * The feature id for the '<em><b>Statements</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PROGRAM__STATEMENTS = 0;
+  int PROGRAM__STATEMENTS = 1;
 
   /**
    * The number of structural features of the '<em>Program</em>' class.
@@ -84,7 +93,237 @@ public interface FirePackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROGRAM_FEATURE_COUNT = 1;
+  int PROGRAM_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link fire.fire.impl.CallableImpl <em>Callable</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see fire.fire.impl.CallableImpl
+   * @see fire.fire.impl.FirePackageImpl#getCallable()
+   * @generated
+   */
+  int CALLABLE = 1;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CALLABLE__NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CALLABLE__PARAMETERS = 1;
+
+  /**
+   * The feature id for the '<em><b>Statements</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CALLABLE__STATEMENTS = 2;
+
+  /**
+   * The number of structural features of the '<em>Callable</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CALLABLE_FEATURE_COUNT = 3;
+
+  /**
+   * The meta object id for the '{@link fire.fire.impl.ProcedureImpl <em>Procedure</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see fire.fire.impl.ProcedureImpl
+   * @see fire.fire.impl.FirePackageImpl#getProcedure()
+   * @generated
+   */
+  int PROCEDURE = 2;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROCEDURE__NAME = CALLABLE__NAME;
+
+  /**
+   * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROCEDURE__PARAMETERS = CALLABLE__PARAMETERS;
+
+  /**
+   * The feature id for the '<em><b>Statements</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROCEDURE__STATEMENTS = CALLABLE__STATEMENTS;
+
+  /**
+   * The number of structural features of the '<em>Procedure</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROCEDURE_FEATURE_COUNT = CALLABLE_FEATURE_COUNT + 0;
+
+  /**
+   * The meta object id for the '{@link fire.fire.impl.FunctionImpl <em>Function</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see fire.fire.impl.FunctionImpl
+   * @see fire.fire.impl.FirePackageImpl#getFunction()
+   * @generated
+   */
+  int FUNCTION = 3;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNCTION__NAME = CALLABLE__NAME;
+
+  /**
+   * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNCTION__PARAMETERS = CALLABLE__PARAMETERS;
+
+  /**
+   * The feature id for the '<em><b>Statements</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNCTION__STATEMENTS = CALLABLE__STATEMENTS;
+
+  /**
+   * The feature id for the '<em><b>Return Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNCTION__RETURN_TYPE = CALLABLE_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNCTION__VALUE = CALLABLE_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Function</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNCTION_FEATURE_COUNT = CALLABLE_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link fire.fire.impl.IdElementImpl <em>Id Element</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see fire.fire.impl.IdElementImpl
+   * @see fire.fire.impl.FirePackageImpl#getIdElement()
+   * @generated
+   */
+  int ID_ELEMENT = 4;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ID_ELEMENT__NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ID_ELEMENT__TYPE = 1;
+
+  /**
+   * The number of structural features of the '<em>Id Element</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ID_ELEMENT_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link fire.fire.impl.ParameterImpl <em>Parameter</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see fire.fire.impl.ParameterImpl
+   * @see fire.fire.impl.FirePackageImpl#getParameter()
+   * @generated
+   */
+  int PARAMETER = 5;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAMETER__NAME = ID_ELEMENT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAMETER__TYPE = ID_ELEMENT__TYPE;
+
+  /**
+   * The number of structural features of the '<em>Parameter</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAMETER_FEATURE_COUNT = ID_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link fire.fire.impl.StatementImpl <em>Statement</em>}' class.
@@ -94,7 +333,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getStatement()
    * @generated
    */
-  int STATEMENT = 1;
+  int STATEMENT = 6;
 
   /**
    * The number of structural features of the '<em>Statement</em>' class.
@@ -106,6 +345,61 @@ public interface FirePackage extends EPackage
   int STATEMENT_FEATURE_COUNT = 0;
 
   /**
+   * The meta object id for the '{@link fire.fire.impl.VariableDeclarationImpl <em>Variable Declaration</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see fire.fire.impl.VariableDeclarationImpl
+   * @see fire.fire.impl.FirePackageImpl#getVariableDeclaration()
+   * @generated
+   */
+  int VARIABLE_DECLARATION = 7;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARIABLE_DECLARATION__NAME = ID_ELEMENT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARIABLE_DECLARATION__TYPE = ID_ELEMENT__TYPE;
+
+  /**
+   * The feature id for the '<em><b>Constant</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARIABLE_DECLARATION__CONSTANT = ID_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARIABLE_DECLARATION__VALUE = ID_ELEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Variable Declaration</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARIABLE_DECLARATION_FEATURE_COUNT = ID_ELEMENT_FEATURE_COUNT + 2;
+
+  /**
    * The meta object id for the '{@link fire.fire.impl.WhileLoopImpl <em>While Loop</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -113,7 +407,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getWhileLoop()
    * @generated
    */
-  int WHILE_LOOP = 2;
+  int WHILE_LOOP = 8;
 
   /**
    * The feature id for the '<em><b>Condition</b></em>' containment reference.
@@ -150,7 +444,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getIfStatement()
    * @generated
    */
-  int IF_STATEMENT = 3;
+  int IF_STATEMENT = 9;
 
   /**
    * The feature id for the '<em><b>Condition</b></em>' containment reference.
@@ -205,7 +499,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getElseIfStatement()
    * @generated
    */
-  int ELSE_IF_STATEMENT = 4;
+  int ELSE_IF_STATEMENT = 10;
 
   /**
    * The feature id for the '<em><b>Condition</b></em>' containment reference.
@@ -242,7 +536,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getElseStatement()
    * @generated
    */
-  int ELSE_STATEMENT = 5;
+  int ELSE_STATEMENT = 11;
 
   /**
    * The feature id for the '<em><b>Else Statements</b></em>' containment reference list.
@@ -270,7 +564,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getExpression()
    * @generated
    */
-  int EXPRESSION = 6;
+  int EXPRESSION = 12;
 
   /**
    * The number of structural features of the '<em>Expression</em>' class.
@@ -289,7 +583,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getIfExpression()
    * @generated
    */
-  int IF_EXPRESSION = 7;
+  int IF_EXPRESSION = 13;
 
   /**
    * The feature id for the '<em><b>Condition</b></em>' containment reference.
@@ -362,7 +656,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getElseIfExpression()
    * @generated
    */
-  int ELSE_IF_EXPRESSION = 8;
+  int ELSE_IF_EXPRESSION = 14;
 
   /**
    * The feature id for the '<em><b>Condition</b></em>' containment reference.
@@ -401,61 +695,6 @@ public interface FirePackage extends EPackage
   int ELSE_IF_EXPRESSION_FEATURE_COUNT = 3;
 
   /**
-   * The meta object id for the '{@link fire.fire.impl.VariableDeclarationImpl <em>Variable Declaration</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see fire.fire.impl.VariableDeclarationImpl
-   * @see fire.fire.impl.FirePackageImpl#getVariableDeclaration()
-   * @generated
-   */
-  int VARIABLE_DECLARATION = 9;
-
-  /**
-   * The feature id for the '<em><b>Constant</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VARIABLE_DECLARATION__CONSTANT = STATEMENT_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VARIABLE_DECLARATION__NAME = STATEMENT_FEATURE_COUNT + 1;
-
-  /**
-   * The feature id for the '<em><b>Type</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VARIABLE_DECLARATION__TYPE = STATEMENT_FEATURE_COUNT + 2;
-
-  /**
-   * The feature id for the '<em><b>Value</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VARIABLE_DECLARATION__VALUE = STATEMENT_FEATURE_COUNT + 3;
-
-  /**
-   * The number of structural features of the '<em>Variable Declaration</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VARIABLE_DECLARATION_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 4;
-
-  /**
    * The meta object id for the '{@link fire.fire.impl.AssignmentStatementImpl <em>Assignment Statement</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -463,7 +702,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getAssignmentStatement()
    * @generated
    */
-  int ASSIGNMENT_STATEMENT = 10;
+  int ASSIGNMENT_STATEMENT = 15;
 
   /**
    * The feature id for the '<em><b>Variable</b></em>' reference.
@@ -500,7 +739,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getWritelnStatement()
    * @generated
    */
-  int WRITELN_STATEMENT = 11;
+  int WRITELN_STATEMENT = 16;
 
   /**
    * The feature id for the '<em><b>Argument</b></em>' containment reference.
@@ -528,7 +767,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getOrExpression()
    * @generated
    */
-  int OR_EXPRESSION = 12;
+  int OR_EXPRESSION = 17;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -565,7 +804,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getAndExpression()
    * @generated
    */
-  int AND_EXPRESSION = 13;
+  int AND_EXPRESSION = 18;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -602,7 +841,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getXorExpression()
    * @generated
    */
-  int XOR_EXPRESSION = 14;
+  int XOR_EXPRESSION = 19;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -639,7 +878,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getEqualityExpression()
    * @generated
    */
-  int EQUALITY_EXPRESSION = 15;
+  int EQUALITY_EXPRESSION = 20;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -685,7 +924,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getComparisonExpression()
    * @generated
    */
-  int COMPARISON_EXPRESSION = 16;
+  int COMPARISON_EXPRESSION = 21;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -731,7 +970,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getAdditiveExpression()
    * @generated
    */
-  int ADDITIVE_EXPRESSION = 17;
+  int ADDITIVE_EXPRESSION = 22;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -777,7 +1016,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getMultiplicativeExpression()
    * @generated
    */
-  int MULTIPLICATIVE_EXPRESSION = 18;
+  int MULTIPLICATIVE_EXPRESSION = 23;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -823,7 +1062,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getIdExpression()
    * @generated
    */
-  int ID_EXPRESSION = 19;
+  int ID_EXPRESSION = 24;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' reference.
@@ -851,7 +1090,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getStringLiteral()
    * @generated
    */
-  int STRING_LITERAL = 20;
+  int STRING_LITERAL = 25;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -879,7 +1118,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getBooleanLiteral()
    * @generated
    */
-  int BOOLEAN_LITERAL = 21;
+  int BOOLEAN_LITERAL = 26;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -907,7 +1146,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getIntegerLiteral()
    * @generated
    */
-  int INTEGER_LITERAL = 22;
+  int INTEGER_LITERAL = 27;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -935,7 +1174,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getRealLiteral()
    * @generated
    */
-  int REAL_LITERAL = 23;
+  int REAL_LITERAL = 28;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -963,7 +1202,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getNotExpression()
    * @generated
    */
-  int NOT_EXPRESSION = 24;
+  int NOT_EXPRESSION = 29;
 
   /**
    * The feature id for the '<em><b>Operand</b></em>' containment reference.
@@ -991,7 +1230,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getNegationExpression()
    * @generated
    */
-  int NEGATION_EXPRESSION = 25;
+  int NEGATION_EXPRESSION = 30;
 
   /**
    * The feature id for the '<em><b>Operand</b></em>' containment reference.
@@ -1019,7 +1258,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getBuiltInType()
    * @generated
    */
-  int BUILT_IN_TYPE = 26;
+  int BUILT_IN_TYPE = 31;
 
   /**
    * The meta object id for the '{@link fire.fire.EqualityOperator <em>Equality Operator</em>}' enum.
@@ -1029,7 +1268,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getEqualityOperator()
    * @generated
    */
-  int EQUALITY_OPERATOR = 27;
+  int EQUALITY_OPERATOR = 32;
 
   /**
    * The meta object id for the '{@link fire.fire.ComparisonOperator <em>Comparison Operator</em>}' enum.
@@ -1039,7 +1278,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getComparisonOperator()
    * @generated
    */
-  int COMPARISON_OPERATOR = 28;
+  int COMPARISON_OPERATOR = 33;
 
   /**
    * The meta object id for the '{@link fire.fire.AdditiveOperator <em>Additive Operator</em>}' enum.
@@ -1049,7 +1288,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getAdditiveOperator()
    * @generated
    */
-  int ADDITIVE_OPERATOR = 29;
+  int ADDITIVE_OPERATOR = 34;
 
   /**
    * The meta object id for the '{@link fire.fire.MultiplicativeOperator <em>Multiplicative Operator</em>}' enum.
@@ -1059,7 +1298,7 @@ public interface FirePackage extends EPackage
    * @see fire.fire.impl.FirePackageImpl#getMultiplicativeOperator()
    * @generated
    */
-  int MULTIPLICATIVE_OPERATOR = 30;
+  int MULTIPLICATIVE_OPERATOR = 35;
 
 
   /**
@@ -1073,6 +1312,17 @@ public interface FirePackage extends EPackage
   EClass getProgram();
 
   /**
+   * Returns the meta object for the containment reference list '{@link fire.fire.Program#getCallables <em>Callables</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Callables</em>'.
+   * @see fire.fire.Program#getCallables()
+   * @see #getProgram()
+   * @generated
+   */
+  EReference getProgram_Callables();
+
+  /**
    * Returns the meta object for the containment reference list '{@link fire.fire.Program#getStatements <em>Statements</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1084,6 +1334,133 @@ public interface FirePackage extends EPackage
   EReference getProgram_Statements();
 
   /**
+   * Returns the meta object for class '{@link fire.fire.Callable <em>Callable</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Callable</em>'.
+   * @see fire.fire.Callable
+   * @generated
+   */
+  EClass getCallable();
+
+  /**
+   * Returns the meta object for the attribute '{@link fire.fire.Callable#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see fire.fire.Callable#getName()
+   * @see #getCallable()
+   * @generated
+   */
+  EAttribute getCallable_Name();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link fire.fire.Callable#getParameters <em>Parameters</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Parameters</em>'.
+   * @see fire.fire.Callable#getParameters()
+   * @see #getCallable()
+   * @generated
+   */
+  EReference getCallable_Parameters();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link fire.fire.Callable#getStatements <em>Statements</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Statements</em>'.
+   * @see fire.fire.Callable#getStatements()
+   * @see #getCallable()
+   * @generated
+   */
+  EReference getCallable_Statements();
+
+  /**
+   * Returns the meta object for class '{@link fire.fire.Procedure <em>Procedure</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Procedure</em>'.
+   * @see fire.fire.Procedure
+   * @generated
+   */
+  EClass getProcedure();
+
+  /**
+   * Returns the meta object for class '{@link fire.fire.Function <em>Function</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Function</em>'.
+   * @see fire.fire.Function
+   * @generated
+   */
+  EClass getFunction();
+
+  /**
+   * Returns the meta object for the attribute '{@link fire.fire.Function#getReturnType <em>Return Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Return Type</em>'.
+   * @see fire.fire.Function#getReturnType()
+   * @see #getFunction()
+   * @generated
+   */
+  EAttribute getFunction_ReturnType();
+
+  /**
+   * Returns the meta object for the containment reference '{@link fire.fire.Function#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Value</em>'.
+   * @see fire.fire.Function#getValue()
+   * @see #getFunction()
+   * @generated
+   */
+  EReference getFunction_Value();
+
+  /**
+   * Returns the meta object for class '{@link fire.fire.IdElement <em>Id Element</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Id Element</em>'.
+   * @see fire.fire.IdElement
+   * @generated
+   */
+  EClass getIdElement();
+
+  /**
+   * Returns the meta object for the attribute '{@link fire.fire.IdElement#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see fire.fire.IdElement#getName()
+   * @see #getIdElement()
+   * @generated
+   */
+  EAttribute getIdElement_Name();
+
+  /**
+   * Returns the meta object for the attribute '{@link fire.fire.IdElement#getType <em>Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Type</em>'.
+   * @see fire.fire.IdElement#getType()
+   * @see #getIdElement()
+   * @generated
+   */
+  EAttribute getIdElement_Type();
+
+  /**
+   * Returns the meta object for class '{@link fire.fire.Parameter <em>Parameter</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Parameter</em>'.
+   * @see fire.fire.Parameter
+   * @generated
+   */
+  EClass getParameter();
+
+  /**
    * Returns the meta object for class '{@link fire.fire.Statement <em>Statement</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1092,6 +1469,38 @@ public interface FirePackage extends EPackage
    * @generated
    */
   EClass getStatement();
+
+  /**
+   * Returns the meta object for class '{@link fire.fire.VariableDeclaration <em>Variable Declaration</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Variable Declaration</em>'.
+   * @see fire.fire.VariableDeclaration
+   * @generated
+   */
+  EClass getVariableDeclaration();
+
+  /**
+   * Returns the meta object for the attribute '{@link fire.fire.VariableDeclaration#isConstant <em>Constant</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Constant</em>'.
+   * @see fire.fire.VariableDeclaration#isConstant()
+   * @see #getVariableDeclaration()
+   * @generated
+   */
+  EAttribute getVariableDeclaration_Constant();
+
+  /**
+   * Returns the meta object for the containment reference '{@link fire.fire.VariableDeclaration#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Value</em>'.
+   * @see fire.fire.VariableDeclaration#getValue()
+   * @see #getVariableDeclaration()
+   * @generated
+   */
+  EReference getVariableDeclaration_Value();
 
   /**
    * Returns the meta object for class '{@link fire.fire.WhileLoop <em>While Loop</em>}'.
@@ -1360,60 +1769,6 @@ public interface FirePackage extends EPackage
    * @generated
    */
   EReference getElseIfExpression_ThenValue();
-
-  /**
-   * Returns the meta object for class '{@link fire.fire.VariableDeclaration <em>Variable Declaration</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Variable Declaration</em>'.
-   * @see fire.fire.VariableDeclaration
-   * @generated
-   */
-  EClass getVariableDeclaration();
-
-  /**
-   * Returns the meta object for the attribute '{@link fire.fire.VariableDeclaration#isConstant <em>Constant</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Constant</em>'.
-   * @see fire.fire.VariableDeclaration#isConstant()
-   * @see #getVariableDeclaration()
-   * @generated
-   */
-  EAttribute getVariableDeclaration_Constant();
-
-  /**
-   * Returns the meta object for the attribute '{@link fire.fire.VariableDeclaration#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see fire.fire.VariableDeclaration#getName()
-   * @see #getVariableDeclaration()
-   * @generated
-   */
-  EAttribute getVariableDeclaration_Name();
-
-  /**
-   * Returns the meta object for the attribute '{@link fire.fire.VariableDeclaration#getType <em>Type</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Type</em>'.
-   * @see fire.fire.VariableDeclaration#getType()
-   * @see #getVariableDeclaration()
-   * @generated
-   */
-  EAttribute getVariableDeclaration_Type();
-
-  /**
-   * Returns the meta object for the containment reference '{@link fire.fire.VariableDeclaration#getValue <em>Value</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Value</em>'.
-   * @see fire.fire.VariableDeclaration#getValue()
-   * @see #getVariableDeclaration()
-   * @generated
-   */
-  EReference getVariableDeclaration_Value();
 
   /**
    * Returns the meta object for class '{@link fire.fire.AssignmentStatement <em>Assignment Statement</em>}'.
@@ -1967,12 +2322,126 @@ public interface FirePackage extends EPackage
     EClass PROGRAM = eINSTANCE.getProgram();
 
     /**
+     * The meta object literal for the '<em><b>Callables</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PROGRAM__CALLABLES = eINSTANCE.getProgram_Callables();
+
+    /**
      * The meta object literal for the '<em><b>Statements</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EReference PROGRAM__STATEMENTS = eINSTANCE.getProgram_Statements();
+
+    /**
+     * The meta object literal for the '{@link fire.fire.impl.CallableImpl <em>Callable</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see fire.fire.impl.CallableImpl
+     * @see fire.fire.impl.FirePackageImpl#getCallable()
+     * @generated
+     */
+    EClass CALLABLE = eINSTANCE.getCallable();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CALLABLE__NAME = eINSTANCE.getCallable_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CALLABLE__PARAMETERS = eINSTANCE.getCallable_Parameters();
+
+    /**
+     * The meta object literal for the '<em><b>Statements</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CALLABLE__STATEMENTS = eINSTANCE.getCallable_Statements();
+
+    /**
+     * The meta object literal for the '{@link fire.fire.impl.ProcedureImpl <em>Procedure</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see fire.fire.impl.ProcedureImpl
+     * @see fire.fire.impl.FirePackageImpl#getProcedure()
+     * @generated
+     */
+    EClass PROCEDURE = eINSTANCE.getProcedure();
+
+    /**
+     * The meta object literal for the '{@link fire.fire.impl.FunctionImpl <em>Function</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see fire.fire.impl.FunctionImpl
+     * @see fire.fire.impl.FirePackageImpl#getFunction()
+     * @generated
+     */
+    EClass FUNCTION = eINSTANCE.getFunction();
+
+    /**
+     * The meta object literal for the '<em><b>Return Type</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FUNCTION__RETURN_TYPE = eINSTANCE.getFunction_ReturnType();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FUNCTION__VALUE = eINSTANCE.getFunction_Value();
+
+    /**
+     * The meta object literal for the '{@link fire.fire.impl.IdElementImpl <em>Id Element</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see fire.fire.impl.IdElementImpl
+     * @see fire.fire.impl.FirePackageImpl#getIdElement()
+     * @generated
+     */
+    EClass ID_ELEMENT = eINSTANCE.getIdElement();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ID_ELEMENT__NAME = eINSTANCE.getIdElement_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ID_ELEMENT__TYPE = eINSTANCE.getIdElement_Type();
+
+    /**
+     * The meta object literal for the '{@link fire.fire.impl.ParameterImpl <em>Parameter</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see fire.fire.impl.ParameterImpl
+     * @see fire.fire.impl.FirePackageImpl#getParameter()
+     * @generated
+     */
+    EClass PARAMETER = eINSTANCE.getParameter();
 
     /**
      * The meta object literal for the '{@link fire.fire.impl.StatementImpl <em>Statement</em>}' class.
@@ -1983,6 +2452,32 @@ public interface FirePackage extends EPackage
      * @generated
      */
     EClass STATEMENT = eINSTANCE.getStatement();
+
+    /**
+     * The meta object literal for the '{@link fire.fire.impl.VariableDeclarationImpl <em>Variable Declaration</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see fire.fire.impl.VariableDeclarationImpl
+     * @see fire.fire.impl.FirePackageImpl#getVariableDeclaration()
+     * @generated
+     */
+    EClass VARIABLE_DECLARATION = eINSTANCE.getVariableDeclaration();
+
+    /**
+     * The meta object literal for the '<em><b>Constant</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute VARIABLE_DECLARATION__CONSTANT = eINSTANCE.getVariableDeclaration_Constant();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference VARIABLE_DECLARATION__VALUE = eINSTANCE.getVariableDeclaration_Value();
 
     /**
      * The meta object literal for the '{@link fire.fire.impl.WhileLoopImpl <em>While Loop</em>}' class.
@@ -2197,48 +2692,6 @@ public interface FirePackage extends EPackage
      * @generated
      */
     EReference ELSE_IF_EXPRESSION__THEN_VALUE = eINSTANCE.getElseIfExpression_ThenValue();
-
-    /**
-     * The meta object literal for the '{@link fire.fire.impl.VariableDeclarationImpl <em>Variable Declaration</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see fire.fire.impl.VariableDeclarationImpl
-     * @see fire.fire.impl.FirePackageImpl#getVariableDeclaration()
-     * @generated
-     */
-    EClass VARIABLE_DECLARATION = eINSTANCE.getVariableDeclaration();
-
-    /**
-     * The meta object literal for the '<em><b>Constant</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute VARIABLE_DECLARATION__CONSTANT = eINSTANCE.getVariableDeclaration_Constant();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute VARIABLE_DECLARATION__NAME = eINSTANCE.getVariableDeclaration_Name();
-
-    /**
-     * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute VARIABLE_DECLARATION__TYPE = eINSTANCE.getVariableDeclaration_Type();
-
-    /**
-     * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference VARIABLE_DECLARATION__VALUE = eINSTANCE.getVariableDeclaration_Value();
 
     /**
      * The meta object literal for the '{@link fire.fire.impl.AssignmentStatementImpl <em>Assignment Statement</em>}' class.

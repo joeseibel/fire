@@ -6,16 +6,47 @@ import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
 Program: {Program}
 	'program'
+		callables+=Callable*
 		statements+=Statement*
 	'end'
 ;
 
+Callable:
+	Procedure | Function
+;
+
+Procedure:
+	'procedure' name=ID '(' (parameters+=Parameter (',' parameters+=Parameter)*)? ')'
+		statements+=Statement*
+	'end'
+;
+
+Function:
+	'function' name=ID '(' (parameters+=Parameter (',' parameters+=Parameter)*)? ')' ':' returnType=BuiltInType
+		=>statements+=Statement*
+		value=Expression
+	'end'
+;
+
+//Unused rule is here to create common super type for Parameter and VariableDeclaration
+IdElement:
+	Parameter | VariableDeclaration
+;
+
+Parameter:
+	name=ID ':' type=BuiltInType
+;
+
 Statement:
-	{VariableDeclaration} (constant?='const' | 'var') name=ID ':' type=BuiltInType ':=' value=Expression ';'? |
-	{AssignmentStatement} variable=[VariableDeclaration] ':=' value=Expression ';'? |
+	VariableDeclaration |
+	{AssignmentStatement} variable=[IdElement] ':=' value=Expression ';'? |
 	WhileLoop |
 	IfStatement |
 	{WritelnStatement} 'writeln' '(' argument=Expression ')' ';'?
+;
+
+VariableDeclaration:
+	(constant?='const' | 'var') name=ID ':' type=BuiltInType ':=' value=Expression ';'?
 ;
 
 enum BuiltInType:
@@ -102,7 +133,7 @@ enum MultiplicativeOperator:
 ;
 
 TerminalExpression returns Expression:
-	{IdExpression} value=[VariableDeclaration] |
+	{IdExpression} value=[IdElement] |
 	{StringLiteral} value=STRING |
 	{BooleanLiteral} (value?='true' | 'false') |
 	{IntegerLiteral} value=Long |

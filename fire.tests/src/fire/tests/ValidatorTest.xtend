@@ -32,9 +32,79 @@ class ValidatorTest {
 	ValidatorTester<FireValidator> tester
 	
 	@Test
-	def void checkDuplicateNames() {
+	def void testCheckDuplicateCallable() {
 		'''
 			program
+				procedure callable1()
+				end
+				
+				function callable1(): Integer
+					1
+				end
+			end
+		'''.parse => [
+			tester.validate(callables.get(0)).assertOK
+			tester.validate(callables.get(1)).assertAll(error(null, "callable1 is already declared"))
+		]
+	}
+	
+	@Test
+	def void testTypeCheckFunction() {
+		'''
+			program
+				function func1(): Integer
+					1
+				end
+				
+				function func2(): Real
+					2
+				end
+			end
+		'''.parse => [
+			tester.validate(callables.get(0)).assertOK
+			tester.validate(callables.get(1)).assertAll(error(null, "Expected Real, found Integer"))
+		]
+	}
+	
+	@Test
+	def void testCheckDuplicateParameter() {
+		'''
+			program
+				procedure proc1(param1: Integer, param1: Integer)
+				end
+			end
+		'''.parse.callables.head => [
+			"proc1".assertEquals(name)
+			tester.validate(parameters.get(0)).assertAll(warning(null, "param1 is not used"))
+			tester.validate(parameters.get(1)).assertAll(error(null, "param1 is already declared"), warning(null, "param1 is not used"))
+		]
+	}
+	
+	@Test
+	def void testCheckUnusedParameter() {
+		'''
+			program
+				function func1(param1: Integer, param2: Integer): Integer
+					param1
+				end
+			end
+		'''.parse.callables.head => [
+			"func1".assertEquals(name)
+			tester.validate(parameters.get(0)).assertOK
+			tester.validate(parameters.get(1)).assertAll(warning(null, "param2 is not used"))
+		]
+	}
+	
+	@Test
+	def void testCheckDuplicateVariableDeclaration() {
+		'''
+			program
+				procedure proc1(param1: Integer)
+					const c1: Integer := param1
+					const c1: Integer := param1
+					const param1: Integer := param1
+				end
+				
 				const c1: Integer := 1
 				const c1: Integer := 2
 				while true do
@@ -81,6 +151,12 @@ class ValidatorTest {
 				const c3: Integer := 30
 			end
 		'''.parse => [
+			callables.head => [
+				"proc1".assertEquals(name)
+				tester.validate(statements.get(0)).assertAll(warning(null, "c1 is not used"))
+				tester.validate(statements.get(1)).assertAll(error(null, "c1 is already declared"), warning(null, "c1 is not used"))
+				tester.validate(statements.get(2)).assertAll(error(null, "param1 is already declared"), warning(null, "param1 is not used"))
+			]
 			tester.validate(statements.get(0)).assertAll(warning(null, "c1 is not used"))
 			tester.validate(statements.get(1)).assertAll(error(null, "c1 is already declared"), warning(null, "c1 is not used"))
 			statements.get(2) as WhileLoop => [
@@ -172,12 +248,20 @@ class ValidatorTest {
 	def void testCheckAssignmentToConstant() {
 		'''
 			program
-				var v1: Integer := 1
-				const c1: Integer := 2
-				v1 := 3
-				c1 := 4
+				procedure proc1(param1: Integer)
+					param1 := 1
+				end
+				
+				var v1: Integer := 2
+				const c1: Integer := 3
+				v1 := 4
+				c1 := 5
 			end
 		'''.parse => [
+			callables.head => [
+				"proc1".assertEquals(name)
+				tester.validate(statements.head).assertAll(error(null, "Cannot assign a value to a parameter"))
+			]
 			tester.validate(statements.get(2)).assertOK
 			tester.validate(statements.get(3)).assertAll(error(null, "Cannot assign a value to a constant"))
 		]

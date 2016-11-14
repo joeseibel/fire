@@ -67,7 +67,13 @@ public class FireFactoryImpl extends EFactoryImpl implements FireFactory
     switch (eClass.getClassifierID())
     {
       case FirePackage.PROGRAM: return createProgram();
+      case FirePackage.CALLABLE: return createCallable();
+      case FirePackage.PROCEDURE: return createProcedure();
+      case FirePackage.FUNCTION: return createFunction();
+      case FirePackage.ID_ELEMENT: return createIdElement();
+      case FirePackage.PARAMETER: return createParameter();
       case FirePackage.STATEMENT: return createStatement();
+      case FirePackage.VARIABLE_DECLARATION: return createVariableDeclaration();
       case FirePackage.WHILE_LOOP: return createWhileLoop();
       case FirePackage.IF_STATEMENT: return createIfStatement();
       case FirePackage.ELSE_IF_STATEMENT: return createElseIfStatement();
@@ -75,7 +81,6 @@ public class FireFactoryImpl extends EFactoryImpl implements FireFactory
       case FirePackage.EXPRESSION: return createExpression();
       case FirePackage.IF_EXPRESSION: return createIfExpression();
       case FirePackage.ELSE_IF_EXPRESSION: return createElseIfExpression();
-      case FirePackage.VARIABLE_DECLARATION: return createVariableDeclaration();
       case FirePackage.ASSIGNMENT_STATEMENT: return createAssignmentStatement();
       case FirePackage.WRITELN_STATEMENT: return createWritelnStatement();
       case FirePackage.OR_EXPRESSION: return createOrExpression();
@@ -163,10 +168,76 @@ public class FireFactoryImpl extends EFactoryImpl implements FireFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public Callable createCallable()
+  {
+    CallableImpl callable = new CallableImpl();
+    return callable;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Procedure createProcedure()
+  {
+    ProcedureImpl procedure = new ProcedureImpl();
+    return procedure;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Function createFunction()
+  {
+    FunctionImpl function = new FunctionImpl();
+    return function;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public IdElement createIdElement()
+  {
+    IdElementImpl idElement = new IdElementImpl();
+    return idElement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Parameter createParameter()
+  {
+    ParameterImpl parameter = new ParameterImpl();
+    return parameter;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public Statement createStatement()
   {
     StatementImpl statement = new StatementImpl();
     return statement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public VariableDeclaration createVariableDeclaration()
+  {
+    VariableDeclarationImpl variableDeclaration = new VariableDeclarationImpl();
+    return variableDeclaration;
   }
 
   /**
@@ -244,17 +315,6 @@ public class FireFactoryImpl extends EFactoryImpl implements FireFactory
   {
     ElseIfExpressionImpl elseIfExpression = new ElseIfExpressionImpl();
     return elseIfExpression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public VariableDeclaration createVariableDeclaration()
-  {
-    VariableDeclarationImpl variableDeclaration = new VariableDeclarationImpl();
-    return variableDeclaration;
   }
 
   /**

@@ -33,9 +33,29 @@
       <genEnumLiterals ecoreEnumLiteral="Fire.ecore#//MultiplicativeOperator/MODULUS"/>
     </genEnums>
     <genClasses ecoreClass="Fire.ecore#//Program">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Fire.ecore#//Program/callables"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Fire.ecore#//Program/statements"/>
     </genClasses>
+    <genClasses ecoreClass="Fire.ecore#//Callable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Fire.ecore#//Callable/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Fire.ecore#//Callable/parameters"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Fire.ecore#//Callable/statements"/>
+    </genClasses>
+    <genClasses ecoreClass="Fire.ecore#//Procedure"/>
+    <genClasses ecoreClass="Fire.ecore#//Function">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Fire.ecore#//Function/returnType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Fire.ecore#//Function/value"/>
+    </genClasses>
+    <genClasses ecoreClass="Fire.ecore#//IdElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Fire.ecore#//IdElement/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Fire.ecore#//IdElement/type"/>
+    </genClasses>
+    <genClasses ecoreClass="Fire.ecore#//Parameter"/>
     <genClasses ecoreClass="Fire.ecore#//Statement"/>
+    <genClasses ecoreClass="Fire.ecore#//VariableDeclaration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Fire.ecore#//VariableDeclaration/constant"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Fire.ecore#//VariableDeclaration/value"/>
+    </genClasses>
     <genClasses ecoreClass="Fire.ecore#//WhileLoop">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Fire.ecore#//WhileLoop/condition"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Fire.ecore#//WhileLoop/statements"/>
@@ -66,12 +86,6 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Fire.ecore#//ElseIfExpression/condition"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Fire.ecore#//ElseIfExpression/thenStatements"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Fire.ecore#//ElseIfExpression/thenValue"/>
-    </genClasses>
-    <genClasses ecoreClass="Fire.ecore#//VariableDeclaration">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Fire.ecore#//VariableDeclaration/constant"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Fire.ecore#//VariableDeclaration/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Fire.ecore#//VariableDeclaration/type"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Fire.ecore#//VariableDeclaration/value"/>
     </genClasses>
     <genClasses ecoreClass="Fire.ecore#//AssignmentStatement">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Fire.ecore#//AssignmentStatement/variable"/>

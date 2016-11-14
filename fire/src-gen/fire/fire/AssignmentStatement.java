@@ -32,12 +32,12 @@ public interface AssignmentStatement extends Statement
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Variable</em>' reference.
-   * @see #setVariable(VariableDeclaration)
+   * @see #setVariable(IdElement)
    * @see fire.fire.FirePackage#getAssignmentStatement_Variable()
    * @model
    * @generated
    */
-  VariableDeclaration getVariable();
+  IdElement getVariable();
 
   /**
    * Sets the value of the '{@link fire.fire.AssignmentStatement#getVariable <em>Variable</em>}' reference.
@@ -47,7 +47,7 @@ public interface AssignmentStatement extends Statement
    * @see #getVariable()
    * @generated
    */
-  void setVariable(VariableDeclaration value);
+  void setVariable(IdElement value);
 
   /**
    * Returns the value of the '<em><b>Value</b></em>' containment reference.

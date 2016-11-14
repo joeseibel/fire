@@ -6,7 +6,7 @@ package fire.fire.impl;
 import fire.fire.AssignmentStatement;
 import fire.fire.Expression;
 import fire.fire.FirePackage;
-import fire.fire.VariableDeclaration;
+import fire.fire.IdElement;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -40,7 +40,7 @@ public class AssignmentStatementImpl extends StatementImpl implements Assignment
    * @generated
    * @ordered
    */
-  protected VariableDeclaration variable;
+  protected IdElement variable;
 
   /**
    * The cached value of the '{@link #getValue() <em>Value</em>}' containment reference.
@@ -78,12 +78,12 @@ public class AssignmentStatementImpl extends StatementImpl implements Assignment
    * <!-- end-user-doc -->
    * @generated
    */
-  public VariableDeclaration getVariable()
+  public IdElement getVariable()
   {
     if (variable != null && variable.eIsProxy())
     {
       InternalEObject oldVariable = (InternalEObject)variable;
-      variable = (VariableDeclaration)eResolveProxy(oldVariable);
+      variable = (IdElement)eResolveProxy(oldVariable);
       if (variable != oldVariable)
       {
         if (eNotificationRequired())
@@ -98,7 +98,7 @@ public class AssignmentStatementImpl extends StatementImpl implements Assignment
    * <!-- end-user-doc -->
    * @generated
    */
-  public VariableDeclaration basicGetVariable()
+  public IdElement basicGetVariable()
   {
     return variable;
   }
@@ -108,9 +108,9 @@ public class AssignmentStatementImpl extends StatementImpl implements Assignment
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setVariable(VariableDeclaration newVariable)
+  public void setVariable(IdElement newVariable)
   {
-    VariableDeclaration oldVariable = variable;
+    IdElement oldVariable = variable;
     variable = newVariable;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, FirePackage.ASSIGNMENT_STATEMENT__VARIABLE, oldVariable, variable));
@@ -210,7 +210,7 @@ public class AssignmentStatementImpl extends StatementImpl implements Assignment
     switch (featureID)
     {
       case FirePackage.ASSIGNMENT_STATEMENT__VARIABLE:
-        setVariable((VariableDeclaration)newValue);
+        setVariable((IdElement)newValue);
         return;
       case FirePackage.ASSIGNMENT_STATEMENT__VALUE:
         setValue((Expression)newValue);
@@ -230,7 +230,7 @@ public class AssignmentStatementImpl extends StatementImpl implements Assignment
     switch (featureID)
     {
       case FirePackage.ASSIGNMENT_STATEMENT__VARIABLE:
-        setVariable((VariableDeclaration)null);
+        setVariable((IdElement)null);
         return;
       case FirePackage.ASSIGNMENT_STATEMENT__VALUE:
         setValue((Expression)null);

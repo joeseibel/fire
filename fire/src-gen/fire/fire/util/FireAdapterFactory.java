@@ -81,9 +81,39 @@ public class FireAdapterFactory extends AdapterFactoryImpl
         return createProgramAdapter();
       }
       @Override
+      public Adapter caseCallable(Callable object)
+      {
+        return createCallableAdapter();
+      }
+      @Override
+      public Adapter caseProcedure(Procedure object)
+      {
+        return createProcedureAdapter();
+      }
+      @Override
+      public Adapter caseFunction(Function object)
+      {
+        return createFunctionAdapter();
+      }
+      @Override
+      public Adapter caseIdElement(IdElement object)
+      {
+        return createIdElementAdapter();
+      }
+      @Override
+      public Adapter caseParameter(Parameter object)
+      {
+        return createParameterAdapter();
+      }
+      @Override
       public Adapter caseStatement(Statement object)
       {
         return createStatementAdapter();
+      }
+      @Override
+      public Adapter caseVariableDeclaration(VariableDeclaration object)
+      {
+        return createVariableDeclarationAdapter();
       }
       @Override
       public Adapter caseWhileLoop(WhileLoop object)
@@ -119,11 +149,6 @@ public class FireAdapterFactory extends AdapterFactoryImpl
       public Adapter caseElseIfExpression(ElseIfExpression object)
       {
         return createElseIfExpressionAdapter();
-      }
-      @Override
-      public Adapter caseVariableDeclaration(VariableDeclaration object)
-      {
-        return createVariableDeclarationAdapter();
       }
       @Override
       public Adapter caseAssignmentStatement(AssignmentStatement object)
@@ -243,6 +268,81 @@ public class FireAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link fire.fire.Callable <em>Callable</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see fire.fire.Callable
+   * @generated
+   */
+  public Adapter createCallableAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link fire.fire.Procedure <em>Procedure</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see fire.fire.Procedure
+   * @generated
+   */
+  public Adapter createProcedureAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link fire.fire.Function <em>Function</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see fire.fire.Function
+   * @generated
+   */
+  public Adapter createFunctionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link fire.fire.IdElement <em>Id Element</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see fire.fire.IdElement
+   * @generated
+   */
+  public Adapter createIdElementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link fire.fire.Parameter <em>Parameter</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see fire.fire.Parameter
+   * @generated
+   */
+  public Adapter createParameterAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link fire.fire.Statement <em>Statement</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -253,6 +353,21 @@ public class FireAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link fire.fire.VariableDeclaration <em>Variable Declaration</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see fire.fire.VariableDeclaration
+   * @generated
+   */
+  public Adapter createVariableDeclarationAdapter()
   {
     return null;
   }
@@ -358,21 +473,6 @@ public class FireAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createElseIfExpressionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link fire.fire.VariableDeclaration <em>Variable Declaration</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see fire.fire.VariableDeclaration
-   * @generated
-   */
-  public Adapter createVariableDeclarationAdapter()
   {
     return null;
   }

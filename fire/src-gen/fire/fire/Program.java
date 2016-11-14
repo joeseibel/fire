@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link fire.fire.Program#getCallables <em>Callables</em>}</li>
  *   <li>{@link fire.fire.Program#getStatements <em>Statements</em>}</li>
  * </ul>
  *
@@ -25,6 +26,22 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Program extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Callables</b></em>' containment reference list.
+   * The list contents are of type {@link fire.fire.Callable}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Callables</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Callables</em>' containment reference list.
+   * @see fire.fire.FirePackage#getProgram_Callables()
+   * @model containment="true"
+   * @generated
+   */
+  EList<Callable> getCallables();
+
   /**
    * Returns the value of the '<em><b>Statements</b></em>' containment reference list.
    * The list contents are of type {@link fire.fire.Statement}.

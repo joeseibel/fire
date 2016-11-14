@@ -80,10 +80,57 @@ public class FireSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case FirePackage.CALLABLE:
+      {
+        Callable callable = (Callable)theEObject;
+        T result = caseCallable(callable);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case FirePackage.PROCEDURE:
+      {
+        Procedure procedure = (Procedure)theEObject;
+        T result = caseProcedure(procedure);
+        if (result == null) result = caseCallable(procedure);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case FirePackage.FUNCTION:
+      {
+        Function function = (Function)theEObject;
+        T result = caseFunction(function);
+        if (result == null) result = caseCallable(function);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case FirePackage.ID_ELEMENT:
+      {
+        IdElement idElement = (IdElement)theEObject;
+        T result = caseIdElement(idElement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case FirePackage.PARAMETER:
+      {
+        Parameter parameter = (Parameter)theEObject;
+        T result = caseParameter(parameter);
+        if (result == null) result = caseIdElement(parameter);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case FirePackage.STATEMENT:
       {
         Statement statement = (Statement)theEObject;
         T result = caseStatement(statement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case FirePackage.VARIABLE_DECLARATION:
+      {
+        VariableDeclaration variableDeclaration = (VariableDeclaration)theEObject;
+        T result = caseVariableDeclaration(variableDeclaration);
+        if (result == null) result = caseIdElement(variableDeclaration);
+        if (result == null) result = caseStatement(variableDeclaration);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -136,14 +183,6 @@ public class FireSwitch<T> extends Switch<T>
       {
         ElseIfExpression elseIfExpression = (ElseIfExpression)theEObject;
         T result = caseElseIfExpression(elseIfExpression);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case FirePackage.VARIABLE_DECLARATION:
-      {
-        VariableDeclaration variableDeclaration = (VariableDeclaration)theEObject;
-        T result = caseVariableDeclaration(variableDeclaration);
-        if (result == null) result = caseStatement(variableDeclaration);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -296,6 +335,86 @@ public class FireSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Callable</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Callable</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCallable(Callable object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Procedure</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Procedure</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseProcedure(Procedure object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Function</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Function</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFunction(Function object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Id Element</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Id Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseIdElement(IdElement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Parameter</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Parameter</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseParameter(Parameter object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Statement</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -307,6 +426,22 @@ public class FireSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseStatement(Statement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Variable Declaration</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Variable Declaration</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseVariableDeclaration(VariableDeclaration object)
   {
     return null;
   }
@@ -419,22 +554,6 @@ public class FireSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseElseIfExpression(ElseIfExpression object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Variable Declaration</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Variable Declaration</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseVariableDeclaration(VariableDeclaration object)
   {
     return null;
   }

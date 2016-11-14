@@ -3,9 +3,10 @@
  */
 package fire.fire.impl;
 
+import fire.fire.BuiltInType;
 import fire.fire.Expression;
 import fire.fire.FirePackage;
-import fire.fire.VariableDeclaration;
+import fire.fire.Function;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -17,39 +18,39 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Variable Declaration</b></em>'.
+ * An implementation of the model object '<em><b>Function</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link fire.fire.impl.VariableDeclarationImpl#isConstant <em>Constant</em>}</li>
- *   <li>{@link fire.fire.impl.VariableDeclarationImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link fire.fire.impl.FunctionImpl#getReturnType <em>Return Type</em>}</li>
+ *   <li>{@link fire.fire.impl.FunctionImpl#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class VariableDeclarationImpl extends IdElementImpl implements VariableDeclaration
+public class FunctionImpl extends CallableImpl implements Function
 {
   /**
-   * The default value of the '{@link #isConstant() <em>Constant</em>}' attribute.
+   * The default value of the '{@link #getReturnType() <em>Return Type</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isConstant()
+   * @see #getReturnType()
    * @generated
    * @ordered
    */
-  protected static final boolean CONSTANT_EDEFAULT = false;
+  protected static final BuiltInType RETURN_TYPE_EDEFAULT = BuiltInType.STRING;
 
   /**
-   * The cached value of the '{@link #isConstant() <em>Constant</em>}' attribute.
+   * The cached value of the '{@link #getReturnType() <em>Return Type</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isConstant()
+   * @see #getReturnType()
    * @generated
    * @ordered
    */
-  protected boolean constant = CONSTANT_EDEFAULT;
+  protected BuiltInType returnType = RETURN_TYPE_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getValue() <em>Value</em>}' containment reference.
@@ -66,7 +67,7 @@ public class VariableDeclarationImpl extends IdElementImpl implements VariableDe
    * <!-- end-user-doc -->
    * @generated
    */
-  protected VariableDeclarationImpl()
+  protected FunctionImpl()
   {
     super();
   }
@@ -79,7 +80,7 @@ public class VariableDeclarationImpl extends IdElementImpl implements VariableDe
   @Override
   protected EClass eStaticClass()
   {
-    return FirePackage.Literals.VARIABLE_DECLARATION;
+    return FirePackage.Literals.FUNCTION;
   }
 
   /**
@@ -87,9 +88,9 @@ public class VariableDeclarationImpl extends IdElementImpl implements VariableDe
    * <!-- end-user-doc -->
    * @generated
    */
-  public boolean isConstant()
+  public BuiltInType getReturnType()
   {
-    return constant;
+    return returnType;
   }
 
   /**
@@ -97,12 +98,12 @@ public class VariableDeclarationImpl extends IdElementImpl implements VariableDe
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setConstant(boolean newConstant)
+  public void setReturnType(BuiltInType newReturnType)
   {
-    boolean oldConstant = constant;
-    constant = newConstant;
+    BuiltInType oldReturnType = returnType;
+    returnType = newReturnType == null ? RETURN_TYPE_EDEFAULT : newReturnType;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, FirePackage.VARIABLE_DECLARATION__CONSTANT, oldConstant, constant));
+      eNotify(new ENotificationImpl(this, Notification.SET, FirePackage.FUNCTION__RETURN_TYPE, oldReturnType, returnType));
   }
 
   /**
@@ -126,7 +127,7 @@ public class VariableDeclarationImpl extends IdElementImpl implements VariableDe
     value = newValue;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FirePackage.VARIABLE_DECLARATION__VALUE, oldValue, newValue);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FirePackage.FUNCTION__VALUE, oldValue, newValue);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -143,14 +144,14 @@ public class VariableDeclarationImpl extends IdElementImpl implements VariableDe
     {
       NotificationChain msgs = null;
       if (value != null)
-        msgs = ((InternalEObject)value).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FirePackage.VARIABLE_DECLARATION__VALUE, null, msgs);
+        msgs = ((InternalEObject)value).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FirePackage.FUNCTION__VALUE, null, msgs);
       if (newValue != null)
-        msgs = ((InternalEObject)newValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FirePackage.VARIABLE_DECLARATION__VALUE, null, msgs);
+        msgs = ((InternalEObject)newValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FirePackage.FUNCTION__VALUE, null, msgs);
       msgs = basicSetValue(newValue, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, FirePackage.VARIABLE_DECLARATION__VALUE, newValue, newValue));
+      eNotify(new ENotificationImpl(this, Notification.SET, FirePackage.FUNCTION__VALUE, newValue, newValue));
   }
 
   /**
@@ -163,7 +164,7 @@ public class VariableDeclarationImpl extends IdElementImpl implements VariableDe
   {
     switch (featureID)
     {
-      case FirePackage.VARIABLE_DECLARATION__VALUE:
+      case FirePackage.FUNCTION__VALUE:
         return basicSetValue(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -179,9 +180,9 @@ public class VariableDeclarationImpl extends IdElementImpl implements VariableDe
   {
     switch (featureID)
     {
-      case FirePackage.VARIABLE_DECLARATION__CONSTANT:
-        return isConstant();
-      case FirePackage.VARIABLE_DECLARATION__VALUE:
+      case FirePackage.FUNCTION__RETURN_TYPE:
+        return getReturnType();
+      case FirePackage.FUNCTION__VALUE:
         return getValue();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -197,10 +198,10 @@ public class VariableDeclarationImpl extends IdElementImpl implements VariableDe
   {
     switch (featureID)
     {
-      case FirePackage.VARIABLE_DECLARATION__CONSTANT:
-        setConstant((Boolean)newValue);
+      case FirePackage.FUNCTION__RETURN_TYPE:
+        setReturnType((BuiltInType)newValue);
         return;
-      case FirePackage.VARIABLE_DECLARATION__VALUE:
+      case FirePackage.FUNCTION__VALUE:
         setValue((Expression)newValue);
         return;
     }
@@ -217,10 +218,10 @@ public class VariableDeclarationImpl extends IdElementImpl implements VariableDe
   {
     switch (featureID)
     {
-      case FirePackage.VARIABLE_DECLARATION__CONSTANT:
-        setConstant(CONSTANT_EDEFAULT);
+      case FirePackage.FUNCTION__RETURN_TYPE:
+        setReturnType(RETURN_TYPE_EDEFAULT);
         return;
-      case FirePackage.VARIABLE_DECLARATION__VALUE:
+      case FirePackage.FUNCTION__VALUE:
         setValue((Expression)null);
         return;
     }
@@ -237,9 +238,9 @@ public class VariableDeclarationImpl extends IdElementImpl implements VariableDe
   {
     switch (featureID)
     {
-      case FirePackage.VARIABLE_DECLARATION__CONSTANT:
-        return constant != CONSTANT_EDEFAULT;
-      case FirePackage.VARIABLE_DECLARATION__VALUE:
+      case FirePackage.FUNCTION__RETURN_TYPE:
+        return returnType != RETURN_TYPE_EDEFAULT;
+      case FirePackage.FUNCTION__VALUE:
         return value != null;
     }
     return super.eIsSet(featureID);
@@ -256,10 +257,10 @@ public class VariableDeclarationImpl extends IdElementImpl implements VariableDe
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (constant: ");
-    result.append(constant);
+    result.append(" (returnType: ");
+    result.append(returnType);
     result.append(')');
     return result.toString();
   }
 
-} //VariableDeclarationImpl
+} //FunctionImpl

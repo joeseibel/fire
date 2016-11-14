@@ -9,6 +9,7 @@ import fire.fire.AndExpression;
 import fire.fire.AssignmentStatement;
 import fire.fire.BooleanLiteral;
 import fire.fire.BuiltInType;
+import fire.fire.Callable;
 import fire.fire.ComparisonExpression;
 import fire.fire.ComparisonOperator;
 import fire.fire.ElseIfExpression;
@@ -19,6 +20,8 @@ import fire.fire.EqualityOperator;
 import fire.fire.Expression;
 import fire.fire.FireFactory;
 import fire.fire.FirePackage;
+import fire.fire.Function;
+import fire.fire.IdElement;
 import fire.fire.IdExpression;
 import fire.fire.IfExpression;
 import fire.fire.IfStatement;
@@ -28,6 +31,8 @@ import fire.fire.MultiplicativeOperator;
 import fire.fire.NegationExpression;
 import fire.fire.NotExpression;
 import fire.fire.OrExpression;
+import fire.fire.Parameter;
+import fire.fire.Procedure;
 import fire.fire.Program;
 import fire.fire.RealLiteral;
 import fire.fire.Statement;
@@ -65,7 +70,49 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass callableEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass procedureEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass functionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass idElementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass parameterEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass statementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass variableDeclarationEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -115,13 +162,6 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
    * @generated
    */
   private EClass elseIfExpressionEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass variableDeclarationEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -348,9 +388,139 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getProgram_Statements()
+  public EReference getProgram_Callables()
   {
     return (EReference)programEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getProgram_Statements()
+  {
+    return (EReference)programEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getCallable()
+  {
+    return callableEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getCallable_Name()
+  {
+    return (EAttribute)callableEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getCallable_Parameters()
+  {
+    return (EReference)callableEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getCallable_Statements()
+  {
+    return (EReference)callableEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getProcedure()
+  {
+    return procedureEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getFunction()
+  {
+    return functionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getFunction_ReturnType()
+  {
+    return (EAttribute)functionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getFunction_Value()
+  {
+    return (EReference)functionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getIdElement()
+  {
+    return idElementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getIdElement_Name()
+  {
+    return (EAttribute)idElementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getIdElement_Type()
+  {
+    return (EAttribute)idElementEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getParameter()
+  {
+    return parameterEClass;
   }
 
   /**
@@ -361,6 +531,36 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
   public EClass getStatement()
   {
     return statementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getVariableDeclaration()
+  {
+    return variableDeclarationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getVariableDeclaration_Constant()
+  {
+    return (EAttribute)variableDeclarationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getVariableDeclaration_Value()
+  {
+    return (EReference)variableDeclarationEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -611,56 +811,6 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
   public EReference getElseIfExpression_ThenValue()
   {
     return (EReference)elseIfExpressionEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getVariableDeclaration()
-  {
-    return variableDeclarationEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getVariableDeclaration_Constant()
-  {
-    return (EAttribute)variableDeclarationEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getVariableDeclaration_Name()
-  {
-    return (EAttribute)variableDeclarationEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getVariableDeclaration_Type()
-  {
-    return (EAttribute)variableDeclarationEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getVariableDeclaration_Value()
-  {
-    return (EReference)variableDeclarationEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -1184,9 +1334,31 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
 
     // Create classes and their features
     programEClass = createEClass(PROGRAM);
+    createEReference(programEClass, PROGRAM__CALLABLES);
     createEReference(programEClass, PROGRAM__STATEMENTS);
 
+    callableEClass = createEClass(CALLABLE);
+    createEAttribute(callableEClass, CALLABLE__NAME);
+    createEReference(callableEClass, CALLABLE__PARAMETERS);
+    createEReference(callableEClass, CALLABLE__STATEMENTS);
+
+    procedureEClass = createEClass(PROCEDURE);
+
+    functionEClass = createEClass(FUNCTION);
+    createEAttribute(functionEClass, FUNCTION__RETURN_TYPE);
+    createEReference(functionEClass, FUNCTION__VALUE);
+
+    idElementEClass = createEClass(ID_ELEMENT);
+    createEAttribute(idElementEClass, ID_ELEMENT__NAME);
+    createEAttribute(idElementEClass, ID_ELEMENT__TYPE);
+
+    parameterEClass = createEClass(PARAMETER);
+
     statementEClass = createEClass(STATEMENT);
+
+    variableDeclarationEClass = createEClass(VARIABLE_DECLARATION);
+    createEAttribute(variableDeclarationEClass, VARIABLE_DECLARATION__CONSTANT);
+    createEReference(variableDeclarationEClass, VARIABLE_DECLARATION__VALUE);
 
     whileLoopEClass = createEClass(WHILE_LOOP);
     createEReference(whileLoopEClass, WHILE_LOOP__CONDITION);
@@ -1219,12 +1391,6 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
     createEReference(elseIfExpressionEClass, ELSE_IF_EXPRESSION__CONDITION);
     createEReference(elseIfExpressionEClass, ELSE_IF_EXPRESSION__THEN_STATEMENTS);
     createEReference(elseIfExpressionEClass, ELSE_IF_EXPRESSION__THEN_VALUE);
-
-    variableDeclarationEClass = createEClass(VARIABLE_DECLARATION);
-    createEAttribute(variableDeclarationEClass, VARIABLE_DECLARATION__CONSTANT);
-    createEAttribute(variableDeclarationEClass, VARIABLE_DECLARATION__NAME);
-    createEAttribute(variableDeclarationEClass, VARIABLE_DECLARATION__TYPE);
-    createEReference(variableDeclarationEClass, VARIABLE_DECLARATION__VALUE);
 
     assignmentStatementEClass = createEClass(ASSIGNMENT_STATEMENT);
     createEReference(assignmentStatementEClass, ASSIGNMENT_STATEMENT__VARIABLE);
@@ -1323,10 +1489,14 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
+    procedureEClass.getESuperTypes().add(this.getCallable());
+    functionEClass.getESuperTypes().add(this.getCallable());
+    parameterEClass.getESuperTypes().add(this.getIdElement());
+    variableDeclarationEClass.getESuperTypes().add(this.getIdElement());
+    variableDeclarationEClass.getESuperTypes().add(this.getStatement());
     whileLoopEClass.getESuperTypes().add(this.getStatement());
     ifStatementEClass.getESuperTypes().add(this.getStatement());
     ifExpressionEClass.getESuperTypes().add(this.getExpression());
-    variableDeclarationEClass.getESuperTypes().add(this.getStatement());
     assignmentStatementEClass.getESuperTypes().add(this.getStatement());
     writelnStatementEClass.getESuperTypes().add(this.getStatement());
     orExpressionEClass.getESuperTypes().add(this.getExpression());
@@ -1346,9 +1516,31 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
 
     // Initialize classes and features; add operations and parameters
     initEClass(programEClass, Program.class, "Program", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getProgram_Callables(), this.getCallable(), null, "callables", null, 0, -1, Program.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getProgram_Statements(), this.getStatement(), null, "statements", null, 0, -1, Program.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEClass(callableEClass, Callable.class, "Callable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getCallable_Name(), ecorePackage.getEString(), "name", null, 0, 1, Callable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCallable_Parameters(), this.getParameter(), null, "parameters", null, 0, -1, Callable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCallable_Statements(), this.getStatement(), null, "statements", null, 0, -1, Callable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(procedureEClass, Procedure.class, "Procedure", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(functionEClass, Function.class, "Function", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getFunction_ReturnType(), this.getBuiltInType(), "returnType", null, 0, 1, Function.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFunction_Value(), this.getExpression(), null, "value", null, 0, 1, Function.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(idElementEClass, IdElement.class, "IdElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getIdElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, IdElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getIdElement_Type(), this.getBuiltInType(), "type", null, 0, 1, IdElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(parameterEClass, Parameter.class, "Parameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
     initEClass(statementEClass, Statement.class, "Statement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(variableDeclarationEClass, VariableDeclaration.class, "VariableDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getVariableDeclaration_Constant(), ecorePackage.getEBoolean(), "constant", null, 0, 1, VariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getVariableDeclaration_Value(), this.getExpression(), null, "value", null, 0, 1, VariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(whileLoopEClass, WhileLoop.class, "WhileLoop", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getWhileLoop_Condition(), this.getExpression(), null, "condition", null, 0, 1, WhileLoop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1382,14 +1574,8 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
     initEReference(getElseIfExpression_ThenStatements(), this.getStatement(), null, "thenStatements", null, 0, -1, ElseIfExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getElseIfExpression_ThenValue(), this.getExpression(), null, "thenValue", null, 0, 1, ElseIfExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(variableDeclarationEClass, VariableDeclaration.class, "VariableDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getVariableDeclaration_Constant(), ecorePackage.getEBoolean(), "constant", null, 0, 1, VariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getVariableDeclaration_Name(), ecorePackage.getEString(), "name", null, 0, 1, VariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getVariableDeclaration_Type(), this.getBuiltInType(), "type", null, 0, 1, VariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getVariableDeclaration_Value(), this.getExpression(), null, "value", null, 0, 1, VariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
     initEClass(assignmentStatementEClass, AssignmentStatement.class, "AssignmentStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getAssignmentStatement_Variable(), this.getVariableDeclaration(), null, "variable", null, 0, 1, AssignmentStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAssignmentStatement_Variable(), this.getIdElement(), null, "variable", null, 0, 1, AssignmentStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getAssignmentStatement_Value(), this.getExpression(), null, "value", null, 0, 1, AssignmentStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(writelnStatementEClass, WritelnStatement.class, "WritelnStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1428,7 +1614,7 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
     initEReference(getMultiplicativeExpression_Right(), this.getExpression(), null, "right", null, 0, 1, MultiplicativeExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(idExpressionEClass, IdExpression.class, "IdExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getIdExpression_Value(), this.getVariableDeclaration(), null, "value", null, 0, 1, IdExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getIdExpression_Value(), this.getIdElement(), null, "value", null, 0, 1, IdExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(stringLiteralEClass, StringLiteral.class, "StringLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getStringLiteral_Value(), ecorePackage.getEString(), "value", null, 0, 1, StringLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
