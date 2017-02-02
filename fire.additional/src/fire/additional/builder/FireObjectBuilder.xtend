@@ -58,7 +58,7 @@ class FireObjectBuilder extends IncrementalProjectBuilder {
 	def private void fullBuildContainer(IContainer container, IProgressMonitor monitor) throws CoreException {
 		container.members.forEach[switch it {
 			IFile case fullPath.fileExtension == "o": invokeClang(it)
-			IFile case fullPath.fileExtension == null && resourceAttributes.executable: {
+			IFile case fullPath.fileExtension === null && resourceAttributes.executable: {
 				if (!project.getFile(projectRelativePath.addFileExtension("o")).exists) {
 					delete(true, monitor)
 				}
@@ -69,7 +69,7 @@ class FireObjectBuilder extends IncrementalProjectBuilder {
 	
 	def private void cleanContainer(IContainer container, IProgressMonitor monitor) throws CoreException {
 		container.members.forEach[switch it {
-			IFile case fullPath.fileExtension == null && resourceAttributes.executable: delete(true, monitor)
+			IFile case fullPath.fileExtension === null && resourceAttributes.executable: delete(true, monitor)
 			IContainer: cleanContainer(it, monitor)
 		}]
 	}

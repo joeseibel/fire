@@ -124,7 +124,7 @@ class FireGenerator extends AbstractGenerator {
 			val statementBlock = BasicBlock.create(llvmContext, "elseIfThen_" + key, function)
 			new ElseIfStatementAndBlock(value, conditionBlock, statementBlock)
 		].toList
-		val elseBlock = if (ifStatement.^else != null) {
+		val elseBlock = if (ifStatement.^else !== null) {
 			BasicBlock.create(llvmContext, "else", function)
 		}
 		val afterIfBlock = BasicBlock.create(llvmContext, "afterIf", function)
@@ -148,7 +148,7 @@ class FireGenerator extends AbstractGenerator {
 			statementAndBlock.elseIfStatement.thenStatements.forEach[generateStatement]
 			builder.createBr(afterIfBlock)
 		]
-		if (elseBlock != null) {
+		if (elseBlock !== null) {
 			builder.insertPoint = elseBlock
 			ifStatement.^else.elseStatements.forEach[generateStatement]
 			builder.createBr(afterIfBlock)

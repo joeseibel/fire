@@ -102,12 +102,12 @@ class FireUtil {
 		val thenType = expression.thenValue?.type
 		val elseType = expression.elseValue?.type
 		if (expression.elseIfs.empty) {
-			if (thenType != null && thenType == elseType) {
+			if (thenType !== null && thenType == elseType) {
 				thenType
 			}
 		} else {
 			val elseIfsTypes = expression.elseIfs.map[thenValue?.type].toSet
-			if (thenType != null && elseIfsTypes.size == 1 && thenType == elseIfsTypes.head && thenType == elseType) {
+			if (thenType !== null && elseIfsTypes.size == 1 && thenType == elseIfsTypes.head && thenType == elseType) {
 				thenType
 			}
 		}
