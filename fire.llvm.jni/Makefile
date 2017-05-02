@@ -34,7 +34,7 @@ bin:
 	mkdir bin
 
 $(OBJS): bin/%.o: src/%.cpp bin
-	clang++ $(shell llvm-config --cxxflags) -Ijni_headers -I/System/Library/Frameworks/JavaVM.framework/Headers -c -o $@ $<
+	clang++ $(shell llvm-config --cxxflags) -Ijni_headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/JavaVM.framework/Versions/A/Headers -c -o $@ $<
 
 $(LIB): $(OBJS)
 	clang++ $(shell llvm-config --ldflags --libs --system-libs) -dynamiclib -o $@ -framework JavaVM $(OBJS)
