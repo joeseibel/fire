@@ -42,6 +42,7 @@ Statement:
 	{AssignmentStatement} variable=[IdElement] ':=' value=Expression ';'? |
 	WhileLoop |
 	IfStatement |
+	{CallStatement} callable=[Callable] '(' (arguments+=Expression (',' arguments+=Expression)*)? ')' ';'? |
 	{WritelnStatement} 'writeln' '(' argument=Expression ')' ';'?
 ;
 

@@ -52,6 +52,9 @@ public class FireParser extends AbstractContentAssistParser {
 					put(grammarAccess.getParameterAccess().getGroup(), "rule__Parameter__Group__0");
 					put(grammarAccess.getStatementAccess().getGroup_1(), "rule__Statement__Group_1__0");
 					put(grammarAccess.getStatementAccess().getGroup_4(), "rule__Statement__Group_4__0");
+					put(grammarAccess.getStatementAccess().getGroup_4_3(), "rule__Statement__Group_4_3__0");
+					put(grammarAccess.getStatementAccess().getGroup_4_3_1(), "rule__Statement__Group_4_3_1__0");
+					put(grammarAccess.getStatementAccess().getGroup_5(), "rule__Statement__Group_5__0");
 					put(grammarAccess.getVariableDeclarationAccess().getGroup(), "rule__VariableDeclaration__Group__0");
 					put(grammarAccess.getWhileLoopAccess().getGroup(), "rule__WhileLoop__Group__0");
 					put(grammarAccess.getIfStatementAccess().getGroup(), "rule__IfStatement__Group__0");
@@ -100,7 +103,10 @@ public class FireParser extends AbstractContentAssistParser {
 					put(grammarAccess.getParameterAccess().getTypeAssignment_2(), "rule__Parameter__TypeAssignment_2");
 					put(grammarAccess.getStatementAccess().getVariableAssignment_1_1(), "rule__Statement__VariableAssignment_1_1");
 					put(grammarAccess.getStatementAccess().getValueAssignment_1_3(), "rule__Statement__ValueAssignment_1_3");
-					put(grammarAccess.getStatementAccess().getArgumentAssignment_4_3(), "rule__Statement__ArgumentAssignment_4_3");
+					put(grammarAccess.getStatementAccess().getCallableAssignment_4_1(), "rule__Statement__CallableAssignment_4_1");
+					put(grammarAccess.getStatementAccess().getArgumentsAssignment_4_3_0(), "rule__Statement__ArgumentsAssignment_4_3_0");
+					put(grammarAccess.getStatementAccess().getArgumentsAssignment_4_3_1_1(), "rule__Statement__ArgumentsAssignment_4_3_1_1");
+					put(grammarAccess.getStatementAccess().getArgumentAssignment_5_3(), "rule__Statement__ArgumentAssignment_5_3");
 					put(grammarAccess.getVariableDeclarationAccess().getConstantAssignment_0_0(), "rule__VariableDeclaration__ConstantAssignment_0_0");
 					put(grammarAccess.getVariableDeclarationAccess().getNameAssignment_1(), "rule__VariableDeclaration__NameAssignment_1");
 					put(grammarAccess.getVariableDeclarationAccess().getTypeAssignment_3(), "rule__VariableDeclaration__TypeAssignment_3");

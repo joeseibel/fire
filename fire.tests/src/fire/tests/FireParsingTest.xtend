@@ -10,6 +10,7 @@ import fire.fire.AndExpression
 import fire.fire.AssignmentStatement
 import fire.fire.BooleanLiteral
 import fire.fire.BuiltInType
+import fire.fire.CallStatement
 import fire.fire.ComparisonExpression
 import fire.fire.ComparisonOperator
 import fire.fire.EqualityExpression
@@ -564,6 +565,49 @@ class FireParsingTest{
 					33.assertEquals(((elseStatements.get(1) as WritelnStatement).argument as IntegerLiteral).value)
 					34.assertEquals(((elseStatements.get(2) as WritelnStatement).argument as IntegerLiteral).value)
 				]
+			]
+		]
+	}
+	
+	@Test
+	def void testCallStatement() {
+		'''
+			program
+				procedure proc1()
+				end
+				
+				procedure proc2(param1: Boolean)
+					writeln(param1)
+				end
+				
+				procedure proc3(param2: Integer, param3: String, param4: Real)
+					writeln(param2)
+					writeln(param3)
+					writeln(param4)
+				end
+				
+				proc1()
+				proc2(true)
+				proc3(1, "string1", 2.2)
+			end
+		'''.parse => [
+			assertNoIssues
+			3.assertEquals(statements.size)
+			statements.get(0) as CallStatement => [
+				"proc1".assertEquals(callable.name)
+				arguments.empty.assertTrue
+			]
+			statements.get(1) as CallStatement => [
+				"proc2".assertEquals(callable.name)
+				1.assertEquals(arguments.size)
+				(arguments.head as BooleanLiteral).value.assertTrue
+			]
+			statements.get(2) as CallStatement => [
+				"proc3".assertEquals(callable.name)
+				3.assertEquals(arguments.size)
+				1.assertEquals((arguments.get(0) as IntegerLiteral).value)
+				"string1".assertEquals((arguments.get(1) as StringLiteral).value)
+				2.2.assertEquals((arguments.get(2) as RealLiteral).value, 0)
 			]
 		]
 	}

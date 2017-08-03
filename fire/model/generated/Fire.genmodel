@@ -91,6 +91,10 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Fire.ecore#//AssignmentStatement/variable"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Fire.ecore#//AssignmentStatement/value"/>
     </genClasses>
+    <genClasses ecoreClass="Fire.ecore#//CallStatement">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Fire.ecore#//CallStatement/callable"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Fire.ecore#//CallStatement/arguments"/>
+    </genClasses>
     <genClasses ecoreClass="Fire.ecore#//WritelnStatement">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Fire.ecore#//WritelnStatement/argument"/>
     </genClasses>

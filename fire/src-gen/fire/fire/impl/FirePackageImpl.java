@@ -9,6 +9,7 @@ import fire.fire.AndExpression;
 import fire.fire.AssignmentStatement;
 import fire.fire.BooleanLiteral;
 import fire.fire.BuiltInType;
+import fire.fire.CallStatement;
 import fire.fire.Callable;
 import fire.fire.ComparisonExpression;
 import fire.fire.ComparisonOperator;
@@ -169,6 +170,13 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
    * @generated
    */
   private EClass assignmentStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass callStatementEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -848,6 +856,36 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getCallStatement()
+  {
+    return callStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getCallStatement_Callable()
+  {
+    return (EReference)callStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getCallStatement_Arguments()
+  {
+    return (EReference)callStatementEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getWritelnStatement()
   {
     return writelnStatementEClass;
@@ -1396,6 +1434,10 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
     createEReference(assignmentStatementEClass, ASSIGNMENT_STATEMENT__VARIABLE);
     createEReference(assignmentStatementEClass, ASSIGNMENT_STATEMENT__VALUE);
 
+    callStatementEClass = createEClass(CALL_STATEMENT);
+    createEReference(callStatementEClass, CALL_STATEMENT__CALLABLE);
+    createEReference(callStatementEClass, CALL_STATEMENT__ARGUMENTS);
+
     writelnStatementEClass = createEClass(WRITELN_STATEMENT);
     createEReference(writelnStatementEClass, WRITELN_STATEMENT__ARGUMENT);
 
@@ -1498,6 +1540,7 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
     ifStatementEClass.getESuperTypes().add(this.getStatement());
     ifExpressionEClass.getESuperTypes().add(this.getExpression());
     assignmentStatementEClass.getESuperTypes().add(this.getStatement());
+    callStatementEClass.getESuperTypes().add(this.getStatement());
     writelnStatementEClass.getESuperTypes().add(this.getStatement());
     orExpressionEClass.getESuperTypes().add(this.getExpression());
     andExpressionEClass.getESuperTypes().add(this.getExpression());
@@ -1577,6 +1620,10 @@ public class FirePackageImpl extends EPackageImpl implements FirePackage
     initEClass(assignmentStatementEClass, AssignmentStatement.class, "AssignmentStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getAssignmentStatement_Variable(), this.getIdElement(), null, "variable", null, 0, 1, AssignmentStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getAssignmentStatement_Value(), this.getExpression(), null, "value", null, 0, 1, AssignmentStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(callStatementEClass, CallStatement.class, "CallStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getCallStatement_Callable(), this.getCallable(), null, "callable", null, 0, 1, CallStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCallStatement_Arguments(), this.getExpression(), null, "arguments", null, 0, -1, CallStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(writelnStatementEClass, WritelnStatement.class, "WritelnStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getWritelnStatement_Argument(), this.getExpression(), null, "argument", null, 0, 1, WritelnStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

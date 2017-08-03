@@ -5,6 +5,7 @@ import fire.fire.AdditiveExpression
 import fire.fire.AndExpression
 import fire.fire.AssignmentStatement
 import fire.fire.BuiltInType
+import fire.fire.CallStatement
 import fire.fire.Callable
 import fire.fire.ComparisonExpression
 import fire.fire.ElseIfExpression
@@ -203,6 +204,25 @@ class FireValidator extends AbstractFireValidator {
 		val conditionType = elseIfStatement.condition?.type
 		if (conditionType !== null && conditionType != BuiltInType.BOOLEAN) {
 			error("Expected Boolean, found " + conditionType, FirePackage.Literals.ELSE_IF_STATEMENT__CONDITION)
+		}
+	}
+	
+	@Check
+	def void checkCallStatementArguments(CallStatement call) {
+		if (!call.callable.eIsProxy) {
+			val argumentCount = call.arguments.size
+			val parameterCount = call.callable.parameters.size
+			if (argumentCount != parameterCount) {
+				error('''Incorrect argument count: expected «parameterCount», found «argumentCount»''', FirePackage.Literals.CALL_STATEMENT__CALLABLE)
+			} else {
+				(0 ..< argumentCount).forEach[i |
+					val parameterType = call.callable.parameters.get(i).type
+					val argumentType = call.arguments.get(i).type
+					if (argumentType !== null && argumentType != parameterType) {
+						error('''Expected «parameterType», found «argumentType»''', FirePackage.Literals.CALL_STATEMENT__ARGUMENTS, i)
+					}
+				]
+			}
 		}
 	}
 	

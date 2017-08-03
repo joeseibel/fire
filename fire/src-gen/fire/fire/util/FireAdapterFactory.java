@@ -156,6 +156,11 @@ public class FireAdapterFactory extends AdapterFactoryImpl
         return createAssignmentStatementAdapter();
       }
       @Override
+      public Adapter caseCallStatement(CallStatement object)
+      {
+        return createCallStatementAdapter();
+      }
+      @Override
       public Adapter caseWritelnStatement(WritelnStatement object)
       {
         return createWritelnStatementAdapter();
@@ -488,6 +493,21 @@ public class FireAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createAssignmentStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link fire.fire.CallStatement <em>Call Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see fire.fire.CallStatement
+   * @generated
+   */
+  public Adapter createCallStatementAdapter()
   {
     return null;
   }

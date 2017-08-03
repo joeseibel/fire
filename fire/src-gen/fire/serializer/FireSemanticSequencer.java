@@ -8,6 +8,7 @@ import fire.fire.AdditiveExpression;
 import fire.fire.AndExpression;
 import fire.fire.AssignmentStatement;
 import fire.fire.BooleanLiteral;
+import fire.fire.CallStatement;
 import fire.fire.ComparisonExpression;
 import fire.fire.ElseIfExpression;
 import fire.fire.ElseIfStatement;
@@ -68,6 +69,9 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				return; 
 			case FirePackage.BOOLEAN_LITERAL:
 				sequence_TerminalExpression(context, (BooleanLiteral) semanticObject); 
+				return; 
+			case FirePackage.CALL_STATEMENT:
+				sequence_Statement(context, (CallStatement) semanticObject); 
 				return; 
 			case FirePackage.COMPARISON_EXPRESSION:
 				sequence_ComparisonExpression(context, (ComparisonExpression) semanticObject); 
@@ -531,6 +535,18 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
+	 *     Statement returns CallStatement
+	 *
+	 * Constraint:
+	 *     (callable=[Callable|ID] (arguments+=Expression arguments+=Expression*)?)
+	 */
+	protected void sequence_Statement(ISerializationContext context, CallStatement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     Statement returns WritelnStatement
 	 *
 	 * Constraint:
@@ -542,7 +558,7 @@ public class FireSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, FirePackage.Literals.WRITELN_STATEMENT__ARGUMENT));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getStatementAccess().getArgumentExpressionParserRuleCall_4_3_0(), semanticObject.getArgument());
+		feeder.accept(grammarAccess.getStatementAccess().getArgumentExpressionParserRuleCall_5_3_0(), semanticObject.getArgument());
 		feeder.finish();
 	}
 	

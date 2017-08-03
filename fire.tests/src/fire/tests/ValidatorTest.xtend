@@ -357,6 +357,26 @@ class ValidatorTest {
 	}
 	
 	@Test
+	def void testCheckCallStatementArguments() {
+		'''
+			program
+				procedure proc1(param1: Integer, param2: String)
+					writeln(param1)
+					writeln(param2)
+				end
+				
+				proc1(1, "string1")
+				proc1(2, 3, 4)
+				proc1(5, 6)
+			end
+		'''.parse => [
+			tester.validate(statements.get(0)).assertOK
+			tester.validate(statements.get(1)).assertAll(error(null, "Incorrect argument count: expected 2, found 3"))
+			tester.validate(statements.get(2)).assertAll(error(null, "Expected String, found Integer"))
+		]
+	}
+	
+	@Test
 	def void testTypeCheckOrExpression() {
 		'''
 			program

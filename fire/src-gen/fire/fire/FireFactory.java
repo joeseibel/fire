@@ -168,6 +168,15 @@ public interface FireFactory extends EFactory
   AssignmentStatement createAssignmentStatement();
 
   /**
+   * Returns a new object of class '<em>Call Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Call Statement</em>'.
+   * @generated
+   */
+  CallStatement createCallStatement();
+
+  /**
    * Returns a new object of class '<em>Writeln Statement</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

@@ -324,20 +324,37 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cWhileLoopParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		private final RuleCall cIfStatementParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		private final Group cGroup_4 = (Group)cAlternatives.eContents().get(4);
-		private final Action cWritelnStatementAction_4_0 = (Action)cGroup_4.eContents().get(0);
-		private final Keyword cWritelnKeyword_4_1 = (Keyword)cGroup_4.eContents().get(1);
+		private final Action cCallStatementAction_4_0 = (Action)cGroup_4.eContents().get(0);
+		private final Assignment cCallableAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final CrossReference cCallableCallableCrossReference_4_1_0 = (CrossReference)cCallableAssignment_4_1.eContents().get(0);
+		private final RuleCall cCallableCallableIDTerminalRuleCall_4_1_0_1 = (RuleCall)cCallableCallableCrossReference_4_1_0.eContents().get(1);
 		private final Keyword cLeftParenthesisKeyword_4_2 = (Keyword)cGroup_4.eContents().get(2);
-		private final Assignment cArgumentAssignment_4_3 = (Assignment)cGroup_4.eContents().get(3);
-		private final RuleCall cArgumentExpressionParserRuleCall_4_3_0 = (RuleCall)cArgumentAssignment_4_3.eContents().get(0);
+		private final Group cGroup_4_3 = (Group)cGroup_4.eContents().get(3);
+		private final Assignment cArgumentsAssignment_4_3_0 = (Assignment)cGroup_4_3.eContents().get(0);
+		private final RuleCall cArgumentsExpressionParserRuleCall_4_3_0_0 = (RuleCall)cArgumentsAssignment_4_3_0.eContents().get(0);
+		private final Group cGroup_4_3_1 = (Group)cGroup_4_3.eContents().get(1);
+		private final Keyword cCommaKeyword_4_3_1_0 = (Keyword)cGroup_4_3_1.eContents().get(0);
+		private final Assignment cArgumentsAssignment_4_3_1_1 = (Assignment)cGroup_4_3_1.eContents().get(1);
+		private final RuleCall cArgumentsExpressionParserRuleCall_4_3_1_1_0 = (RuleCall)cArgumentsAssignment_4_3_1_1.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_4_4 = (Keyword)cGroup_4.eContents().get(4);
 		private final Keyword cSemicolonKeyword_4_5 = (Keyword)cGroup_4.eContents().get(5);
+		private final Group cGroup_5 = (Group)cAlternatives.eContents().get(5);
+		private final Action cWritelnStatementAction_5_0 = (Action)cGroup_5.eContents().get(0);
+		private final Keyword cWritelnKeyword_5_1 = (Keyword)cGroup_5.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_5_2 = (Keyword)cGroup_5.eContents().get(2);
+		private final Assignment cArgumentAssignment_5_3 = (Assignment)cGroup_5.eContents().get(3);
+		private final RuleCall cArgumentExpressionParserRuleCall_5_3_0 = (RuleCall)cArgumentAssignment_5_3.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_5_4 = (Keyword)cGroup_5.eContents().get(4);
+		private final Keyword cSemicolonKeyword_5_5 = (Keyword)cGroup_5.eContents().get(5);
 		
 		//Statement:
 		//	VariableDeclaration | {AssignmentStatement} variable=[IdElement] ':=' value=Expression ';'? | WhileLoop | IfStatement
-		//	| {WritelnStatement} 'writeln' '(' argument=Expression ')' ';'?;
+		//	| {CallStatement} callable=[Callable] '(' (arguments+=Expression (',' arguments+=Expression)*)? ')' ';'? |
+		//	{WritelnStatement} 'writeln' '(' argument=Expression ')' ';'?;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//VariableDeclaration | {AssignmentStatement} variable=[IdElement] ':=' value=Expression ';'? | WhileLoop | IfStatement |
+		//{CallStatement} callable=[Callable] '(' (arguments+=Expression (',' arguments+=Expression)*)? ')' ';'? |
 		//{WritelnStatement} 'writeln' '(' argument=Expression ')' ';'?
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
@@ -377,29 +394,74 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 		//IfStatement
 		public RuleCall getIfStatementParserRuleCall_3() { return cIfStatementParserRuleCall_3; }
 		
-		//{WritelnStatement} 'writeln' '(' argument=Expression ')' ';'?
+		//{CallStatement} callable=[Callable] '(' (arguments+=Expression (',' arguments+=Expression)*)? ')' ';'?
 		public Group getGroup_4() { return cGroup_4; }
 		
-		//{WritelnStatement}
-		public Action getWritelnStatementAction_4_0() { return cWritelnStatementAction_4_0; }
+		//{CallStatement}
+		public Action getCallStatementAction_4_0() { return cCallStatementAction_4_0; }
 		
-		//'writeln'
-		public Keyword getWritelnKeyword_4_1() { return cWritelnKeyword_4_1; }
+		//callable=[Callable]
+		public Assignment getCallableAssignment_4_1() { return cCallableAssignment_4_1; }
+		
+		//[Callable]
+		public CrossReference getCallableCallableCrossReference_4_1_0() { return cCallableCallableCrossReference_4_1_0; }
+		
+		//ID
+		public RuleCall getCallableCallableIDTerminalRuleCall_4_1_0_1() { return cCallableCallableIDTerminalRuleCall_4_1_0_1; }
 		
 		//'('
 		public Keyword getLeftParenthesisKeyword_4_2() { return cLeftParenthesisKeyword_4_2; }
 		
-		//argument=Expression
-		public Assignment getArgumentAssignment_4_3() { return cArgumentAssignment_4_3; }
+		//(arguments+=Expression (',' arguments+=Expression)*)?
+		public Group getGroup_4_3() { return cGroup_4_3; }
+		
+		//arguments+=Expression
+		public Assignment getArgumentsAssignment_4_3_0() { return cArgumentsAssignment_4_3_0; }
 		
 		//Expression
-		public RuleCall getArgumentExpressionParserRuleCall_4_3_0() { return cArgumentExpressionParserRuleCall_4_3_0; }
+		public RuleCall getArgumentsExpressionParserRuleCall_4_3_0_0() { return cArgumentsExpressionParserRuleCall_4_3_0_0; }
+		
+		//(',' arguments+=Expression)*
+		public Group getGroup_4_3_1() { return cGroup_4_3_1; }
+		
+		//','
+		public Keyword getCommaKeyword_4_3_1_0() { return cCommaKeyword_4_3_1_0; }
+		
+		//arguments+=Expression
+		public Assignment getArgumentsAssignment_4_3_1_1() { return cArgumentsAssignment_4_3_1_1; }
+		
+		//Expression
+		public RuleCall getArgumentsExpressionParserRuleCall_4_3_1_1_0() { return cArgumentsExpressionParserRuleCall_4_3_1_1_0; }
 		
 		//')'
 		public Keyword getRightParenthesisKeyword_4_4() { return cRightParenthesisKeyword_4_4; }
 		
 		//';'?
 		public Keyword getSemicolonKeyword_4_5() { return cSemicolonKeyword_4_5; }
+		
+		//{WritelnStatement} 'writeln' '(' argument=Expression ')' ';'?
+		public Group getGroup_5() { return cGroup_5; }
+		
+		//{WritelnStatement}
+		public Action getWritelnStatementAction_5_0() { return cWritelnStatementAction_5_0; }
+		
+		//'writeln'
+		public Keyword getWritelnKeyword_5_1() { return cWritelnKeyword_5_1; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_5_2() { return cLeftParenthesisKeyword_5_2; }
+		
+		//argument=Expression
+		public Assignment getArgumentAssignment_5_3() { return cArgumentAssignment_5_3; }
+		
+		//Expression
+		public RuleCall getArgumentExpressionParserRuleCall_5_3_0() { return cArgumentExpressionParserRuleCall_5_3_0; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_5_4() { return cRightParenthesisKeyword_5_4; }
+		
+		//';'?
+		public Keyword getSemicolonKeyword_5_5() { return cSemicolonKeyword_5_5; }
 	}
 	public class VariableDeclarationElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "fire.Fire.VariableDeclaration");
@@ -1611,7 +1673,8 @@ public class FireGrammarAccess extends AbstractGrammarElementFinder {
 	
 	//Statement:
 	//	VariableDeclaration | {AssignmentStatement} variable=[IdElement] ':=' value=Expression ';'? | WhileLoop | IfStatement
-	//	| {WritelnStatement} 'writeln' '(' argument=Expression ')' ';'?;
+	//	| {CallStatement} callable=[Callable] '(' (arguments+=Expression (',' arguments+=Expression)*)? ')' ';'? |
+	//	{WritelnStatement} 'writeln' '(' argument=Expression ')' ';'?;
 	public StatementElements getStatementAccess() {
 		return pStatement;
 	}

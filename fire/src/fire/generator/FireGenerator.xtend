@@ -6,6 +6,7 @@ import fire.fire.AndExpression
 import fire.fire.AssignmentStatement
 import fire.fire.BooleanLiteral
 import fire.fire.BuiltInType
+import fire.fire.CallStatement
 import fire.fire.ComparisonExpression
 import fire.fire.ElseIfExpression
 import fire.fire.ElseIfStatement
@@ -154,6 +155,10 @@ class FireGenerator extends AbstractGenerator {
 			builder.createBr(afterIfBlock)
 		}
 		builder.insertPoint = afterIfBlock
+	}
+	
+	def private dispatch void generateStatement(CallStatement call) {
+		//TODO
 	}
 	
 	def private dispatch void generateStatement(WritelnStatement statement) {
